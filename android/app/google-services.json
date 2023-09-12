@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "820561191348",
+    "project_id": "signbuddy-d3d91",
+    "storage_bucket": "signbuddy-d3d91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820561191348:android:a27545e109d4161f4952e1",
+        "android_client_info": {
+          "package_name": "com.example.sign_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820561191348-gtoaddrkd94qvhlofds9om6jg0u958k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCugrVMr0hdDiywW1dNk9O2FMutZQCPQmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820561191348-gtoaddrkd94qvhlofds9om6jg0u958k1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

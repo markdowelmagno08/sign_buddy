@@ -1,0 +1,123 @@
+{
+  "lessons": [
+    {
+      "name": "Letter A",
+      "progress": 10,
+      "isUnlocked": true,
+      "content": [
+        {
+          "description": "This is the sign language for letter 'A'.",
+          "image": "assets/alphabet-lesson/a-d-img/a.png"
+        },
+        {
+          "description": "This is how you sign Aunt.",
+          "image": "assets/alphabet-lesson/a-d-img/aunt.gif"
+        }
+      ],
+
+      "quiz1": {
+        "question": "Which one here is the 'A' sign language?",
+        "correctAnswer": "assets/alphabet-lesson/a-d-img/a.png"
+      },
+      "quiz2": {
+        "question": "What sign is this?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "Q"
+      },
+      "quiz3": {
+        "question": "Is this letter A?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "No"
+      }
+    },
+
+    {
+      "name": "Letter B",
+      "progress": 0,
+      "isUnlocked": false,
+      "content": [
+        {
+          "description": "This is the sign language for letter 'B'.",
+          "image": "assets/alphabet-lesson/a-d-img/b.png"
+        },
+        {
+          "description": "This is how you sign Bear.",
+          "gif": "assets/alphabet-lesson/a-d-img/bear.gif"
+        }
+      ],
+      "quiz1": {
+        "question": "Which one here is the 'B' sign language?",
+        "correctAnswer": "assets/alphabet-lesson/a-d-img/b.png"
+      },
+      "quiz2": {
+        "question": "What sign is this?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "Q"
+      },
+      "quiz3": {
+        "question": "Is this letter B?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "No"
+      }
+    },
+    {
+      "name": "Letter C",
+      "progress": 0,
+      "isUnlocked": false,
+      "content": [
+        {
+          "description": "This is the sign language for letter 'C'.",
+          "image": "assets/alphabet-lesson/a-d-img/c.png"
+        },
+        {
+          "description": "This is how you sign Cat.",
+          "gif": "assets/alphabet-lesson/a-d-img/cat.gif"
+        }
+      ],
+      "quiz1": {
+        "question": "Which one here is the 'C' sign language?",
+        "correctAnswer": "assets/alphabet-lesson/a-d-img/c.png"
+      },
+      "quiz2": {
+        "question": "What sign is this?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "Q"
+      },
+      "quiz3": {
+        "question": "Is this letter C?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "No"
+      }
+    },
+    {
+      "name": "Letter D",
+      "progress": 0,
+      "isUnlocked": false,
+      "content": [
+        {
+          "description": "This is the sign language for letter 'D'.",
+          "image": "assets/alphabet-lesson/a-d-img/d.png"
+        },
+        {
+          "description": "This is how you sign Dog.",
+          "gif": "assets/alphabet-lesson/a-d-img/dog.gif"
+        }
+      ],
+      "quiz1": {
+        "question": "Which one here is the 'D' sign language?",
+        "correctAnswer": "assets/alphabet-lesson/a-d-img/d.png"
+      },
+      "quiz2": {
+        "question": "What sign is this?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "Q"
+      },
+      "quiz3": {
+        "question": "Is this letter D?",
+        "image": "assets/assess-img/question-five/q.png",
+        "correctAnswer": "No"
+      }
+    }
+
+  ]
+}
