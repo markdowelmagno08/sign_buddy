@@ -1,8 +1,42 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_screen.dart';
+import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+
+class CircularProgressBar extends StatelessWidget {
+  final double progress;
+
+  CircularProgressBar({required this.progress});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CircularProgressIndicator(
+            value: progress,
+            strokeWidth: 6,
+            backgroundColor: Colors.grey,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+          ),
+          Text(
+            '${(progress * 100).toInt()}%',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class Letters extends StatefulWidget {
   const Letters({Key? key}) : super(key: key);
@@ -12,36 +46,83 @@ class Letters extends StatefulWidget {
 }
 
 class _LettersState extends State<Letters> {
-  final List<Map<String, dynamic>> lessonLetters = [
-    {'letter': 'Alphabet A-D', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet E-H', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet I-L', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet M-P', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet Q-T', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet U-X', 'subtext': 'Learn new signs'},
-    {'letter': 'Alphabet Y-Z', 'subtext': 'Learn new signs'},
-  ];
+  List<String> letterLessonNames = [];
+  List<bool> unlockedLetterLessons = [];
+  List<int> letterLessonProgress = [];
 
-  void navigateToLesson(String letter) {
-    switch (letter) {
-      case 'Alphabet A-D':
-        Navigator.push(
-          context,
-          SlidePageRoute(page: LessonScreen()),
-        );
-        break;
-      case 'Alphabet E-H':
-        // Navigator.push(
-        //   context,
-        //   SlidePageRoute(page: const LessonD()),
-        // );
-        break;
-      // Add cases for other lessons here
-      default:
-        // Handle other cases if needed
-        break;
+  Future<void> letterLessons() async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/lesson_alphabet.json');
+
+      final jsonString = await file.readAsString();
+      final List<dynamic> jsonData = json.decode(jsonString);
+
+      List<String> letterNames = [];
+      List<bool> unlockedLessons = [];
+      List<int> progress = [];
+
+      List<LetterLesson> letterLessons = jsonData.map((lesson) {
+        return LetterLesson.fromJson(lesson);
+      }).toList();
+
+      for (var lesson in letterLessons) {
+        letterNames.add(lesson.name);
+        unlockedLessons.add(lesson.isUnlocked);
+        progress.add(lesson.progress);
+      }
+
+      setState(() {
+        letterLessonNames = letterNames;
+        unlockedLetterLessons = unlockedLessons;
+        letterLessonProgress = progress;
+      });
+    } catch (e) {
+      print('Error reading JSON file: $e');
     }
   }
+
+  @override
+  void initState() {
+    super.initState();
+    letterLessons();
+  }
+
+   void showLockedLessonDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(Icons.lock, color: Colors.blueAccent),
+              SizedBox(width: 10),
+              Text('Lock Lesson',
+                  style: TextStyle(
+                    fontFamily: 'FiraSans',
+                    fontWeight: FontWeight.bold,
+                  )),
+            ],
+          ),
+          content: Text('You need to unlock the other lessons first',
+              style: TextStyle(
+                fontFamily: 'FiraSans',
+                fontWeight: FontWeight.normal,
+              )),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +180,13 @@ class _LettersState extends State<Letters> {
               ),
             ),
           ),
+          
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final lesson = lessonLetters[index];
+                final lessonName = letterLessonNames[index];
+                final isUnlocked = unlockedLetterLessons[index];
+                final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Card(
@@ -117,28 +201,42 @@ class _LettersState extends State<Letters> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      leading: const Icon(Icons.menu_book_outlined, size: 30),
+                      leading: Icon(Icons.menu_book_outlined, size: 30),
                       title: Row(
                         children: [
                           Expanded(
                             child: Text(
-                              lesson['letter'],
-                              style: const TextStyle(
+                              lessonName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w600,
+                                color: isUnlocked
+                                    ? Colors.black
+                                    : Colors.grey,
                               ),
                             ),
                           ),
+                          if (isUnlocked) CircularProgressBar(progress: progress),
                         ],
                       ),
-                      subtitle: Text(lesson['subtext']),
                       onTap: () {
-                        navigateToLesson(lesson['letter']);
+                        if (isUnlocked) {
+                          Navigator.push(
+                            context,
+                             SlidePageRoute(
+                              page: LessonOne(
+                                lessonName: lessonName,
+                              ),
+                            ),
+                          );
+                        } else {
+                           showLockedLessonDialog(); // Show the locked lesson dialog
+                        }
                       },
                     ),
                   ),
                 );
               },
-              childCount: lessonLetters.length,
+              childCount: letterLessonNames.length,
             ),
           ),
         ],

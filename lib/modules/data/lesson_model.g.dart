@@ -10,13 +10,18 @@ LetterLesson _$LetterLessonFromJson(Map<String, dynamic> json) => LetterLesson(
       name: json['name'] as String,
       progress: json['progress'] as int,
       isUnlocked: json['isUnlocked'] as bool,
-      content: (json['content'] as List<dynamic>)
-          .map((e) => LessonContent.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      quiz1: LessonQuiz.fromJson(json['quiz1'] as Map<String, dynamic>),
-      quiz2: LessonQuiz.fromJson(json['quiz2'] as Map<String, dynamic>),
-      quiz3: LessonQuiz.fromJson(json['quiz3'] as Map<String, dynamic>),
-      quiz4: LessonQuiz.fromJson(json['quiz4'] as Map<String, dynamic>),
+      content1:
+          LessonContent.fromJson(json['content1'] as Map<String, dynamic>),
+      content2:
+          LessonContent.fromJson(json['content2'] as Map<String, dynamic>),
+      content3:
+          LessonContent.fromJson(json['content3'] as Map<String, dynamic>),
+      content4:
+          LessonContent.fromJson(json['content4'] as Map<String, dynamic>),
+      content5:
+          LessonContent.fromJson(json['content5'] as Map<String, dynamic>),
+      content6:
+          LessonContent.fromJson(json['content6'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LetterLessonToJson(LetterLesson instance) =>
@@ -24,39 +29,26 @@ Map<String, dynamic> _$LetterLessonToJson(LetterLesson instance) =>
       'name': instance.name,
       'progress': instance.progress,
       'isUnlocked': instance.isUnlocked,
-      'content': instance.content,
-      'quiz1': instance.quiz1,
-      'quiz2': instance.quiz2,
-      'quiz3': instance.quiz3,
-      'quiz4': instance.quiz4,
+      'content1': instance.content1,
+      'content2': instance.content2,
+      'content3': instance.content3,
+      'content4': instance.content4,
+      'content5': instance.content5,
+      'content6': instance.content6,
     };
 
 LessonContent _$LessonContentFromJson(Map<String, dynamic> json) =>
     LessonContent(
       description: json['description'] as String,
-      lessonImage: json['lessonImage'] as String,
+      contentImage: json['contentImage'] as List<dynamic>?,
+      contentOption: json['contentOption'] as List<dynamic>?,
+      correctAnswerIndex: json['correctAnswerIndex'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$LessonContentToJson(LessonContent instance) =>
     <String, dynamic>{
       'description': instance.description,
-      'lessonImage': instance.lessonImage,
-    };
-
-LessonQuiz _$LessonQuizFromJson(Map<String, dynamic> json) => LessonQuiz(
-      question: json['question'] as String,
-      quizImage: json['quizImage'] as String?,
-      options:
-          (json['options'] as List<dynamic>).map((e) => e as String).toList(),
-      correctAnswerIndex: (json['correctAnswerIndex'] as List<dynamic>)
-          .map((e) => e as int)
-          .toList(),
-    );
-
-Map<String, dynamic> _$LessonQuizToJson(LessonQuiz instance) =>
-    <String, dynamic>{
-      'question': instance.question,
-      'quizImage': instance.quizImage,
-      'options': instance.options,
+      'contentImage': instance.contentImage,
+      'contentOption': instance.contentOption,
       'correctAnswerIndex': instance.correctAnswerIndex,
     };

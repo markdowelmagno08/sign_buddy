@@ -9,6 +9,8 @@ import 'package:sign_buddy/modules/classify_as.dart';
 import 'package:sign_buddy/modules/english_level.dart';
 import 'package:sign_buddy/modules/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers.dart';
@@ -94,7 +96,7 @@ class MyApp extends StatelessWidget {
           '/timeAndDays': (context) => TimeAndDays(),
           '/greeting': (context) => Greetings(),
         },
-        home:FrontPage(),
+        home: HomePage(),
     );
   }
 }
