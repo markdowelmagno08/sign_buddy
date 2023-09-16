@@ -88,7 +88,7 @@ class _LettersState extends State<Letters> {
     letterLessons();
   }
 
-   void showLockedLessonDialog() {
+  void showLockedLessonDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -122,8 +122,6 @@ class _LettersState extends State<Letters> {
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,6 +132,7 @@ class _LettersState extends State<Letters> {
             delegate: _SliverAppBarDelegate(
               minHeight: 100,
               maxHeight: 150,
+              bottomPadding: 20.0, // Adjust the top padding here
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF5A96E3),
@@ -188,7 +187,7 @@ class _LettersState extends State<Letters> {
                 final isUnlocked = unlockedLetterLessons[index];
                 final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -205,14 +204,23 @@ class _LettersState extends State<Letters> {
                       title: Row(
                         children: [
                           Expanded(
-                            child: Text(
-                              lessonName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: isUnlocked
-                                    ? Colors.black
-                                    : Colors.grey,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  lessonName,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: isUnlocked ? Colors.black : Colors.grey,
+                                  ),
+                                ),
+                                Text(
+                                  'Learn the sign for $lessonName',
+                                  style: TextStyle(
+                                    color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey, // Customize the color if needed
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           if (isUnlocked) CircularProgressBar(progress: progress),
@@ -222,14 +230,14 @@ class _LettersState extends State<Letters> {
                         if (isUnlocked) {
                           Navigator.push(
                             context,
-                             SlidePageRoute(
+                            SlidePageRoute(
                               page: LessonOne(
                                 lessonName: lessonName,
                               ),
                             ),
                           );
                         } else {
-                           showLockedLessonDialog(); // Show the locked lesson dialog
+                          showLockedLessonDialog(); // Show the locked lesson dialog
                         }
                       },
                     ),
@@ -250,11 +258,13 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     required this.minHeight,
     required this.maxHeight,
     required this.child,
+    this.bottomPadding = 0.0, // Add a topPadding property
   });
 
   final double minHeight;
   final double maxHeight;
   final Widget child;
+  final double bottomPadding; // Add topPadding property
 
   @override
   double get minExtent => minHeight;
@@ -268,7 +278,12 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    return SizedBox.expand(child: child);
+    return SizedBox.expand(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: bottomPadding), // Apply top padding
+        child: child,
+      ),
+    );
   }
 
   @override

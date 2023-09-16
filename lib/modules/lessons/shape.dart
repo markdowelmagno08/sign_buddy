@@ -32,6 +32,7 @@ class _ShapesState extends State<Shapes> {
             delegate: _SliverAppBarDelegate(
               minHeight: 100,
               maxHeight: 150,
+              bottomPadding: 20.0,
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF5A96E3),
@@ -126,11 +127,13 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     required this.minHeight,
     required this.maxHeight,
     required this.child,
+    this.bottomPadding = 0.0, // Add a topPadding property
   });
 
   final double minHeight;
   final double maxHeight;
   final Widget child;
+  final double bottomPadding; // Add topPadding property
 
   @override
   double get minExtent => minHeight;
@@ -140,8 +143,16 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return SizedBox.expand(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: bottomPadding), // Apply top padding
+        child: child,
+      ),
+    );
   }
 
   @override
@@ -151,3 +162,4 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         child != oldDelegate.child;
   }
 }
+
