@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
 import 'package:sign_buddy/forgot_pass.dart';
@@ -9,8 +10,6 @@ import 'package:sign_buddy/modules/classify_as.dart';
 import 'package:sign_buddy/modules/english_level.dart';
 import 'package:sign_buddy/modules/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers.dart';
@@ -44,59 +43,94 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Sign Buddy',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          textTheme: TextTheme(
-            bodyLarge: TextStyle(
-              fontFamily: 'FiraSans',
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-            bodyMedium: TextStyle(
-              fontFamily: 'FiraSans',
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            displayLarge: TextStyle(
-              fontFamily: 'FiraSans',
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-            labelLarge: TextStyle(
-              fontFamily: 'FiraSans',
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-            // Add more text styles here as needed.
+      debugShowCheckedModeBanner: false,
+      title: 'Sign Buddy',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(
+            fontFamily: 'FiraSans',
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
           ),
+          bodyMedium: TextStyle(
+            fontFamily: 'FiraSans',
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+          displayLarge: TextStyle(
+            fontFamily: 'FiraSans',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          labelLarge: TextStyle(
+            fontFamily: 'FiraSans',
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+          // Add more text styles here as needed.
         ),
-        initialRoute: '/',
-        routes: {
-          '/f': (context) => FrontPage(),
-          '/actors': (context) => Actors(),
-          '/One': (context) => AssessmentOne(),
-          '/get_started': (context) => GetStartedPage(),
-          '/signup': (context) => SignupPage(),
-          '/chooseLanguage': (context) => ChooseLanguages(),
-          '/classify': (context) => Classify(),
-          '/langLevel': (context) => Level(),
-          '/homePage': (context) => HomePage(),
-          '/login': (context) => LoginPage(),
-          '/forgotPass': (context) => ForgotPass(),
-          '/basic': (context) => Letters(),
-          '/numbers': (context) => Numbers(),
-          '/family': (context) => Family(),
-          '/colors': (context) => ColorLesson(),
-          '/shapes': (context) => Shapes(),
-          '/animals': (context) => Animals(),
-          '/nature': (context) => Nature(),
-          '/food': (context) => Food(),
-          '/timeAndDays': (context) => TimeAndDays(),
-          '/greeting': (context) => Greetings(),
-        },
-        home: FrontPage(),
+      ),
+      initialRoute: '/',
+      routes: {
+        '/f': (context) => FrontPage(),
+        '/actors': (context) => Actors(),
+        '/One': (context) => AssessmentOne(),
+        '/get_started': (context) => GetStartedPage(),
+        '/signup': (context) => SignupPage(),
+        '/chooseLanguage': (context) => ChooseLanguages(),
+        '/classify': (context) => Classify(),
+        '/langLevel': (context) => Level(),
+        '/homePage': (context) => AuthenticationWrapper(),
+        '/login': (context) => LoginPage(),
+        '/forgotPass': (context) => ForgotPass(),
+        '/basic': (context) => Letters(),
+        '/numbers': (context) => Numbers(),
+        '/family': (context) => Family(),
+        '/colors': (context) => ColorLesson(),
+        '/shapes': (context) => Shapes(),
+        '/animals': (context) => Animals(),
+        '/nature': (context) => Nature(),
+        '/food': (context) => Food(),
+        '/timeAndDays': (context) => TimeAndDays(),
+        '/greeting': (context) => Greetings(),
+      },
+      home: AuthenticationWrapper(),
     );
+  }
+}
+
+class AuthenticationWrapper extends StatefulWidget {
+  const AuthenticationWrapper({Key? key}) : super(key: key);
+
+  @override
+  _AuthenticationWrapperState createState() => _AuthenticationWrapperState();
+}
+
+class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
+  User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthentication();
+  }
+
+  Future<void> _checkAuthentication() async {
+    final user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      _user = user;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_user != null) {
+      // User is authenticated, navigate directly to the HomePage
+      return HomePage();
+    } else {
+      // User is not authenticated, remain on the FrontPage
+      return FrontPage();
+    }
   }
 }
