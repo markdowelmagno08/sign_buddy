@@ -43,7 +43,7 @@ class _QuizThreeState extends State<QuizThree> {
 
     if (!isCompleted) {
       // Check if progress is not already added
-      await incrementProgressValue(lessonName, 1); // You can adjust the progress value as needed
+      await incrementProgressValue(lessonName, 16); // You can adjust the progress value as needed
        print("Progress 5 updated successfully!");
       await prefs.setBool('$lessonName-completed5', true); // Mark as completed
     }

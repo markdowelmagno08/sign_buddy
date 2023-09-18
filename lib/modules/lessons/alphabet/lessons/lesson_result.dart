@@ -26,6 +26,7 @@ class _ResultState extends State<Result> {
   void initState() {
     super.initState();
   getProgress(widget.lessonName);
+  
   }
 
  Future<void> clearProgress(String lessonName) async {
@@ -213,7 +214,7 @@ class _ResultState extends State<Result> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        if (progress >= 25) {
+                        if (progress >= 90) {
                           unlockLesson(widget.lessonName);
                         }
                         // Navigate to the Home page (replace it with the desired route)

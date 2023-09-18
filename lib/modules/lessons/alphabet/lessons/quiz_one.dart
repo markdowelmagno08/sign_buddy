@@ -80,7 +80,7 @@ class _QuizOneState extends State<QuizOne> {
 
     if (!isCompleted) {
       // Check if progress is not already added
-      await incrementProgressValue(lessonName, 1);
+      await incrementProgressValue(lessonName, 16);
       print("Progress 3 updated successfully!");
       await prefs.setBool('$lessonName-completed3', true); // Mark as completed
     }

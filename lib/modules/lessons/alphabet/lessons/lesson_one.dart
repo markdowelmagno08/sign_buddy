@@ -74,7 +74,7 @@ class _LessonOneState extends State<LessonOne> {
 
     if (!isCompleted) {
       // Check if progress is not already added
-      await incrementProgressValue(lessonName, 1);
+      await incrementProgressValue(lessonName, 16);
       print("Progress 1 updated successfully!");
       await prefs.setBool('$lessonName-completed1', true); // Mark as completed
     }

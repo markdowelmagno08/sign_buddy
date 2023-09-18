@@ -31,11 +31,14 @@ class _QuizFourState extends State<QuizFour> {
   String selectedOption = '';
   bool answerChecked = false;
   bool progressAdded = false; // Track whether progress has been added
+  int progress = 0;
 
   @override
   void initState() {
     super.initState();
     getContent6DataByName(widget.lessonName);
+
+    
 
   }
   Future<void> addProgressIfNotCompleted(String lessonName) async {
@@ -44,7 +47,7 @@ class _QuizFourState extends State<QuizFour> {
 
     if (!isCompleted) {
       // Check if progress is not already added
-      await incrementProgressValue(lessonName, 1); // You can adjust the progress value as needed
+      await incrementProgressValue(lessonName, 16); // You can adjust the progress value as needed
        print("Progress 6 updated successfully!");
       await prefs.setBool('$lessonName-completed6', true); // Mark as completed
     }
@@ -108,7 +111,9 @@ class _QuizFourState extends State<QuizFour> {
     if (isAnswerCorrect && !progressAdded) {
       await addProgressIfNotCompleted(widget.lessonName);
       setState(() {
-        progressAdded = true; // Set progressAdded to true
+        progressAdded = true;
+        // unlock the lesson automatically if the progres is greater than 90, just incase the user accidentally press the back button
+        unlockLesson(widget.lessonName);
       });
     }
 
