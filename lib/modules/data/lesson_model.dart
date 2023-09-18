@@ -383,6 +383,109 @@
     await file.writeAsString(jsonString);
 }
 
+  Future<void> incrementProgressValue(String lessonName, int value) async {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/lesson_alphabet.json');
+
+      try {
+        final jsonString = await file.readAsString();
+        final List<dynamic> jsonData = json.decode(jsonString);
+
+        List<LetterLesson> letterLessons = jsonData.map((lesson) {
+          return LetterLesson.fromJson(lesson);
+        }).toList();
+
+        LetterLesson? lessonToUpdate = 
+          letterLessons.firstWhere((element) => element.name == lessonName);
+          
+        // ignore: unnecessary_null_comparison
+        if(lessonToUpdate != null) {
+
+          lessonToUpdate.progress += value;
+
+          final updatedJsonData =
+              letterLessons.map((lesson) => lesson.toJson()).toList();
+          await file.writeAsString(json.encode(updatedJsonData));
+          print('Progress updated successfully!');
+        } else {
+          print('LetterLesson with name $lessonName not found in JSON file');
+        }
+
+      } catch(e) {
+
+        print('Error reading/writing lesson_alphabet.json: $e');
+
+      }
+    }
+
+    Future<void> resetProgress(String lessonName) async {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/lesson_alphabet.json');
+
+      try {
+        final jsonString = await file.readAsString();
+        final List<dynamic> jsonData = json.decode(jsonString);
+
+        List<LetterLesson> letterLessons = jsonData.map((lesson) {
+          return LetterLesson.fromJson(lesson);
+        }).toList();
+
+        LetterLesson? lessonToReset =
+            letterLessons.firstWhere((element) => element.name == lessonName);
+
+        // ignore: unnecessary_null_comparison
+        if (lessonToReset != null) {
+          // Reset the progress value for that lesson to 0
+            lessonToReset.progress = 0;
+
+          final updatedJsonData =
+              letterLessons.map((lesson) => lesson.toJson()).toList();
+          await file.writeAsString(json.encode(updatedJsonData));
+          print('Progress has reset successfully!');
+        } else {
+          print('LetterLesson with name $lessonName not found in JSON file');
+        }
+      } catch (e) {
+        print('Error reading/writing lesson_alphabet.json: $e');
+      }
+    }
+
+  Future<void> unlockLesson(String lessonName) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/lesson_alphabet.json');
+
+    try {
+      final jsonString = await file.readAsString();
+      final List<dynamic> jsonData = json.decode(jsonString);
+
+      List<LetterLesson> letterLessons = jsonData.map((lesson) {
+        return LetterLesson.fromJson(lesson);
+      }).toList();
+
+      int currentIndex =
+          letterLessons.indexWhere((element) => element.name == lessonName);
+
+      if (currentIndex >= 0 && currentIndex < letterLessons.length - 1) {
+        // Change the value of isUnlocked to true for the next lesson
+        letterLessons[currentIndex + 1].isUnlocked = true;
+
+        final updatedJsonData =
+            letterLessons.map((lesson) => lesson.toJson()).toList();
+        await file.writeAsString(json.encode(updatedJsonData));
+        print('Lesson has unlocked successfully!');
+      } else {
+        print(
+            'LetterLesson with name $lessonName not found or is the last lesson');
+      }
+    } catch (e) {
+      print('Error reading/writing letter_lessons.json: $e');
+    }
+  }
+
+  
+
+  
+
 
 
   Future<void> addNewLetterLesson(LetterLesson newLesson) async {
@@ -483,157 +586,7 @@
     }
   }
 
-  List<LetterLesson> createInitialLessons() {
-    final letterA = LetterLesson(
-      name: "A",
-      progress: 0,
-      isUnlocked: true,
-      content1: LessonContent(
-        description: "This is the sign for letter 'A'.",
-        contentImage: ["assets/alphabet/a.png",]
-      ),
-      content2: LessonContent(
-        description: "This is how you sign Aunt.",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
-      ),
-      content3: LessonContent(
-        description: "Which one here is the sign for letter 'A'?",
-        contentOption: [
-          "assets/alphabet/a.png",
-          "assets/alphabet/s.png",
-          "assets/alphabet/w.png",
-          "assets/alphabet/x.png",
-        ],
-        correctAnswerIndex: [0],
-      ),
-    content4: LessonContent(
-        description: "What sign is this?",
-        contentImage: ["assets/alphabet/c.png",],
-        contentOption: [
-          "Q",
-          "C",
-          "D",
-          "X",
-          "O",
-          "F",
-        ],
-        correctAnswerIndex: [1],
-      ),
-      content5: LessonContent(
-        description: "Is this letter A?",
-        contentImage: ["assets/alphabet/a.png"],
-        contentOption: [
-          "Yes",
-          "No",
-        ],
-        correctAnswerIndex: [0],
-      ),
-    content6: LessonContent(
-        description: "What is being signed here",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
-        contentOption: [
-          "Aunt",
-          "Cat",
-          "Dog",
-          "X",
-          "U",
-          "Orange",
-          "Frame",
-          "T",
-          "B",
-        ],
-        correctAnswerIndex: [0],
-      ),
-    );
 
-    final initialLessons = [letterA]; // Add more lessons as needed
-
-    return initialLessons;
-  }
-
-  Future<bool> writeLessonData(List<LetterLesson> lessons) async {
-    try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/lesson_alphabet.json');
-
-      final jsonString =
-          json.encode(lessons.map((lesson) => lesson.toJson()).toList());
-      await file.writeAsString(jsonString);
-
-      return true; // Writing successful
-    } catch (e) {
-      print('Error writing lessons: $e');
-      return false; // Writing failed
-    }
-  }
-
-
-
-  Future<void> incrementProgressValue(String lessonName, int value) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/lesson_alphabet.json');
-
-    try {
-      final jsonString = await file.readAsString();
-      final List<dynamic> jsonData = json.decode(jsonString);
-
-      List<LetterLesson> letterLessons = jsonData.map((lesson) {
-        return LetterLesson.fromJson(lesson);
-      }).toList();
-
-      LetterLesson? lessonToUpdate = 
-        letterLessons.firstWhere((element) => element.name == lessonName);
-        
-      // ignore: unnecessary_null_comparison
-      if(lessonToUpdate != null) {
-
-        lessonToUpdate.progress += value;
-
-        final updatedJsonData =
-            letterLessons.map((lesson) => lesson.toJson()).toList();
-        await file.writeAsString(json.encode(updatedJsonData));
-        print('Score updated successfully!');
-      } else {
-        print('LetterLesson with name $lessonName not found in JSON file');
-      }
-
-    } catch(e) {
-
-      print('Error reading/writing lesson_alphabet.json: $e');
-
-    }
-  }
-
-  Future<void> unlockLesson(String lessonName) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/letter_lessons.json');
-
-    try {
-      final jsonString = await file.readAsString();
-      final List<dynamic> jsonData = json.decode(jsonString);
-
-      List<LetterLesson> letterLessons = jsonData.map((lesson) {
-        return LetterLesson.fromJson(lesson);
-      }).toList();
-
-      int currentIndex =
-          letterLessons.indexWhere((element) => element.name == lessonName);
-
-      if (currentIndex >= 0 && currentIndex < letterLessons.length - 1) {
-        // Change the value of isUnlocked to true for the next lesson
-        letterLessons[currentIndex + 1].isUnlocked = true;
-
-        final updatedJsonData =
-            letterLessons.map((lesson) => lesson.toJson()).toList();
-        await file.writeAsString(json.encode(updatedJsonData));
-        print('Lesson has unlocked successfully!');
-      } else {
-        print(
-            'LetterLesson with name $lessonName not found or is the last lesson');
-      }
-    } catch (e) {
-      print('Error reading/writing letter_lessons.json: $e');
-    }
-  }
+  
 
 

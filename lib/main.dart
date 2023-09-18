@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
           '/timeAndDays': (context) => TimeAndDays(),
           '/greeting': (context) => Greetings(),
         },
-        home: HomePage(),
+        home: FrontPage(),
     );
   }
 }

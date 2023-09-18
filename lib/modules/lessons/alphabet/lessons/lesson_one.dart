@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_two.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -22,7 +23,9 @@ class _LessonOneState extends State<LessonOne> {
   String? contentDescription;
   List<dynamic> contentImage = [];
 
- @override
+  bool progressAdded = false; // Track whether progress has been added
+
+  @override
   void initState() {
     super.initState();
     getContent1DataByName(widget.lessonName);
@@ -33,9 +36,7 @@ class _LessonOneState extends State<LessonOne> {
     return letterLessons.firstWhere((lesson) => lesson.name == lessonName);
   }
 
-  
-
-    void getContent1DataByName(String lessonName) async {
+  void getContent1DataByName(String lessonName) async {
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/lesson_alphabet.json');
 
@@ -57,8 +58,6 @@ class _LessonOneState extends State<LessonOne> {
           setState(() {
             contentDescription = contentData.description;
             contentImage.addAll(contentData.contentImage!);
-
-
           });
         }
       } else {
@@ -67,6 +66,29 @@ class _LessonOneState extends State<LessonOne> {
     } catch (e) {
       print('Error reading lesson_alphabet.json: $e');
     }
+  }
+
+  Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed1') ?? false;
+
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1);
+      print("Progress 1 updated successfully!");
+      await prefs.setBool('$lessonName-completed1', true); // Mark as completed
+    }
+  }
+
+  void _nextPage() async {
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: LessonTwo(lessonName: widget.lessonName)),
+    );
+
+    setState(() {
+      progressAdded = false; // Reset progressAdded
+    });
   }
 
   @override
@@ -82,9 +104,9 @@ class _LessonOneState extends State<LessonOne> {
               alignment: Alignment.topLeft,
               child: CustomBackButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
-                    SlidePageRoute(page: const Letters()),
+                    SlidePageRoute(page: Letters()),
                   );
                 },
               ),
@@ -124,15 +146,19 @@ class _LessonOneState extends State<LessonOne> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        SlidePageRoute(page: LessonTwo(lessonName: widget.lessonName)),
-                      );
+                    onPressed: () async {
+                      // Only add progress on the first navigation
+                      if (!progressAdded) {
+                        await addProgressIfNotCompleted(widget.lessonName);
+                        setState(() {
+                          progressAdded = true; // Set progressAdded to true
+                        });
+                      }
+                      _nextPage();
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        Color(0xFF5BD8FF)
+                        Color(0xFF5BD8FF),
                       ),
                     ),
                     child: Padding(
@@ -143,14 +169,14 @@ class _LessonOneState extends State<LessonOne> {
                           FaIcon(
                             FontAwesomeIcons.arrowRight,
                             size: 18,
-                            color:  Colors.grey.shade700,
+                            color: Colors.grey.shade700,
                           ),
                           SizedBox(width: 8),
                           Text(
                             'Next',
                             style: TextStyle(
                               fontSize: 18,
-                              color:  Colors.grey.shade700,
+                              color: Colors.grey.shade700,
                             ),
                           ),
                         ],

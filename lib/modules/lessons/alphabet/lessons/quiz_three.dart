@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/data/lesson_model.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_four.dart';
@@ -28,12 +29,24 @@ class _QuizThreeState extends State<QuizThree> {
 
   String selectedOption = '';
   bool answerChecked = false;
+  bool progressAdded = false; // Track whether progress has been added
 
-
-   @override
+  @override
   void initState() {
     super.initState();
     getContent5DataByName(widget.lessonName);
+  }
+
+  Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed5') ?? false;
+
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1); // You can adjust the progress value as needed
+       print("Progress 5 updated successfully!");
+      await prefs.setBool('$lessonName-completed5', true); // Mark as completed
+    }
   }
 
   LetterLesson? getLetterLessonByName(
@@ -57,7 +70,7 @@ class _QuizThreeState extends State<QuizThree> {
 
       if (lesson != null) {
         LessonContent contentData = lesson.content5;
-        print('Content 4 data for $lessonName: $contentData');
+        print('Content 5 data for $lessonName: $contentData');
         shuffleLessonContentOptions(contentData);
 
         if (mounted) {
@@ -76,113 +89,122 @@ class _QuizThreeState extends State<QuizThree> {
     }
   }
 
-  
+  void _checkAnswer() async {
+    int selectedIndex = contentOption.indexOf(selectedOption);
+    bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
 
-    void _checkAnswer() {
+    setState(() {
+      answerChecked = true;
+    });
 
-      int selectedIndex = contentOption.indexOf(selectedOption);
+    IconData icon = isAnswerCorrect
+        ? FontAwesomeIcons.solidCheckCircle
+        : FontAwesomeIcons.solidTimesCircle;
+    String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
 
-      bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
-
+    // Only add progress on the first correct attempt
+    if (isAnswerCorrect && !progressAdded) {
+      await addProgressIfNotCompleted(widget.lessonName);
       setState(() {
-        answerChecked = true;
-      });
-
-      IconData icon = isAnswerCorrect
-          ? FontAwesomeIcons.solidCheckCircle
-          : FontAwesomeIcons.solidTimesCircle;
-      String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
-
-      showResultSnackbar(context, resultMessage, icon, () {
-        if (isAnswerCorrect) {
-          _nextPage();
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LessonOne(lessonName: widget.lessonName)),
-          );
-        }
+        progressAdded = true; // Set progressAdded to true
       });
     }
 
-    void showResultSnackbar(BuildContext context, String message, IconData icon,
-        [VoidCallback? callback]) {
-      Color backgroundColor;
-      Color fontColor;
-      TextStyle textStyle;
-
-      if (message == 'Correct') {
-        backgroundColor = Colors.green.shade100;
-        fontColor = Colors.green;
-        textStyle = TextStyle(
-          color: fontColor,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'FiraSans',
+    showResultSnackbar(context, resultMessage, icon, () {
+      if (!isAnswerCorrect) {
+      // If the answer is incorrect, navigate back to LessonOne
+        Navigator.pushReplacement(
+          context,
+          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
         );
       } else {
-        backgroundColor = Colors.red.shade100;
-        fontColor = Colors.red;
-        textStyle = TextStyle(
-          color: fontColor,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'FiraSans',
-        );
+        _nextPage();
       }
+    });
+  }
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(
-            SnackBar(
-              content: SizedBox(
-                height: 60,
-                child: Row(
-                  children: [
-                    Icon(
-                      icon,
-                      color: fontColor,
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      message,
-                      style: textStyle,
-                    ),
-                  ],
-                ),
-              ),
-              backgroundColor: backgroundColor,
-              duration: const Duration(days: 365), // Change duration as needed
-              dismissDirection: DismissDirection.none,
-              action: SnackBarAction(
-                label: 'Next',
-                textColor: Colors.grey.shade700,
-                backgroundColor: Color(0xFF5BD8FF),
-                onPressed: () {
-                  if (callback != null) {
-                    callback(); // Call the provided callback if it's not null
-                  }
-                },
-              ),
-            ),
-          )
-          .closed
-          .then((reason) {
-        setState(() {
-          selectedOption = ''; // Reset selectedOption
-        });
-      });
+  void showResultSnackbar(BuildContext context, String message, IconData icon,
+      [VoidCallback? callback]) {
+    Color backgroundColor;
+    Color fontColor;
+    TextStyle textStyle;
+
+    if (message == 'Correct') {
+      backgroundColor = Colors.green.shade100;
+      fontColor = Colors.green;
+      textStyle = TextStyle(
+        color: fontColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'FiraSans',
+      );
+    } else {
+      backgroundColor = Colors.red.shade100;
+      fontColor = Colors.red;
+      textStyle = TextStyle(
+        color: fontColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'FiraSans',
+      );
     }
 
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          SnackBar(
+            content: SizedBox(
+              height: 60,
+              child: Row(
+                children: [
+                  Icon(
+                    icon,
+                    color: fontColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    message,
+                    style: textStyle,
+                  ),
+                ],
+              ),
+            ),
+            backgroundColor: backgroundColor,
+            duration: const Duration(days: 365), // Change duration as needed
+            dismissDirection: DismissDirection.none,
+            action: SnackBarAction(
+              label: 'Next',
+              textColor: Colors.grey.shade700,
+              backgroundColor: Color(0xFF5BD8FF),
+              onPressed: () {
+                if (callback != null) {
+                  callback(); // Call the provided callback if it's not null
+                }
+              },
+            ),
+          ),
+        )
+        .closed
+        .then((reason) {
+      setState(() {
+        selectedOption = ''; // Reset selectedOption
+      });
+    });
+  }
 
-   void _nextPage() {
-    Navigator.push(
+  void _nextPage() {
+    
+
+    Navigator.pushReplacement(
       context, SlidePageRoute(page: QuizFour(lessonName: widget.lessonName))
-      );
+    );
+
     setState(() {
       selectedOption = '';
       answerChecked = false;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +212,6 @@ class _QuizThreeState extends State<QuizThree> {
       // Handle cases where content is not loaded.
       return CircularProgressIndicator(); // You can replace this with an appropriate widget.
     }
-
 
     return Scaffold(
       body: Padding(
@@ -204,7 +225,7 @@ class _QuizThreeState extends State<QuizThree> {
               child: CustomBackButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     SlidePageRoute(page: Letters()),
                   );
@@ -213,7 +234,7 @@ class _QuizThreeState extends State<QuizThree> {
             ),
             const SizedBox(height: 100),
             Text(
-               contentDescription ?? '',
+              contentDescription ?? '',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
@@ -228,7 +249,7 @@ class _QuizThreeState extends State<QuizThree> {
                 // Border radius
               ),
               child: Image.asset(
-                 contentImage.isNotEmpty ? contentImage[0] : "",
+                contentImage.isNotEmpty ? contentImage[0] : "",
               ),
             ),
             SizedBox(height: 20),
@@ -241,38 +262,41 @@ class _QuizThreeState extends State<QuizThree> {
                     alignment: Alignment.bottomRight,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 20),
-                      child: ElevatedButton(
-                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            selectedOption.isNotEmpty
-                                ? Color(0xFF5BD8FF)
-                                : Colors.grey,
+                      child: Visibility(
+                        visible: !answerChecked,
+                        child: ElevatedButton(
+                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              selectedOption.isNotEmpty
+                                  ? Color(0xFF5BD8FF)
+                                  : Colors.grey,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.check,
-                                size: 18,
-                                color: selectedOption.isNotEmpty
-                                    ? Colors.grey.shade700
-                                    : Colors.white,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                'Check',
-                                style: TextStyle(
-                                  fontSize: 18,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.check,
+                                  size: 18,
                                   color: selectedOption.isNotEmpty
                                       ? Colors.grey.shade700
                                       : Colors.white,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 8),
+                                Text(
+                                  'Check',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: selectedOption.isNotEmpty
+                                        ? Colors.grey.shade700
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

@@ -10,6 +10,7 @@ import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuizTwo extends StatefulWidget {
   final String lessonName;
@@ -28,6 +29,7 @@ class _QuizTwoState extends State<QuizTwo> {
 
   String selectedOption = '';
   bool answerChecked = false;
+  bool progressAdded = false; // Track whether progress has been added
 
   @override
   void initState() {
@@ -53,7 +55,7 @@ class _QuizTwoState extends State<QuizTwo> {
       }).toList();
 
       LetterLesson? lesson = getLetterLessonByName(letterLessons, lessonName);
-
+ 
       if (lesson != null) {
         LessonContent contentData = lesson.content4;
         print('Content 4 data for $lessonName: $contentData');
@@ -74,11 +76,20 @@ class _QuizTwoState extends State<QuizTwo> {
       print('Error reading lesson_alphabet.json: $e');
     }
   }
+  Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed4') ?? false;
 
-  void _checkAnswer() {
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1); // You can adjust the progress value as needed
+       print("Progress 4 updated successfully!");
+      await prefs.setBool('$lessonName-completed4', true); // Mark as completed
+    }
+  }
 
+  void _checkAnswer() async {
     int selectedIndex = contentOption.indexOf(selectedOption);
-
     bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
 
     setState(() {
@@ -90,14 +101,23 @@ class _QuizTwoState extends State<QuizTwo> {
         : FontAwesomeIcons.solidTimesCircle;
     String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
 
+    // Only add progress on the first correct attempt
+    if (isAnswerCorrect && !progressAdded) {
+      await addProgressIfNotCompleted(widget.lessonName);
+      setState(() {
+        progressAdded = true; // Set progressAdded to true
+      });
+    }
+
     showResultSnackbar(context, resultMessage, icon, () {
-      if (isAnswerCorrect) {
-        _nextPage();
-      } else {
-        Navigator.push(
+      if (!isAnswerCorrect) {
+      // If the answer is incorrect, navigate back to LessonOne
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LessonOne(lessonName: widget.lessonName)),
+          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
         );
+      } else {
+        _nextPage();
       }
     });
   }
@@ -170,15 +190,19 @@ class _QuizTwoState extends State<QuizTwo> {
     });
   }
 
-  void _nextPage() {
-    Navigator.push(
-      context, SlidePageRoute(page: QuizThree(lessonName: widget.lessonName)),
+  void _nextPage() async {
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: QuizThree(lessonName: widget.lessonName)),
     );
+
     setState(() {
       selectedOption = '';
       answerChecked = false;
     });
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +223,7 @@ class _QuizTwoState extends State<QuizTwo> {
               child: CustomBackButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     SlidePageRoute(page: Letters()),
                   );
@@ -211,22 +235,22 @@ class _QuizTwoState extends State<QuizTwo> {
               contentDescription ?? '',
               style: TextStyle(fontSize: 18),
             ),
-             if (contentImage.isNotEmpty)  // Check if there's an image to display
-                Container(
-                  padding: const EdgeInsets.all(0.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey, // Border color
-                      width: 2, // Border width
-                    ),
-                    color: Colors.white, // Color inside the border
-                    // Border radius
+            if (contentImage.isNotEmpty) // Check if there's an image to display
+              Container(
+                padding: const EdgeInsets.all(0.0),
+                margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey, // Border color
+                    width: 2, // Border width
                   ),
-                  child: Image.asset(
-                   contentImage.isNotEmpty ? contentImage[0] : "",
-                  ),
+                  color: Colors.white, // Color inside the border
+                  // Border radius
                 ),
+                child: Image.asset(
+                  contentImage.isNotEmpty ? contentImage[0] : "",
+                ),
+              ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -253,38 +277,41 @@ class _QuizTwoState extends State<QuizTwo> {
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: ElevatedButton(
-                      onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          selectedOption.isNotEmpty
-                              ? Color(0xFF5BD8FF)
-                              : Colors.grey,
+                    child: Visibility(
+                      visible: !answerChecked,
+                      child: ElevatedButton(
+                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            selectedOption.isNotEmpty
+                                ? Color(0xFF5BD8FF)
+                                : Colors.grey,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.check,
-                              size: 18,
-                              color: selectedOption.isNotEmpty
-                                  ? Colors.grey.shade700
-                                  : Colors.white,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Check',
-                              style: TextStyle(
-                                fontSize: 18,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.check,
+                                size: 18,
                                 color: selectedOption.isNotEmpty
                                     ? Colors.grey.shade700
                                     : Colors.white,
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 8),
+                              Text(
+                                'Check',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: selectedOption.isNotEmpty
+                                      ? Colors.grey.shade700
+                                      : Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

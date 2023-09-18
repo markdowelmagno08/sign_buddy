@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_two.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
@@ -27,12 +28,12 @@ class _QuizOneState extends State<QuizOne> {
 
   String selectedOption = '';
   bool answerChecked = false;
+  bool progressAdded = false; // Track whether progress has been added
 
   @override
   void initState() {
     super.initState();
     getContent3DataByName(widget.lessonName);
-    
   }
 
   LetterLesson? getLetterLessonByName(
@@ -51,7 +52,6 @@ class _QuizOneState extends State<QuizOne> {
       List<LetterLesson> letterLessons = jsonData.map((lesson) {
         return LetterLesson.fromJson(lesson);
       }).toList();
-      
 
       LetterLesson? lesson = getLetterLessonByName(letterLessons, lessonName);
 
@@ -59,7 +59,7 @@ class _QuizOneState extends State<QuizOne> {
         LessonContent contentData = lesson.content3;
         print('Content 3 data for $lessonName: $contentData');
         shuffleLessonContentOptions(contentData);
-        
+
         if (mounted) {
           setState(() {
             contentDescription = contentData.description;
@@ -74,10 +74,20 @@ class _QuizOneState extends State<QuizOne> {
       print('Error reading lesson_alphabet.json: $e');
     }
   }
+   Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed3') ?? false;
 
-  void _checkAnswer() {
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1);
+      print("Progress 3 updated successfully!");
+      await prefs.setBool('$lessonName-completed3', true); // Mark as completed
+    }
+  }
+
+  void _checkAnswer() async {
     int selectedIndex = contentOption.indexOf(selectedOption);
-
     bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
 
     setState(() {
@@ -89,17 +99,26 @@ class _QuizOneState extends State<QuizOne> {
         : FontAwesomeIcons.solidTimesCircle;
     String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
 
+    // Only add progress on the first correct attempt
+    if (isAnswerCorrect && !progressAdded) {
+      await addProgressIfNotCompleted(widget.lessonName);
+      setState(() {
+        progressAdded = true; // Set progressAdded to true
+      });
+    }
+    
+
     showResultSnackbar(context, resultMessage, icon, () {
-      if (isAnswerCorrect) {
-        _nextPage();
-      } else {
-        Navigator.push(
+      if (!isAnswerCorrect) {
+      // If the answer is incorrect, navigate back to LessonOne
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) => LessonOne(lessonName: widget.lessonName),
-          ),
+          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
         );
+      } else {
+        _nextPage();
       }
+        
     });
   }
 
@@ -165,22 +184,25 @@ class _QuizOneState extends State<QuizOne> {
         )
         .closed
         .then((reason) {
-          setState(() {
-            selectedOption = ''; // Reset selectedOption
-          });
-        });
+      setState(() {
+        selectedOption = ''; // Reset selectedOption
+      });
+    });
   }
 
-  void _nextPage() {
-    Navigator.push(
+  void _nextPage() async {
+    Navigator.pushReplacement(
       context,
       SlidePageRoute(page: QuizTwo(lessonName: widget.lessonName)),
     );
+
     setState(() {
       selectedOption = '';
       answerChecked = false;
     });
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +218,7 @@ class _QuizOneState extends State<QuizOne> {
               child: CustomBackButton(
                 onPressed: () {
                   ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     SlidePageRoute(page: const Letters()),
                   );
@@ -233,38 +255,41 @@ class _QuizOneState extends State<QuizOne> {
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: ElevatedButton(
-                      onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          selectedOption.isNotEmpty
-                              ? Color(0xFF5BD8FF)
-                              : Colors.grey,
+                    child: Visibility(
+                      visible: !answerChecked,
+                      child: ElevatedButton(
+                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            selectedOption.isNotEmpty
+                                ? Color(0xFF5BD8FF)
+                                : Colors.grey,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.check,
-                              size: 18,
-                              color: selectedOption.isNotEmpty
-                                  ? Colors.grey.shade700
-                                  : Colors.white,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Check',
-                              style: TextStyle(
-                                fontSize: 18,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.check,
+                                size: 18,
                                 color: selectedOption.isNotEmpty
                                     ? Colors.grey.shade700
                                     : Colors.white,
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 8),
+                              Text(
+                                'Check',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: selectedOption.isNotEmpty
+                                      ? Colors.grey.shade700
+                                      : Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

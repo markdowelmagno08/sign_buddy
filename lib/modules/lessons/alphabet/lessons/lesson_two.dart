@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -22,6 +23,8 @@ class _LessonTwoState extends State<LessonTwo> {
   String? contentDescription;
   List<dynamic> contentImage = [];
 
+  bool progressAdded = false; // Track whether progress has been added
+
   @override
   void initState() {
     super.initState();
@@ -33,9 +36,7 @@ class _LessonTwoState extends State<LessonTwo> {
     return letterLessons.firstWhere((lesson) => lesson.name == lessonName);
   }
 
-  
-
-    void getContent2DataByName(String lessonName) async {
+  void getContent2DataByName(String lessonName) async {
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/lesson_alphabet.json');
 
@@ -57,8 +58,6 @@ class _LessonTwoState extends State<LessonTwo> {
           setState(() {
             contentDescription = contentData.description;
             contentImage.addAll(contentData.contentImage!);
-
-
           });
         }
       } else {
@@ -67,6 +66,29 @@ class _LessonTwoState extends State<LessonTwo> {
     } catch (e) {
       print('Error reading lesson_alphabet.json: $e');
     }
+  }
+
+  Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed2') ?? false;
+
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1);
+      print("Progress 2 updated successfully!");
+      await prefs.setBool('$lessonName-completed2', true); // Mark as completed
+    }
+  }
+
+  void _nextPage() async {
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: QuizOne(lessonName: widget.lessonName)),
+    );
+
+    setState(() {
+      progressAdded = false; // Reset progressAdded
+    });
   }
 
   @override
@@ -82,7 +104,7 @@ class _LessonTwoState extends State<LessonTwo> {
               alignment: Alignment.topLeft,
               child: CustomBackButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     SlidePageRoute(page: Letters()),
                   );
@@ -124,11 +146,15 @@ class _LessonTwoState extends State<LessonTwo> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        SlidePageRoute(page: QuizOne(lessonName: widget.lessonName)),
-                      );
+                    onPressed: () async {
+                      // Only add progress on the first navigation
+                      if (!progressAdded) {
+                        await addProgressIfNotCompleted(widget.lessonName);
+                        setState(() {
+                          progressAdded = true; // Set progressAdded to true
+                        });
+                      }
+                      _nextPage();
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(

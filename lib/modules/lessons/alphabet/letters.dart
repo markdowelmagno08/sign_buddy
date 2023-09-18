@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -8,47 +9,43 @@ import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 
-class CircularProgressBar extends StatelessWidget {
-  final double progress;
 
-  CircularProgressBar({required this.progress});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          CircularProgressIndicator(
-            value: progress,
-            strokeWidth: 6,
-            backgroundColor: Colors.grey,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-          ),
-          Text(
-            '${(progress * 100).toInt()}%',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class Letters extends StatefulWidget {
   const Letters({Key? key}) : super(key: key);
 
   @override
   State<Letters> createState() => _LettersState();
+  
 }
+
+
 
 class _LettersState extends State<Letters> {
   List<String> letterLessonNames = [];
   List<bool> unlockedLetterLessons = [];
   List<int> letterLessonProgress = [];
+
+  late Timer _refreshTimer; // Declare the Timer
+  
+
+  @override
+  void initState() {
+    super.initState();
+    letterLessons();
+
+    _refreshTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      letterLessons();
+    });
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed
+    _refreshTimer.cancel();
+    super.dispose();
+  }
+  
 
   Future<void> letterLessons() async {
     try {
@@ -82,11 +79,9 @@ class _LettersState extends State<Letters> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    letterLessons();
-  }
+  
+
+  
 
   void showLockedLessonDialog() {
     showDialog(
@@ -179,7 +174,6 @@ class _LettersState extends State<Letters> {
               ),
             ),
           ),
-          
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
@@ -196,55 +190,92 @@ class _LettersState extends State<Letters> {
                         width: 1.0,
                       ),
                     ),
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      leading: Icon(Icons.menu_book_outlined, size: 30),
-                      title: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  lessonName,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: isUnlocked ? Colors.black : Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  'Learn the sign for $lessonName',
-                                  style: TextStyle(
-                                    color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey, // Customize the color if needed
-                                  ),
-                                ),
-                              ],
-                            ),
+                    child: Stack(
+                      children: [
+                        ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          if (isUnlocked) CircularProgressBar(progress: progress),
-                        ],
-                      ),
-                      onTap: () {
-                        if (isUnlocked) {
-                          Navigator.push(
-                            context,
-                            SlidePageRoute(
-                              page: LessonOne(
-                                lessonName: lessonName,
+                          leading: Icon(Icons.menu_book_outlined, size: 30),
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      lessonName,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: isUnlocked ? Colors.black : Colors.grey,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Learn the sign for $lessonName',
+                                      style: TextStyle(
+                                        color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
+                                        fontFamily: 'FiraSans',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        } else {
-                          showLockedLessonDialog(); // Show the locked lesson dialog
-                        }
-                      },
+                              if (isUnlocked) CircularProgressBar(progress: progress),
+                              if (!isUnlocked) Icon(Icons.lock, size: 35, color:const Color(0xFF5A96E3))
+                            ],
+                          ),
+                          onTap: () {
+                            if (isUnlocked) {
+                              Navigator.push(
+                                context,
+                                SlidePageRoute(
+                                  page: LessonOne(
+                                    lessonName: lessonName, 
+                                  ),
+                                ),
+                              );
+                            } else {
+                              showLockedLessonDialog(); // Show the locked lesson dialog
+                            }
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 );
               },
               childCount: letterLessonNames.length,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CircularProgressBar extends StatelessWidget {
+  final double progress;
+
+  CircularProgressBar({required this.progress});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CircularProgressIndicator(
+            value: progress,
+            strokeWidth: 6,
+            backgroundColor: Colors.grey,
+            valueColor: AlwaysStoppedAnimation<Color>(const Color(0xFF5A96E3)),
+          ),
+          Text(
+            '${(progress * 100).toInt()}%',
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

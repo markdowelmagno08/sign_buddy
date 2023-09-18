@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/data/lesson_model.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
-import 'package:sign_buddy/modules/sharedwidget/congrats.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class QuizFour extends StatefulWidget {
   final String lessonName;
@@ -28,12 +30,26 @@ class _QuizFourState extends State<QuizFour> {
 
   String selectedOption = '';
   bool answerChecked = false;
+  bool progressAdded = false; // Track whether progress has been added
 
   @override
   void initState() {
     super.initState();
     getContent6DataByName(widget.lessonName);
+
   }
+  Future<void> addProgressIfNotCompleted(String lessonName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isCompleted = prefs.getBool('$lessonName-completed6') ?? false;
+
+    if (!isCompleted) {
+      // Check if progress is not already added
+      await incrementProgressValue(lessonName, 1); // You can adjust the progress value as needed
+       print("Progress 6 updated successfully!");
+      await prefs.setBool('$lessonName-completed6', true); // Mark as completed
+    }
+  }
+ 
 
   LetterLesson? getLetterLessonByName(
       List<LetterLesson> letterLessons, String lessonName) {
@@ -56,8 +72,8 @@ class _QuizFourState extends State<QuizFour> {
 
       if (lesson != null) {
         LessonContent contentData = lesson.content6;
-        print('Content 4 data for $lessonName: $contentData');
-          shuffleLessonContentOptions(contentData);
+        print('Content 6 data for $lessonName: $contentData');
+        shuffleLessonContentOptions(contentData);
 
         if (mounted) {
           setState(() {
@@ -75,10 +91,8 @@ class _QuizFourState extends State<QuizFour> {
     }
   }
 
-  void _checkAnswer() {
-
+  void _checkAnswer() async {
     int selectedIndex = contentOption.indexOf(selectedOption);
-
     bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
 
     setState(() {
@@ -90,14 +104,23 @@ class _QuizFourState extends State<QuizFour> {
         : FontAwesomeIcons.solidTimesCircle;
     String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
 
+    // Only add progress on the first correct attempt
+    if (isAnswerCorrect && !progressAdded) {
+      await addProgressIfNotCompleted(widget.lessonName);
+      setState(() {
+        progressAdded = true; // Set progressAdded to true
+      });
+    }
+
     showResultSnackbar(context, resultMessage, icon, () {
-      if (isAnswerCorrect) {
-        _nextPage();
-      } else {
-        Navigator.push(
+      if (!isAnswerCorrect) {
+      // If the answer is incorrect, navigate back to LessonOne
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LessonOne(lessonName: widget.lessonName)),
+          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
         );
+      } else {
+        _nextPage();
       }
     });
   }
@@ -171,8 +194,9 @@ class _QuizFourState extends State<QuizFour> {
   }
 
   void _nextPage() {
-    Navigator.push(
-    context, SlidePageRoute(page: Congrats())
+    
+    Navigator.pushReplacement(
+    context, SlidePageRoute(page: Result(lessonName: widget.lessonName))
     );
     setState(() {
       selectedOption = '';
@@ -202,7 +226,7 @@ class _QuizFourState extends State<QuizFour> {
                 
                 onPressed: () {
                   ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     SlidePageRoute(page: Letters()),
                   );
@@ -256,38 +280,41 @@ class _QuizFourState extends State<QuizFour> {
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: ElevatedButton(
-                      onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          selectedOption.isNotEmpty
-                              ? Color(0xFF5BD8FF)
-                              : Colors.grey,
+                    child: Visibility(
+                      visible: !answerChecked,
+                      child: ElevatedButton(
+                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            selectedOption.isNotEmpty
+                                ? Color(0xFF5BD8FF)
+                                : Colors.grey,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.check,
-                              size: 18,
-                              color: selectedOption.isNotEmpty
-                                  ? Colors.grey.shade700
-                                  : Colors.white,
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Check',
-                              style: TextStyle(
-                                fontSize: 18,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.check,
+                                size: 18,
                                 color: selectedOption.isNotEmpty
                                     ? Colors.grey.shade700
                                     : Colors.white,
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 8),
+                              Text(
+                                'Check',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: selectedOption.isNotEmpty
+                                      ? Colors.grey.shade700
+                                      : Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
