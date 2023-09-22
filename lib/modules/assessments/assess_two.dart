@@ -26,7 +26,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What is being signed here? ',
-      'videoUrl': 'assets/assess-img/question-two/husband.gif',
+      'videoUrl': 'assets/dictionary/family/husband.gif',
       'options': ['Husband', 'Niece', 'Hello', 'Mother', 'Sister', 'Tree'],
       'correctAnswerIndex': 0,
     },

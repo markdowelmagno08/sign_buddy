@@ -55,7 +55,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
       ),
       content2: LessonContent(
         description: "This is how you sign Aunt.",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
+        contentImage: ["assets/dictionary/family/aunt.gif"],
       ),
       content3: LessonContent(
         description: "Which one here is the sign for letter 'A'?",
@@ -91,7 +91,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
       ),
     content6: LessonContent(
         description: "What is being signed here",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
+        contentImage: ["assets/dictionary/family/aunt.gif"],
         contentOption: [
           "Aunt",
           "Cat",
@@ -118,7 +118,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content2: LessonContent(
       description: "This is how you sign Baby.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/baby.gif"],
+      contentImage: ["assets/dictionary/family/baby.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'B'?",
@@ -154,7 +154,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/baby.gif"],
+      contentImage: ["assets/dictionary/family/baby.gif"],
       contentOption: [
         "Baby",
         "W",
@@ -180,7 +180,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content2: LessonContent(
       description: "This is how you sign Camel.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/camel.gif"],
+      contentImage: ["assets/dictionary/animals/camel.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'C'?",
@@ -216,7 +216,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/camel.gif"],
+      contentImage: ["assets/dictionary/animals/camel.gif"],
       contentOption: [
         "Camel",
         "P",
@@ -242,7 +242,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content2: LessonContent(
       description: "This is how you sign Dolphin.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/dolphin.gif"],
+      contentImage: ["assets/dictionary/animals/dolphin.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'D'?",
@@ -278,7 +278,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/dolphin.gif"],
+      contentImage: ["assets/dictionary/animals/dolphin.gif"],
       contentOption: [
         "Dolphin",
         "A",
@@ -304,7 +304,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content2: LessonContent(
       description: "This is how you sign Excuse Me.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+      contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'E'?",
@@ -331,7 +331,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content5: LessonContent(
       description: "Is this letter E?",
-      contentImage: ["assets/assess-img/question-five/e.png"],
+      contentImage: ["assets/alphabet/e.png"],
       contentOption: [
         "Yes",
         "No",
@@ -340,7 +340,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+      contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
       contentOption: [
         "Excuse Me",
         "O",
@@ -349,7 +349,7 @@ class _CreateLessonScreenState extends State<CreateLessonScreen> {
         "G",
         "L",
         "Crocodile",
-        "Good Morning",
+        "Hello",
         "Friday",
       ],
       correctAnswerIndex: [0],

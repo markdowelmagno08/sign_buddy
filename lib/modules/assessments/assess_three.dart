@@ -26,8 +26,8 @@ class _AssessmentThreeState extends State<AssessmentThree> {
     {
       'question': 'Which is the correct sign for "Friend"?',
       'options': [
-        'assets/assess-img/question-three/grandmother.gif',
-        'assets/assess-img/question-three/friend.gif',
+        'assets/dictionary/family/grandmother.gif',
+        'assets/dictionary/family/friend.gif',
       ],
       'correctAnswerIndex': 1,
     },

@@ -27,7 +27,7 @@ class _AssessmentFourState extends State<AssessmentFour> {
     {
       'question': 'What sign is this?',
       'options': [
-        'assets/assess-img/question-four/grandmother.gif',
+        'assets/dictionary/family/grandmother.gif',
       ],
       'correctAnswer': 'grandmother',
     },

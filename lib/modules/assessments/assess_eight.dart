@@ -25,11 +25,11 @@ class _AssessmentEightState extends State<AssessmentEight> {
       'question': 'What is being signed here? ',
       'matches': [
         {
-          'video': 'assets/assess-img/question-eight/boyfriend.gif',
+          'video': 'assets/dictionary/family/boyfriend.gif',
           'word': 'Boyfriend',
         },
         {
-          'video': 'assets/assess-img/question-eight/nephew.gif',
+          'video': 'assets/dictionary/family/nephew.gif',
           'word': 'Nephew',
         },
       ],
@@ -82,9 +82,9 @@ class _AssessmentEightState extends State<AssessmentEight> {
             [selectedWordIndex]['word'];
 
         if ((selectedVideo ==
-                    'assets/assess-img/question-eight/boyfriend.gif' &&
+                    'assets/dictionary/family/boyfriend.gif' &&
                 selectedWord == 'Boyfriend') ||
-            (selectedVideo == 'assets/assess-img/question-eight/nephew.gif' &&
+            (selectedVideo == 'assets/dictionary/family/nephew.gif' &&
                 selectedWord == 'Nephew')) {
           score++;
         }
@@ -345,10 +345,10 @@ class _AssessmentEightState extends State<AssessmentEight> {
                             String selectedWord = options[selectedWordIndex];
     
                             if ((selectedVideo ==
-                                        'assets/assess-img/question-eight/boyfriend.gif' &&
+                                        'assets/dictionary/family/boyfriend.gif' &&
                                     selectedWord == 'Boyfriend') ||
                                 (selectedVideo ==
-                                        'assets/assess-img/question-eight/nephew.gif' &&
+                                        'assets/dictionary/family/nephew.gif' &&
                                     selectedWord == 'Nephew')) {
                               showResultSnackbar(
                                 context,

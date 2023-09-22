@@ -24,7 +24,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
     {
       'question': 'What sentence does this sign language represent?',
       'videoUrl':
-          'assets/assess-img/question-seven/nice.gif', // Replace with the path to your GIF file
+          'assets/dictionary/phrases/have_a_nice_day.gif', // Replace with the path to your GIF file
       'options': [
         'My',
         'moon',
@@ -179,7 +179,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Create a sentence by selecting words from the options below",
+                "Create a sentence by selecting the word options below",
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -209,7 +209,6 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                 ),
               ),
     
-              const SizedBox(height: 20),
               const Center(
                 child: Text(
                   'Your Answer:',

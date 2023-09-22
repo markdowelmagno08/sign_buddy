@@ -24,10 +24,10 @@ class _AssessmentOneState extends State<AssessmentOne> {
     {
       'question': 'What is the correct sign for "D"?',
       'options': [
-        'assets/assess-img/question-one/d.png',
-        'assets/assess-img/question-one/f.png',
-        'assets/assess-img/question-one/h.png',
-        'assets/assess-img/question-one/m.png',
+        'assets/alphabet/d.png',
+        'assets/alphabet/f.png',
+        'assets/alphabet/h.png',
+        'assets/alphabet/m.png',
       ],
       'correctAnswerIndex': 0,
     },

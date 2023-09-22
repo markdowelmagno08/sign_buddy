@@ -24,7 +24,7 @@ class _AssessmentFiveState extends State<AssessmentFive> {
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What sign is this? ',
-      'imageUrl': 'assets/assess-img/question-five/q.png',
+      'imageUrl': 'assets/alphabet/q.png',
       'options': ['C', 'X', 'F', 'Q', 'M', 'E'],
       'correctAnswerIndex': 3,
     },

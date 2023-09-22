@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/f': (context) => FrontPage(),
+        '/': (context) => AuthenticationWrapper(),
         '/actors': (context) => Actors(),
         '/One': (context) => AssessmentOne(),
         '/get_started': (context) => GetStartedPage(),
@@ -95,7 +95,6 @@ class MyApp extends StatelessWidget {
         '/timeAndDays': (context) => TimeAndDays(),
         '/greeting': (context) => Greetings(),
       },
-      home: AuthenticationWrapper(),
     );
   }
 }

@@ -69,7 +69,7 @@
       ),
       content2: LessonContent(
         description: "This is how you sign Aunt.",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
+        contentImage: ["assets/dictionary/family/aunt.gif"],
       ),
       content3: LessonContent(
         description: "Which one here is the sign for letter 'A'?",
@@ -105,7 +105,7 @@
       ),
     content6: LessonContent(
         description: "What is being signed here",
-        contentImage: ["assets/alphabet-lesson/a-d-img/aunt.gif"],
+        contentImage: ["assets/dictionary/family/aunt.gif"],
         contentOption: [
           "Aunt",
           "Cat",
@@ -123,66 +123,66 @@
 
 
     final letterB = LetterLesson(
-      name: "B",
-      progress: 0,
-      isUnlocked: false,
-      content1: LessonContent(
-        description: "This is the sign for letter 'B'.",
-        contentImage: ["assets/alphabet/b.png"],
-      ),
-      content2: LessonContent(
-        description: "This is how you sign Baby.",
-        contentImage: ["assets/alphabet-lesson/a-d-img/baby.gif"],
-      ),
-      content3: LessonContent(
-        description: "Which one here is the sign for letter 'B'?",
-        contentOption: [
-          "assets/alphabet/b.png",
-          "assets/alphabet/f.png",
-          "assets/alphabet/l.png",
-          "assets/alphabet/k.png",
-        ],
-        correctAnswerIndex: [0],
-      ),
-      content4: LessonContent(
-        description: "What sign is this?",
-        contentImage: ["assets/alphabet/k.png"],
-        contentOption: [
-          "B",
-          "K",
-          "W",
-          "P",
-          "M",
-          "L",
-        ],
-        correctAnswerIndex: [1],
-      ),
-      content5: LessonContent(
-        description: "Is this letter B?",
-        contentImage: ["assets/alphabet/b.png"],
-        contentOption: [
-          "Yes",
-          "No",
-        ],
-        correctAnswerIndex: [0],
-      ),
-      content6: LessonContent(
-        description: "What is being signed here",
-        contentImage: ["assets/alphabet-lesson/a-d-img/baby.gif"],
-        contentOption: [
-          "Baby",
-          "W",
-          "S",
-          "P",
-          "K",
-          "Play",
-          "Man",
-          "Letter",
-          "I(letter)",
-        ],
-        correctAnswerIndex: [0],
-      ),
-    );
+    name: "B",
+    progress: 0,
+    isUnlocked: false,
+    content1: LessonContent(
+      description: "This is the sign for letter 'B'.",
+      contentImage: ["assets/alphabet/b.png"],
+    ),
+    content2: LessonContent(
+      description: "This is how you sign Baby.",
+      contentImage: ["assets/dictionary/family/baby.gif"],
+    ),
+    content3: LessonContent(
+      description: "Which one here is the sign for letter 'B'?",
+      contentOption: [
+        "assets/alphabet/b.png",
+        "assets/alphabet/f.png",
+        "assets/alphabet/l.png",
+        "assets/alphabet/k.png",
+      ],
+      correctAnswerIndex: [0],
+    ),
+    content4: LessonContent(
+      description: "What sign is this?",
+      contentImage: ["assets/alphabet/k.png"],
+      contentOption: [
+        "B",
+        "K",
+        "W",
+        "P",
+        "M",
+        "L",
+      ],
+      correctAnswerIndex: [1],
+    ),
+    content5: LessonContent(
+      description: "Is this letter B?",
+      contentImage: ["assets/alphabet/b.png"],
+      contentOption: [
+        "Yes",
+        "No",
+      ],
+      correctAnswerIndex: [0],
+    ),
+    content6: LessonContent(
+      description: "What is being signed here",
+      contentImage: ["assets/dictionary/family/baby.gif"],
+      contentOption: [
+        "Baby",
+        "W",
+        "S",
+        "P",
+        "K",
+        "Play",
+        "Man",
+        "Letter",
+        "I(letter)",
+      ],
+      correctAnswerIndex: [0],
+    ),
+  );
 
   final letterC = LetterLesson(
     name: "C",
@@ -194,7 +194,7 @@
     ),
     content2: LessonContent(
       description: "This is how you sign Camel.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/camel.gif"],
+      contentImage: ["assets/dictionary/animals/camel.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'C'?",
@@ -230,7 +230,7 @@
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/camel.gif"],
+      contentImage: ["assets/dictionary/animals/camel.gif"],
       contentOption: [
         "Camel",
         "P",
@@ -256,7 +256,7 @@
     ),
     content2: LessonContent(
       description: "This is how you sign Dolphin.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/dolphin.gif"],
+      contentImage: ["assets/dictionary/animals/dolphin.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'D'?",
@@ -292,7 +292,7 @@
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/dolphin.gif"],
+      contentImage: ["assets/dictionary/animals/dolphin.gif"],
       contentOption: [
         "Dolphin",
         "A",
@@ -318,7 +318,7 @@
     ),
     content2: LessonContent(
       description: "This is how you sign Excuse Me.",
-      contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+      contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
     ),
     content3: LessonContent(
       description: "Which one here is the sign for letter 'E'?",
@@ -345,7 +345,7 @@
     ),
     content5: LessonContent(
       description: "Is this letter E?",
-      contentImage: ["assets/assess-img/question-five/e.png"],
+      contentImage: ["assets/alphabet/e.png"],
       contentOption: [
         "Yes",
         "No",
@@ -354,7 +354,7 @@
     ),
     content6: LessonContent(
       description: "What is being signed here",
-      contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+      contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
       contentOption: [
         "Excuse Me",
         "O",
@@ -363,7 +363,7 @@
         "G",
         "L",
         "Crocodile",
-        "Good Morning",
+        "Hello",
         "Friday",
       ],
       correctAnswerIndex: [0],
@@ -517,7 +517,7 @@
         ),
         content2: LessonContent(
           description: "This is how you sign Excuse Me.",
-          contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+          contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
         ),
         content3: LessonContent(
           description: "Which one here is the sign for letter 'E'?",
@@ -544,7 +544,7 @@
         ),
         content5: LessonContent(
           description: "Is this letter E?",
-          contentImage: ["assets/assess-img/question-five/e.png"],
+          contentImage: ["assets/alphabet/e.png"],
           contentOption: [
             "Yes",
             "No",
@@ -553,7 +553,7 @@
         ),
         content6: LessonContent(
           description: "What is being signed here",
-          contentImage: ["assets/alphabet-lesson/a-d-img/excuse.gif"],
+          contentImage: ["assets/dictionary/phrases/excuse_me.gif"],
           contentOption: [
             "Excuse Me",
             "O",
@@ -562,7 +562,7 @@
             "G",
             "L",
             "Crocodile",
-            "Good Morning",
+            "Hello",
             "Friday",
           ],
           correctAnswerIndex: [0],

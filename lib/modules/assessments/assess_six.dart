@@ -24,10 +24,10 @@ class _AssessmentSixState extends State<AssessmentSix> {
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What do you think this sign means?',
-      'videoUrl': 'assets/assess-img/question-six/baby.gif',
+      'videoUrl': 'assets/dictionary/family/baby.gif',
       'options': [
-        'assets/assess-img/question-six/baby.png',
-        'assets/assess-img/question-six/tree.png',
+        'assets/dictionary/family/baby.png',
+        'assets/dictionary/family/tree.png',
       ],
       'correctAnswerIndex': 0,
     },

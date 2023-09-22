@@ -82,7 +82,6 @@ flutter:
   assets:
     - assets/
     - assets/alphabet/
-    - assets/sounds/
     - assets/dictionary/
     - assets/dictionary/animals/
     - assets/dictionary/alphabet/
@@ -91,19 +90,6 @@ flutter:
     - assets/dictionary/color/
     - assets/dictionary/phrases/
     - assets/lesson-icon/
-    - assets/assess-img/
-    - assets/assess-img/question-one/
-    - assets/assess-img/question-two/
-    - assets/assess-img/question-three/
-    - assets/assess-img/question-four/
-    - assets/assess-img/question-five/
-    - assets/assess-img/question-six/
-    - assets/assess-img/question-seven/
-    - assets/assess-img/question-eight/
-    - assets/alphabet-lesson/
-    - assets/alphabet-lesson/a-d-img/
-    - assets/alphabet-lesson/d-f-img/
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
