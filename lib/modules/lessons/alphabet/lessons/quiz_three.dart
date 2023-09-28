@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/firebase_storage.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_four.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
 
 class QuizThree extends StatefulWidget {
   final String lessonName;
@@ -22,76 +22,127 @@ class QuizThree extends StatefulWidget {
 }
 
 class _QuizThreeState extends State<QuizThree> {
-  String? contentDescription;
+  String contentDescription = "";
+  String uid = "";
   List<dynamic> contentOption = [];
-  List<dynamic> correctAnswerIndex = [];
+  List<dynamic> correctAnswer = [];
   List<dynamic> contentImage = [];
 
   String selectedOption = '';
   bool answerChecked = false;
   bool progressAdded = false; // Track whether progress has been added
+  bool isLoading = true;
+  bool isEnglish = true;
+  int progress = 0;
+
 
   @override
   void initState() {
     super.initState();
-    getContent5DataByName(widget.lessonName);
+    getLanguage().then((value) {
+      getContent5DataByName(widget.lessonName);
+    });
+    getProgress(widget.lessonName);
+    
   }
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.
 
-  Future<void> addProgressIfNotCompleted(String lessonName) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isCompleted = prefs.getBool('$lessonName-completed5') ?? false;
-
-    if (!isCompleted) {
-      // Check if progress is not already added
-      await incrementProgressValue(lessonName, 16); // You can adjust the progress value as needed
-       print("Progress 5 updated successfully!");
-      await prefs.setBool('$lessonName-completed5', true); // Mark as completed
+    if (mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
     }
   }
 
-  LetterLesson? getLetterLessonByName(
-      List<LetterLesson> letterLessons, String lessonName) {
-    return letterLessons.firstWhere((lesson) => lesson.name == lessonName);
+
+
+  Future<void> getProgress(String lessonName) async {
+    try {
+      final userId = Auth().getCurrentUserId();
+      Map<String, dynamic>? lessonData =
+      await LetterLessonFireStore(userId: userId!)
+            .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
+
+      // ignore: unnecessary_null_comparison
+      if (lessonData != null) {
+        if (mounted) {
+          setState(() {
+            progress = lessonData['progress'];
+            uid = userId;
+            isLoading = false;
+          });
+        }
+
+      } else {
+        print(
+            'Letter lesson "$lessonName" was not found within the Firestore.');
+        isLoading = true;
+      }
+    } catch (e) {
+      print('Error reading letter_lessons.json: $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   void getContent5DataByName(String lessonName) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/lesson_alphabet.json');
-
+    
     try {
-      final jsonString = await file.readAsString();
-      final List<dynamic> jsonData = json.decode(jsonString);
+      final userId = Auth().getCurrentUserId();
+      Map<String, dynamic>? lessonData = 
+      await LetterLessonFireStore(userId: userId!)
+          .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
-      List<LetterLesson> letterLessons = jsonData.map((lesson) {
-        return LetterLesson.fromJson(lesson);
-      }).toList();
 
-      LetterLesson? lesson = getLetterLessonByName(letterLessons, lessonName);
+      if(lessonData != null && lessonData.containsKey('content5')) {
+        Map<String,dynamic> content5data = 
+        lessonData['content5'] as Map<String, dynamic>; 
+        Iterable<dynamic> _contentImage = content5data['contentImage'];
+        String description = content5data['description'] as String;
+        
+        Iterable<dynamic> _contentOption = content5data['contentOption'];
+        Iterable<dynamic> _correctAnswer = content5data['correctAnswer'];
 
-      if (lesson != null) {
-        LessonContent contentData = lesson.content5;
-        print('Content 5 data for $lessonName: $contentData');
-        shuffleLessonContentOptions(contentData);
+        // Shuffle the contentOption list using the imported function
+        _contentOption = shuffleIterable(_contentOption);
 
-        if (mounted) {
+        _contentImage = await Future.wait(_contentImage.map((e) => AssetFirebaseStorage().getAsset(e)));
+
+
+        if(mounted) {
           setState(() {
-            contentDescription = contentData.description;
-            contentOption = contentData.contentOption!;
-            correctAnswerIndex = contentData.correctAnswerIndex!;
-            contentImage = contentData.contentImage!;
+            contentDescription = description;
+            contentImage = _contentImage.toList();
+            correctAnswer.addAll(_correctAnswer);
+            contentOption.addAll(_contentOption);
+            uid = userId;
+            isLoading = false;
           });
+        } else {
+          print(
+            'Letter lesson "$lessonName" was not found within the Firestore.');
+          isLoading = true;
         }
-      } else {
-        print('LetterLesson with name $lessonName not found in JSON file');
+
       }
     } catch (e) {
-      print('Error reading lesson_alphabet.json: $e');
+        print('Error reading letter_lessons.json: $e');
+        if (mounted) {
+          setState(() {
+            isLoading = true;
+          });
+        }
+      }
     }
-  }
+
+  
 
   void _checkAnswer() async {
-    int selectedIndex = contentOption.indexOf(selectedOption);
-    bool isAnswerCorrect = correctAnswerIndex.contains(selectedIndex);
+    // Check if the selected option is in the list of correct answers
+    bool isAnswerCorrect = correctAnswer.contains(selectedOption);
 
     setState(() {
       answerChecked = true;
@@ -102,23 +153,22 @@ class _QuizThreeState extends State<QuizThree> {
         : FontAwesomeIcons.solidTimesCircle;
     String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
 
-    // Only add progress on the first correct attempt
-    if (isAnswerCorrect && !progressAdded) {
-      await addProgressIfNotCompleted(widget.lessonName);
-      setState(() {
-        progressAdded = true; // Set progressAdded to true
-      });
+    if (isAnswerCorrect) {
+      if (progress < 79) {
+        // Increment the progress value only if it's less than 47
+        LetterLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+        print("Progress 5 updated successfully!");
+      }
     }
 
     showResultSnackbar(context, resultMessage, icon, () {
-      if (!isAnswerCorrect) {
-      // If the answer is incorrect, navigate back to LessonOne
+      if (isAnswerCorrect) {
+        _nextPage();
+      } else {
         Navigator.pushReplacement(
           context,
           SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
         );
-      } else {
-        _nextPage();
       }
     });
   }
@@ -208,10 +258,6 @@ class _QuizThreeState extends State<QuizThree> {
 
   @override
   Widget build(BuildContext context) {
-    if (contentOption.isEmpty) {
-      // Handle cases where content is not loaded.
-      return CircularProgressIndicator(); // You can replace this with an appropriate widget.
-    }
 
     return Scaffold(
       body: Padding(
@@ -234,10 +280,11 @@ class _QuizThreeState extends State<QuizThree> {
             ),
             const SizedBox(height: 100),
             Text(
-              contentDescription ?? '',
+              contentDescription,
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
+            if (contentImage.isNotEmpty)
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
               decoration: BoxDecoration(
@@ -248,12 +295,14 @@ class _QuizThreeState extends State<QuizThree> {
                 color: Colors.white, // Color inside the border
                 // Border radius
               ),
-              child: Image.asset(
-                contentImage.isNotEmpty ? contentImage[0] : "",
+              child: Image.network(
+                contentImage[0]
               ),
             ),
             SizedBox(height: 20),
-            _buildYesNoOption(),
+            isLoading
+              ? CircularProgressIndicator() // Display loading indicator
+              : _buildYesNoOption(),
             SizedBox(height: 20), // Add spacing for the "Check" button
             Expanded(
               child: Builder(
@@ -312,72 +361,72 @@ class _QuizThreeState extends State<QuizThree> {
   }
 
   Widget _buildYesNoOption() {
-    List<dynamic> options = contentOption;
+  List<String> options = contentOption.cast<String>(); // Ensure that options are of type String
 
-    bool isAnswerChecked = answerChecked;
-    String selectedOption = this.selectedOption ?? '';
+  bool isAnswerChecked = answerChecked;
+  String selectedOption = this.selectedOption;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: options.map((option) {
-        int optionIndex = options.indexOf(option);
-        bool isOptionSelected = selectedOption == option;
-        bool isCorrectAnswer = correctAnswerIndex.contains(optionIndex);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: options.map((option) {
+      bool isOptionSelected = selectedOption == option;
+      bool isCorrectAnswer = correctAnswer.contains(option);
 
-        Color tileColor = isOptionSelected
-            ? (isAnswerChecked
-                ? (isCorrectAnswer
-                    ? Colors.green.withOpacity(0.3)
-                    : Colors.red.withOpacity(0.3))
-                : Colors.grey.withOpacity(0.2))
-            : Colors.transparent;
+      Color tileColor = isOptionSelected
+          ? (isAnswerChecked
+              ? (isCorrectAnswer
+                  ? Colors.green.withOpacity(0.3)
+                  : Colors.red.withOpacity(0.3))
+              : Colors.grey.withOpacity(0.2))
+          : Colors.transparent;
 
-        IconData icon = isCorrectAnswer
-            ? FontAwesomeIcons.thumbsUp
-            : FontAwesomeIcons.thumbsDown;
+      IconData icon = isCorrectAnswer
+          ? FontAwesomeIcons.thumbsUp
+          : FontAwesomeIcons.thumbsDown;
 
-        return GestureDetector(
-          onTap: () {
-            if (!isAnswerChecked) {
-              setState(() {
-                this.selectedOption = option;
-              });
-            }
-          },
-          child: Container(
-            width: 70,
-            height: 70,
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: tileColor,
-              border: Border.all(
-                color: Colors.grey,
-                width: 1.0,
-              ),
-              borderRadius: BorderRadius.circular(50),
+      return GestureDetector(
+        onTap: () {
+          if (!isAnswerChecked) {
+            setState(() {
+              this.selectedOption = option;
+            });
+          }
+        },
+        child: Container(
+          width: 70,
+          height: 70,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: tileColor,
+            border: Border.all(
+              color: Colors.grey,
+              width: 1.0,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  icon,
-                  color: Color(0xFF5BD8FF),
-                  size: 25,
-                ),
-                SizedBox(height: 5),
-                Text(
-                  option,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
+            borderRadius: BorderRadius.circular(50),
           ),
-        );
-      }).toList(),
-    );
-  }
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: Color(0xFF5BD8FF),
+                size: 25,
+              ),
+              SizedBox(height: 5),
+              Text(
+                option,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }).toList(),
+  );
+}
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sign_buddy/firestore_user.dart';
 import 'package:sign_buddy/modules/choose_language.dart';
 import 'package:sign_buddy/modules/get_started.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -149,6 +150,8 @@ class _ActorsState extends State<Actors> {
         if (currentUser != null) {
           // Retrieve the user ID
           final String userId = currentUser.uid;
+          
+          UserFirestore(userId: userId).initializeLessons("letters", "en");
           setState(() => loading = true); // Show the loading screen
 
           // Store the data in Firestore with the document named after the user UID

@@ -1,46 +1,47 @@
 [
     {
       "name": "A",
-      "progress": 16,
+      "progress": 0,
+      "locale": "en",
       "isUnlocked": true,
       "content1": {
         "description": "This is the sign for letter 'A'.",
-        "contentImage": ["assets/alphabet/a.png"],
+        "contentImage": ["alphabet/a.png"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content2": {
         "description": "This is how you sign Aunt.",
-        "contentImage": ["assets/dictionary/family/aunt.gif"],
+        "contentImage": ["dictionary/family/aunt.gif"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content3": {
         "description": "Which one here is the sign for letter 'A'?",
         "contentImage": null,
         "contentOption": [
-          "assets/alphabet/a.png",
-          "assets/alphabet/s.png",
-          "assets/alphabet/w.png",
-          "assets/alphabet/x.png"
+          "alphabet/a.png",
+          "alphabet/s.png",
+          "alphabet/w.png",
+          "alphabet/x.png"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["alphabet/a.png"]
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["assets/alphabet/c.png"],
+        "contentImage": ["alphabet/c.png"],
         "contentOption": ["Q", "C", "D", "X", "O", "F"],
-        "correctAnswerIndex": [1]
+        "correctAnswer": ["C"]
       },
       "content5": {
         "description": "Is this letter A?",
-        "contentImage": ["assets/alphabet/a.png"],
+        "contentImage": ["alphabet/a.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["assets/dictionary/family/aunt.gif"],
+        "contentImage": ["dictionary/family/aunt.gif"],
         "contentOption": [
           "Aunt",
           "Cat",
@@ -52,51 +53,54 @@
           "T",
           "B"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Aunt"]
       }
     },
+
+    
     {
       "name": "B",
       "progress": 0,
+      "locale": "en",
       "isUnlocked": false,
       "content1": {
         "description": "This is the sign for letter 'B'.",
-        "contentImage": ["assets/alphabet/b.png"],
+        "contentImage": ["alphabet/b.png"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content2": {
         "description": "This is how you sign Baby.",
-        "contentImage": ["assets/dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/family/baby.gif"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content3": {
         "description": "Which one here is the sign for letter 'B'?",
         "contentImage": null,
         "contentOption": [
-          "assets/alphabet/b.png",
-          "assets/alphabet/f.png",
-          "assets/alphabet/l.png",
-          "assets/alphabet/k.png"
+          "alphabet/b.png",
+          "alphabet/f.png",
+          "alphabet/l.png",
+          "alphabet/k.png"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["alphabet/b.png"]
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["assets/alphabet/k.png"],
+        "contentImage": ["alphabet/k.png"],
         "contentOption": ["B", "K", "W", "P", "M", "L"],
-        "correctAnswerIndex": [1]
+        "correctAnswer": ["K"]
       },
       "content5": {
         "description": "Is this letter B?",
-        "contentImage": ["assets/alphabet/b.png"],
+        "contentImage": ["alphabet/b.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["assets/dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/family/baby.gif"],
         "contentOption": [
           "Baby",
           "W",
@@ -108,51 +112,52 @@
           "Letter",
           "I(letter)"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Baby"]
       }
     },
     {
       "name": "C",
       "progress": 0,
+      "locale": "en",
       "isUnlocked": false,
       "content1": {
         "description": "This is the sign for letter 'C'.",
-        "contentImage": ["assets/alphabet/c.png"],
+        "contentImage": ["alphabet/c.png"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content2": {
         "description": "This is how you sign Camel.",
-        "contentImage": ["assets/dictionary/animals/camel.gif"],
+        "contentImage": ["dictionary/animals/camel.gif"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content3": {
         "description": "Which one here is the sign for letter 'C'?",
         "contentImage": null,
         "contentOption": [
-          "assets/alphabet/c.png",
-          "assets/alphabet/g.png",
-          "assets/alphabet/k.png",
-          "assets/alphabet/u.png"
+          "alphabet/c.png",
+          "alphabet/g.png",
+          "alphabet/k.png",
+          "alphabet/u.png"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["alphabet/c.png"]
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["assets/alphabet/c.png"],
+        "contentImage": ["alphabet/c.png"],
         "contentOption": ["S", "C", "Z", "F", "Q", "R"],
-        "correctAnswerIndex": [1]
+        "correctAnswer": ["C"]
       },
       "content5": {
         "description": "Is this letter C?",
-        "contentImage": ["assets/alphabet/c.png"],
+        "contentImage": ["alphabet/c.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["assets/dictionary/animals/camel.gif"],
+        "contentImage": ["dictionary/animals/camel.gif"],
         "contentOption": [
           "Camel",
           "P",
@@ -164,51 +169,52 @@
           "North",
           "Goat"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Camel"]
       }
     },
     {
       "name": "D",
       "progress": 0,
+      "locale": "en",
       "isUnlocked": false,
       "content1": {
         "description": "This is the sign for letter 'D'.",
-        "contentImage": ["assets/alphabet/d.png"],
+        "contentImage": ["alphabet/d.png"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content2": {
         "description": "This is how you sign Dolphin.",
-        "contentImage": ["assets/dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/animals/dolphin.gif"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content3": {
         "description": "Which one here is the sign for letter 'D'?",
         "contentImage": null,
         "contentOption": [
-          "assets/alphabet/d.png",
-          "assets/alphabet/z.png",
-          "assets/alphabet/h.png",
-          "assets/alphabet/y.png"
+          "alphabet/d.png",
+          "alphabet/z.png",
+          "alphabet/h.png",
+          "alphabet/y.png"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["alphabet/d.png"]
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["assets/alphabet/d.png"],
+        "contentImage": ["alphabet/d.png"],
         "contentOption": ["T", "D", "G", "L", "H", "P"],
-        "correctAnswerIndex": [1]
+        "correctAnswer": ["D"]
       },
       "content5": {
         "description": "Is this letter D?",
-        "contentImage": ["assets/alphabet/d.png"],
+        "contentImage": ["alphabet/d.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["assets/dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/animals/dolphin.gif"],
         "contentOption": [
           "Dolphin",
           "A",
@@ -220,51 +226,52 @@
           "Fox",
           "Uncle"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Dolphin"]
       }
     },
     {
       "name": "E",
       "progress": 0,
+      "locale": "en",
       "isUnlocked": false,
       "content1": {
         "description": "This is the sign for letter 'E'.",
-        "contentImage": ["assets/alphabet/e.png"],
+        "contentImage": ["alphabet/e.png"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content2": {
         "description": "This is how you sign Excuse Me.",
-        "contentImage": ["assets/dictionary/phrases/excuse_me.gif"],
+        "contentImage": ["dictionary/phrases/excuse_me.gif"],
         "contentOption": null,
-        "correctAnswerIndex": null
+        "correctAnswer": null
       },
       "content3": {
         "description": "Which one here is the sign for letter 'E'?",
         "contentImage": null,
         "contentOption": [
-          "assets/alphabet/e.png",
-          "assets/alphabet/f.png",
-          "assets/alphabet/l.png",
-          "assets/alphabet/h.png"
+          "alphabet/e.png",
+          "alphabet/f.png",
+          "alphabet/l.png",
+          "alphabet/h.png"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["alphabet/e.png"]
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["assets/alphabet/e.png"],
+        "contentImage": ["alphabet/e.png"],
         "contentOption": ["F", "E", "Y", "B", "U", "I"],
-        "correctAnswerIndex": [1]
+        "correctAnswer": ["E"]
       },
       "content5": {
         "description": "Is this letter E?",
-        "contentImage": ["assets/alphabet/e.png"],
+        "contentImage": ["alphabet/e.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["assets/dictionary/phrases/excuse_me.gif"],
+        "contentImage": ["dictionary/phrases/excuse_me.gif"],
         "contentOption": [
           "Excuse Me",
           "O",
@@ -276,7 +283,7 @@
           "Hello",
           "Friday"
         ],
-        "correctAnswerIndex": [0]
+        "correctAnswer": ["Excuse Me"]
       }
     }
   ]

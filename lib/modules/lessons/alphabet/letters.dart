@@ -1,13 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
-
-import 'package:sign_buddy/modules/data/lesson_model.dart';
+// import 'dart:convert';
+// import 'dart:io';
+// import 'package:path_provider/path_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/firestore_user.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
+import 'package:sign_buddy/modules/sharedwidget/loading.dart';
+// import 'package:sign_buddy/modules/data/lesson_model.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+
 
 
 
@@ -22,24 +28,86 @@ class Letters extends StatefulWidget {
 
 
 class _LettersState extends State<Letters> {
-  List<String> letterLessonNames = [];
-  List<bool> unlockedLetterLessons = [];
-  List<int> letterLessonProgress = [];
+  List letterLessonNames = [];
+  List letterLessonProgress = [];
+  List unlockedLetterLessons = [];
+  bool isEnglish = true;
+  bool isLoading = true;
 
   late Timer _refreshTimer; // Declare the Timer
+
   
 
-  @override
-  void initState() {
-    super.initState();
-    letterLessons();
+ 
 
-    _refreshTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      letterLessons();
-    });
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final locale = prefs.getBool('isEnglish');
+
+    if (mounted) {
+      setState(() {
+       if (locale != null) {
+        isEnglish = locale;
+      }
+      });
+    }
+  }
+
+  Future<void> letterLessons() async {
+    
+    try {
+      final FirebaseFirestore firestore = FirebaseFirestore.instance;
+      final String? userId = Auth().getCurrentUserId();
+
+
+      List<String> letterNames = [];
+      List<bool> unlockedLessons = [];
+      List<int> letterProgress = [];
+
+      QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
+          .collection('userData')
+          .doc(userId)
+          .collection('letters')
+          .doc(isEnglish ? 'en' : 'ph')
+          .collection('lessons')
+          .get();
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc
+          in querySnapshot.docs) {
+        Map<String, dynamic> lessonData = doc.data();
+        letterNames.add(lessonData['name'] as String);
+        unlockedLessons.add(lessonData['isUnlocked'] as bool);
+        letterProgress.add(lessonData['progress'] as int);
+      }
+
+      setState(() {
+        letterLessonNames = letterNames;
+        unlockedLetterLessons = unlockedLessons;
+        letterLessonProgress = letterProgress;
+      });
+
+
+
+    } catch (e) {
+        print('Error updating local letter lessons: $e');
+    }
   }
 
   @override
+  void initState() {
+    getLanguage().then((_) {
+      letterLessons();
+      setState(() {
+        isLoading = false;
+      });
+    });
+    super.initState();
+
+     _refreshTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      letterLessons();
+    });
+  }
+   @override
   void dispose() {
     // Cancel the timer when the widget is disposed
     _refreshTimer.cancel();
@@ -47,41 +115,6 @@ class _LettersState extends State<Letters> {
   }
   
 
-  Future<void> letterLessons() async {
-    try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/lesson_alphabet.json');
-
-      final jsonString = await file.readAsString();
-      final List<dynamic> jsonData = json.decode(jsonString);
-
-      List<String> letterNames = [];
-      List<bool> unlockedLessons = [];
-      List<int> progress = [];
-
-      List<LetterLesson> letterLessons = jsonData.map((lesson) {
-        return LetterLesson.fromJson(lesson);
-      }).toList();
-
-      for (var lesson in letterLessons) {
-        letterNames.add(lesson.name);
-        unlockedLessons.add(lesson.isUnlocked);
-        progress.add(lesson.progress);
-      }
-
-      setState(() {
-        letterLessonNames = letterNames;
-        unlockedLetterLessons = unlockedLessons;
-        letterLessonProgress = progress;
-      });
-    } catch (e) {
-      print('Error reading JSON file: $e');
-    }
-  }
-
-  
-
-  
 
   void showLockedLessonDialog() {
     showDialog(
@@ -177,75 +210,82 @@ class _LettersState extends State<Letters> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final lessonName = letterLessonNames[index];
-                final isUnlocked = unlockedLetterLessons[index];
-                final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(
-                        color: Colors.black,
-                        width: 1.0,
+                if (isLoading) {
+                  // Show a loading indicator for lesson names
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  final lessonName = letterLessonNames[index];
+                  final isUnlocked = unlockedLetterLessons[index];
+                  final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: const BorderSide(
+                          color: Colors.black,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    child: Stack(
-                      children: [
-                        ListTile(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          leading: Icon(Icons.menu_book_outlined, size: 30),
-                          title: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      lessonName,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: isUnlocked ? Colors.black : Colors.grey,
+                      child: Stack(
+                        children: [
+                          ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            leading: Icon(Icons.menu_book_outlined, size: 30),
+                            title: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        lessonName,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: isUnlocked ? Colors.black : Colors.grey,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      'Learn the sign for $lessonName',
-                                      style: TextStyle(
-                                        color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
-                                        fontFamily: 'FiraSans',
-                                        fontSize: 15,
+                                      Text(
+                                        'Learn the sign for $lessonName',
+                                        style: TextStyle(
+                                          color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
+                                          fontFamily: 'FiraSans',
+                                          fontSize: 15,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              if (isUnlocked) CircularProgressBar(progress: progress),
-                              if (!isUnlocked) Icon(Icons.lock, size: 35, color:const Color(0xFF5A96E3))
-                            ],
-                          ),
-                          onTap: () {
-                            if (isUnlocked) {
-                              Navigator.push(
-                                context,
-                                SlidePageRoute(
-                                  page: LessonOne(
-                                    lessonName: lessonName, 
+                                    ],
                                   ),
                                 ),
-                              );
-                            } else {
-                              showLockedLessonDialog(); // Show the locked lesson dialog
-                            }
-                          },
-                        ),
-                      ],
+                                if (isUnlocked) CircularProgressBar(progress: progress),
+                                if (!isUnlocked) Icon(Icons.lock, size: 35, color: const Color(0xFF5A96E3))
+                              ],
+                            ),
+                            onTap: () async {
+                              if (isUnlocked) {
+                                Navigator.push(
+                                  context,
+                                  SlidePageRoute(
+                                    page: LessonOne(
+                                      lessonName: lessonName,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                showLockedLessonDialog(); // Show the locked lesson dialog
+                              }
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
-              childCount: letterLessonNames.length,
+              childCount: isLoading ? 1 : letterLessonNames.length, // Show 1 item if loading, otherwise show the lesson names
             ),
           ),
         ],

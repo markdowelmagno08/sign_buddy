@@ -7,9 +7,9 @@ import 'package:sign_buddy/forgot_pass.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
 import 'package:sign_buddy/modules/choose_language.dart';
 import 'package:sign_buddy/modules/classify_as.dart';
-import 'package:sign_buddy/modules/english_level.dart';
 import 'package:sign_buddy/modules/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/create_lesson.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers.dart';
@@ -80,7 +80,6 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/chooseLanguage': (context) => ChooseLanguages(),
         '/classify': (context) => Classify(),
-        '/langLevel': (context) => Level(),
         '/homePage': (context) => AuthenticationWrapper(),
         '/login': (context) => LoginPage(),
         '/forgotPass': (context) => ForgotPass(),
@@ -94,6 +93,7 @@ class MyApp extends StatelessWidget {
         '/food': (context) => Food(),
         '/timeAndDays': (context) => TimeAndDays(),
         '/greeting': (context) => Greetings(),
+        
       },
     );
   }

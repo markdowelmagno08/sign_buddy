@@ -1,12 +1,8 @@
-import 'dart:convert';
-import 'dart:io';
 
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sign_buddy/modules/data/lesson_model.dart';
-
-
+import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
@@ -20,63 +16,72 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+  String uid = "";
   int progress = 0;
+  bool isLoading = true;
+  bool isEnglish = true;
+
 
   @override
   void initState() {
     super.initState();
-  getProgress(widget.lessonName);
-  
+    getPrefValues().then((_) => getProgress(widget.lessonName)).then((_) {
+    if (progress >= 90) {
+      LetterLessonFireStore(userId: uid)
+          .unlockLesson(widget.lessonName, isEnglish ? "en" : "ph");
+    }
+    });
+    getProgress(widget.lessonName);
   }
 
- Future<void> clearProgress(String lessonName) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+
+
+  Future<void> getPrefValues() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.
+
+    if (mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
+  }
     
-    await prefs.setBool('$lessonName-completed1', false);
-    await prefs.setBool('$lessonName-completed2', false);
-    await prefs.setBool('$lessonName-completed3', false);
-    await prefs.setBool('$lessonName-completed4', false);
-    await prefs.setBool('$lessonName-completed5', false);
-    await prefs.setBool('$lessonName-completed6', false);
-
-  }
-
-  LetterLesson? getLetterLessonByName(
-      List<LetterLesson> letterLessons, String lessonName) {
-    return letterLessons.firstWhere((lesson) => lesson.name == lessonName);
-  }
 
   Future<void> getProgress(String lessonName) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/lesson_alphabet.json');
-
     try {
-      final jsonString = await file.readAsString();
-      final List<dynamic>jsonData = json.decode(jsonString);
+      final userId = Auth().getCurrentUserId();
+      Map<String, dynamic>? lessonData =
+      await LetterLessonFireStore(userId: userId!)
+            .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
 
+      // ignore: unnecessary_null_comparison
+      if (lessonData != null) {
+        if (mounted) {
+          setState(() {
+            progress = lessonData['progress'];
+            uid = userId;
+            isLoading = false;
+          });
+        }
 
-      List<LetterLesson> letterLessons = jsonData.map((lesson){
-        return LetterLesson.fromJson(lesson);
-      }).toList();
-
-
-      LetterLesson? lesson = getLetterLessonByName(letterLessons, lessonName);
-
-      if (lesson != null) {
-        setState(() {
-          progress = lesson.progress;
-        });
       } else {
-        print('LetterLesson with name $lessonName not found in JSON file');
+        print(
+            'Letter lesson "$lessonName" was not found within the Firestore.');
+        isLoading = true;
       }
-      
     } catch (e) {
-      print('Error reading result lesson_alphabet.json: $e');
+      print('Error reading letter_lessons.json: $e');
+      setState(() {
+        isLoading = false;
+      });
     }
-
   }
-
-
+    
+  
 
   @override
   Widget build(BuildContext context) {
@@ -181,8 +186,9 @@ class _ResultState extends State<Result> {
                         // Check if the user confirmed the reset and then call the clearProgress function
                         if (confirmReset == true) {
                           // print('Clearing progress for lesson: ${widget.lessonName}');
-                          await clearProgress(widget.lessonName);
-                          await resetProgress(widget.lessonName);
+                          await LetterLessonFireStore(
+                            userId: Auth().getCurrentUserId()!,
+                          ).resetProgress(widget.lessonName, isEnglish ? "en" : "ph");
 
                           Navigator.push(
                             context,
@@ -213,11 +219,8 @@ class _ResultState extends State<Result> {
                 Column(
                   children: [
                     TextButton(
-                      onPressed: () {
-                        if (progress >= 90) {
-                          unlockLesson(widget.lessonName);
-                        }
-                        // Navigate to the Home page (replace it with the desired route)
+                      onPressed: () async {
+                      
                         Navigator.pushReplacement(
                           context,
                           SlidePageRoute(

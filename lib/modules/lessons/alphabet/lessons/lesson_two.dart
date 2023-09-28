@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
-import 'package:sign_buddy/modules/data/lesson_model.dart';
+import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
+import 'package:sign_buddy/firebase_storage.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
@@ -20,65 +20,113 @@ class LessonTwo extends StatefulWidget {
 }
 
 class _LessonTwoState extends State<LessonTwo> {
-  String? contentDescription;
+  String contentDescription = "";
+  String uid = "";
   List<dynamic> contentImage = [];
+  bool isEnglish = true;
+  bool isLoading = true;
+  bool showOverlay = true;
+  int progress = 0;
 
   bool progressAdded = false; // Track whether progress has been added
 
   @override
   void initState() {
     super.initState();
-    getContent2DataByName(widget.lessonName);
+    getLanguage().then((value) {
+      getContent2DataByName(widget.lessonName);
+    });
+    getProgress(widget.lessonName);
+    
+    
+   
   }
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.
 
-  LetterLesson? getLetterLessonByName(
-      List<LetterLesson> letterLessons, String lessonName) {
-    return letterLessons.firstWhere((lesson) => lesson.name == lessonName);
+    if (mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
   }
-
-  void getContent2DataByName(String lessonName) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/lesson_alphabet.json');
-
+  Future<void> getProgress(String lessonName) async {
     try {
-      final jsonString = await file.readAsString();
-      final List<dynamic> jsonData = json.decode(jsonString);
+      final userId = Auth().getCurrentUserId();
+      Map<String, dynamic>? lessonData =
+      await LetterLessonFireStore(userId: userId!)
+            .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
 
-      List<LetterLesson> letterLessons = jsonData.map((lesson) {
-        return LetterLesson.fromJson(lesson);
-      }).toList();
-
-      LetterLesson? lesson = getLetterLessonByName(letterLessons, lessonName);
-
-      if (lesson != null) {
-        LessonContent contentData = lesson.content2;
-        print('Content 2 data for $lessonName: $contentData');
-
+      // ignore: unnecessary_null_comparison
+      if (lessonData != null) {
         if (mounted) {
           setState(() {
-            contentDescription = contentData.description;
-            contentImage.addAll(contentData.contentImage!);
+            progress = lessonData['progress'];
+            uid = userId;
+            isLoading = false;
           });
         }
+
       } else {
-        print('LetterLesson with name $lessonName not found in JSON file');
+        print(
+            'Letter lesson "$lessonName" was not found within the Firestore.');
+        isLoading = true;
       }
     } catch (e) {
-      print('Error reading lesson_alphabet.json: $e');
+      print('Error reading letter_lessons.json: $e');
+      setState(() {
+        isLoading = false;
+      });
     }
   }
+  void getContent2DataByName(String lessonName) async {
+    
+    try {
+      final userId = Auth().getCurrentUserId();
+      Map<String, dynamic>? lessonData = 
+      await LetterLessonFireStore(userId: userId!)
+          .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
-  Future<void> addProgressIfNotCompleted(String lessonName) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isCompleted = prefs.getBool('$lessonName-completed2') ?? false;
 
-    if (!isCompleted) {
-      // Check if progress is not already added
-      await incrementProgressValue(lessonName, 16);
-      print("Progress 2 updated successfully!");
-      await prefs.setBool('$lessonName-completed2', true); // Mark as completed
+      if(lessonData != null && lessonData.containsKey('content2')) {
+        Map<String,dynamic> content2Data = 
+        lessonData['content2'] as Map<String, dynamic>; 
+        String description = content2Data['description'] as String;
+        Iterable<dynamic> _contentImage = content2Data['contentImage'];
+
+
+        _contentImage = await Future.wait(_contentImage.map((e) => AssetFirebaseStorage().getAsset(e)));
+
+
+        if(mounted) {
+          setState(() {
+            contentDescription = description;
+            contentImage = _contentImage.toList();
+            uid = userId;
+            isLoading = false;
+
+          });
+        } else {
+          print(
+            'Letter lesson "$lessonName" was not found within the Firestore.');
+          isLoading = true;
+        }
+
+      }
+    } catch (e) {
+        print('Error reading letter_lessons.json: $e');
+        if (mounted) {
+          setState(() {
+            isLoading = true;
+          });
+        }
+      }
     }
-  }
+
+  
+
+  
 
   void _nextPage() async {
     Navigator.pushReplacement(
@@ -112,18 +160,19 @@ class _LessonTwoState extends State<LessonTwo> {
               ),
             ),
             const SizedBox(height: 100),
-            if (contentDescription != null)
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  contentDescription!,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                contentDescription!,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 18,
                 ),
               ),
-            if (contentImage.isNotEmpty)
+            ),
+            if (isLoading) // Show loading indicator while fetching data
+              CircularProgressIndicator()
+            else if (contentImage.isNotEmpty)
               Container(
                 margin: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
@@ -135,7 +184,7 @@ class _LessonTwoState extends State<LessonTwo> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
+                  child: Image.network(
                     contentImage.isNotEmpty ? contentImage[0] : "",
                   ),
                 ),
@@ -148,13 +197,14 @@ class _LessonTwoState extends State<LessonTwo> {
                   child: ElevatedButton(
                     onPressed: () async {
                       // Only add progress on the first navigation
-                      if (!progressAdded) {
-                        await addProgressIfNotCompleted(widget.lessonName);
-                        setState(() {
-                          progressAdded = true; // Set progressAdded to true
-                        });
-                      }
-                      _nextPage();
+                      if(progress >= 31) {
+                        _nextPage();
+                      } else {
+                        LetterLessonFireStore(userId: uid)
+                          .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                        print("Progress 2 updated successfully!");
+                        _nextPage();
+                      }         
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
