@@ -1,15 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-// import 'dart:convert';
-// import 'dart:io';
-// import 'package:path_provider/path_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/firestore_user.dart';
-import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
-import 'package:sign_buddy/modules/sharedwidget/loading.dart';
-// import 'package:sign_buddy/modules/data/lesson_model.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';

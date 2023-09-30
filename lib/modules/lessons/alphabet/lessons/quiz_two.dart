@@ -33,6 +33,7 @@ class _QuizTwoState extends State<QuizTwo> {
   bool isLoading = true;
   bool isEnglish = true;
   int progress = 0;
+  
 
   @override
   void initState() {

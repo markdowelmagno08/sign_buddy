@@ -9,7 +9,6 @@ import 'package:sign_buddy/modules/choose_language.dart';
 import 'package:sign_buddy/modules/classify_as.dart';
 import 'package:sign_buddy/modules/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/create_lesson.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers.dart';

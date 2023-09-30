@@ -34,7 +34,6 @@ dependencies:
   provider: ^6.0.5
   font_awesome_flutter: ^10.5.0
   shared_preferences: ^2.2.0
-  json_annotation: ^4.8.1
   path_provider: ^2.0.15
   connectivity_plus: ^4.0.2
   cloud_firestore: ^4.8.1
@@ -60,7 +59,6 @@ dev_dependencies:
   build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
-  json_serializable: ^6.7.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -85,11 +83,7 @@ flutter:
     - assets/
     - assets/alphabet/
     - assets/dictionary/
-    - assets/dictionary/animals/
-    - assets/dictionary/alphabet/
-    - assets/dictionary/shapes/
     - assets/dictionary/family/
-    - assets/dictionary/color/
     - assets/dictionary/phrases/
     - assets/lesson-icon/
 

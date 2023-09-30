@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sign_buddy/firebase_storage.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/sign_up.dart';
 
-import 'dart:convert';
-import 'package:flutter/services.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,9 +23,9 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     const LessonsScreen(),
     const AlphabetScreen(),
-    const DictionaryScreen(),
+    const FindSign(),
     const StudyScreen(),
-    const SettingsScreen(),
+    const SettingsScreen()
   ];
 
   @override
@@ -611,14 +612,17 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
   }
 }
 
-class DictionaryScreen extends StatefulWidget {
-  const DictionaryScreen({Key? key}) : super(key: key);
+
+
+class FindSign extends StatefulWidget {
+  const FindSign({Key? key}) : super(key: key);
 
   @override
-  _DictionaryScreenState createState() => _DictionaryScreenState();
+  _FindSignState createState() => _FindSignState();
 }
 
-class _DictionaryScreenState extends State<DictionaryScreen> {
+class _FindSignState extends State<FindSign> {
+  final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
   List<Map<String, dynamic>> dictionary = [];
   List<String> suggestedResults = [];
   List<Map<String, dynamic>> searchResults = [];
@@ -627,6 +631,15 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   bool isSearching = false;
   bool isSuggestionTapped = false;
   String query = '';
+  String? imageUrl;
+  String? gifUrl;
+
+  final CollectionReference lettersCollection =
+      FirebaseFirestore.instance.collection('dictionary/en/letters');
+  final CollectionReference wordsCollection =
+      FirebaseFirestore.instance.collection('dictionary/en/words');
+  final CollectionReference phrasesCollection =
+      FirebaseFirestore.instance.collection('dictionary/en/phrases');
 
   @override
   void initState() {
@@ -635,16 +648,47 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   }
 
   Future<void> loadDictionaryData() async {
-    final loadedDictionary = await loadDictionary();
+    final letterData = await lettersCollection.get();
+    final wordData = await wordsCollection.get();
+    final phraseData = await phrasesCollection.get();
+
+    final loadedDictionary = combineData(letterData, wordData, phraseData);
+
     setState(() {
       dictionary = loadedDictionary;
     });
   }
 
-  Future<List<Map<String, dynamic>>> loadDictionary() async {
-    final dictionaryJson =
-        await rootBundle.loadString('assets/dictionary.json');
-    return List<Map<String, dynamic>>.from(json.decode(dictionaryJson));
+  List<Map<String, dynamic>> combineData(QuerySnapshot letterData, QuerySnapshot wordData, QuerySnapshot phraseData) {
+    final List<Map<String, dynamic>> combinedData = [];
+
+    for (var doc in letterData.docs) {
+      combinedData.add({
+        "content": doc['content'],
+        "type": "letter",
+        "image": doc['image'],
+      });
+    }
+
+    for (var doc in wordData.docs) {
+      combinedData.add({
+        "content": doc['content'],
+        "type": "word",
+        "category": doc['category'],
+        "gif": doc['gif'],
+      });
+    }
+
+    for (var doc in phraseData.docs) {
+      combinedData.add({
+        "content": doc['content'],
+        "type": "phrases",
+        "category": doc['category'],
+        "gif": doc['gif'],
+      });
+    }
+
+    return combinedData;
   }
 
   void search(String query) {
@@ -682,33 +726,34 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
     }
   }
 
-  void selectSuggestedResult(String result) {
-    setState(() {
-      isSuggestionTapped = true;
-      query = result;
-      searchController.text = result;
-      searchResults =
-          dictionary.where((entry) => entry['content'] == result).toList();
-      suggestedResults.clear(); // Clear suggested results here
-    });
-  }
-
-  void selectSuggestion(String suggestion) {
-    setState(() {
-      query = suggestion;
-      searchController.text = suggestion;
-      isSuggestionTapped = true;
-    });
-    search(suggestion);
-  }
-
   void clearSearch() {
     setState(() {
       searchController.clear();
       suggestedResults.clear();
       termNotFound = false;
       isSearching = false;
-      isSuggestionTapped = false; // Reset suggestion tapped status
+      isSuggestionTapped = false;
+    });
+  }
+
+  Future<void> selectSuggestedResult(String result) async {
+    setState(() {
+      isSuggestionTapped = true;
+      query = result;
+      searchController.text = result;
+      searchResults =
+          dictionary.where((entry) => entry['content'] == result).toList();
+      suggestedResults.clear();
+      // Fetch image and gif URLs using AssetFirebaseStorage
+      fetchAssetUrls(searchResults[0]['image'], searchResults[0]['gif']);
+    });
+  }
+
+  Future<void> fetchAssetUrls(String? imagePath, String? gifPath) async {
+    imageUrl = await assetFirebaseStorage.getAsset(imagePath);
+    gifUrl = await assetFirebaseStorage.getAsset(gifPath);
+    setState(() {
+      // Once the URLs are fetched, trigger a rebuild of the widget.
     });
   }
 
@@ -768,7 +813,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                           onTap: () => selectSuggestedResult(result),
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                left: 60), // Adjust the value as needed
+                                left: 60),
                             child: Container(
                               padding: const EdgeInsets.all(3),
                               child: Text(
@@ -784,57 +829,23 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                       }).toList(),
                     ),
                   ),
-                if (isSuggestionTapped && searchResults.isNotEmpty)
-                  Column(
-                    children: [
-                      searchResults[0]['type'] == 'letter'
-                          ? Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.white,
-                              ),
-                              child: ClipRRect(
-                                child: Image.asset(
-                                  searchResults[0]['image'],
-                                  height: 200,
-                                  width: 200,
-                                ),
-                              ),
-                            )
-                          : searchResults[0]['type'] == 'word' ||
-                                  searchResults[0]['type'] == 'phrases'
-                              ? Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors.white,
-                                  ),
-                                  child: ClipRRect(
-                                    child: Image.asset(
-                                      searchResults[0]['gif'],
-                                      height: 190,
-                                      width: 300,
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox(),
-                      const SizedBox(height: 10),
-                      Text(
-                        searchResults[0]['content'],
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                if (isSuggestionTapped && searchResults.isNotEmpty) 
+                Column(
+                  children: [
+                    if (searchResults[0]['type'] == 'letter')
+                      _buildImageContainer(imageUrl),
+                    if (searchResults[0]['type'] == 'word' || searchResults[0]['type'] == 'phrases')
+                      _buildImageContainer(gifUrl),
+                    const SizedBox(height: 10),
+                    Text(
+                      searchResults[0]['content'],
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
                 Visibility(
                   visible: !isSearching,
                   child: Image.asset(
@@ -871,6 +882,34 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
     );
   }
 }
+
+Widget _buildImageContainer(String? url) {
+  return url != null
+      ? Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.grey,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+          ),
+          child: ClipRRect(
+            child: Image.network(
+              url,
+              height: 190,
+              width: 300,
+            ),
+          ),
+        )
+      : Container(
+          // Loading indicator
+          alignment: Alignment.center,
+          child: CircularProgressIndicator(),
+        );
+}
+
+
 
 class StudyScreen extends StatelessWidget {
   const StudyScreen({Key? key}) : super(key: key);

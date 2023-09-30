@@ -163,7 +163,7 @@ class _LessonTwoState extends State<LessonTwo> {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                contentDescription!,
+                contentDescription,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 18,

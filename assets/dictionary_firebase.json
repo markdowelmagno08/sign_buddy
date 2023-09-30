@@ -1,134 +1,134 @@
 [
   { 
-    
+   
     "content": "A",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/a.png"
+    "image": "dictionary/alphabet/a.png"
   },
   {
     "content": "B",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/b.png"
+    "image": "dictionary/alphabet/b.png"
   },
   {
     "content": "C",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/c.png"
+    "image": "dictionary/alphabet/c.png"
   },
   {
     "content": "D",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/d.png"
+    "image": "dictionary/alphabet/d.png"
   },
   {
     "content": "E",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/e.png"
+    "image": "dictionary/alphabet/e.png"
   },
   {
     "content": "F",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/f.png"
+    "image": "dictionary/alphabet/f.png"
   },
   {
     "content": "G",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/g.png"
+    "image": "dictionary/alphabet/g.png"
   },
   {
     "content": "H",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/h.png"
+    "image": "dictionary/alphabet/h.png"
   },
   {
     "content": "I",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/i.png"
+    "image": "dictionary/alphabet/i.png"
   },
   {
     "content": "J",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/j.png"
+    "image": "dictionary/alphabet/j.png"
   },
   {
     "content": "K",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/k.png"
+    "image": "dictionary/alphabet/k.png"
   },
   {
     "content": "L",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/l.png"
+    "image": "dictionary/alphabet/l.png"
   },
   {
     "content": "M",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/m.png"
+    "image": "dictionary/alphabet/m.png"
   },
   {
     "content": "N",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/n.png"
+    "image": "dictionary/alphabet/n.png"
   },
   {
     "content": "O",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/o.png"
+    "image": "dictionary/alphabet/o.png"
   },
   {
     "content": "P",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/p.png"
+    "image": "dictionary/alphabet/p.png"
   },
   {
     "content": "Q",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/q.png"
+    "image": "dictionary/alphabet/q.png"
   },
   {
     "content": "R",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/r.png"
+    "image": "dictionary/alphabet/r.png"
   },
   {
     "content": "S",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/s.png"
+    "image": "dictionary/alphabet/s.png"
   },
   {
     "content": "T",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/t.png"
+    "image": "dictionary/alphabet/t.png"
   },
   {
     "content": "U",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/u.png"
+    "image": "dictionary/alphabet/u.png"
   },
   {
     "content": "V",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/v.png"
+    "image": "dictionary/alphabet/v.png"
   },
   {
     "content": "W",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/w.png"
+    "image": "dictionary/alphabet/w.png"
   },
   {
     "content": "X",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/x.png"
+    "image": "dictionary/alphabet/x.png"
   },
   {
     "content": "Y",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/y.png"
+    "image": "dictionary/alphabet/y.png"
   },
   {
     "content": "Z",
     "type": "letter",
-    "image": "assets/dictionary/alphabet/z.png"
+    "image": "dictionary/alphabet/z.png"
   },
 
 
@@ -137,133 +137,133 @@
     "type": "word",
     "content": "Bat",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/bat.gif"
+    "gif": "dictionary/animals/bat.gif"
   },
   { 
     "type": "word",
     "content": "Bear",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/bear.gif"
+    "gif": "dictionary/animals/bear.gif"
   },
   { 
     "type": "word",
     "content": "Bull",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/bull.gif"
+    "gif": "dictionary/animals/bull.gif"
   },
   { 
     "type": "word",
     "content": "Camel",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/camel.gif"
+    "gif": "dictionary/animals/camel.gif"
   },
   { 
     "type": "word",
     "content": "Cat",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/cat.gif"
+    "gif": "dictionary/animals/cat.gif"
   },
   { 
     "type": "word",
     "content": "Chicken",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/chicken.gif"
+    "gif": "dictionary/animals/chicken.gif"
   },
   { 
     "type": "word",
     "content": "Crab",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/crab.gif"
+    "gif": "dictionary/animals/crab.gif"
   },
   { 
     "type": "word",
     "content": "Crocodile",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/crocodile.gif"
+    "gif": "dictionary/animals/crocodile.gif"
   },
   { 
     "type": "word",
     "content": "Deer",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/deer.gif"
+    "gif": "dictionary/animals/deer.gif"
   },
   { 
     "type": "word",
     "content": "Dolphin",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/dolphin.gif"
+    "gif": "dictionary/animals/dolphin.gif"
   },
   { 
     "type": "word",
     "content": "Donkey",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/donkey.gif"
+    "gif": "dictionary/animals/donkey.gif"
   },
   { 
     "type": "word",
     "content": "Duck",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/duck.gif"
+    "gif": "dictionary/animals/duck.gif"
   },
   { 
     "type": "word",
     "content": "Fish",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/fish.gif"
+    "gif": "dictionary/animals/fish.gif"
   },
   { 
     "type": "word",
     "content": "Flamingo",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/flamingo.gif"
+    "gif": "dictionary/animals/flamingo.gif"
   },
   { 
     "type": "word",
     "content": "Fox",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/fox.gif"
+    "gif": "dictionary/animals/fox.gif"
   },
   { 
     "type": "word",
     "content": "Frog",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/frog.gif"
+    "gif": "dictionary/animals/frog.gif"
   },
   { 
     "type": "word",
     "content": "Giraffe",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/giraffe.gif"
+    "gif": "dictionary/animals/giraffe.gif"
   },
   { 
     "type": "word",
     "content": "Goat",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/goat.gif"
+    "gif": "dictionary/animals/goat.gif"
   },
   { 
     "type": "word",
     "content": "Goose",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/goose.gif"
+    "gif": "dictionary/animals/goose.gif"
   },
   { 
     "type": "word",
     "content": "Gorilla",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/gorilla.gif"
+    "gif": "dictionary/animals/gorilla.gif"
   },
   { 
     "type": "word",
     "content": "Horse",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/horse.gif"
+    "gif": "dictionary/animals/horse.gif"
   },
   { 
     "type": "word",
     "content": "Lobster",
     "category": "Animals",
-    "gif": "assets/dictionary/animals/lobster.gif"
+    "gif": "dictionary/animals/lobster.gif"
   },
 
   { 
@@ -271,43 +271,43 @@
     "type": "word",
     "content": "Circle",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/circle.gif"
+    "gif": "dictionary/shapes/circle.gif"
   },
   { 
     "type": "word",
     "content": "Diamond",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/diamond.gif"
+    "gif": "dictionary/shapes/diamond.gif"
   },
   { 
     "type": "word",
     "content": "Heart",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/heart.gif"
+    "gif": "dictionary/shapes/heart.gif"
   },
   { 
     "type": "word",
     "content": "Hexagon",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/hexagon.gif"
+    "gif": "dictionary/shapes/hexagon.gif"
   },
   { 
     "type": "word",
     "content": "Octagon",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/octagon.gif"
+    "gif": "dictionary/shapes/octagon.gif"
   },
   { 
     "type": "word",
     "content": "Square",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/square.gif"
+    "gif": "dictionary/shapes/square.gif"
   },
   { 
     "type": "word",
     "content": "Triangle",
     "category": "Shapes",
-    "gif": "assets/dictionary/shapes/triangle.gif"
+    "gif": "dictionary/shapes/triangle.gif"
   },
 
 
@@ -315,85 +315,85 @@
     "type": "word",
     "content": "Aunt",
     "category": "Family",
-    "gif": "assets/dictionary/family/aunt.gif"
+    "gif": "dictionary/family/aunt.gif"
   },
   { 
     "type": "word",
     "content": "Baby",
     "category": "Family",
-    "gif": "assets/dictionary/family/baby.gif"
+    "gif": "dictionary/family/baby.gif"
   },
   { 
     "type": "word",
     "content": "Boyfriend",
     "category": "Family",
-    "gif": "assets/dictionary/family/boyfriend.gif"
+    "gif": "dictionary/family/boyfriend.gif"
   },
   { 
     "type": "word",
     "content": "Brother",
     "category": "Family",
-    "gif": "assets/dictionary/family/brother.gif"
+    "gif": "dictionary/family/brother.gif"
   },
   { 
     "type": "word",
     "content": "Father",
     "category": "Family",
-    "gif": "assets/dictionary/family/father.gif"
+    "gif": "dictionary/family/father.gif"
   },
   { 
     "type": "word",
     "content": "Friend",
     "category": "Family",
-    "gif": "assets/dictionary/family/friend.gif"
+    "gif": "dictionary/family/friend.gif"
   },
   { 
     "type": "word",
     "content": "Girlfriend",
     "category": "Family",
-    "gif": "assets/dictionary/family/girlfriend.gif"
+    "gif": "dictionary/family/girlfriend.gif"
   },
   { 
     "type": "word",
     "content": "Grandfather",
     "category": "Family",
-    "gif": "assets/dictionary/family/grandfather.gif"
+    "gif": "dictionary/family/grandfather.gif"
   },
   { 
     "type": "word",
     "content": "Grandmother",
     "category": "Family",
-    "gif": "assets/dictionary/family/grandmother.gif"
+    "gif": "dictionary/family/grandmother.gif"
   },
   { 
     "type": "word",
     "content": "Husband",
     "category": "Family",
-    "gif": "assets/dictionary/family/husband.gif"
+    "gif": "dictionary/family/husband.gif"
   },
   { 
     "type": "word",
     "content": "Nephew",
     "category": "Family",
-    "gif": "assets/dictionary/family/nephew.gif"
+    "gif": "dictionary/family/nephew.gif"
   },
   { 
     "type": "word",
     "content": "Niece",
     "category": "Family",
-    "gif": "assets/dictionary/family/niece.gif"
+    "gif": "dictionary/family/niece.gif"
   },
   { 
     "type": "word",
     "content": "Sister",
     "category": "Family",
-    "gif": "assets/dictionary/family/sister.gif"
+    "gif": "dictionary/family/sister.gif"
   },
   { 
     "type": "word",
     "content": "Uncle",
     "category": "Family",
-    "gif": "assets/dictionary/family/uncle.gif"
+    "gif": "dictionary/family/uncle.gif"
   },
 
 
@@ -402,159 +402,164 @@
     "type": "word",
     "content": "Blue",
     "category": "Colors",
-    "gif": "assets/dictionary/color/blue.gif"
+    "gif": "dictionary/color/blue.gif"
   },
   { 
     "type": "word",
     "content": "Bright",
     "category": "Colors",
-    "gif": "assets/dictionary/color/bright.gif"
+    "gif": "dictionary/color/bright.gif"
   },
   { 
     "type": "word",
     "content": "Gray",
     "category": "Colors",
-    "gif": "assets/dictionary/color/gray.gif"
+    "gif": "dictionary/color/gray.gif"
   },
   { 
     "type": "word",
     "content": "Green",
     "category": "Colors",
-    "gif": "assets/dictionary/color/green.gif"
+    "gif": "dictionary/color/green.gif"
   },
   { 
     "type": "word",
     "content": "Light",
     "category": "Colors",
-    "gif": "assets/dictionary/color/light.gif"
+    "gif": "dictionary/color/light.gif"
   },
   { 
     "type": "word",
     "content": "Orange",
     "category": "Colors",
-    "gif": "assets/dictionary/color/orange.gif"
+    "gif": "dictionary/color/orange.gif"
   },
   { 
     "type": "word",
     "content": "Pink",
     "category": "Colors",
-    "gif": "assets/dictionary/color/pink.gif"
+    "gif": "dictionary/color/pink.gif"
   },
   { 
     "type": "word",
     "content": "Purple",
     "category": "Colors",
-    "gif": "assets/dictionary/color/purple.gif"
+    "gif": "dictionary/color/purple.gif"
   },
   { 
     "type": "word",
     "content": "Rainbow",
     "category": "Colors",
-    "gif": "assets/dictionary/color/rainbow.gif"
+    "gif": "dictionary/color/rainbow.gif"
   },
   { 
     "type": "word",
     "content": "Red",
     "category": "Colors",
-    "gif": "assets/dictionary/color/red.gif"
+    "gif": "dictionary/color/red.gif"
   },
   { 
     "type": "word",
     "content": "Shiny",
     "category": "Colors",
-    "gif": "assets/dictionary/color/shiny.gif"
+    "gif": "dictionary/color/shiny.gif"
   },
   { 
     "type": "word",
     "content": "Yellow",
     "category": "Colors",
-    "gif": "assets/dictionary/color/yellow.gif"
+    "gif": "dictionary/color/yellow.gif"
   }, 
 
   { 
-    "type": "phrases",
+    "type": "word",
     "content": "Congratulations",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/congratulations.gif"
+    "gif": "dictionary/phrases/congratulations.gif"
   },
+
+  { 
+    "type": "word",
+    "content": "Goodbye",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/goodbye.gif"
+  },
+
+  { 
+    "type": "word",
+    "content": "Sorry",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/sorry.gif"
+  },
+
   { 
     "type": "phrases",
     "content": "Excuse Me",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/excuse_me.gif"
+    "gif": "dictionary/phrases/excuse_me.gif"
   },
   { 
     "type": "phrases",
     "content": "Good Night",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/good_night.gif"
+    "gif": "dictionary/phrases/good_night.gif"
   },
   { 
     "type": "phrases",
     "content": "Good to see you",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/good_to_see_you.gif"
+    "gif": "dictionary/phrases/good_to_see_you.gif"
   },
-  { 
-    "type": "phrases",
-    "content": "Goodbye",
-    "category": "Greetings",
-    "gif": "assets/dictionary/phrases/goodbye.gif"
-  },
+  
   { 
     "type": "phrases",
     "content": "Have a nice day",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/have_a_nice_day.gif"
+    "gif": "dictionary/phrases/have_a_nice_day.gif"
   },
   { 
     "type": "phrases",
     "content": "Hello",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/hello.gif"
+    "gif": "dictionary/phrases/hello.gif"
   },
   { 
     "type": "phrases",
     "content": "Nice to meet you",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/nice_to_meet_you.gif"
+    "gif": "dictionary/phrases/nice_to_meet_you.gif"
   },
   { 
     "type": "phrases",
     "content": "How are you",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/how_are_you.gif"
+    "gif": "dictionary/phrases/how_are_you.gif"
   },
   { 
     "type": "phrases",
     "content": "See you later",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/see_you_later.gif"
+    "gif": "dictionary/phrases/see_you_later.gif"
   },
   { 
     "type": "phrases",
     "content": "Thank you",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/thank_you.gif"
+    "gif": "dictionary/phrases/thank_you.gif"
   },
   { 
     "type": "phrases",
     "content": "What's up",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/whats_up.gif"
+    "gif": "dictionary/phrases/whats_up.gif"
   },
   { 
     "type": "phrases",
     "content": "You're Welcome",
     "category": "Greetings",
-    "gif": "assets/dictionary/phrases/youre_welcome.gif"
-  },
-
-  { 
-    "type": "phrases",
-    "content": "Sorry",
-    "category": "Greetings",
-    "gif": "assets/dictionary/phrases/sorry.gif"
+    "gif": "dictionary/phrases/youre_welcome.gif"
   }
+
+  
 
 ]

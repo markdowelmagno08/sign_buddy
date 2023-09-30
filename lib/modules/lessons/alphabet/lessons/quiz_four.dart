@@ -40,6 +40,10 @@ class _QuizFourState extends State<QuizFour> {
   void initState() {
     super.initState();
     getLanguage().then((value) {
+      if (progress >= 90) {
+      LetterLessonFireStore(userId: uid)
+          .unlockLesson(widget.lessonName, isEnglish ? "en" : "ph");
+    }
       getContent6DataByName(widget.lessonName);
     });
     getProgress(widget.lessonName);

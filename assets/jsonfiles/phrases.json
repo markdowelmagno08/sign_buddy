@@ -1,0 +1,69 @@
+[
+    { 
+    "type": "phrases",
+    "content": "Excuse Me",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/excuse_me.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "Good Night",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/good_night.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "Good to see you",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/good_to_see_you.gif"
+  },
+  
+  { 
+    "type": "phrases",
+    "content": "Have a nice day",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/have_a_nice_day.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "Hello",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/hello.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "Nice to meet you",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/nice_to_meet_you.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "How are you",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/how_are_you.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "See you later",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/see_you_later.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "Thank you",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/thank_you.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "What's up",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/whats_up.gif"
+  },
+  { 
+    "type": "phrases",
+    "content": "You're Welcome",
+    "category": "Greetings",
+    "gif": "dictionary/phrases/youre_welcome.gif"
+  }
+]

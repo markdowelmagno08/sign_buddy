@@ -72,13 +72,13 @@ class UserFirestore {
     }
   }
 
-
-
   Future<bool> getIsNewAccount() async {
     var data = await getDocumentData();
 
     return data['isNewAccount'];
   }
+
+  
 
 
 

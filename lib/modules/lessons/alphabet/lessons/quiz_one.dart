@@ -39,7 +39,7 @@ class _QuizOneState extends State<QuizOne> {
     getLanguage().then((value) {
       getContent3DataByName(widget.lessonName);
     });
-      getProgress(widget.lessonName);
+    getProgress(widget.lessonName);
    
 
   }

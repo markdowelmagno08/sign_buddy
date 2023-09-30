@@ -1,0 +1,134 @@
+[
+    { 
+   
+    "content": "A",
+    "type": "letter",
+    "image": "dictionary/alphabet/a.png"
+  },
+  {
+    "content": "B",
+    "type": "letter",
+    "image": "dictionary/alphabet/b.png"
+  },
+  {
+    "content": "C",
+    "type": "letter",
+    "image": "dictionary/alphabet/c.png"
+  },
+  {
+    "content": "D",
+    "type": "letter",
+    "image": "dictionary/alphabet/d.png"
+  },
+  {
+    "content": "E",
+    "type": "letter",
+    "image": "dictionary/alphabet/e.png"
+  },
+  {
+    "content": "F",
+    "type": "letter",
+    "image": "dictionary/alphabet/f.png"
+  },
+  {
+    "content": "G",
+    "type": "letter",
+    "image": "dictionary/alphabet/g.png"
+  },
+  {
+    "content": "H",
+    "type": "letter",
+    "image": "dictionary/alphabet/h.png"
+  },
+  {
+    "content": "I",
+    "type": "letter",
+    "image": "dictionary/alphabet/i.png"
+  },
+  {
+    "content": "J",
+    "type": "letter",
+    "image": "dictionary/alphabet/j.png"
+  },
+  {
+    "content": "K",
+    "type": "letter",
+    "image": "dictionary/alphabet/k.png"
+  },
+  {
+    "content": "L",
+    "type": "letter",
+    "image": "dictionary/alphabet/l.png"
+  },
+  {
+    "content": "M",
+    "type": "letter",
+    "image": "dictionary/alphabet/m.png"
+  },
+  {
+    "content": "N",
+    "type": "letter",
+    "image": "dictionary/alphabet/n.png"
+  },
+  {
+    "content": "O",
+    "type": "letter",
+    "image": "dictionary/alphabet/o.png"
+  },
+  {
+    "content": "P",
+    "type": "letter",
+    "image": "dictionary/alphabet/p.png"
+  },
+  {
+    "content": "Q",
+    "type": "letter",
+    "image": "dictionary/alphabet/q.png"
+  },
+  {
+    "content": "R",
+    "type": "letter",
+    "image": "dictionary/alphabet/r.png"
+  },
+  {
+    "content": "S",
+    "type": "letter",
+    "image": "dictionary/alphabet/s.png"
+  },
+  {
+    "content": "T",
+    "type": "letter",
+    "image": "dictionary/alphabet/t.png"
+  },
+  {
+    "content": "U",
+    "type": "letter",
+    "image": "dictionary/alphabet/u.png"
+  },
+  {
+    "content": "V",
+    "type": "letter",
+    "image": "dictionary/alphabet/v.png"
+  },
+  {
+    "content": "W",
+    "type": "letter",
+    "image": "dictionary/alphabet/w.png"
+  },
+  {
+    "content": "X",
+    "type": "letter",
+    "image": "dictionary/alphabet/x.png"
+  },
+  {
+    "content": "Y",
+    "type": "letter",
+    "image": "dictionary/alphabet/y.png"
+  },
+  {
+    "content": "Z",
+    "type": "letter",
+    "image": "dictionary/alphabet/z.png"
+  }
+
+]
