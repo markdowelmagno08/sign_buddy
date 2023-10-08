@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_four.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
@@ -21,17 +22,44 @@ class _AssessmentThreeState extends State<AssessmentThree> {
   bool answerChecked = false;
   int selectedAnswerIndex = -1;
   int correctAnswerIndex = -1;
+  bool isEnglish = true;
+  
 
-  final List<Map<String, dynamic>> assessmentQuestions = [
-    {
-      'question': 'Which is the correct sign for "Friend"?',
-      'options': [
-        'assets/dictionary/family/grandmother.gif',
-        'assets/dictionary/family/friend.gif',
-      ],
-      'correctAnswerIndex': 1,
-    },
+   final List<String> enOptions = [
+    'assets/dictionary/family/grandmother.gif',
+    'assets/dictionary/family/friend.gif',
   ];
+
+    final List<String> phOptions = [
+      'assets/dictionary/family/lola.gif',
+      'assets/dictionary/family/kaibigan.gif',
+    ];
+
+    final List<Map<String, dynamic>> assessmentQuestions = [
+      {
+        'question': 'Which is the correct sign for "Friend"?',
+        'options': [], // To be populated based on the language
+        'correctAnswerIndex': 1,
+      },
+    ];
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+    shuffleOptions(assessmentQuestions); // Shuffle options when the widget is first initialized
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+      setState(() {
+      this.isEnglish = isEnglish;
+      // Populate options based on the selected language
+      assessmentQuestions[0]['options'] = isEnglish ? enOptions : phOptions;
+    });
+  }
 
   void checkAnswer() {
     setState(() {
@@ -71,19 +99,14 @@ class _AssessmentThreeState extends State<AssessmentThree> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(
-        assessmentQuestions); // Shuffle options when the widget is first initialized
-  }
+  
 
   void showResultSnackbar(BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -126,7 +149,7 @@ class _AssessmentThreeState extends State<AssessmentThree> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -165,7 +188,9 @@ class _AssessmentThreeState extends State<AssessmentThree> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Tap the video to select the answer.",
+                isEnglish
+                ? "Tap the video to select the answer."
+                : "Pindutin ang bidyo para pumili ng sagot",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -173,7 +198,9 @@ class _AssessmentThreeState extends State<AssessmentThree> {
               ),
               const SizedBox(height: 50),
               Text(
-                "Assessment 3: ${question}",
+                isEnglish
+                ? "Assessment 3: ${question}"
+                : "Pagsusuri 3: Ano ang tamang senyas para sa 'Kaibigan'?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
@@ -230,13 +257,17 @@ class _AssessmentThreeState extends State<AssessmentThree> {
                           if (selectedAnswerIndex == correctAnswerIndex) {
                             showResultSnackbar(
                               context,
-                              'Correct',
+                              isEnglish
+                              ?'Correct'
+                              : "Tama",
                               FontAwesomeIcons.solidCircleCheck,
                             );
                           } else {
                             showResultSnackbar(
                               context,
-                              'Incorrect',
+                              isEnglish
+                              ?'Incorrect'
+                              : "Mali",
                               FontAwesomeIcons.solidCircleXmark,
                             );
                           }
@@ -252,7 +283,7 @@ class _AssessmentThreeState extends State<AssessmentThree> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

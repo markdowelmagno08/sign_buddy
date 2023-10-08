@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_eight.dart';
 import 'package:sign_buddy/modules/assessments/shuffle_options.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AssessmentSeven extends StatefulWidget {
@@ -18,39 +20,78 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
   int currentIndex = 0;
   int score = 0;
   bool answerChecked = false;
-  List<String> selectedWords = []; // List to store the user's selected words
+  List<String> selectedWords = [];
+  bool isEnglish = true;
+
+  final List<String> enOptions = [
+    'My',
+    'moon',
+    'nice',
+    'man',
+    'day',
+    'Have',
+    'a',
+    'yes',
+    '?',
+  ];
+
+  final List<String> phOptions = [
+    'Magandang',
+    'buwan',
+    'araw',
+    'lalaki',
+    'umaga',
+    'Mayroon',
+    'ang',
+    'oo',
+    '!',
+  ];
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What sentence does this sign language represent?',
-      'videoUrl':
-          'assets/dictionary/phrases/have_a_nice_day.gif', // Replace with the path to your GIF file
-      'options': [
-        'My',
-        'moon',
-        'nice',
-        'man',
-        'day',
-        'Have',
-        'a',
-        'yes',
-        '?',
-      ], // Add your word options here
-      'correctAnswer': [
-        'Have',
-        'a',
-        'nice',
-        'day'
-      ], // Add the correct sentence here as a list of words
+      'imageUrl': {
+        'en': 'assets/dictionary/phrases/have_a_nice_day.gif',
+        'ph': 'assets/dictionary/family/magandang_araw.gif',
+      },
+      'options': [],
+      'correctAnswer': {
+        'en': ['Have', 'a', 'nice', 'day'],
+        'ph': ['Magandang', 'araw'],
+      },
     },
   ];
+
+  void shuffleOptions() {
+    setState(() {
+      enOptions.shuffle(Random());
+      phOptions.shuffle(Random());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+    shuffleOptions(); // Add this line to shuffle options when the screen initializes.
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+      assessmentQuestions[0]['options'] = isEnglish ? enOptions : phOptions;
+    });
+  }
 
   void checkAnswer() {
     setState(() {
       answerChecked = true;
-      List<String> correctAnswer =
+      Map<String, dynamic> correctAnswer =
           assessmentQuestions[currentIndex]['correctAnswer'];
-      if (selectedWords.join(' ') == correctAnswer.join(' ')) {
+      if (selectedWords.join(' ') == correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
         score++;
       }
     });
@@ -82,19 +123,12 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(
-        assessmentQuestions); // Shuffle options when the widget is first initialized
-  }
-
   void showResultSnackbar(BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -137,7 +171,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -152,20 +186,20 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
         )
         .closed
         .then((reason) {
-      setState(() {
-        answerChecked = false;
-      });
-    });
+          setState(() {
+            answerChecked = false;
+          });
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
     String question = currentQuestion['question'];
-    String videoUrl = currentQuestion['videoUrl'];
+    String imageUrlKey = isEnglish ? 'en' : 'ph';
+    String imageUrl = currentQuestion['imageUrl'][imageUrlKey];
     List<String> options = (currentQuestion['options'] as List).cast<String>();
-    List<String> correctAnswer =
-        currentQuestion['correctAnswer'].cast<String>();
+    Map<String, dynamic> correctAnswer = currentQuestion['correctAnswer'];
 
     return WillPopScope(
       onWillPop: () async {
@@ -179,7 +213,9 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Create a sentence by selecting the word options below",
+                isEnglish
+                ? "Create a sentence by selecting the word options below"
+                : "Lumikha ng pangungusap sa pamamagitan ng pagpili ng mga opsyon",
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -187,11 +223,12 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
               ),
               const SizedBox(height: 30),
               Text(
-                "Assessment 7: ${question}",
+                isEnglish
+                ? "Assessment 7: ${question}"
+                : "Pagsusuri 7: Anong pangungusap ang binubuo ng senyas na ito?",
                 style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
-              // Display GIF
               Container(
                 padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.symmetric(vertical: 10),
@@ -204,14 +241,15 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Image.asset(
-                  videoUrl,
+                  imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
-    
-              const Center(
+              Center(
                 child: Text(
-                  'Your Answer:',
+                  isEnglish
+                  ? "Your Answer:"
+                  : 'Sagot mo',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -219,8 +257,6 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                   ),
                 ),
               ),
-    
-              // Display selected words or correct answer if checked
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -242,14 +278,16 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                       }),
                     ),
                   ),
-                  if (answerChecked) // <-- Display "Correct Answer" when answer is checked
+                  if (answerChecked)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 30),
-                        const Center(
+                         Center(
                           child: Text(
-                            'Correct Answer:',
+                            isEnglish
+                            ? 'Correct Answer:'
+                            : 'Tamang sagot:',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -259,22 +297,26 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                         ),
                         const SizedBox(height: 10),
                         Center(
-                          child: Text(
-                            correctAnswer.join(' '),
-                            style: const TextStyle(
-                              color: Colors.green,
-                              fontWeight: FontWeight.w400,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                isEnglish
+                                ? correctAnswer['en'].join(' ')
+                                : correctAnswer['ph'].join(' '),
+                                style: const TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              
+                            ],
                           ),
                         ),
                       ],
                     ),
                 ],
               ),
-    
               const SizedBox(height: 10),
-    
-              // Display Word Choices if not checked
               if (!answerChecked)
                 Expanded(
                   child: Padding(
@@ -300,7 +342,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                               options[index],
                               style: TextStyle(
                                 color: answerChecked &&
-                                        correctAnswer.contains(options[index])
+                                        correctAnswer[isEnglish ? 'en' : 'ph'].contains(options[index])
                                     ? Colors.green
                                     : Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -316,7 +358,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                               borderRadius: BorderRadius.circular(10),
                               side: BorderSide(
                                 color: answerChecked &&
-                                        correctAnswer.contains(options[index])
+                                        correctAnswer[isEnglish ? 'en' : 'ph'].contains(options[index])
                                     ? Colors.green
                                     : Colors.grey,
                                 width: 1,
@@ -328,27 +370,27 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                     ),
                   ),
                 ),
-    
               const SizedBox(height: 20),
-    
-              // ... (other widgets)
-    
               if (!answerChecked)
                 ElevatedButton(
                   onPressed: selectedWords.isNotEmpty
                       ? () {
                           checkAnswer();
                           if (selectedWords.join(' ') ==
-                              correctAnswer.join(' ')) {
+                              correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
                             showResultSnackbar(
                               context,
-                              'Correct',
+                              isEnglish
+                              ?'Correct'
+                              : "Tama",
                               FontAwesomeIcons.solidCircleCheck,
                             );
                           } else {
                             showResultSnackbar(
                               context,
-                              'Incorrect',
+                              isEnglish
+                              ?'Incorrect'
+                              : "Mali",
                               FontAwesomeIcons.solidCircleXmark,
                             );
                           }
@@ -364,7 +406,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

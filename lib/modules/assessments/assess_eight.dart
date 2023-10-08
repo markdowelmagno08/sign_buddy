@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/result.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
@@ -19,18 +20,31 @@ class _AssessmentEightState extends State<AssessmentEight> {
   bool answerChecked = false;
   int selectedVideoIndex = -1;
   int selectedWordIndex = -1;
+  bool isEnglish = true;
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
-      'question': 'What is being signed here? ',
+      'question': 'What is being signed here?',
       'matches': [
         {
-          'video': 'assets/dictionary/family/boyfriend.gif',
-          'word': 'Boyfriend',
+          'videos': {
+            'en': 'assets/dictionary/family/boyfriend.gif',
+            'ph': 'assets/dictionary/family/kasintahan.gif',
+          },
+          'words': {
+            'en': 'Boyfriend',
+            'ph': 'Kasintahan',
+          },
         },
         {
-          'video': 'assets/dictionary/family/nephew.gif',
-          'word': 'Nephew',
+          'videos': {
+            'en': 'assets/dictionary/family/nephew.gif',
+            'ph': 'assets/dictionary/family/pamangkin.gif',
+          },
+          'words': {
+            'en': 'Nephew',
+            'ph': 'Pamangkin',
+          },
         },
       ],
     },
@@ -40,7 +54,17 @@ class _AssessmentEightState extends State<AssessmentEight> {
   @override
   void initState() {
     super.initState();
-    shuffleOptions(assessmentQuestions);
+    getLanguage();
+    shuffleOptions(assessmentQuestions); // Shuffle options when the widget is first initialized
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
   }
 
   void shuffleOptions(List<Map<String, dynamic>> questions) {
@@ -51,24 +75,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
       // Shuffle the 'matches' list for each question
       matches.shuffle();
 
-      // Shuffle the order of videos and words separately
-      List<dynamic> shuffledVideos =
-          List<dynamic>.from(matches.map((match) => match['video']));
-      List<dynamic> shuffledWords =
-          List<dynamic>.from(matches.map((match) => match['word']));
-      shuffledVideos.shuffle();
-      shuffledWords.shuffle();
-
-      // Pair the shuffled videos and words back together
-      List<Map<String, dynamic>> shuffledMatches = [];
-      for (int i = 0; i < shuffledVideos.length; i++) {
-        shuffledMatches.add({
-          'video': shuffledVideos[i],
-          'word': shuffledWords[i],
-        });
-      }
-
-      question['matches'] = shuffledMatches;
+      question['matches'] = matches;
     }
   }
 
@@ -76,16 +83,25 @@ class _AssessmentEightState extends State<AssessmentEight> {
     setState(() {
       answerChecked = true;
       if (selectedVideoIndex != -1 && selectedWordIndex != -1) {
-        String selectedVideo = assessmentQuestions[currentIndex]['matches']
-            [selectedVideoIndex]['video'];
-        String selectedWord = assessmentQuestions[currentIndex]['matches']
-            [selectedWordIndex]['word'];
+        String languageKey = isEnglish ? 'en' : 'ph';
+        String selectedVideo =
+            assessmentQuestions[currentIndex]['matches'][selectedVideoIndex]
+                ['videos'][languageKey];
+        String selectedWord =
+            assessmentQuestions[currentIndex]['matches'][selectedWordIndex]
+                ['words'][languageKey];
 
-        if ((selectedVideo ==
+        if ( 
+          ((selectedVideo ==
                     'assets/dictionary/family/boyfriend.gif' &&
-                selectedWord == 'Boyfriend') ||
-            (selectedVideo == 'assets/dictionary/family/nephew.gif' &&
-                selectedWord == 'Nephew')) {
+                selectedWord == 'Boyfriend') || (selectedVideo ==
+                    'assets/dictionary/family/kasintahan.gif' &&
+                selectedWord == 'Kasintahan')) ||
+            ((selectedVideo ==
+                    'assets/dictionary/family/nephew.gif' &&
+                selectedWord == 'Nephew') || (selectedVideo ==
+                    'assets/dictionary/family/pamangkin.gif' &&
+                selectedWord == 'Pamangkin')  )) {
           score++;
         }
       }
@@ -121,7 +137,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -164,7 +180,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -179,10 +195,10 @@ class _AssessmentEightState extends State<AssessmentEight> {
         )
         .closed
         .then((reason) {
-      setState(() {
-        answerChecked = false;
-      });
-    });
+          setState(() {
+            answerChecked = false;
+          });
+        });
   }
 
   @override
@@ -191,8 +207,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
     String question = currentQuestion['question'];
     List<Map<String, dynamic>> matches =
         List<Map<String, dynamic>>.from(currentQuestion['matches']);
-    List<dynamic> videoUrls = matches.map((match) => match['video']).toList();
-    List<dynamic> options = matches.map((match) => match['word']).toList();
+    String languageKey = isEnglish ? 'en' : 'ph';
 
     return WillPopScope(
       onWillPop: () async {
@@ -205,8 +220,10 @@ class _AssessmentEightState extends State<AssessmentEight> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 70),
-               Text(
-                "Match the sign language video with the correct word.",
+              Text(
+                isEnglish
+                    ? "Match the sign language video with the correct word"
+                    : "Ipareha ang video ng senyas sa tamang salita",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -214,16 +231,16 @@ class _AssessmentEightState extends State<AssessmentEight> {
               ),
               const SizedBox(height: 50),
               Text(
-                "Assessment 8: ${question}",
+                isEnglish ? "Assessment 8: ${question}" : "Pagsusuri 8: Anong senyas ang ginagamit dito?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
               Text(
-                "*Double tap the video for a closer look",
+                isEnglish ? "*Double tap the video for a closer look" : "*I-double tap ang video para mas malapit na tingnan",
                 style: const TextStyle(
                   fontSize: 12,
                   fontStyle: FontStyle.italic,
-                  color: Color.fromARGB(255, 121, 121, 121) // Add this line to make the text italic
+                  color: Color.fromARGB(255, 121, 121, 121),
                 ),
               ),
               // Display the sign language videos and word choices side by side
@@ -237,7 +254,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                         children: matches.map((match) {
                           int matchIndex = matches.indexOf(match);
                           bool isSelected = selectedVideoIndex == matchIndex;
-    
+
                           return GestureDetector(
                             onTap: () {
                               if (!answerChecked) {
@@ -246,8 +263,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                                 });
                               }
                             },
-    
-                            onDoubleTap: () {
+                             onDoubleTap: () {
                               if (!answerChecked) {
                                 showDialog(
                                   context: context,
@@ -255,7 +271,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                                     contentPadding: EdgeInsets.all(5), // Remove padding around the content
                                     content: Container(
                                       child: Image.asset(
-                                        match['video']!,
+                                         match['videos'][languageKey],
                                         fit: BoxFit.contain, // Adjust the fit as needed.
                                       ),
                                     ),
@@ -263,24 +279,24 @@ class _AssessmentEightState extends State<AssessmentEight> {
                                 );
                               }
                             },
-    
+
+                            // Display the video based on the language setting
                             child: Container(
                               padding: const EdgeInsets.all(10),
                               margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: isSelected ?Colors.deepPurpleAccent : Colors.grey,
+                                  color: isSelected ? Colors.deepPurpleAccent : Colors.grey,
                                   width: 1,
                                 ),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Image.asset(
-                                match['video']!,
+                                match['videos'][languageKey],
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            
                           );
                         }).toList(),
                       ),
@@ -292,7 +308,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                         children: matches.map((match) {
                           int matchIndex = matches.indexOf(match);
                           bool isSelected = selectedWordIndex == matchIndex;
-    
+
                           return GestureDetector(
                             onTap: () {
                               if (!answerChecked) {
@@ -314,17 +330,15 @@ class _AssessmentEightState extends State<AssessmentEight> {
                               ),
                               child: Center(
                                 child: Text(
-                                  match['word']!,
+                                  match['words'][languageKey],
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color:
-                                        isSelected ? Colors.deepPurpleAccent : Colors.black,
+                                    color: isSelected ? Colors.deepPurpleAccent : Colors.black,
                                   ),
                                 ),
                               ),
-                              
-                            )
+                            ),
                           );
                         }).toList(),
                       ),
@@ -332,34 +346,40 @@ class _AssessmentEightState extends State<AssessmentEight> {
                   ],
                 ),
               ),
-              
-              
+
               const SizedBox(height: 20),
-              
+
               if (!answerChecked)
                 ElevatedButton(
                   onPressed: selectedVideoIndex != -1 && selectedWordIndex != -1
                       ? () {
                           setState(() {
-                            String selectedVideo = videoUrls[selectedVideoIndex];
-                            String selectedWord = options[selectedWordIndex];
-    
-                            if ((selectedVideo ==
+                            String selectedVideo = assessmentQuestions[currentIndex]['matches'][selectedVideoIndex]['videos'][languageKey];
+                            String selectedWord = assessmentQuestions[currentIndex]['matches'][selectedWordIndex]['words'][languageKey];
+
+                          //checks if the selected video or word is match correspondly, it also gets the language using the isEnglish variable
+                            if ( 
+                              ((selectedVideo ==
                                         'assets/dictionary/family/boyfriend.gif' &&
-                                    selectedWord == 'Boyfriend') ||
-                                (selectedVideo ==
+                                    selectedWord == 'Boyfriend') || (selectedVideo ==
+                                        'assets/dictionary/family/kasintahan.gif' &&
+                                    selectedWord == 'Kasintahan')) ||
+                                
+                                ((selectedVideo ==
                                         'assets/dictionary/family/nephew.gif' &&
-                                    selectedWord == 'Nephew')) {
+                                    selectedWord == 'Nephew') || (selectedVideo ==
+                                        'assets/dictionary/family/pamangkin.gif' &&
+                                    selectedWord == 'Pamangkin')  )) {
                               showResultSnackbar(
                                 context,
-                                'Correct',
+                                isEnglish ? 'Correct' : "Tama",
                                 FontAwesomeIcons.solidCircleCheck,
                               );
                               score++;
                             } else {
                               showResultSnackbar(
                                 context,
-                                'Incorrect',
+                                isEnglish ? 'Incorrect' : "Mali",
                                 FontAwesomeIcons.solidCircleXmark,
                               );
                             }
@@ -376,7 +396,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

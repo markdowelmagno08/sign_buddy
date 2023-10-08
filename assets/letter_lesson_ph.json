@@ -2,22 +2,22 @@
     {
       "name": "A",
       "progress": 0,
-      "locale": "en",
+      "locale": "ph",
       "isUnlocked": true,
       "content1": {
-        "description": "This is the sign for letter 'A'.",
+        "description": "Ito ang senyas para sa titik 'A'",
         "contentImage": ["alphabet/a.png"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Aunt.",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Tiya'",
         "contentImage": ["dictionary/family/aunt.gif"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content3": {
-        "description": "Which one here is the sign for letter 'A'?",
+        "description": "Alin sa mga ito ang senyas para sa titik 'A'?",
         "contentImage": null,
         "contentOption": [
           "alphabet/a.png",
@@ -28,32 +28,32 @@
         "correctAnswer": ["alphabet/a.png"]
       },
       "content4": {
-        "description": "What sign is this?",
+        "description": "Anong senyas ito?",
         "contentImage": ["alphabet/c.png"],
         "contentOption": ["Q", "C", "D", "X", "O", "F"],
         "correctAnswer": ["C"]
       },
       "content5": {
-        "description": "Is this letter A?",
+        "description": "Ito ba ay titik A?",
         "contentImage": ["alphabet/a.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
       },
       "content6": {
-        "description": "What is being signed here",
+        "description": "Anong senyas ang ginagamit dito?",
         "contentImage": ["dictionary/family/aunt.gif"],
         "contentOption": [
-          "Aunt",
-          "Cat",
-          "Dog",
+          "Tiya",
+          "Pusa",
+          "Aso",
           "X",
           "U",
-          "Orange",
-          "Frame",
+          "Kahel",
+          "Imahe",
           "T",
           "B"
         ],
-        "correctAnswer": ["Aunt"]
+        "correctAnswer": ["Tiya"]
       }
     },
 
@@ -61,22 +61,22 @@
     {
       "name": "B",
       "progress": 0,
-      "locale": "en",
+      "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "This is the sign for letter 'B'.",
+        "description": "Ito ang senyas para sa titik 'B'",
         "contentImage": ["alphabet/b.png"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Baby.",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Sanggol'",
         "contentImage": ["dictionary/family/baby.gif"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content3": {
-        "description": "Which one here is the sign for letter 'B'?",
+        "description": "Alin sa mga ito ang senyas para sa titik 'B'?",
         "contentImage": null,
         "contentOption": [
           "alphabet/b.png",
@@ -87,53 +87,53 @@
         "correctAnswer": ["alphabet/b.png"]
       },
       "content4": {
-        "description": "What sign is this?",
+        "description": "Anong senyas ito?",
         "contentImage": ["alphabet/k.png"],
         "contentOption": ["B", "K", "W", "P", "M", "L"],
         "correctAnswer": ["K"]
       },
       "content5": {
-        "description": "Is this letter B?",
+        "description": "Ito ba ay titik B?",
         "contentImage": ["alphabet/b.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
       },
       "content6": {
-        "description": "What is being signed here",
+        "description": "Anong senyas ang ginagamit dito?",
         "contentImage": ["dictionary/family/baby.gif"],
         "contentOption": [
-          "Baby",
+          "Sanggol",
           "W",
           "S",
           "P",
           "K",
-          "Play",
-          "Man",
-          "Letter",
-          "I(letter)"
+          "Laro",
+          "Lalaki",
+          "Letra",
+          "I(Letra)"
         ],
-        "correctAnswer": ["Baby"]
+        "correctAnswer": ["Sanggol"]
       }
     },
     {
       "name": "C",
       "progress": 0,
-      "locale": "en",
+      "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "This is the sign for letter 'C'.",
+        "description": "Ito ang senyas para sa titik 'C'",
         "contentImage": ["alphabet/c.png"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Camel.",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Kamelyo'",
         "contentImage": ["dictionary/animals/camel.gif"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content3": {
-        "description": "Which one here is the sign for letter 'C'?",
+        "description": "Alin sa mga ito ang senyas para sa titik 'C'?",
         "contentImage": null,
         "contentOption": [
           "alphabet/c.png",
@@ -144,53 +144,53 @@
         "correctAnswer": ["alphabet/c.png"]
       },
       "content4": {
-        "description": "What sign is this?",
+        "description": "Anong senyas ito?",
         "contentImage": ["alphabet/c.png"],
         "contentOption": ["S", "C", "Z", "F", "Q", "R"],
         "correctAnswer": ["C"]
       },
       "content5": {
-        "description": "Is this letter C?",
+        "description": "Ito ba ay titik C?",
         "contentImage": ["alphabet/c.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
       },
       "content6": {
-        "description": "What is being signed here",
+        "description": "Anong senyas ang ginagamit dito?",
         "contentImage": ["dictionary/animals/camel.gif"],
         "contentOption": [
-          "Camel",
+          "Kamelyo",
           "P",
           "N",
           "V",
           "T",
           "X",
           "Dolphin",
-          "North",
-          "Goat"
+          "Hilaga",
+          "Kambing"
         ],
-        "correctAnswer": ["Camel"]
+        "correctAnswer": ["Kamelyo"]
       }
     },
     {
       "name": "D",
       "progress": 0,
-      "locale": "en",
+      "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "This is the sign for letter 'D'.",
+        "description": "Ito ang senyas para sa titik 'D'",
         "contentImage": ["alphabet/d.png"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Dolphin.",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Dolphin'",
         "contentImage": ["dictionary/animals/dolphin.gif"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content3": {
-        "description": "Which one here is the sign for letter 'D'?",
+        "description": "Alin sa mga ito ang senyas para sa titik 'D'?",
         "contentImage": null,
         "contentOption": [
           "alphabet/d.png",
@@ -201,19 +201,19 @@
         "correctAnswer": ["alphabet/d.png"]
       },
       "content4": {
-        "description": "What sign is this?",
+        "description": "Anong senyas ito?",
         "contentImage": ["alphabet/d.png"],
         "contentOption": ["T", "D", "G", "L", "H", "P"],
         "correctAnswer": ["D"]
       },
       "content5": {
-        "description": "Is this letter D?",
+        "description": "Ito ba ay titik D?",
         "contentImage": ["alphabet/d.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
       },
       "content6": {
-        "description": "What is being signed here",
+        "description": "Anong senyas ang ginagamit dito?",
         "contentImage": ["dictionary/animals/dolphin.gif"],
         "contentOption": [
           "Dolphin",
@@ -222,9 +222,9 @@
           "Y",
           "G",
           "H",
-          "Crocodile",
-          "Fox",
-          "Uncle"
+          "Buwaya",
+          "Lobo",
+          "Tiyo"
         ],
         "correctAnswer": ["Dolphin"]
       }
@@ -232,22 +232,22 @@
     {
       "name": "E",
       "progress": 0,
-      "locale": "en",
+      "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "This is the sign for letter 'E'.",
+        "description": "Ito ang senyas para sa titik 'E'",
         "contentImage": ["alphabet/e.png"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Excuse Me.",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Paumanhin'",
         "contentImage": ["dictionary/phrases/excuse_me.gif"],
         "contentOption": null,
         "correctAnswer": null
       },
       "content3": {
-        "description": "Which one here is the sign for letter 'E'?",
+        "description": "Alin sa mga ito ang senyas para sa titik 'E'?",
         "contentImage": null,
         "contentOption": [
           "alphabet/e.png",
@@ -258,33 +258,32 @@
         "correctAnswer": ["alphabet/e.png"]
       },
       "content4": {
-        "description": "What sign is this?",
+        "description": "Anong senyas ito?",
         "contentImage": ["alphabet/e.png"],
         "contentOption": ["F", "E", "Y", "B", "U", "I"],
         "correctAnswer": ["E"]
       },
       "content5": {
-        "description": "Is this letter E?",
+        "description": "Ito ba ay titik E?",
         "contentImage": ["alphabet/e.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Hindi"]
       },
       "content6": {
-        "description": "What is being signed here",
+        "description": "Anong senyas ang ginagamit dito?",
         "contentImage": ["dictionary/phrases/excuse_me.gif"],
         "contentOption": [
-          "Excuse Me",
+          "Paumanhin",
           "O",
           "P",
           "Q",
           "G",
           "L",
-          "Crocodile",
-          "Hello",
-          "Friday"
+          "Umaga",
+          "Kamusta",
+          "Byernes"
         ],
-        "correctAnswer": ["Excuse Me"]
+        "correctAnswer": ["Paumanhin"]
       }
     }
-  ]
-  
+]

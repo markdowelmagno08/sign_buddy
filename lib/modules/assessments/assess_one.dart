@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_two.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
@@ -19,6 +20,7 @@ class _AssessmentOneState extends State<AssessmentOne> {
   bool answerChecked = false;
   int selectedAnswerIndex = -1;
   int correctAnswerIndex = -1;
+  bool isEnglish = true;
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
@@ -32,6 +34,22 @@ class _AssessmentOneState extends State<AssessmentOne> {
       'correctAnswerIndex': 0,
     },
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+    shuffleOptions(assessmentQuestions); // Shuffle options when the widget is first initialized
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
 
   void checkAnswer() {
     setState(() {
@@ -67,19 +85,14 @@ class _AssessmentOneState extends State<AssessmentOne> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(
-        assessmentQuestions); // Shuffle options when the widget is first initialized
-  }
+ 
 
   void showResultSnackbar(BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -122,7 +135,7 @@ class _AssessmentOneState extends State<AssessmentOne> {
         duration: const Duration(days: 365),
         dismissDirection: DismissDirection.none,
         action: SnackBarAction(
-          label: 'Next',
+          label: isEnglish ? 'Next' : 'Susunod',
           textColor: Colors.grey.shade700,
           backgroundColor: Colors.blue.shade200,
           onPressed: () {
@@ -148,6 +161,7 @@ class _AssessmentOneState extends State<AssessmentOne> {
     Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
     String question = currentQuestion['question'];
     List<String> options = currentQuestion['options'];
+    
     return WillPopScope(
       onWillPop: () async {
         if (answerChecked) {
@@ -166,7 +180,9 @@ class _AssessmentOneState extends State<AssessmentOne> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Tap the image to select the answer.",
+                isEnglish
+                ? "Tap the image to select the answer."
+                : "Pindutin ang larawan para pumili ng sagot",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -174,7 +190,9 @@ class _AssessmentOneState extends State<AssessmentOne> {
               ),
               const SizedBox(height: 50),
               Text(
-                "Assessment 1: ${question}",
+                isEnglish
+                ? "Assessment 1: ${question}"
+                : "Pagsusuri 1: Ano ang tamang senyas para sa titik 'D'?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               // Display Image
@@ -232,13 +250,17 @@ class _AssessmentOneState extends State<AssessmentOne> {
                     if (selectedAnswerIndex == correctAnswerIndex) {
                       showResultSnackbar(
                         context,
-                        'Correct',
+                        isEnglish
+                        ?'Correct'
+                        : "Tama",
                         FontAwesomeIcons.solidCircleCheck,
                       );
                     } else {
                       showResultSnackbar(
                         context,
-                        'Incorrect',
+                        isEnglish
+                        ?'Incorrect'
+                        : "Mali",
                         FontAwesomeIcons.solidCircleXmark,
                       );
                     }
@@ -254,7 +276,7 @@ class _AssessmentOneState extends State<AssessmentOne> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

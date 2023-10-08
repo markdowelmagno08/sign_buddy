@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class InternetConnectivityService {
   static Future<void> checkInternetOrShowDialog({
@@ -7,17 +8,22 @@ class InternetConnectivityService {
     required Function onLogin, // Function to be called if there is internet connectivity
   }) async {
     var connectivityResult = await Connectivity().checkConnectivity();
+    
+    // Retrieve user's language preference
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
 
     if (connectivityResult == ConnectivityResult.none) {
       // No internet connection, show an alert dialog
-      _showNoInternetDialog(context);
+      _showNoInternetDialog(context, isEnglish);
     } else {
       // Internet connection is available, call the provided function
       onLogin();
     }
   }
 
-  static void _showNoInternetDialog(BuildContext context) {
+
+  static void _showNoInternetDialog(BuildContext context, bool isEnglish) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -37,9 +43,9 @@ class InternetConnectivityService {
             children: [
               Center(
                 child: Text(
-                  'No Internet Connection',
+                  isEnglish ? 'No Internet Connection' : "Walang Koneksyon sa Internet",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'FiraSans', // Replace with your font family name
                   ),
@@ -47,9 +53,9 @@ class InternetConnectivityService {
               ),
               SizedBox(height: 20), // Add spacing between title and message
               Text(
-                'Please check your internet connection and try again.',
+                isEnglish ? 'Please check your internet connection and try again.': "Pakisuri ang iyong koneksyon sa internet at subukang muli.",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: 'FiraSans', // Replace with your font family name
                 ),
                 textAlign: TextAlign.center, // Center-align the message text

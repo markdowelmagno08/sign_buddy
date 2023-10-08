@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/login_screen.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -24,6 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   bool _obscureConfirmPassword = true;
 
   bool loading = false;
+  bool isEnglish = true;
 
   final TextEditingController _firstName = TextEditingController();
   final TextEditingController _lastName = TextEditingController();
@@ -32,10 +34,26 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController _confirmPassword = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    getLanguage();
+   
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return loading
-        ? const Loading(
-            text: 'Setting up your preferences . . .',
+        ?  Loading(
+            text: isEnglish ? 'Setting up your preferences . . .' : 'Pagse-set up ng iyong mga kagustuhan'
           )
         : SafeArea(
             child: Scaffold(
@@ -64,8 +82,6 @@ class _SignupPageState extends State<SignupPage> {
                         const SizedBox(height: 40),
                         _inputField(),
                         const SizedBox(height: 20),
-                        _signup(context),
-                        const SizedBox(height: 20),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
@@ -77,8 +93,8 @@ class _SignupPageState extends State<SignupPage> {
                                 SlidePageRoute(page: const HomePage()),
                               );
                             },
-                            child: const Text(
-                              "Skip for now",
+                            child:  Text(
+                              isEnglish ? "Skip for now" : "Laktawan sa ngayon",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -96,14 +112,14 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   _header() {
-    return const Column(
+    return  Column(
       children: [
         Text(
-          "Sign up",
+          isEnglish ? "Sign up" : "Mag-sign up",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 10),
-        Text("So you dont lose your progress"),
+        Text(isEnglish ? "So you dont lose your progress" : "Upang hindi mawala ang iyong progress"),
       ],
     );
   }
@@ -119,7 +135,7 @@ class _SignupPageState extends State<SignupPage> {
                 child: TextFormField(
                   controller: _firstName,
                   decoration: InputDecoration(
-                    hintText: "First Name",
+                    hintText: isEnglish ? "First Name" :  "Pangalan",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide.none,
@@ -130,7 +146,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Please enter your first name";
+                      return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong pangalan" ;
                     }
                     return null;
                   },
@@ -145,7 +161,7 @@ class _SignupPageState extends State<SignupPage> {
               child: TextFormField(
                 controller: _lastName,
                 decoration: InputDecoration(
-                  hintText: "Last Name",
+                  hintText: isEnglish ? "Last Name" : "Apelyido",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none,
@@ -156,7 +172,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter your last name";
+                    return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong apelyido" ;
                   }
                   return null;
                 },
@@ -182,13 +198,13 @@ class _SignupPageState extends State<SignupPage> {
           ),
           validator: (value) {
             if (value!.isEmpty) {
-              return "Please enter your email";
+              return isEnglish ? "Please enter your email" : " Pakilagay ang iyong email";
             } else if (!RegExp(
                 r'^[a-zA-Z]+[\w-]*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
                 .hasMatch(value)) {
-              return "Please enter a valid email";
+              return isEnglish ? "Please enter a valid email" : "Pakilagay ng wastong email";
             } else if (RegExp(r'^[0-9]+$').hasMatch(value.split('@')[0])) {
-              return "Email cannot consist of numbers only";
+              return isEnglish ? "Email cannot consist of numbers only" : "Ang email ay hindi maaaring binubuo ng mga numero lamang";
             }
             return null;
           },
@@ -221,10 +237,11 @@ class _SignupPageState extends State<SignupPage> {
           ),
           validator: (value) {
             if (value!.isEmpty) {
-              return "Please enter your password";
+              return isEnglish ? "Please enter your password" : " Pakilagay ang iyong password";
             } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$')
                 .hasMatch(value)) {
-              return 'Password must:\n- Be at least 8 characters long\n- Contain at least one uppercase letter\n- Contain at least one digit';
+              return isEnglish ? 'Password must:\n- Be at least 8 characters long\n- Contain at least one uppercase letter\n- Contain at least one digit'
+                                : "Dapat ang password: \n Maging hindi bababa sa walong(8) karakter ang haba\n- Maglagay ng hindi bababa sa isang malaking titik\n- Maglagay ng hindi bababa sa isang numero ";
             }
             return null;
           },
@@ -235,7 +252,7 @@ class _SignupPageState extends State<SignupPage> {
           controller: _confirmPassword,
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
-            hintText: "Confirm Password",
+            hintText: isEnglish ? "Confirm Password": "Kumpirmahin ang Password",
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide.none,
@@ -258,11 +275,11 @@ class _SignupPageState extends State<SignupPage> {
           ),
           validator: (value) {
             if (value!.isEmpty) {
-              return "Please re-enter your password";
+              return isEnglish ? "Please re-enter your password" : "Pakilagay muli ang iyong password";
             } else if (value.length < 8) {
-              return 'Password must be at least 8 characters long';
+              return isEnglish ? 'Password must be at least 8 characters long' : "Ang password ay dapat hindi kukulangin sa walong(8) karakter.";
             } else if (value != _password.text) {
-              return "Passwords do not match";
+              return isEnglish ? "Passwords do not match" : "Hindi tugma ang mga password";
             }
             return null;
           },
@@ -278,7 +295,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
-          child: const Text(
+          child:  Text(
             "Sign up",
             style: TextStyle(
               fontSize: 20,
@@ -291,26 +308,26 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  Widget _signup(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Already have an account?"),
-        TextButton(
-          onPressed: () {
-            Navigator.push(context, SlidePageRoute(page: const LoginPage()));
-          },
-          child: const Text(
-            "Log in",
-            style: TextStyle(
-              color: Color(0xFF5BD8FF),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget _signup(BuildContext context) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       const Text("Already have an account?"),
+  //       TextButton(
+  //         onPressed: () {
+  //           Navigator.push(context, SlidePageRoute(page: const LoginPage()));
+  //         },
+  //         child: const Text(
+  //           "Log in",
+  //           style: TextStyle(
+  //             color: Color(0xFF5BD8FF),
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
     void _submitForm() async {
     // Check for internet connectivity
@@ -333,8 +350,8 @@ class _SignupPageState extends State<SignupPage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Email Already Exists"),
-                    content: Text("The provided email address is already in use."),
+                    title: Text(isEnglish ? "Email Already Exists": "Nagamit na ang email na ito"),
+                    content: Text(isEnglish  ? "The provided email address is already in use." : "Ginagamit na ang ibinigay na email address."),
                     actions: <Widget>[
                       TextButton(
                         child: Text("OK"),

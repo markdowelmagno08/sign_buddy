@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_six.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/assessments/shuffle_options.dart';
@@ -20,6 +21,7 @@ class _AssessmentFiveState extends State<AssessmentFive> {
   bool answerChecked = false;
   int selectedAnswerIndex = -1;
   int correctAnswerIndex = -1;
+  bool isEnglish = true;
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
@@ -30,6 +32,23 @@ class _AssessmentFiveState extends State<AssessmentFive> {
     },
     // Add more questions as needed
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+    
+    shuffleOptions(assessmentQuestions); // Shuffle options when the widget is first initialized
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish')  ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
 
   void checkAnswer() {
     setState(() {
@@ -71,18 +90,14 @@ class _AssessmentFiveState extends State<AssessmentFive> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(assessmentQuestions);
-  }
+  
 
   void showResultSnackbar(BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -125,7 +140,7 @@ class _AssessmentFiveState extends State<AssessmentFive> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -167,7 +182,9 @@ class _AssessmentFiveState extends State<AssessmentFive> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Select the letter that matches the sign",
+                isEnglish
+                ? "Select the letter that matches the sign"
+                : "Pumili ng titik na tumutugma sa senyas",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -175,7 +192,9 @@ class _AssessmentFiveState extends State<AssessmentFive> {
               ),
               const SizedBox(height: 50),
               Text(
-                "Assessment 5: ${question}",
+                isEnglish
+                ? "Assessment 5: ${question}"
+                : "Pagsusuri 5: Anong senyas ito?",
                 style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
@@ -276,13 +295,17 @@ class _AssessmentFiveState extends State<AssessmentFive> {
                           if (selectedAnswerIndex == correctAnswerIndex) {
                             showResultSnackbar(
                               context,
-                              'Correct',
+                              isEnglish
+                              ?'Correct'
+                              : "Tama",
                               FontAwesomeIcons.solidCircleCheck,
                             );
                           } else {
                             showResultSnackbar(
                               context,
-                              'Incorrect',
+                              isEnglish
+                              ?'Incorrect'
+                              : "Mali",
                               FontAwesomeIcons.solidCircleXmark,
                             );
                           }
@@ -298,7 +321,7 @@ class _AssessmentFiveState extends State<AssessmentFive> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child:Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_three.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
@@ -22,16 +23,52 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   bool answerChecked = false;
   int selectedAnswerIndex = -1;
   int correctAnswerIndex = -1;
+  bool isEnglish = true;
+  
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What is being signed here? ',
-      'videoUrl': 'assets/dictionary/family/husband.gif',
-      'options': ['Husband', 'Niece', 'Hello', 'Mother', 'Sister', 'Tree'],
+      'imageUrl': {
+        'en': 'assets/dictionary/family/husband.gif',
+        'ph': 'assets/dictionary/family/asawa.gif',
+      },
+      'options': ['Husband', 'Thank You', 'Hello', 'Chicken', 'Sister', 'Tree'],
       'correctAnswerIndex': 0,
     },
     // Add more questions as needed
   ];
+   // Define translations for the answer options
+    Map<String, String> translations = {
+      'Husband': 'Asawa',
+      'Thank You': 'Salamat',
+      'Hello': 'Kumusta',
+      'Chicken': 'Manok',
+      'Sister': 'Ate',
+      'Tree': 'Puno',
+    };
+
+   @override
+  void initState() {
+    super.initState();
+    getLanguage();
+    shuffleOptions(assessmentQuestions);
+     // Shuffle options when the widget is first initialized
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
+
+  // Function to get translated option based on the language flag
+  String getTranslatedOption(String option) {
+    return isEnglish ? option : (translations[option] ?? option);
+  }
 
   void checkAnswer() {
     setState(() {
@@ -73,18 +110,14 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(assessmentQuestions);
-  }
+  
 
   void showResultSnackbar(BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -127,7 +160,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -152,7 +185,8 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   Widget build(BuildContext context) {
     Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
     String question = currentQuestion['question'];
-    String videoUrl = currentQuestion['videoUrl'];
+    String imageUrlKey = isEnglish ? 'en' : 'ph';
+    String imageUrl = currentQuestion['imageUrl'][imageUrlKey];
     List<String> options = (currentQuestion['options'] as List).cast<String>();
 
     return WillPopScope(
@@ -167,7 +201,9 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
             children: [
               const SizedBox(height: 70),
               Text(
-                "Select the word that matches the sign",
+                isEnglish
+                ? "Select the word that matches the sign"
+                : "Pumili ng salitang tumutugma sa senyas",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -175,7 +211,9 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
               ),
               const SizedBox(height: 50),
               Text(
-                "Assessment 2: ${question}",
+                isEnglish
+                ? "Assessment 2: ${question}"
+                : "Pagsusuri 2: Anong senyas ang ginagamit dito?",
                 style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
@@ -200,7 +238,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Image.asset(
-                    videoUrl,
+                    imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -220,6 +258,8 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                     bool isCorrectAnswer =
                         (answerChecked && correctAnswerIndex == index);
                     bool isSelectedAnswer = (selectedAnswerIndex == index);
+
+                   
     
                     return GestureDetector(
                       onTap: () {
@@ -251,7 +291,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                           ),
                           child: Center(
                             child: Text(
-                              options[index],
+                              getTranslatedOption(options[index]),
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
@@ -271,13 +311,17 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                           if (selectedAnswerIndex == correctAnswerIndex) {
                             showResultSnackbar(
                               context,
-                              'Correct',
+                             isEnglish
+                            ?'Correct'
+                            : "Tama",
                               FontAwesomeIcons.solidCircleCheck,
                             );
                           } else {
                             showResultSnackbar(
                               context,
-                              'Incorrect',
+                              isEnglish
+                              ?'Incorrect'
+                              : "Mali",
                               FontAwesomeIcons.solidCircleXmark,
                             );
                           }
@@ -293,7 +337,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
             ],
           ),

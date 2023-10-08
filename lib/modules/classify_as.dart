@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
 import 'package:sign_buddy/modules/choose_language.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -21,10 +22,28 @@ class _ClassifyState extends State<Classify> {
     {'status': 'Speech Impaired'},
     {'status': 'Non-Disabled'},
   ];
+  
 
   String? selectedClassify;
   bool loading = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isEnglish = true;
+  
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
 
   void _showClassifyModal(BuildContext context) async {
   // Check for internet connectivity before showing the classification modal
@@ -44,7 +63,9 @@ class _ClassifyState extends State<Classify> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Reminder',
+                  isEnglish 
+                  ? 'Reminder'
+                  : 'Paalala',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -57,7 +78,9 @@ class _ClassifyState extends State<Classify> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "An assessment is coming up to assess your Sign Language skills.",
+                  isEnglish
+                  ? "An assessment is coming up to assess your Sign Language skills."
+                  : "Asahan ang pagsusuri upang suriin ang iyong kasanayan sa Pagsenyas (Sign Language)",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -76,7 +99,9 @@ class _ClassifyState extends State<Classify> {
                     }
                   },
                   child: Text(
-                    'Got it',
+                    isEnglish
+                    ?'Got it'
+                    : 'Tara!',
                     style: TextStyle(
                       color: Color(0xFF5A5A5A),
                     ),
@@ -121,8 +146,10 @@ class _ClassifyState extends State<Classify> {
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
-                    child: const Text(
-                      'Do you classify as?',
+                    child:  Text(
+                      isEnglish
+                      ? 'Do you classify as?'
+                      : 'Ikaw ba ay?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 17,
@@ -194,7 +221,9 @@ class _ClassifyState extends State<Classify> {
                                     const Color(0xFFD3D3D3)),
                           ),
                           child: Text(
-                            'Continue',
+                            isEnglish
+                            ? 'Continue'
+                            : 'Magpatuloy',
                             style: TextStyle(
                               color: Colors.grey[700],
                             ),

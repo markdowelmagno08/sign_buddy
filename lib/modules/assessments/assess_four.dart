@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_five.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
-import 'package:sign_buddy/modules/assessments/shuffle_options.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/services.dart';
@@ -22,27 +22,55 @@ class _AssessmentFourState extends State<AssessmentFour> {
   bool answerChecked = false;
   String typedAnswer = '';
   String correctAnswer = '';
+  bool isEnglish = true;
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
       'question': 'What sign is this?',
-      'options': [
-        'assets/dictionary/family/grandmother.gif',
-      ],
+      'imageUrl': {
+        'en': 'assets/dictionary/family/grandmother.gif',
+        'ph': 'assets/dictionary/family/lola.gif',
+      },
       'correctAnswer': 'grandmother',
     },
     // Add more assessment questions here if needed
   ];
 
+  Map<String, String> translations = {
+    'grandmother': 'lola',
+    // Add translations for other correct answers as needed
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
+
+  String getTranslatedCorrectAnswer(String correctAnswer) {
+  return isEnglish ? correctAnswer : (translations[correctAnswer] ?? correctAnswer);
+}
+
   void checkAnswer() {
     setState(() {
       answerChecked = true;
       correctAnswer = assessmentQuestions[currentIndex]['correctAnswer'];
-      if (typedAnswer.toLowerCase() == correctAnswer) {
+      final translatedCorrectAnswer = getTranslatedCorrectAnswer(correctAnswer);
+      if (typedAnswer.toLowerCase() == translatedCorrectAnswer) {
         score++;
       }
     });
   }
+
 
   void nextQuestion() {
     setState(() {
@@ -76,7 +104,7 @@ class _AssessmentFourState extends State<AssessmentFour> {
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -118,11 +146,13 @@ class _AssessmentFourState extends State<AssessmentFour> {
                       ),
                     ],
                   ),
-                  if (message != 'Correct')
+                  if (message != 'Correct' || message != 'Tama' )
                     Container(
                       padding: const EdgeInsets.only(top: 3, right: 65),
                       child: Text(
-                        'Correct answer: $correctAnswer',
+                        isEnglish
+                        ? 'Correct answer: ${getTranslatedCorrectAnswer(correctAnswer)}'
+                        : 'Tamang sagot: ${getTranslatedCorrectAnswer(correctAnswer)}',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 14,
@@ -137,7 +167,7 @@ class _AssessmentFourState extends State<AssessmentFour> {
             duration: const Duration(days: 365),
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label:  isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Colors.blue.shade200,
               onPressed: () {
@@ -158,18 +188,15 @@ class _AssessmentFourState extends State<AssessmentFour> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    shuffleOptions(
-        assessmentQuestions); // Shuffle options when the widget is first initialized
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
     String question = currentQuestion['question'];
-    List<String> options = currentQuestion['options'];
+    // Get the current question's image URL based on the language
+    String imageUrlKey = isEnglish ? 'en' : 'ph';
+    String imageUrl = currentQuestion['imageUrl'][imageUrlKey];
 
     return WillPopScope(
       onWillPop: () async {
@@ -184,7 +211,9 @@ class _AssessmentFourState extends State<AssessmentFour> {
               children: [
                 const SizedBox(height: 70),
                 Text(
-                  "Type your answer in the text field",
+                  isEnglish
+                  ? "Type your answer in the text field"
+                  : "I-type ang iyong sagot sa text field",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -192,7 +221,9 @@ class _AssessmentFourState extends State<AssessmentFour> {
                 ),
                 const SizedBox(height: 50),
                 Text(
-                  "Assessment 4: ${question}",
+                  isEnglish
+                ? "Assessment 4: ${question}"
+                : "Pagsusuri 4: Ano ang pagsenyas na ito?",
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 30),
@@ -207,7 +238,7 @@ class _AssessmentFourState extends State<AssessmentFour> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Image.asset(options[0]),
+                  child: Image.asset(imageUrl),
                 ),
                 const SizedBox(height: 20),
                 if (!answerChecked)
@@ -237,16 +268,20 @@ class _AssessmentFourState extends State<AssessmentFour> {
                   onPressed: typedAnswer.isNotEmpty
                       ? () {
                           checkAnswer();
-                          if (typedAnswer.toLowerCase() == correctAnswer) {
+                          if (typedAnswer.toLowerCase() == getTranslatedCorrectAnswer(correctAnswer)) {
                             showResultSnackbar(
                               context,
-                              'Correct',
+                              isEnglish
+                              ?'Correct'
+                              : "Tama",
                               FontAwesomeIcons.solidCircleCheck,
                             );
                           } else {
                             showResultSnackbar(
                               context,
-                              'Incorrect',
+                              isEnglish
+                              ?'Incorrect'
+                              : "Mali",
                               FontAwesomeIcons.solidCircleXmark,
                             );
                           }
@@ -262,7 +297,7 @@ class _AssessmentFourState extends State<AssessmentFour> {
                     ),
                     foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: const Text('Check'),
+                  child: Text(isEnglish ? 'Check' : "Tignan"),
                 ),
               ),
       ),
