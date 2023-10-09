@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
+import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -223,7 +224,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             ),
                             onPressed: () {
                               Navigator.push(
-                                  context, SlidePageRoute(page: Actors()));
+                                  context, SlidePageRoute(page: ChooseLanguages()));
                             },
                             child: const Text(
                               'Got It!',
