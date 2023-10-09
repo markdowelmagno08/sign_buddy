@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/login_screen.dart';
-import 'package:sign_buddy/modules/get_started.dart';
+import 'package:sign_buddy/get_started.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
 class FrontPage extends StatelessWidget {

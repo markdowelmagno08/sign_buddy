@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
 import 'package:sign_buddy/forgot_pass.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
-import 'package:sign_buddy/modules/choose_language.dart';
-import 'package:sign_buddy/modules/classify_as.dart';
-import 'package:sign_buddy/modules/get_started.dart';
+import 'package:sign_buddy/choose_language.dart';
+import 'package:sign_buddy/classify_as.dart';
+import 'package:sign_buddy/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
@@ -24,7 +24,7 @@ import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 
 import 'firebase_options.dart';
-import 'modules/front_page.dart';
+import 'front_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

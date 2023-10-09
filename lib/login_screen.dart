@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:sign_buddy/forgot_pass.dart';
-import 'package:sign_buddy/modules/front_page.dart';
+import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';

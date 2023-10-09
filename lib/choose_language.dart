@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
-import 'package:sign_buddy/modules/classify_as.dart';
+import 'package:sign_buddy/classify_as.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
@@ -130,25 +130,12 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
         await InternetConnectivityService.checkInternetOrShowDialog(
           context: context,
           onLogin: () async {
-            // Retrieve the existing user data (gathered before signing up)
-            DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-                .collection('userData')
-                .doc(currentUser.uid)
-                .get();
-            Map<String, dynamic> existingData =
-                userSnapshot.data() as Map<String, dynamic>? ?? {};
-
-            // Merge the existing data with the new data
-            Map<String, dynamic> newData = {
-              'language': language,
-            };
-            newData.addAll(existingData);
-
+            
             // Store the merged data in Firestore with the document named after the user UID
             await FirebaseFirestore.instance
                 .collection('userData')
                 .doc(currentUser.uid)
-                .set(newData, SetOptions(merge: true));
+                .set({'language': language}, SetOptions(merge: true));
 
             // Navigate to the language lesson page or perform any other desired actions
             switch (language) {

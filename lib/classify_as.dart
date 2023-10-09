@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
-import 'package:sign_buddy/modules/choose_language.dart';
+import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
@@ -95,7 +95,7 @@ class _ClassifyState extends State<Classify> {
                   onPressed: () {
                     Navigator.of(context).pop(); // Close the dialog
                     if (_scaffoldKey.currentContext != null) {
-                      _navigateToLevel(_scaffoldKey.currentContext!, selectedClassify!);
+                      _navigateToAssessment(_scaffoldKey.currentContext!, selectedClassify!);
                     }
                   },
                   child: Text(
@@ -238,7 +238,7 @@ class _ClassifyState extends State<Classify> {
           );
   }
 
-    Future<void> _navigateToLevel(BuildContext context, String classify) async {
+    Future<void> _navigateToAssessment(BuildContext context, String classify) async {
     try {
       User? currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {

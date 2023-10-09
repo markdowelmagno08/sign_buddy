@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
-import 'package:sign_buddy/modules/front_page.dart';
+import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 
