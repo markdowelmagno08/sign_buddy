@@ -4,14 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
-
 import 'package:sign_buddy/firestore_user.dart';
+
 import 'package:sign_buddy/get_started.dart';
-import 'package:sign_buddy/modules/sharedwidget/loading.dart';
+import 'package:sign_buddy/locale.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
-import 'package:sign_buddy/locale.dart';
 
 class ChooseLanguages extends StatefulWidget {
   const ChooseLanguages({Key? key}) : super(key: key);
@@ -177,9 +176,14 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
 
             switch (language) {
               case 'American - English':
+               UserFirestore(userId: userId).initializeLessons("letters", "en");
+                setLanguage(true);
+                print("language set successfully for en");
                 Navigator.push(context, SlidePageRoute(page: Actors()));
                 break;
               case 'Filipino':
+              setLanguage(false);
+              print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Actors()));
                 break;
               default:

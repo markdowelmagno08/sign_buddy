@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/classify_as.dart';
-import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/widgets/internet_connectivity.dart'; 

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/actors.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
-import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
@@ -18,7 +18,6 @@ class Classify extends StatefulWidget {
 
 class _ClassifyState extends State<Classify> {
   final List<Map<String, dynamic>> classifyAs = [
-    {'status': 'Deaf or Hard-of-Hearing'},
     {'status': 'Speech Impaired'},
     {'status': 'Non-Disabled'},
   ];
@@ -140,7 +139,7 @@ class _ClassifyState extends State<Classify> {
                         Navigator.push(
                             context,
                             SlidePageRoute(
-                                page: const ChooseLanguages()));
+                                page: const Actors()));
                       },
                     ),
                   ),
@@ -260,10 +259,7 @@ class _ClassifyState extends State<Classify> {
                 Navigator.push(
                     context, SlidePageRoute(page: const AssessmentOne()));
                 break;
-              case 'Deaf or Hard-of-Hearing':
-                Navigator.push(
-                    context, SlidePageRoute(page: const AssessmentOne()));
-                break;
+              
               case 'Speech Impaired':
                 Navigator.push(
                     context, SlidePageRoute(page: const AssessmentOne()));

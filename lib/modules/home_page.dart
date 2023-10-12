@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sign_buddy/firebase_storage.dart';
+import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
+import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -19,14 +20,33 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
+  bool isEnglish = true;
 
   final List<Widget> _screens = [
     const LessonsScreen(),
-    const AlphabetScreen(),
-    const FindSign(),
-    const StudyScreen(),
-    const SettingsScreen()
+    AlphabetScreen(),
+    FindSign(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
+
+ 
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +59,8 @@ class _HomePageState extends State<HomePage> {
         key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: const Color(0xFF5A96E3),
-          title: const Text(
-            'Welcome to Sign Buddy!',
+          title: Text(
+            isEnglish ? 'Hello!' :"Kamusta!",
             style: TextStyle(
               color: Colors.white,
               fontSize: 15,
@@ -117,20 +137,6 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.notifications),
-                title: const Text('Notification'),
-                onTap: () {
-                  // Handle notification tap
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.help),
-                title: const Text('FAQ'),
-                onTap: () {
-                  // Handle FAQ tap
-                },
-              ),
-              ListTile(
                 leading: const Icon(Icons.info),
                 title: const Text('About'),
                 onTap: () {
@@ -144,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                   bool confirmLogout = await showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      content: const Text('Are you sure you want to logout?',
+                      content:  Text(isEnglish ? 'Are you sure you want to logout?': 'Sigurado ka bang nais mong mag-logout?',
                           style: TextStyle(
                             fontFamily: 'FiraSans',
                             fontWeight: FontWeight.w300,
@@ -152,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context, false),
-                          child: const Text('CANCEL',
+                          child:  Text(isEnglish ? 'CANCEL': 'KANSEL',
                               style: TextStyle(
                                 color: Colors.black,
                               )),
@@ -181,40 +187,45 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color(0xFF5BD8FF),
-          unselectedItemColor: Colors.grey[800],
-          selectedItemColor: Colors.black,
-          showUnselectedLabels: true,
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'Lessons',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.text_fields),
-              label: 'Alphabet',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Find Sign',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'Study',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),
-          ],
-        ),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: const Color(0xFF5BD8FF),
+        unselectedItemColor: Colors.grey[800],
+        selectedItemColor: Colors.black,
+        showUnselectedLabels: true,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          if (index != _currentIndex) {
+            // Check if the selected item is not the current screen
+            if (index == 1) {
+              // Navigate to AlphabetScreen
+              Navigator.pushNamed(context, '/alphabet');
+            } else if (index == 2) {
+              // Navigate to FindSign
+              Navigator.pushNamed(context, '/findSign');
+            } else {
+              // Change the current screen if it's not Alphabet or Find Sign
+              setState(() {
+                _currentIndex = index;
+              });
+            }
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Lessons',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields),
+            label: 'Alphabet',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Find Sign',
+          ),
+          
+        ],
+      ),
         // floatingActionButton: _currentIndex == 0
         //     ? FloatingActionButton.extended(
         //         onPressed: () {
@@ -257,7 +268,7 @@ Widget buildUserData() {
           lastName.isEmpty) {
         return Column(
           children: [
-            const Text(
+             Text(
               'Save progress, make a profile!',
               style: TextStyle(
                   color: Colors.white, fontSize: 11, fontFamily: 'FiraSans'),
@@ -311,21 +322,61 @@ class LessonsScreen extends StatefulWidget {
   _LessonsScreenState createState() => _LessonsScreenState();
 }
 
+
+
 class _LessonsScreenState extends State<LessonsScreen> {
   int? selectedLessonIndex;
 
   final List<Map<String, dynamic>> lessons = [
-    {'lessonName': 'Alphabet', 'icon': 'lesson-icon/img1.png'},
-    {'lessonName': 'Numbers', 'icon': 'lesson-icon/img2.png'},
-    {'lessonName': 'Family', 'icon': 'lesson-icon/img3.png'},
-    {'lessonName': 'Greetings', 'icon': 'lesson-icon/img10.png'},
-    // {'lessonName': 'Colors', 'icon': 'lesson-icon/img4.png'},
-    // {'lessonName': 'Shapes', 'icon': 'lesson-icon/img5.png'},
-    {'lessonName': 'Animals', 'icon': 'lesson-icon/img6.png'},
-    // {'lessonName': 'Nature', 'icon': 'lesson-icon/img7.png'},
-    // {'lessonName': 'Foods and Drinks', 'icon': 'lesson-icon/img8.png'},
-    {'lessonName': 'Time and Days', 'icon': 'lesson-icon/img9.png'},
+    {
+      'en': 'Alphabet',
+      'ph': 'Alpabeto',
+      'icon': 'lesson-icon/img1.png',
+    },
+    {
+      'en': 'Numbers',
+      'ph': 'Mga Numero',
+      'icon': 'lesson-icon/img2.png',
+    },
+    {
+      'en': 'Family',
+      'ph': 'Pamilya',
+      'icon': 'lesson-icon/img3.png',
+    },
+    {
+      'en': 'Greetings',
+      'ph': 'Pagbati',
+      'icon': 'lesson-icon/img10.png',
+    },
+    {
+      'en': 'Animals',
+      'ph': 'Mga Hayop',
+      'icon': 'lesson-icon/img6.png',
+    },
+    {
+      'en': 'Time and Days',
+      'ph': 'Oras at Araw',
+      'icon': 'lesson-icon/img9.png',
+    },
   ];
+
+  bool isEnglish = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -343,8 +394,8 @@ class _LessonsScreenState extends State<LessonsScreen> {
           children: [
             Container(
               padding: const EdgeInsets.fromLTRB(41, 20, 20, 20),
-              child: const Text(
-                'Lessons',
+              child: Text(
+                isEnglish ? 'Lessons' : 'Mga Lesson',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 20,
@@ -365,6 +416,8 @@ class _LessonsScreenState extends State<LessonsScreen> {
                 itemCount: lessons.length,
                 itemBuilder: (context, index) {
                   final lesson = lessons[index];
+                  final lessonName = isEnglish ? lesson['en'] : lesson['ph'];
+
                   return Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
@@ -375,7 +428,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        _navigateToStartLesson(context, lesson['lessonName']);
+                        _navigateToStartLesson(context, lessonName);
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -387,7 +440,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            lesson['lessonName'],
+                            lessonName,
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -408,555 +461,31 @@ class _LessonsScreenState extends State<LessonsScreen> {
 }
 
 void _navigateToStartLesson(BuildContext context, String lesson) {
-  switch (lesson) {
-    case 'Alphabet':
-      Navigator.pushNamed(context, '/basic');
-      break;
-    case 'Numbers':
-      Navigator.pushNamed(context, '/numbers');
-      break;
-    case 'Family':
-      Navigator.pushNamed(context, '/family');
-      break;
-    case 'Colors':
-      Navigator.pushNamed(context, '/colors');
-      break;
-    case 'Shapes':
-      Navigator.pushNamed(context, '/shapes');
-      break;
-    case 'Animals':
-      Navigator.pushNamed(context, '/animals');
-      break;
-    case 'Nature':
-      Navigator.pushNamed(context, '/nature');
-      break;
-    case 'Foods and Drinks':
-      Navigator.pushNamed(context, '/food');
-      break;
-    case 'Time and Days':
-      Navigator.pushNamed(context, '/timeAndDays');
-      break;
-    case 'Greetings':
-      Navigator.pushNamed(context, '/greeting');
-      break;
-    // Add more cases for other lessons...
-
-    default:
-      // Handle the case when the lesson is not found
-      break;
-  }
-}
-
-class AlphabetScreen extends StatefulWidget {
-  const AlphabetScreen({super.key});
-
-  @override
-  _AlphabetScreenState createState() => _AlphabetScreenState();
-}
-
-class _AlphabetScreenState extends State<AlphabetScreen> {
-  final letterImages = {
-    'A': 'alphabet/a',
-    'B': 'alphabet/b',
-    'C': 'alphabet/c',
-    'D': 'alphabet/d',
-    'E': 'alphabet/e',
-    'F': 'alphabet/f',
-    'G': 'alphabet/g',
-    'H': 'alphabet/h',
-    'I': 'alphabet/i',
-    'J': 'alphabet/j',
-    'K': 'alphabet/k',
-    'L': 'alphabet/l',
-    'M': 'alphabet/m',
-    'N': 'alphabet/n',
-    'O': 'alphabet/o',
-    'P': 'alphabet/p',
-    'Q': 'alphabet/q',
-    'R': 'alphabet/r',
-    'S': 'alphabet/s',
-    'T': 'alphabet/t',
-    'U': 'alphabet/u',
-    'V': 'alphabet/v',
-    'W': 'alphabet/w',
-    'X': 'alphabet/x',
-    'Y': 'alphabet/y',
-    'Z': 'alphabet/z',
+  final lessonMap = {
+    'Alphabet': '/basic',
+    'Alpabeto': '/basic',
+    'Numbers': '/numbers',
+    'Mga Numero': '/numbers',
+    'Family': '/shapes',
+    'Pamilya': '/shapes',
+    'Animals': '/animals',
+    'Mga Hayop': '/animals',
+    'Time and Days': '/timeAndDays',
+    'Oras at Araw': '/timeAndDays',
+    'Greetings': '/greeting',
+    'Pagbati': '/greeting',
   };
 
-  String selectedLetter = '';
+  final route = lessonMap[lesson];
 
-  @override
-  Widget build(BuildContext context) {
-    final letters = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(25, 50, 20, 20),
-            child: const Text(
-              'Sign Language Alphabet',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black, // Set the text color of the title
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              child: selectedLetter.isNotEmpty
-                  ? Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Image.asset(
-                        'assets/${letterImages[selectedLetter]}.png',
-                        width: 200,
-                        height: 200,
-                      ),
-                    )
-                  : const Text(
-                      'Tap a letter to see the sign language image',
-                      style: TextStyle(fontSize: 15.0),
-                      textAlign: TextAlign.center,
-                    ),
-            ),
-          ),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 7,
-              mainAxisSpacing: 8.0,
-              crossAxisSpacing: 8.0,
-              padding: const EdgeInsets.all(10),
-              children: List.generate(26, (index) {
-                final letter = letters[index];
-                final isSelected = selectedLetter == letter;
-                return Container(
-                  decoration: BoxDecoration(
-                    color: isSelected ? Colors.blue[300] : Colors.white,
-                    borderRadius: BorderRadius.circular(7),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        if (isSelected) {
-                          selectedLetter = '';
-                        } else {
-                          selectedLetter = letter;
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      letter,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: isSelected ? Colors.white : Colors.black,
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),
-          ),
-        ],
-      ),
-    );
+  if (route != null) {
+    Navigator.pushNamed(context, route);
+  } else {
+    // Handle the case when the lesson is not found
   }
 }
 
 
 
-class FindSign extends StatefulWidget {
-  const FindSign({Key? key}) : super(key: key);
-
-  @override
-  _FindSignState createState() => _FindSignState();
-}
-
-class _FindSignState extends State<FindSign> {
-  final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
-  List<Map<String, dynamic>> dictionary = [];
-  List<String> suggestedResults = [];
-  List<Map<String, dynamic>> searchResults = [];
-  bool termNotFound = false;
-  TextEditingController searchController = TextEditingController();
-  bool isSearching = false;
-  bool isSuggestionTapped = false;
-  String query = '';
-  String? imageUrl;
-  String? gifUrl;
-
-  final CollectionReference lettersCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/letters');
-  final CollectionReference wordsCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/words');
-  final CollectionReference phrasesCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/phrases');
-
-  @override
-  void initState() {
-    super.initState();
-    loadDictionaryData();
-  }
-
-  Future<void> loadDictionaryData() async {
-    final letterData = await lettersCollection.get();
-    final wordData = await wordsCollection.get();
-    final phraseData = await phrasesCollection.get();
-
-    final loadedDictionary = combineData(letterData, wordData, phraseData);
-
-    setState(() {
-      dictionary = loadedDictionary;
-    });
-  }
-
-  List<Map<String, dynamic>> combineData(QuerySnapshot letterData, QuerySnapshot wordData, QuerySnapshot phraseData) {
-    final List<Map<String, dynamic>> combinedData = [];
-
-    for (var doc in letterData.docs) {
-      combinedData.add({
-        "content": doc['content'],
-        "type": "letter",
-        "image": doc['image'],
-      });
-    }
-
-    for (var doc in wordData.docs) {
-      combinedData.add({
-        "content": doc['content'],
-        "type": "word",
-        "category": doc['category'],
-        "gif": doc['gif'],
-      });
-    }
-
-    for (var doc in phraseData.docs) {
-      combinedData.add({
-        "content": doc['content'],
-        "type": "phrases",
-        "category": doc['category'],
-        "gif": doc['gif'],
-      });
-    }
-
-    return combinedData;
-  }
-
-  void search(String query) {
-    if (query.isEmpty) {
-      setState(() {
-        searchResults = [];
-        suggestedResults.clear();
-        termNotFound = false;
-        isSearching = false;
-      });
-    } else {
-      final results = dictionary.where((entry) {
-        final content = entry['content'] ?? '';
-        return content.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-
-      final suggested = dictionary
-          .where((entry) {
-            final content = entry['content'] ?? '';
-            return content.toLowerCase().startsWith(query.toLowerCase()) ||
-                (query.length >= 2 &&
-                    content.toLowerCase().contains(query.toLowerCase()));
-          })
-          .map((entry) => entry['content'] as String)
-          .toList();
-
-      setState(() {
-        this.query = query;
-        searchResults = results;
-        termNotFound = results.isEmpty && suggested.isEmpty;
-        isSearching = true;
-        suggestedResults = suggested;
-        isSuggestionTapped = false;
-      });
-    }
-  }
-
-  void clearSearch() {
-    setState(() {
-      searchController.clear();
-      suggestedResults.clear();
-      termNotFound = false;
-      isSearching = false;
-      isSuggestionTapped = false;
-    });
-  }
-
-  Future<void> selectSuggestedResult(String result) async {
-    setState(() {
-      isSuggestionTapped = true;
-      query = result;
-      searchController.text = result;
-      searchResults =
-          dictionary.where((entry) => entry['content'] == result).toList();
-      suggestedResults.clear();
-      // Fetch image and gif URLs using AssetFirebaseStorage
-      fetchAssetUrls(searchResults[0]['image'], searchResults[0]['gif']);
-    });
-  }
-
-  Future<void> fetchAssetUrls(String? imagePath, String? gifPath) async {
-    imageUrl = await assetFirebaseStorage.getAsset(imagePath);
-    gifUrl = await assetFirebaseStorage.getAsset(gifPath);
-    setState(() {
-      // Once the URLs are fetched, trigger a rebuild of the widget.
-    });
-  }
-
-  @override
-  void dispose() {
-    searchController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                TextField(
-                  controller: searchController,
-                  onChanged: search,
-                  decoration: InputDecoration(
-                    hintText: 'Search something....',
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.deepPurpleAccent,
-                    ),
-                    suffixIcon: isSearching
-                        ? IconButton(
-                            icon: const Icon(
-                              Icons.clear,
-                              color: Colors.redAccent,
-                            ),
-                            onPressed: clearSearch,
-                          )
-                        : null,
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.deepPurpleAccent,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (suggestedResults.isNotEmpty)
-                  Expanded(
-                    child: ListView(
-                      children: suggestedResults.map((result) {
-                        return GestureDetector(
-                          onTap: () => selectSuggestedResult(result),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 60),
-                            child: Container(
-                              padding: const EdgeInsets.all(3),
-                              child: Text(
-                                result,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                if (isSuggestionTapped && searchResults.isNotEmpty) 
-                Column(
-                  children: [
-                    if (searchResults[0]['type'] == 'letter')
-                      _buildImageContainer(imageUrl),
-                    if (searchResults[0]['type'] == 'word' || searchResults[0]['type'] == 'phrases')
-                      _buildImageContainer(gifUrl),
-                    const SizedBox(height: 10),
-                    Text(
-                      searchResults[0]['content'],
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Visibility(
-                  visible: !isSearching,
-                  child: Image.asset(
-                    'assets/dictionary/search.png',
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-                if (termNotFound && !isSuggestionTapped)
-                  Column(
-                    children: [
-                      Text(
-                        '"$query"',
-                        style: const TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Text(
-                        'was not found',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ],
-                  ),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-Widget _buildImageContainer(String? url) {
-  return url != null
-      ? Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.grey,
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-          ),
-          child: ClipRRect(
-            child: Image.network(
-              url,
-              height: 190,
-              width: 300,
-            ),
-          ),
-        )
-      : Container(
-          // Loading indicator
-          alignment: Alignment.center,
-          child: CircularProgressIndicator(),
-        );
-}
 
 
-
-class StudyScreen extends StatelessWidget {
-  const StudyScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-                'assets/bg-signbuddy.png'), // Replace with your background image path
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: const Center(
-          child: Text(
-            'Study Screen',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-                'assets/bg-signbuddy.png'), // Replace with your background image path
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: const Center(
-          child: Text(
-            'Settings Screen',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
-    );
-  }
-}

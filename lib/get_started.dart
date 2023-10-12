@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:sign_buddy/actors.dart';
 import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
