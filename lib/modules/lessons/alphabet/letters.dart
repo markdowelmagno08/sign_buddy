@@ -72,12 +72,13 @@ class _LettersState extends State<Letters> {
         unlockedLessons.add(lessonData['isUnlocked'] as bool);
         letterProgress.add(lessonData['progress'] as int);
       }
-
-      setState(() {
-        letterLessonNames = letterNames;
-        unlockedLetterLessons = unlockedLessons;
-        letterLessonProgress = letterProgress;
-      });
+      if (mounted) {
+        setState(() {
+          letterLessonNames = letterNames;
+          unlockedLetterLessons = unlockedLessons;
+          letterLessonProgress = letterProgress;
+        });
+      }
 
 
 
@@ -90,9 +91,12 @@ class _LettersState extends State<Letters> {
   void initState() {
     getLanguage().then((_) {
       letterLessons();
-      setState(() {
-        isLoading = false;
-      });
+
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     });
     super.initState();
 
@@ -125,7 +129,7 @@ class _LettersState extends State<Letters> {
                   )),
             ],
           ),
-          content: Text('You need to unlock the other lessons first',
+          content: Text(isEnglish ? 'You need to unlock the other lessons first' : 'Kailangan mo munang i-unlock ang iba pang mga aralin',
               style: TextStyle(
                 fontFamily: 'FiraSans',
                 fontWeight: FontWeight.normal,
@@ -179,9 +183,9 @@ class _LettersState extends State<Letters> {
                           },
                         ),
                       ),
-                      const Visibility(
+                       Visibility(
                         child: Text(
-                          'Learn Alphabets',
+                          isEnglish ? 'Learn Alphabets' : 'Matuto ng Alpabeto',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -243,7 +247,7 @@ class _LettersState extends State<Letters> {
                                         ),
                                       ),
                                       Text(
-                                        'Learn the sign for $lessonName',
+                                        isEnglish ? 'Learn the sign for $lessonName' : 'Senyas para sa $lessonName',
                                         style: TextStyle(
                                           color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
                                           fontFamily: 'FiraSans',

@@ -27,7 +27,7 @@ class _FindSignState extends State<FindSign> {
 
   
 
-  
+  // Firestore Collections
   final CollectionReference lettersCollection =
       FirebaseFirestore.instance.collection('dictionary/en/letters');
   final CollectionReference wordsCollection =
@@ -42,6 +42,7 @@ class _FindSignState extends State<FindSign> {
     getLanguage();
   }
 
+ // Load dictionary data from Firestore
   Future<void> loadDictionaryData() async {
     final letterData = await lettersCollection.get();
     final wordData = await wordsCollection.get();
@@ -49,12 +50,11 @@ class _FindSignState extends State<FindSign> {
 
     final loadedDictionary = combineData(letterData, wordData, phraseData);
 
-    if(mounted) {
+    if (mounted) {
       setState(() {
-      dictionary = loadedDictionary;
-    });
+        dictionary = loadedDictionary;
+      });
     }
-    
   }
 
   Future<void> getLanguage() async {
@@ -67,7 +67,9 @@ class _FindSignState extends State<FindSign> {
   }
 
 
-  List<Map<String, dynamic>> combineData(QuerySnapshot letterData, QuerySnapshot wordData, QuerySnapshot phraseData) {
+  // Combine data from different Firestore collections into a single dictionary
+  List<Map<String, dynamic>> combineData(
+      QuerySnapshot letterData, QuerySnapshot wordData, QuerySnapshot phraseData) {
     final List<Map<String, dynamic>> combinedData = [];
 
     for (var doc in letterData.docs) {

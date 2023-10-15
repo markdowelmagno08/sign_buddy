@@ -41,8 +41,9 @@ class _QuizThreeState extends State<QuizThree> {
     super.initState();
     getLanguage().then((value) {
       getContent5DataByName(widget.lessonName);
+      getProgress(widget.lessonName);
     });
-    getProgress(widget.lessonName);
+    
     
   }
   Future<void> getLanguage() async {
@@ -77,7 +78,7 @@ class _QuizThreeState extends State<QuizThree> {
 
       } else {
         print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
@@ -123,7 +124,7 @@ class _QuizThreeState extends State<QuizThree> {
           });
         } else {
           print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
@@ -148,10 +149,21 @@ class _QuizThreeState extends State<QuizThree> {
       answerChecked = true;
     });
 
-    IconData icon = isAnswerCorrect
-        ? FontAwesomeIcons.solidCheckCircle
-        : FontAwesomeIcons.solidTimesCircle;
-    String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
+    IconData icon;
+    String resultMessage;
+
+    if (isEnglish) {
+      icon = isAnswerCorrect
+          ? FontAwesomeIcons.solidCircleCheck
+          : FontAwesomeIcons.solidCircleXmark;
+      resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
+    } else {
+      // Use Filipino language icons and messages
+      icon = isAnswerCorrect
+          ? FontAwesomeIcons.solidCircleCheck
+          : FontAwesomeIcons.solidCircleXmark;
+      resultMessage = isAnswerCorrect ? 'Tama' : 'Mali'; // Adjust these translations as needed
+    }
 
     if (isAnswerCorrect) {
       if (progress < 79) {
@@ -179,7 +191,7 @@ class _QuizThreeState extends State<QuizThree> {
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -222,7 +234,7 @@ class _QuizThreeState extends State<QuizThree> {
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+             label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Color(0xFF5BD8FF),
               onPressed: () {
@@ -336,7 +348,7 @@ class _QuizThreeState extends State<QuizThree> {
                                 ),
                                 SizedBox(width: 8),
                                 Text(
-                                  'Check',
+                                   isEnglish ? 'Check' : 'Tsek',
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: selectedOption.isNotEmpty

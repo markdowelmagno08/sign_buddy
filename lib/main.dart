@@ -9,6 +9,7 @@ import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/classify_as.dart';
 import 'package:sign_buddy/get_started.dart';
 import 'package:sign_buddy/modules/find_sign.dart';
+import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
@@ -96,6 +97,7 @@ class MyApp extends StatelessWidget {
         '/greeting': (context) => Greetings(),
         '/alphabet': (context) => AlphabetScreen(),
         '/findSign': (context) => FindSign(),
+        '/fingerSpell': (context) => FingerSpelling(),
         
       },
     );

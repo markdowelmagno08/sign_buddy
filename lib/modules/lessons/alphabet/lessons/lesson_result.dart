@@ -31,7 +31,6 @@ class _ResultState extends State<Result> {
           .unlockLesson(widget.lessonName, isEnglish ? "en" : "ph");
     }
     });
-    getProgress(widget.lessonName);
   }
 
 
@@ -101,11 +100,11 @@ class _ResultState extends State<Result> {
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 20),
-                  const Text.rich(
+                   Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Congratulations!',
+                          text: isEnglish ? 'Congratulations!' : 'Pagbati',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -114,7 +113,7 @@ class _ResultState extends State<Result> {
                         ),
                         TextSpan(text: '\n'),
                         TextSpan(
-                          text: ' You have completed the lesson!',
+                          text: isEnglish ? 'You have completed the lesson' : 'Natapos mo na ang aralin!',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
@@ -148,7 +147,7 @@ class _ResultState extends State<Result> {
                                   ),
                                   SizedBox(width: 5),
                                   Text(
-                                    'Reset Progress?',
+                                    isEnglish ? 'Reset Progress?' : 'I-reset ang Progres?',
                                     style: TextStyle(
                                       fontFamily: 'FiraSans',
                                       fontWeight: FontWeight.bold,
@@ -156,7 +155,7 @@ class _ResultState extends State<Result> {
                                   ),
                                 ],
                               ),
-                              content: Text('Are you sure you want to reset your progress for this lesson?',
+                              content: Text(isEnglish ? 'Are you sure you want to reset your progress for this lesson?' : 'Sigurado ka bang gusto mong i-reset ang iyong progress para sa araling ito?',
                               style: TextStyle(fontFamily: 'FiraSans')),
                               actions: <Widget>[
                                 ElevatedButton(
@@ -206,7 +205,7 @@ class _ResultState extends State<Result> {
                             color: Color(0xFF5BD8FF),
                           ),
                           Text(
-                            'Reset Progress',
+                            isEnglish ? 'Reset Progress' : 'I-reset ang Progres',
                             style: TextStyle(
                               color: Colors.grey.shade700,
                             ),
@@ -235,7 +234,7 @@ class _ResultState extends State<Result> {
                             color: Color(0xFF5BD8FF),
                           ),
                           Text(
-                            'Next Lesson',
+                            isEnglish ? 'Next Lesson' : 'Susunod na Aralin',
                             style: TextStyle(
                               color: Colors.grey.shade700,
                             ),

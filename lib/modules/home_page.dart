@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sign_buddy/modules/find_sign.dart';
+import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     const LessonsScreen(),
     AlphabetScreen(),
     FindSign(),
+    FingerSpelling()
   ];
 
   @override
@@ -202,6 +204,10 @@ class _HomePageState extends State<HomePage> {
             } else if (index == 2) {
               // Navigate to FindSign
               Navigator.pushNamed(context, '/findSign');
+            }
+            else if (index == 3) {
+              // Navigate to FindSign
+              Navigator.pushNamed(context, '/fingerSpell');
             } else {
               // Change the current screen if it's not Alphabet or Find Sign
               setState(() {
@@ -222,6 +228,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Find Sign',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.spellcheck),
+            label: 'Finger Spell',
           ),
           
         ],

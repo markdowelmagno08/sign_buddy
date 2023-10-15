@@ -183,6 +183,8 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                 break;
               case 'Filipino':
               setLanguage(false);
+               UserFirestore(userId: userId).initializeLessons("letters", "ph");
+
               print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Actors()));
                 break;

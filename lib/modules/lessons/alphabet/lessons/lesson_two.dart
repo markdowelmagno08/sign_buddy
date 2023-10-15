@@ -35,8 +35,9 @@ class _LessonTwoState extends State<LessonTwo> {
     super.initState();
     getLanguage().then((value) {
       getContent2DataByName(widget.lessonName);
+      getProgress(widget.lessonName);
     });
-    getProgress(widget.lessonName);
+    
     
     
    
@@ -70,7 +71,7 @@ class _LessonTwoState extends State<LessonTwo> {
 
       } else {
         print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
@@ -109,7 +110,7 @@ class _LessonTwoState extends State<LessonTwo> {
           });
         } else {
           print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
@@ -223,7 +224,7 @@ class _LessonTwoState extends State<LessonTwo> {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            'Next',
+                            isEnglish ? 'Next' : 'Susunod',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey.shade700,

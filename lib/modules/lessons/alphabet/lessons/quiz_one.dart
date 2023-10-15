@@ -38,8 +38,9 @@ class _QuizOneState extends State<QuizOne> {
     super.initState();
     getLanguage().then((value) {
       getContent3DataByName(widget.lessonName);
+       getProgress(widget.lessonName);
     });
-    getProgress(widget.lessonName);
+   
    
 
   }
@@ -59,7 +60,7 @@ class _QuizOneState extends State<QuizOne> {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData =
       await LetterLessonFireStore(userId: userId!)
-            .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
+            .getUserLessonData(lessonName, isEnglish ? 'en' : 'ph');
 
       // ignore: unnecessary_null_comparison
       if (lessonData != null) {
@@ -73,7 +74,7 @@ class _QuizOneState extends State<QuizOne> {
 
       } else {
         print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
@@ -117,7 +118,7 @@ class _QuizOneState extends State<QuizOne> {
           });
         } else {
           print(
-            'Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
@@ -143,10 +144,21 @@ class _QuizOneState extends State<QuizOne> {
     answerChecked = true;
   });
 
-  IconData icon = isAnswerCorrect
-      ? FontAwesomeIcons.solidCheckCircle
-      : FontAwesomeIcons.solidTimesCircle;
-  String resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
+  IconData icon;
+  String resultMessage;
+
+  if (isEnglish) {
+    icon = isAnswerCorrect
+        ? FontAwesomeIcons.solidCircleCheck
+        : FontAwesomeIcons.solidCircleXmark;
+    resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
+  } else {
+    // Use Filipino language icons and messages
+    icon = isAnswerCorrect
+        ? FontAwesomeIcons.solidCircleCheck
+        : FontAwesomeIcons.solidCircleXmark;
+    resultMessage = isAnswerCorrect ? 'Tama' : 'Mali'; // Adjust these translations as needed
+  }
 
   if (isAnswerCorrect) {
     if (progress < 47) {
@@ -178,7 +190,7 @@ class _QuizOneState extends State<QuizOne> {
     Color fontColor;
     TextStyle textStyle;
 
-    if (message == 'Correct') {
+    if (message == 'Correct' || message == 'Tama') {
       backgroundColor = Colors.green.shade100;
       fontColor = Colors.green;
       textStyle = TextStyle(
@@ -221,7 +233,7 @@ class _QuizOneState extends State<QuizOne> {
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: 'Next',
+              label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Color(0xFF5BD8FF),
               onPressed: () {
@@ -332,7 +344,7 @@ class _QuizOneState extends State<QuizOne> {
                               ),
                               SizedBox(width: 8),
                               Text(
-                                'Check',
+                                isEnglish ? 'Check' : 'Tsek',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: selectedOption.isNotEmpty
