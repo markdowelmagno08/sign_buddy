@@ -48,7 +48,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
   void translateTextToASL() {
     groupASL.clear();
     hasSignImages = false; // Reset the flag
-    final words = inputText.split(' ');
+    final words = inputText.split(RegExp(r'\s+'));
     for (var word in words) {
       List<Widget> wordSign = [];
       for (int i = 0; i < word.length; i++) {
@@ -168,6 +168,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                     ),
                   ),
                 ),
+                maxLength: 50,
               ),
               SizedBox(height: 20),
               ElevatedButton(

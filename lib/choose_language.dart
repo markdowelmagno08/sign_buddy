@@ -8,6 +8,7 @@ import 'package:sign_buddy/firestore_user.dart';
 
 import 'package:sign_buddy/get_started.dart';
 import 'package:sign_buddy/locale.dart';
+import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
@@ -34,123 +35,127 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-                'assets/bg-signbuddy.png'), // Replace with your background image path
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(top: 50, left: 16),
-              child: CustomBackButton(
-                onPressed: () {
-                  Navigator.push(context, SlidePageRoute(page: GetStartedPage()));
-                },
-              ),
+    return loading
+        ? Loading(text: 'Loading . . . ')
+        : Scaffold(
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                  'assets/bg-signbuddy.png'), // Replace with your background image path
+              fit: BoxFit.cover,
             ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(20, 100, 20, 2),
-              child: Text(
-                'What language would you like to learn?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                padding: EdgeInsets.only(top: 50, left: 16),
+                child: CustomBackButton(
+                  onPressed: () {
+                    Navigator.push(context, SlidePageRoute(page: GetStartedPage()));
+                  },
                 ),
               ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            SizedBox(
-              height: 300,
-              child: ListView.builder(
-                itemCount: languages.length,
-                itemBuilder: (context, index) {
-                  final language = languages[index];
-                  final isSelected = selectedLanguage == language['name']; // Check if this language is selected
-            
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 2.0, horizontal: 30.0),
-                    child: Card(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: isSelected ? Colors.deepPurpleAccent : Colors.black, // Set border color based on isSelected
-                            width: 1.0,
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 100, 20, 2),
+                child: Text(
+                  'What language would you like to learn?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: languages.length,
+                  itemBuilder: (context, index) {
+                    final language = languages[index];
+                    final isSelected = selectedLanguage == language['name']; // Check if this language is selected
+              
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 2.0, horizontal: 30.0),
+                      child: Card(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isSelected ? Colors.deepPurpleAccent : Colors.black, // Set border color based on isSelected
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: ListTile(
-                          onTap: () {
-                            setState(() {
-                              selectedLanguage = language['name'];
-                            });
-                          },
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 15.0),
-                          leading: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 1.0,
+                          child: ListTile(
+                            onTap: () {
+                              setState(() {
+                                selectedLanguage = language['name'];
+                              });
+                            },
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 5.0, horizontal: 15.0),
+                            leading: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 1.0,
+                                ),
+                              ),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage:
+                                    AssetImage('assets/${language['flag']}'),
                               ),
                             ),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              backgroundImage:
-                                  AssetImage('assets/${language['flag']}'),
+                            title: Text(
+                              language['name'],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium,
                             ),
-                          ),
-                          title: Text(
-                            language['name'],
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium,
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30),
-                child: SizedBox(
-                  width: 120,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: selectedLanguage != null
-                        ? () => _navigateToActors(context, selectedLanguage!)
-                        : null,
-                    style: ButtonStyle(
-                      backgroundColor: selectedLanguage != null
-                          ? MaterialStateProperty.all<Color>(const Color(0xFF5BD8FF))
-                          : MaterialStateProperty.all<Color>(const Color(0xFFD3D3D3)),
-                    ),
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(
-                        color: Colors.grey[700],
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: SizedBox(
+                    width: 120,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: selectedLanguage != null
+                          ? () => _navigateToActors(context, selectedLanguage!)
+                          : null,
+                      style: ButtonStyle(
+                        backgroundColor: selectedLanguage != null
+                            ? MaterialStateProperty.all<Color>(const Color(0xFF5BD8FF))
+                            : MaterialStateProperty.all<Color>(const Color(0xFFD3D3D3)),
+                      ),
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

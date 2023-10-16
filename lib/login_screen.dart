@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:sign_buddy/forgot_pass.dart';
 import 'package:sign_buddy/front_page.dart';
+import 'package:sign_buddy/get_started.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
@@ -193,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
         Text("Don't have an account?"),
         TextButton(
           onPressed: () {
-            Navigator.push(context, SlidePageRoute(page: FrontPage()));
+            Navigator.push(context, SlidePageRoute(page: GetStartedPage()));
           },
           child: Text("Sign up"),
         ),
