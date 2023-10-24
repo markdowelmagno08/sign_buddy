@@ -95,7 +95,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       backgroundColor: const Color(0xFF5A96E3),
       appBar: AppBar(
         title: Text(
-          isEnglish ? 'Hello!' :"Kamusta!",
+          isEnglish ? 'Sign Alphabet' :"Wikang Pasenyas",
             style: TextStyle(
               color:  Colors.white,
               fontSize: 15,

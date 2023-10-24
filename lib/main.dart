@@ -8,6 +8,7 @@ import 'package:sign_buddy/modules/assessments/assess_one.dart';
 import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/classify_as.dart';
 import 'package:sign_buddy/get_started.dart';
+import 'package:sign_buddy/modules/create_sign.dart';
 import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
@@ -22,6 +23,7 @@ import 'package:sign_buddy/modules/lessons/time-and-days.dart';
 import 'package:sign_buddy/modules/lessons/greeting.dart';
 
 import 'package:sign_buddy/login_screen.dart';
+import 'package:sign_buddy/modules/show_video.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
@@ -98,7 +100,8 @@ class MyApp extends StatelessWidget {
         '/alphabet': (context) => AlphabetScreen(),
         '/findSign': (context) => FindSign(),
         '/fingerSpell': (context) => FingerSpelling(),
-        
+        '/createSign': (context) => CreateSignPage(),
+        'showVid': (context) => ShowVideo(),
       },
     );
   }

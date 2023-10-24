@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import services.dart
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // Import services.dart
 
 
 class FingerSpelling extends StatefulWidget {
@@ -44,6 +45,23 @@ class _FingerSpellingState extends State<FingerSpelling> {
   List<Widget> groupASL = [];
   bool showLetters = false;
   bool hasSignImages = false; // Track if there are sign images
+  bool isEnglish = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+   
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    setState(() {
+      this.isEnglish = isEnglish;
+    });
+  }
 
   void translateTextToASL() {
     groupASL.clear();
@@ -126,7 +144,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Finger Spelling',
+          'Finger Spell',
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -154,7 +172,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                   FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')), // Allow only letters and spaces
                 ],
                 decoration: InputDecoration(
-                  labelText: 'Enter text to translate',
+                  labelText: isEnglish ? 'Enter text to translate' : 'Maglagay ng text na isasalin',
                   labelStyle: TextStyle(
                     color: Color(0xFF5A5A5A), // Change the label (hint) text color
                   ),
@@ -176,7 +194,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF5BD8FF),
                 ),
-                child: Text('Translate to ASL',
+                child: Text(isEnglish ? 'Translate to Sign Language' : 'Isalin sa Wikang Pasensyas',
                     style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
               ),
               SizedBox(height: 50),

@@ -152,19 +152,25 @@ class _FindSignState extends State<FindSign> {
   }
 
   Future<void> selectSuggestedResult(String result) async {
-  if (mounted) {  
-    setState(() {
-      isSuggestionTapped = true;
-      query = result;
-      searchController.text = result;
-      searchResults =
-          dictionary.where((entry) => entry['content'] == result).toList();
-      suggestedResults.clear();
-      // Fetch image and gif URLs using AssetFirebaseStorage
-      fetchAssetUrls(searchResults[0]['image'], searchResults[0]['gif']);
-    });
+    if (mounted) {
+      setState(() {
+        isSuggestionTapped = true; // Reset the flag to ensure fetching URLs
+        query = result;
+        searchController.text = result;
+        searchResults =
+            dictionary.where((entry) => entry['content'] == result).toList();
+        suggestedResults.clear();
+        // Clear the existing URLs
+        imageUrl = null;
+        gifUrl = null;
+        // Fetch image and gif URLs using AssetFirebaseStorage
+        fetchAssetUrls(searchResults[0]['image'], searchResults[0]['gif']);
+      });
     }
   }
+
+
+
 
   Future<void> fetchAssetUrls(String? imagePath, String? gifPath) async {
     imageUrl = await assetFirebaseStorage.getAsset(imagePath);
@@ -183,10 +189,8 @@ class _FindSignState extends State<FindSign> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5A96E3),
       appBar: AppBar(
-        title: Text(
-          isEnglish ? 'Hello!' :"Kamusta!",
+        title: Text( 'Find Sign',
             style: TextStyle(
               color:  Colors.white,
               fontSize: 15,
