@@ -3,67 +3,67 @@
     "type": "phrases",
     "content": "Excuse Me",
     "category": "Greetings",
-    "gif": "dictionary/phrases/excuse_me.gif"
+    "mp4": "dictionary/phrases/excuse_me.mp4"
   },
   { 
     "type": "phrases",
     "content": "Good Night",
     "category": "Greetings",
-    "gif": "dictionary/phrases/good_night.gif"
+    "mp4": "dictionary/phrases/good_night.mp4"
   },
   { 
     "type": "phrases",
     "content": "Good to see you",
     "category": "Greetings",
-    "gif": "dictionary/phrases/good_to_see_you.gif"
+    "mp4": "dictionary/phrases/good_to_see_you.mp4"
   },
   
   { 
     "type": "phrases",
     "content": "Have a nice day",
     "category": "Greetings",
-    "gif": "dictionary/phrases/have_a_nice_day.gif"
+    "mp4": "dictionary/phrases/have_a_nice_day.mp4"
   },
   { 
     "type": "phrases",
     "content": "Hello",
     "category": "Greetings",
-    "gif": "dictionary/phrases/hello.gif"
+    "mp4": "dictionary/phrases/hello.mp4"
   },
   { 
     "type": "phrases",
     "content": "Nice to meet you",
     "category": "Greetings",
-    "gif": "dictionary/phrases/nice_to_meet_you.gif"
+    "mp4": "dictionary/phrases/nice_to_meet_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "How are you",
     "category": "Greetings",
-    "gif": "dictionary/phrases/how_are_you.gif"
+    "mp4": "dictionary/phrases/how_are_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "See you later",
     "category": "Greetings",
-    "gif": "dictionary/phrases/see_you_later.gif"
+    "mp4": "dictionary/phrases/see_you_later.mp4"
   },
   { 
     "type": "phrases",
     "content": "Thank you",
     "category": "Greetings",
-    "gif": "dictionary/phrases/thank_you.gif"
+    "mp4": "dictionary/phrases/thank_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "What's up",
     "category": "Greetings",
-    "gif": "dictionary/phrases/whats_up.gif"
+    "mp4": "dictionary/phrases/whats_up.mp4"
   },
   { 
     "type": "phrases",
     "content": "You're Welcome",
     "category": "Greetings",
-    "gif": "dictionary/phrases/youre_welcome.gif"
+    "mp4": "dictionary/phrases/youre_welcome.mp4"
   }
 ]

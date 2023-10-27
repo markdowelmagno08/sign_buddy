@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/firebase_storage.dart';
+import 'package:cached_video_player/cached_video_player.dart'; // Import CachedVideoPlayer
 
 class CreateSignPage extends StatefulWidget {
   const CreateSignPage({Key? key}) : super(key: key);
@@ -15,12 +16,14 @@ class _CreateSignPageState extends State<CreateSignPage> {
   List<Map<String, dynamic>> dictionary = [];
   TextEditingController searchController = TextEditingController();
   String? imageUrl;
-  String? gifUrl;
+  String? mp4Url;
+  CachedVideoPlayerController? _videoController; // Use CachedVideoPlayerController
   bool isEnglish = true;
   String? content;
   int searchIndex = 0;
   String? errorMessage;
   bool loading = false; // Add a loading indicator
+    bool isSlowMotion = false;
 
   final CollectionReference lettersCollection =
       FirebaseFirestore.instance.collection('dictionary/en/letters');
@@ -78,7 +81,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
         "content": doc['content'],
         "type": "word",
         "category": doc['category'],
-        "gif": doc['gif'],
+        "mp4": doc['mp4'], // Updated to use "mp4"
       });
     }
 
@@ -87,86 +90,71 @@ class _CreateSignPageState extends State<CreateSignPage> {
         "content": doc['content'],
         "type": "phrases",
         "category": doc['category'],
-        "gif": doc['gif'],
+        "mp4": doc['mp4'], // Updated to use "mp4"
       });
     }
 
     return combinedData;
   }
 
-  Future<void> fetchAssetUrls(String? imagePath, String? gifPath) async {
+  Future<void> fetchAssetUrls(String? imagePath, String? mp4Path) async {
     imageUrl = await assetFirebaseStorage.getAsset(imagePath);
-    gifUrl = await assetFirebaseStorage.getAsset(gifPath);
-    setState(() {
-      // Once the URLs are fetched, trigger a rebuild of the widget.
-    });
+    mp4Url = await assetFirebaseStorage.getAsset(mp4Path);
+    
+
+    if (mp4Url != null) {
+      _videoController = setupVideoController(Uri.parse(mp4Url!));
+      if (mounted) {
+        setState(() {});
+      }
+    }
+    _videoController!.play();
   }
 
-  Future<void> searchDictionary(String query) async {
-    String? errorMessage;
-    final searchTerms = query.toLowerCase().split(" ");
-    List<String?> imageUrls = [];
-    List<String?> gifUrls = [];
-    String currentSearchTerm = "";
-
-    for (final term in searchTerms) {
-      if (currentSearchTerm.isNotEmpty) {
-        currentSearchTerm += " ";
+  CachedVideoPlayerController setupVideoController(Uri videoUri) {
+    final controller = CachedVideoPlayerController.network(
+      videoUri.toString(),
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    );
+    controller.initialize().then((_) {
+      if (mounted) {
+        setState(() {});
       }
-      currentSearchTerm += term;
+    });
+    return controller;
+  }
 
-      final results = dictionary.where((entry) {
-        return entry['content'].toLowerCase() == currentSearchTerm;
-      }).toList();
+  Future<void> loadAndDisplayVideo(String searchText) async {
+    setState(() {
+      loading = true;
+      errorMessage = null;
+    });
 
-      if (results.isNotEmpty) {
-        final firstResult = results.first;
-        final imagePath = firstResult['image'];
-        final gifPath = firstResult['gif'];
-
-        if (mounted) {
-          setState(() {
-            loading = true; // Show loading indicator when fetching image/gif
-          });
-        }
-
-        await fetchAssetUrls(imagePath, gifPath);
-
-        if (content == null) {
-          content = firstResult['content'];
-        }
-        errorMessage = null;
-
-        if (mounted) {
-          setState(() {
-            content = firstResult['content'];
-            errorMessage = null;
-            loading = false; // Hide loading indicator when fetch is complete
-          });
-        }
-
-        await Future.delayed(Duration(seconds: 3));
-        currentSearchTerm = "";
-      } else {
-        imageUrl = null;
-        gifUrl = null;
-        content = null;
-        errorMessage = 'Could not find "$currentSearchTerm" ';
-        if (mounted) {
-          setState(() {
-            loading = false; // Hide loading indicator when fetch is complete
-          });
-        }
-      }
-
-      imageUrls.add(imageUrl);
-      gifUrls.add(gifUrl);
+    Map<String, dynamic>? searchResult;
+    try {
+      searchResult = dictionary.firstWhere(
+        (element) =>
+            element['content'].toString().toLowerCase() ==
+            searchText.toLowerCase(),
+      );
+    } catch (e) {
+      // Handle the case where the element is not found
+      print(e);
     }
 
-    
-    if (mounted) {
+    if (searchResult != null) {
+      final imagePath = searchResult['image'];
+      final mp4Path = searchResult['mp4'];
+      await fetchAssetUrls(imagePath, mp4Path);
+
       setState(() {
-        this.errorMessage = errorMessage;
+        content = searchResult?['content'];
+        loading = false;
+      });
+    } else {
+      setState(() {
+        errorMessage = 'Sign not found';
+        loading = false;
       });
     }
   }
@@ -174,10 +162,11 @@ class _CreateSignPageState extends State<CreateSignPage> {
   @override
   void dispose() {
     searchController.dispose();
+    _videoController?.dispose();
     super.dispose();
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -190,105 +179,159 @@ class _CreateSignPageState extends State<CreateSignPage> {
           ),
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/bg-signbuddy.png'),
-            fit: BoxFit.cover,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/bg-signbuddy.png'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  hintText: isEnglish ? 'Translate something....' : 'Maghanap ng kahit ano.....',
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  controller: searchController,
+                  onChanged: (text) {
+                    // Set mp4Url to null when the text field is cleared
+                    if (text.isEmpty) {
+                      setState(() {
+                        mp4Url = null;
+                        content = null;
+                      });
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: isEnglish ? 'Translate something....' : 'Maghanap ng kahit ano.....',
+                    prefixIcon: const Icon(
+                      Icons.search,
                       color: Colors.deepPurpleAccent,
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.deepPurpleAccent,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                searchIndex = 0;
-                errorMessage = null;
-
-                final searchText = searchController.text.trim();
-                if (searchText.isNotEmpty) searchDictionary(searchText);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5BD8FF),
+              Visibility(
+                visible: mp4Url == null,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (searchController.text.isNotEmpty) {
+                      await loadAndDisplayVideo(searchController.text);
+                      FocusScope.of(context).unfocus();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF5BD8FF),
+                  ),
+                  child: Text("Translate to Sign", style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
+                ),
               ),
-              child: Text("Translate to Sign", style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 10),
-                  _imageDisplay(), // Call the _imageDisplay method
-                  if (content != null)
-                    Text(
-                      content!,
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  if (errorMessage != null)
-                    Text(
-                      errorMessage!,
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 10),
+                    _videoDisplay(),
+                    if (content != null)
+                      Text(
+                        content!,
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    if (errorMessage != null)
+                      Text(
+                        errorMessage!,
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // Method to display the image
-  Widget _imageDisplay() {
-    return loading
-        ? CircularProgressIndicator() // Show loading indicator
-        : imageUrl != null || gifUrl != null
-            ? ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
+  // Method to display the video
+  Widget _videoDisplay() {
+  if (loading) {
+    return CircularProgressIndicator();
+  } else {
+    if (mp4Url != null) {
+      return Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (_videoController != null) {
+                      _videoController!.seekTo(Duration.zero);
+                      _videoController!.play();
+                    }
+                  },
+                  child: ClipRRect(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                        color: Colors.white,
+                      ),
+                      height: 190, // Adjust the height as needed
+                      width: 300, // Adjust the width as needed
+                      child: AspectRatio(
+                        aspectRatio: _videoController!.value.aspectRatio,
+                        child: CachedVideoPlayer(_videoController!),
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
                   ),
-                  child: Column(
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      if (imageUrl != null)
-                        Image.network(
-                          imageUrl!,
-                          width: 300,
-                          height: 190,
+                      GestureDetector(
+                        onTap: () {
+                          if (isSlowMotion) {
+                            _videoController!.setPlaybackSpeed(1.0);
+                            _videoController!.play();
+                          } else {
+                            _videoController!.setPlaybackSpeed(0.5);
+                            _videoController!.play();
+                          }
+                          setState(() {
+                            isSlowMotion = !isSlowMotion;
+                          });
+                        },
+                        child: ImageIcon(
+                          AssetImage(
+                            isSlowMotion
+                                ? 'assets/rabbit.png'
+                                : 'assets/turtle.png',
+                          ),
+                          size: 40, // Adjust the size as needed
+                          color: Colors.deepPurpleAccent,
                         ),
-                      if (gifUrl != null)
-                        Image.network(
-                          gifUrl!,
-                          width: 300,
-                          height: 190,
-                        ),
+                      ),
                     ],
                   ),
                 ),
-              )
-            : SizedBox(); // Placeholder when no image or gif to display
-          }
+              ],
+            );
+    } else {
+      return Container(  
+      );
+    }
+  }
+}
+
 }

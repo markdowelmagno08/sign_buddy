@@ -10,6 +10,7 @@ import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
+import 'package:cached_video_player/cached_video_player.dart';
 
 
 class QuizFour extends StatefulWidget {
@@ -26,7 +27,9 @@ class _QuizFourState extends State<QuizFour> {
   String uid = "";
   List<dynamic> contentOption = [];
   List<dynamic> correctAnswer = [];
-  List<dynamic> contentImage = [];
+  List<dynamic> contentVideo = [];
+  CachedVideoPlayerController? _videoController;
+  bool isSlowMotion = false;
 
   String selectedOption = '';
   bool answerChecked = false;
@@ -47,10 +50,12 @@ class _QuizFourState extends State<QuizFour> {
       getContent6DataByName(widget.lessonName);
       getProgress(widget.lessonName);
     });
-    
-    
-    
-   
+  
+  }
+  @override
+  void dispose() {
+    _videoController?.dispose();
+    super.dispose();
   }
   
   Future<void> getLanguage() async {
@@ -106,7 +111,7 @@ class _QuizFourState extends State<QuizFour> {
       if(lessonData != null && lessonData.containsKey('content6')) {
         Map<String,dynamic> content6data = 
         lessonData['content6'] as Map<String, dynamic>; 
-        Iterable<dynamic> _contentImage = content6data['contentImage'];
+        Iterable<dynamic> _contentVideo = content6data['contentImage'];
         String description = content6data['description'] as String;
         
         Iterable<dynamic> _contentOption = content6data['contentOption'];
@@ -115,17 +120,24 @@ class _QuizFourState extends State<QuizFour> {
         // Shuffle the contentOption list using the imported function
         _contentOption = shuffleIterable(_contentOption);
 
-        _contentImage = await Future.wait(_contentImage.map((e) => AssetFirebaseStorage().getAsset(e)));
+        _contentVideo = await Future.wait(_contentVideo.map((e) => AssetFirebaseStorage().getAsset(e)));
 
 
         if(mounted) {
           setState(() {
             contentDescription = description;
-            contentImage = _contentImage.toList();
+            contentVideo = _contentVideo.toList();
             correctAnswer.addAll(_correctAnswer);
             contentOption.addAll(_contentOption);
             uid = userId;
             isLoading = false;
+
+            // Initialize the video player with the first video URL
+            if (contentVideo.isNotEmpty) {
+              _videoController =
+              setupVideoController(Uri.parse(contentVideo[0]));
+              _videoController!.play();
+            }
           });
         } else {
           print(
@@ -143,6 +155,19 @@ class _QuizFourState extends State<QuizFour> {
         }
       }
     }
+
+    CachedVideoPlayerController setupVideoController(Uri videoUri) {
+    final controller = CachedVideoPlayerController.network(
+      videoUri.toString(),
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    );
+    controller.initialize().then((_) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+    return controller;
+  }
 
   void _checkAnswer() async {
     // Check if the selected option is in the list of correct answers
@@ -267,9 +292,10 @@ class _QuizFourState extends State<QuizFour> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -296,20 +322,8 @@ class _QuizFourState extends State<QuizFour> {
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 10),
-            if (contentImage.isNotEmpty)
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(contentImage[0]),
-                ),
-              ),
+            if (contentVideo.isNotEmpty)
+              buildVideoDisplay(),
             Expanded(
               child: isLoading
                   ? Center(
@@ -385,6 +399,43 @@ class _QuizFourState extends State<QuizFour> {
         ),
       ),
     );
+  }
+
+  Widget buildVideoDisplay() {
+    if (_videoController != null && _videoController!.value.isInitialized) {
+      return Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              if (_videoController != null) {
+                _videoController!.seekTo(Duration.zero);
+                _videoController!.play();
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 2.0,
+                ),
+                color: Colors.white,
+              ),
+              height: 190, // Adjust the height as needed
+              width: 300, // Adjust the width as needed
+              child: AspectRatio(
+                aspectRatio: _videoController!.value.aspectRatio,
+                child: CachedVideoPlayer(_videoController!),
+              ),
+            ),
+          ),    
+        ],
+      );
+      
+    } else {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
   }
 
   Widget _buildWordOption(String option) {

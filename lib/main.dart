@@ -23,7 +23,7 @@ import 'package:sign_buddy/modules/lessons/time-and-days.dart';
 import 'package:sign_buddy/modules/lessons/greeting.dart';
 
 import 'package:sign_buddy/login_screen.dart';
-import 'package:sign_buddy/modules/show_video.dart';
+
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
         '/findSign': (context) => FindSign(),
         '/fingerSpell': (context) => FingerSpelling(),
         '/createSign': (context) => CreateSignPage(),
-        'showVid': (context) => ShowVideo(),
+
       },
     );
   }

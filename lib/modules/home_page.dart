@@ -6,7 +6,6 @@ import 'package:sign_buddy/modules/create_sign.dart';
 import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-import 'package:sign_buddy/modules/show_video.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,10 +28,9 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     const LessonsScreen(),
     AlphabetScreen(),
-    FindSign(),
+    // FindSign(),
     FingerSpelling(),
-    CreateSignPage(),
-    ShowVideo(),
+    // CreateSignPage(),
   ];
 
   @override
@@ -218,10 +216,7 @@ class _HomePageState extends State<HomePage> {
               // Navigate to FindSign
               Navigator.pushNamed(context, '/createSign');
             }
-             else if (index == 5) {
-              // Navigate to FindSign
-              Navigator.pushNamed(context, 'showVid');
-            }  else {
+              else {
               // Change the current screen if it's not Alphabet or Find Sign
               setState(() {
                 _currentIndex = index;
@@ -250,10 +245,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.create),
             label: 'Create Sign',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.video_label),
-            label: 'Show Vid',
-          ),
+          
           
         ],
       ),
