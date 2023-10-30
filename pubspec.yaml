@@ -41,6 +41,7 @@ dependencies:
   firebase_core: ^2.15.1
   firebase_storage: ^11.2.7
   cached_video_player: ^2.0.4
+  card_swiper: ^3.0.1
   
   
   

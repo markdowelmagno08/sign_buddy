@@ -134,7 +134,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
   Widget build(BuildContext context) {
     if (_user != null) {
       // User is authenticated, navigate directly to the HomePage
-      return HomePage();
+      return CreateSignPage();
     } else {
       // User is not authenticated, remain on the FrontPage
       return FrontPage();
