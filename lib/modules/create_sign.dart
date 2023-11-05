@@ -1,9 +1,9 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:cached_video_player/cached_video_player.dart';
-import 'package:card_swiper/card_swiper.dart';
 
 class CreateSignPage extends StatefulWidget {
   const CreateSignPage({Key? key}) : super(key: key);
@@ -15,16 +15,14 @@ class CreateSignPage extends StatefulWidget {
 class _CreateSignPageState extends State<CreateSignPage> {
   final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
   List<Map<String, dynamic>> dictionary = [];
-  TextEditingController searchController = TextEditingController();
-  String? mp4Url;
-  CachedVideoPlayerController? _videoController;
+  List<CachedVideoPlayerController> videoControllers = [];
   bool isEnglish = true;
-  String? content;
-  int searchIndex = 0;
-  String? errorMessage;
+  TextEditingController searchController = TextEditingController();
   bool loading = false;
-  bool isSlowMotion = false;
-  final FocusNode _textFieldFocusNode = FocusNode();
+  List<Map<String, dynamic>> searchResults = [];
+  String selectedVideoWord = ''; // Store the selected word
+  String? errorMessage;
+  
 
   final CollectionReference lettersCollection =
       FirebaseFirestore.instance.collection('dictionary/en/letters');
@@ -37,15 +35,8 @@ class _CreateSignPageState extends State<CreateSignPage> {
   void initState() {
     super.initState();
     loadDictionaryData();
+    disposeVideoControllers();
     getLanguage();
-    searchController.addListener(() {
-      if (_videoController != null && searchController.text.isNotEmpty) {
-        setState(() {
-          mp4Url = null;
-          content = null;
-        });
-      }
-    });
   }
 
   Future<void> loadDictionaryData() async {
@@ -97,15 +88,16 @@ class _CreateSignPageState extends State<CreateSignPage> {
   }
 
   Future<void> fetchAssetUrls(String? mp4Path) async {
-    mp4Url = await assetFirebaseStorage.getAsset(mp4Path);
+    final mp4Url = await assetFirebaseStorage.getAsset(mp4Path);
 
     if (mp4Url != null) {
-      _videoController = setupVideoController(Uri.parse(mp4Url!));
+      final videoController = setupVideoController(Uri.parse(mp4Url));
       if (mounted) {
-        setState(() {});
+        setState(() {
+          videoControllers.add(videoController);
+        });
       }
     }
-    _videoController!.play();
   }
 
   CachedVideoPlayerController setupVideoController(Uri videoUri) {
@@ -116,91 +108,143 @@ class _CreateSignPageState extends State<CreateSignPage> {
     controller.initialize().then((_) {
       if (mounted) {
         setState(() {
-          _videoController!.play();
+
         });
       }
     });
     return controller;
   }
 
-  Future<void> loadAndDisplayVideo(String searchText) async {
-    setState(() {
-      loading = true;
-      errorMessage = null;
-    });
-
-    Map<String, dynamic>? searchResult;
-    try {
-      searchResult = dictionary.firstWhere(
-        (element) =>
-            element['content'].toString().toLowerCase() ==
-            searchText.toLowerCase(),
-      );
-    } catch (e) {
-      print(e);
-    }
-
-    if (searchResult != null) {
-      final mp4Path = searchResult['mp4'];
-      await fetchAssetUrls(mp4Path);
-
+  Future<void> searchAndDisplayVideo(String searchText) async {
+    if(mounted) {
       setState(() {
-        content = searchResult?['content'];
-        loading = false;
-      });
-    } else {
-      setState(() {
-        errorMessage = '"${searchController.text}" sign not found';
-        loading = false;
+        disposeVideoControllers();
+        searchResults.clear();
+        loading = true;
+        errorMessage = null; // Clear the error message
       });
     }
-  }
-
-  Future<void> playVideosInSequence(List<String> words) async {
-    for (var word in words) {
-      await loadAndDisplayVideo(word);
-      // Wait for the video to finish playing
-      while (_videoController != null && _videoController!.value.isPlaying) {
-        await Future.delayed(Duration(milliseconds: 100));
+    
+    
+    final wordsToSearch = searchText.split(" ");
+    
+    for (var word in wordsToSearch) {
+      for (var item in dictionary) {
+        if (item['content'].toLowerCase() == word.toLowerCase()) {
+          searchResults.add({
+            'mp4': item['mp4'],
+            'word': item['content'],
+          });
+          break;
+        }
       }
     }
-  }
-  
 
-  Future<void> translateToSign() async {
-    FocusScope.of(context).unfocus();
-    if (searchController.text.isNotEmpty) {
-      List<String> words = searchController.text
-          .split(" ")
-          .map((word) => word.trim())
-          .toList();
-      await playVideosInSequence(words);
+    for (var result in searchResults) {
+      await fetchAssetUrls(result['mp4']);
+    }
+
+     if (videoControllers.isNotEmpty) {
+      setState(() {
+        selectedVideoWord = searchResults[0]['word']; // Set the word of the first video
+        loading = false; 
+      });
+      }else {
+      setState(() {
+        errorMessage = '"$searchText" sign not found';
+        loading = false;
+      });
     }
   }
 
+Widget _buildVideoCarousel() {
+  if (videoControllers.isNotEmpty) {
+    return Column(
+      children: <Widget>[
+        AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Swiper(
+            onIndexChanged: (int index) {
+              if (searchResults.isNotEmpty) {
+                setState(() {
+                  selectedVideoWord = searchResults[index]['word'];
+                });
+              }
+            },
+            itemBuilder: (BuildContext context, int index) {
+              if (videoControllers[index].value.isInitialized) {
+                videoControllers[index].seekTo(Duration.zero);
+                videoControllers[index].play();
+                return ClipRRect(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                      color: Colors.white,
+                    ),
+                    height: 190,
+                    width: 300,
+                    child: CachedVideoPlayer(videoControllers[index]),
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(), // Display a loading indicator
+                );
+              }
+            },
+            itemCount: videoControllers.length,
+            viewportFraction: 0.8,
+            scale: 0.9,
+            pagination: SwiperPagination(), // Add pagination dots
+            loop: false,
+          ),
+        ),
+        SizedBox(height: 5),
+        if (searchResults.isNotEmpty)
+          Text(
+            selectedVideoWord,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+      ],
+    );
+  } else if (loading) {
+    return Center(
+      child: CircularProgressIndicator(), // Display a loading indicator
+    );
+  } else {
+    return Container();
+  }
+}
+
+  void disposeVideoControllers() {
+    for (var controller in videoControllers) {
+      controller.dispose();
+    }
+    videoControllers.clear();
+  }
+  
   void clearSearch() {
-    setState(() {
+    if(mounted) {
+      setState(() {
       searchController.clear();
+      disposeVideoControllers();
+      selectedVideoWord = '';
       errorMessage = null;
-      if (_videoController != null) {
-          _videoController!.pause();
-          _videoController!.dispose();
-          _videoController = null;
-        }
-    });
+      });
+    }
   }
 
-  
 
 
   @override
   void dispose() {
     searchController.dispose();
-    _videoController?.dispose();
-    _textFieldFocusNode.dispose();
+    disposeVideoControllers();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -215,124 +259,56 @@ class _CreateSignPageState extends State<CreateSignPage> {
           ),
         ),
       ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/bg-signbuddy.png'),
-              fit: BoxFit.cover,
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: searchController,
+               onTap: clearSearch,
+              decoration: InputDecoration(
+                hintText: 'Search for words or phrases',
+                prefixIcon: const Icon(
+                  Icons.create,
+                  color: Colors.deepPurpleAccent,
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ),
             ),
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: TextField(
-                  controller: searchController,
-                  focusNode: _textFieldFocusNode, // Attach the focus node
-                  onTap: clearSearch,
-                  onChanged: (text) {
-                    if (text.isEmpty) {
-                      setState(() {
-                        mp4Url = null;
-                        content = null;     
-                      });
-                    }
-                  },
-                  decoration: InputDecoration(
-                    hintText: isEnglish
-                        ? 'Translate something....'
-                        : 'Maghanap ng kahit ano.....',
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.deepPurpleAccent,
-                    ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.deepPurpleAccent,
-                      ),
-                    ),
-                  ),
-                ),
+          Visibility(
+            visible: videoControllers.isEmpty, // Show the button when there are no videos
+            child: ElevatedButton(
+              onPressed: () {
+                searchAndDisplayVideo(searchController.text);
+                FocusScope.of(context).unfocus();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF5BD8FF),
               ),
-              Visibility(
-                visible: mp4Url == null,
-                child: ElevatedButton(
-                  onPressed: translateToSign,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5BD8FF),
-                  ),
-                  child: Text("Translate to Sign",
-                      style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 10),
-                    _videoDisplay(),
-                    if (content != null)
-                      Text(
-                        content!,
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    if (errorMessage != null)
-                      Text(
-                        errorMessage!,
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                  ],
-                ),
-              ),
-            ],
+              child: Text("Search Sign",
+                  style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
+            ),
           ),
-        ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildVideoCarousel(),
+                if (errorMessage != null)
+                Text(
+                  errorMessage!,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
-  }
-
-  Widget _videoDisplay() {
-    if (loading) {
-      return CircularProgressIndicator();
-    } else {
-      if (mp4Url != null) {
-        return Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                if (_videoController != null) {
-                  _videoController!.seekTo(Duration.zero);
-                  _videoController!.play();
-                }
-              },
-              child: ClipRRect(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 2,
-                    ),
-                    color: Colors.white,
-                  ),
-                  height: 190,
-                  width: 300,
-                  child: AspectRatio(
-                    aspectRatio: _videoController!.value.aspectRatio,
-                    child: CachedVideoPlayer(_videoController!),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-          ],
-        );
-      } else {
-        return Container();
-      }
-    }
   }
 }
