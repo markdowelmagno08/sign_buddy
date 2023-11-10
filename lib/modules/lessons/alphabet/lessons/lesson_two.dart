@@ -263,45 +263,50 @@ class _LessonTwoState extends State<LessonTwo> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () async {
-                      // Only add progress on the first navigation
-                      if (progress >= 31) {
-                        _nextPage();
-                      } else {
-                        LetterLessonFireStore(userId: uid)
-                            .incrementProgressValue(
-                                widget.lessonName, isEnglish ? "en" : "ph", 16);
-                        print("Progress 2 updated successfully!");
-                        _nextPage();
-                      }
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        Color(0xFF5BD8FF),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.arrowRight,
-                            size: 18,
-                            color: Colors.grey.shade700,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            isEnglish ? 'Next' : 'Susunod',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey.shade700,
-                            ),
-                          ),
-                        ],
-                      ),
+                  onPressed: isLoading || contentVideo.isEmpty
+                      ? null  // Disable the button if assets are still loading
+                      : () async {
+                          if (progress >= 31) {
+                            _nextPage();
+                          } else {
+                            LetterLessonFireStore(userId: uid)
+                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                            print("Progress 2 updated successfully!");
+                            _nextPage();
+                          }
+                        },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.disabled)) {
+                          return Colors.grey.shade400; // Color when disabled
+                        }
+                        return Color(0xFF5BD8FF); // Color when enabled
+                      },
                     ),
                   ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.arrowRight,
+                          size: 18,
+                          color: Colors.grey.shade700,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          isEnglish ? 'Next' : 'Susunod',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey.shade700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 ),
               ),
             ),

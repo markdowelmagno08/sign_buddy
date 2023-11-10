@@ -304,21 +304,34 @@ Widget _buildVideoCarousel() {
               ),
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildVideoCarousel(),
-                  if (errorMessage != null)
-                  Text(
-                    errorMessage!,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Visibility(
+                  visible: videoControllers.isEmpty && errorMessage == null,
+                  child: Image.asset(
+                    'assets/dictionary/sign_hello.png',
+                    width: 100,
+                    height: 100,
                   ),
-                ],
-              ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildVideoCarousel(),
+                    if (errorMessage != null)
+                      Text(
+                        errorMessage!,
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

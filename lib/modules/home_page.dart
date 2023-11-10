@@ -168,6 +168,14 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 buildListTileWithBorderAndIcon(
+                  icon: Icons.feedback,
+                  title: 'Feedback',
+                  onTap: () {
+                    // Handle settings tap
+                  },
+                ),
+                
+                buildListTileWithBorderAndIcon(
                   icon: Icons.exit_to_app,
                   title: 'Logout',
                   onTap: () async {
@@ -280,6 +288,8 @@ class _HomePageState extends State<HomePage> {
           
           
         ],
+        selectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
+        unselectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
       ),
       ),
     );
