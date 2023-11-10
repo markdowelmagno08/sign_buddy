@@ -251,7 +251,7 @@ Widget _buildVideoCarousel() {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Create Sign',
+          'Word Fusion',
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -259,55 +259,65 @@ Widget _buildVideoCarousel() {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: searchController,
-               onTap: clearSearch,
-              decoration: InputDecoration(
-                hintText: 'Search for words or phrases',
-                prefixIcon: const Icon(
-                  Icons.create,
-                  color: Colors.deepPurpleAccent,
-                ),
-                focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
+      body: Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg-signbuddy.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: searchController,
+                 onTap: clearSearch,
+                decoration: InputDecoration(
+                  hintText: 'Search for words or phrases',
+                  prefixIcon: const Icon(
+                    Icons.create,
                     color: Colors.deepPurpleAccent,
                   ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.deepPurpleAccent,
+                    ),
+                  ),
+                  
                 ),
+                maxLength: 50,
               ),
             ),
-          ),
-          Visibility(
-            visible: videoControllers.isEmpty, // Show the button when there are no videos
-            child: ElevatedButton(
-              onPressed: () {
-                searchAndDisplayVideo(searchController.text);
-                FocusScope.of(context).unfocus();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5BD8FF),
-              ),
-              child: Text("Search Sign",
-                  style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildVideoCarousel(),
-                if (errorMessage != null)
-                Text(
-                  errorMessage!,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Visibility(
+              visible: videoControllers.isEmpty, // Show the button when there are no videos
+              child: ElevatedButton(
+                onPressed: () {
+                  searchAndDisplayVideo(searchController.text);
+                  FocusScope.of(context).unfocus();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF5BD8FF),
                 ),
-              ],
+                child: Text("Search Sign",
+                    style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildVideoCarousel(),
+                  if (errorMessage != null)
+                  Text(
+                    errorMessage!,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_buddy/actors.dart';
+import 'package:sign_buddy/classify_as.dart';
 import 'package:sign_buddy/firestore_user.dart';
 
 import 'package:sign_buddy/get_started.dart';
@@ -137,7 +137,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                     height: 40,
                     child: ElevatedButton(
                       onPressed: selectedLanguage != null
-                          ? () => _navigateToActors(context, selectedLanguage!)
+                          ? () => _navigateToClassify(context, selectedLanguage!)
                           : null,
                       style: ButtonStyle(
                         backgroundColor: selectedLanguage != null
@@ -161,7 +161,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
     );
   }
 
-  void _navigateToActors(BuildContext context, String language) async {
+  void _navigateToClassify(BuildContext context, String language) async {
     try {
       await InternetConnectivityService.checkInternetOrShowDialog(
         context: context,
@@ -184,14 +184,14 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                UserFirestore(userId: userId).initializeLessons("letters", "en");
                 setLanguage(true);
                 print("language set successfully for en");
-                Navigator.push(context, SlidePageRoute(page: Actors()));
+                Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;
               case 'Filipino':
               setLanguage(false);
                UserFirestore(userId: userId).initializeLessons("letters", "ph");
 
               print("language set successfully for ph");
-                Navigator.push(context, SlidePageRoute(page: Actors()));
+                Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;
               default:
                 // Handle the case when the language is not found

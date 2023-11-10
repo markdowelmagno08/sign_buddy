@@ -38,7 +38,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
     'x': 'assets/alphabet/x.png',
     'y': 'assets/alphabet/y.png',
     'z': 'assets/alphabet/z.png',
-    // Add ASL signs for other letters here
+   
   };
 
   String inputText = '';
@@ -194,7 +194,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF5BD8FF),
                 ),
-                child: Text(isEnglish ? 'Translate to Sign Language' : 'Isalin sa Wikang Pasensyas',
+                child: Text(isEnglish ? 'Translate to Sign' : 'Isalin sa Wikang Pasensyas',
                     style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
               ),
               SizedBox(height: 50),

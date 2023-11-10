@@ -65,11 +65,12 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: const Color(0xFF5A96E3),
           title: Text(
-            isEnglish ? 'Hello!' :"Kamusta!",
+           'SignBuddy',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 15,
+              fontSize: 17,
               fontFamily: 'FiraSans',
+              fontWeight: FontWeight.bold
             ),
           ),
           actions: [
@@ -82,112 +83,143 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
     
-        drawer: Drawer(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 250,
-                child: DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF5A96E3),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(
-                              5.0), // do adjust the margin of avatar and Text "Juan Dela Cruz"
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 2.0,
+        drawer:Drawer(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/bg-signbuddy.png'),
+                fit: BoxFit.cover, // You can adjust the fit as needed
+              ),
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 250,
+                  child: DrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF5A96E3),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(
+                                5.0), // do adjust the margin of avatar and Text "Juan Dela Cruz"
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                padding: const EdgeInsets.only(left: 85),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: const CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: AssetImage(
+                                          'assets/user_man.png'), 
+                                    ),
                                   ),
                                 ),
-                                child: const CircleAvatar(
-                                  radius: 30,
-                                  backgroundImage: AssetImage(
-                                      'assets/user_man.png'), // Replace with your avatar image path
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              buildUserData() // class for fetching user
-                            ],
+                                const SizedBox(height: 10),
+                                buildUserData() // class for fetching user
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.close),
-                        color: Colors.white,
-                        onPressed: () {
-                          setState(() {
-                            _scaffoldKey.currentState?.openEndDrawer();
-                          });
-                        },
-                      ),
-                    ],
+                        IconButton(
+                          icon: const Icon(Icons.close),
+                          color: Colors.white,
+                          onPressed: () {
+                            setState(() {
+                              _scaffoldKey.currentState?.openEndDrawer();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.person),
-                title: const Text('Profile'),
-                onTap: () {
-                  // Handle profile tap
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.info),
-                title: const Text('About'),
-                onTap: () {
-                  // Handle about tap
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.exit_to_app),
-                title: const Text('Logout'),
-                onTap: () async {
-                  bool confirmLogout = await showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      content:  Text(isEnglish ? 'Are you sure you want to logout?': 'Sigurado ka bang nais mong mag-logout?',
+                // ListTile with border and ">" icon
+                buildListTileWithBorderAndIcon(
+                  icon: Icons.person,
+                  title: 'Profile',
+                  onTap: () {
+                    // Handle profile tap
+                  },
+                ),
+                buildListTileWithBorderAndIcon(
+                  icon: Icons.info,
+                  title: 'About',
+                  onTap: () {
+                    // Handle about tap
+                  },
+                ),
+                buildListTileWithBorderAndIcon(
+                  icon: Icons.settings,
+                  title: 'Settings',
+                  onTap: () {
+                    // Handle settings tap
+                  },
+                ),
+                buildListTileWithBorderAndIcon(
+                  icon: Icons.exit_to_app,
+                  title: 'Logout',
+                  onTap: () async {
+                    bool confirmLogout = await showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        content: Text(isEnglish ? 'Are you sure you want to logout?' : 'Sigurado ka bang nais mong mag-logout?',
                           style: TextStyle(
                             fontFamily: 'FiraSans',
                             fontWeight: FontWeight.w300,
                           )),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, false),
-                          child:  Text(isEnglish ? 'CANCEL': 'KANSEL',
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, false),
+                            child: Text(isEnglish ? 'CANCEL' : 'KANSEL',
                               style: TextStyle(
                                 color: Colors.black,
                               )),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, true),
-                          child: const Text('LOGOUT',
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, true),
+                            child: const Text('LOGOUT',
                               style: TextStyle(
                                 color: Colors.red,
                               )),
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
+                    );
+
+                    if (confirmLogout == true) {
+                      await FirebaseAuth.instance.signOut();
+                      // ignore: use_build_context_synchronously
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (route) => false);
+                    }
+                  },
+                ),
+                // Footer with version number
+                Spacer(), // Ensures the footer is centered vertically
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10), // Adjust the bottom padding
+                  child: Text(
+                    'Version 1.0.0',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
                     ),
-                  );
-    
-                  if (confirmLogout == true) {
-                    await FirebaseAuth.instance.signOut();
-                    // ignore: use_build_context_synchronously
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/', (route) => false);
-                  }
-                },
-              ),
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         body: _screens[_currentIndex],
@@ -243,26 +275,42 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.create),
-            label: 'Create Sign',
+            label: 'Word Fusion',
           ),
           
           
         ],
       ),
-        // floatingActionButton: _currentIndex == 0
-        //     ? FloatingActionButton.extended(
-        //         onPressed: () {
-    
-        //         },
-        //         icon: const Icon(Icons.play_arrow),
-        //         label: const Text('Start'),
-        //         backgroundColor: Colors.deepPurpleAccent[700],
-        //       )
-        //     : null,
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
+}
+
+Widget buildListTileWithBorderAndIcon({
+  required IconData icon,
+  required String title,
+  required VoidCallback onTap,
+}) {
+  return Container(
+    child: Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: const BorderSide(
+            color: Colors.black,
+            width: 1.0,
+          ),
+        ),
+        child: ListTile(
+          leading: Icon(icon),
+          title: Text(title),
+          trailing: Icon(Icons.chevron_right), // ">" icon
+          onTap: onTap,
+        ),
+      ),
+    ),
+  );
 }
 
 Widget buildUserData() {
@@ -326,12 +374,15 @@ Widget buildUserData() {
         return name[0].toUpperCase() + name.substring(1);
       }
 
-      return Text(
-        '${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}',
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-          fontFamily: 'FiraSans',
+      return Padding(
+        padding: const EdgeInsets.only(left: 85),
+        child: Text(
+          '${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontFamily: 'FiraSans',
+          ),
         ),
       );
     },

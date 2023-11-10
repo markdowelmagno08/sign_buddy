@@ -312,8 +312,8 @@ class CustomInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    // Allow only alphabetic characters and disallow spaces
-    final RegExp regExp = RegExp(r'^[a-zA-Z]*$');
+    // Allow only alphabetic characters and a single space
+    final RegExp regExp = RegExp(r'^[a-zA-Z ]*$');
     if (regExp.hasMatch(newValue.text)) {
       return newValue;
     }
