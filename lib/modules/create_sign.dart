@@ -165,28 +165,34 @@ Widget _buildVideoCarousel() {
           aspectRatio: 16 / 9,
           child: Swiper(
             onIndexChanged: (int index) {
-              if (searchResults.isNotEmpty) {
+              if (searchResults.isNotEmpty && videoControllers[index].value.isInitialized) {
                 setState(() {
                   selectedVideoWord = searchResults[index]['word'];
+                  videoControllers[index].seekTo(Duration.zero);
+                  videoControllers[index].play();
                 });
               }
             },
             itemBuilder: (BuildContext context, int index) {
               if (videoControllers[index].value.isInitialized) {
-                videoControllers[index].seekTo(Duration.zero);
-                videoControllers[index].play();
-                return ClipRRect(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 2,
+                return GestureDetector(
+                  onTap: () {
+                    videoControllers[index].seekTo(Duration.zero);
+                    videoControllers[index].play();
+                  },
+                  child: ClipRRect(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                        color: Colors.white,
                       ),
-                      color: Colors.white,
+                      height: 190,
+                      width: 300,
+                      child: CachedVideoPlayer(videoControllers[index]),
                     ),
-                    height: 190,
-                    width: 300,
-                    child: CachedVideoPlayer(videoControllers[index]),
                   ),
                 );
               } else {
