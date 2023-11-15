@@ -1,0 +1,241 @@
+[
+  
+  {
+    "type": "word",
+    "content": "Ahas",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/ahas.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Aso",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/aso.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Baboy",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/baboy.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Baka",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/baka.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Bibe",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/bibe.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ibon",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/ibon.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Kabayo",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/kabayo.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Kuneho",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/kuneho.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Leon",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/leon.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Manok",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/manok.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Oso",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/os.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Pusa",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/pusa.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Zebra",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/zebra.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ampon",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/ampon.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Apo",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/apo.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ate",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/ate.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Bata",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/bata.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Buntis",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/buntis.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Family",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/family.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Kasal",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/kasal.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Kinupkop",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/kinupkop.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Kuya",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/kuya.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Lola",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/lola.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Lolo",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/lolo.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Magulang",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/magulang.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Mama",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/mama.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ninang",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/ninang.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ninong",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/ninong.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Papa",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/papa.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Pinsan",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/pinsan.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Sanggol",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/sanggol.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Stepbrother",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/stepbrother.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Stepsister",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/stepsister.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Teenager",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/teenager.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Tita",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/tita.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Tito",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/tito.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Condolences",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/condolences.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Congrats",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/congrats.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Paalam",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/paalam.mp4"
+  }
+
+
+
+
+]

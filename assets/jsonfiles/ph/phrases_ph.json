@@ -1,0 +1,109 @@
+[
+  { 
+    "type": "phrases",
+    "content": "Anak na Babae",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/anak_na_babae.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Anak na Lalaki",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/anak_na_lalaki.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Asawang Babae",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/asawang_babae.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Asawang Lalaki",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/asawang_lalaki.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Pamangkin na Lalaki",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/pamangkin_na_lalaki.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Pamangkin na Babae",
+    "category": "Pamilya",
+    "mp4": "dictionary/ph/family/pamangkin_na_babae.mp4"
+  },
+
+
+  {
+    "type": "phrases",
+    "content": "Goodluck",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/goodluck.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Happy Birthday",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/happy_birthday.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Ingat Ka",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/ingat_ka.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Magandang Hapon",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/magandang_hapon.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Magandang Gabi",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/magandang_gabi.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Magandang Umaga",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/magandang_umaga.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Mahal Kita",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/mahal_kita.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Mahalaga Ka",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/mahalaga_ka.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Maraming Salamat",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/maraming_salamat.mp4"
+  },
+  {
+    "type": "phrases",
+    "content": "Pasensya na",
+    "category": "Pagbati",
+    "mp4": "dictionary/ph/phrases/pasensya_na.mp4"
+  },
+
+  {
+    "type": "phrases",
+    "content": "Mga Hayop",
+    "category": "Hayop",
+    "mp4": "dictionary/ph/animals/mga_hayop.mp4"
+  }
+
+  
+]

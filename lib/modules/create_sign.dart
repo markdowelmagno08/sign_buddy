@@ -12,6 +12,17 @@ class CreateSignPage extends StatefulWidget {
   _CreateSignPageState createState() => _CreateSignPageState();
 }
 
+class FirestoreCollections {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+  CollectionReference get wordsCollection =>
+      _firestore.collection('dictionary/en/words');
+
+  CollectionReference get phrasesCollection =>
+      _firestore.collection('dictionary/en/phrases');
+}
+
 class _CreateSignPageState extends State<CreateSignPage> {
   final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
   List<Map<String, dynamic>> dictionary = [];
@@ -22,14 +33,11 @@ class _CreateSignPageState extends State<CreateSignPage> {
   List<Map<String, dynamic>> searchResults = [];
   String selectedVideoWord = ''; // Store the selected word
   String? errorMessage;
+
+  final FirestoreCollections firestoreCollections = FirestoreCollections();
   
 
-  final CollectionReference lettersCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/letters');
-  final CollectionReference wordsCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/words');
-  final CollectionReference phrasesCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/phrases');
+
 
   @override
   void initState() {
@@ -40,8 +48,8 @@ class _CreateSignPageState extends State<CreateSignPage> {
   }
 
   Future<void> loadDictionaryData() async {
-    final wordData = await wordsCollection.get();
-    final phraseData = await phrasesCollection.get();
+    final wordData = await firestoreCollections.wordsCollection.get();
+    final phraseData = await firestoreCollections.phrasesCollection.get();
     final loadedDictionary = combineData(wordData, phraseData);
 
     if (mounted) {
@@ -151,7 +159,9 @@ class _CreateSignPageState extends State<CreateSignPage> {
       });
       }else {
       setState(() {
-        errorMessage = '"$searchText" sign not found';
+         errorMessage = isEnglish
+            ? '"$searchText" sign not found'
+            : '"$searchText" pansenyas ay hindi natagpuan';
         loading = false;
       });
     }
@@ -253,91 +263,108 @@ Widget _buildVideoCarousel() {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Word Fusion',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-            fontFamily: 'FiraSans',
-          ),
-        ),
-      ),
-      body: Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/bg-signbuddy.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: searchController,
-                 onTap: clearSearch,
-                decoration: InputDecoration(
-                  hintText: 'Search for words or phrases',
-                  prefixIcon: const Icon(
-                    Icons.create,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.deepPurpleAccent,
-                    ),
-                  ),
-                  
-                ),
-                maxLength: 50,
-              ),
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/bg-signbuddy.png'),
+              fit: BoxFit.cover,
             ),
-            Visibility(
-              visible: videoControllers.isEmpty, // Show the button when there are no videos
-              child: ElevatedButton(
-                onPressed: () {
-                  searchAndDisplayVideo(searchController.text);
-                  FocusScope.of(context).unfocus();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF5BD8FF),
+          ),
+        ),
+        Column(
+          children: [
+            AppBar(
+              backgroundColor: const Color(0xFF5A96E3),
+              title: Text(
+                'Word Fusion',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontFamily: 'FiraSans',
                 ),
-                child: Text("Search Sign",
-                    style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
+              ),
+              shape: ContinuousRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(60),
+                  bottomRight: Radius.circular(60),
+                ),
               ),
             ),
             Expanded(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Visibility(
-                  visible: videoControllers.isEmpty && errorMessage == null,
-                  child: Image.asset(
-                    'assets/dictionary/sign_hello.png',
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
                   children: [
-                    _buildVideoCarousel(),
-                    if (errorMessage != null)
-                      Text(
-                        errorMessage!,
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    TextField(
+                      controller: searchController,
+                      onTap: clearSearch,
+                      decoration: InputDecoration(
+                        hintText: isEnglish ? 'Search for words or phrases' : 'Hanapin ang mga salita o parirala.',
+                        prefixIcon: const Icon(
+                          Icons.create,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.deepPurpleAccent,
+                          ),
+                        ),
                       ),
+                      maxLength: 50,
+                    ),
+                    Visibility(
+                      visible: videoControllers.isEmpty, // Show the button when there are no videos
+                      child: ElevatedButton(
+                        onPressed: () {
+                          searchAndDisplayVideo(searchController.text);
+                          FocusScope.of(context).unfocus();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF5BD8FF),
+                        ),
+                        child: Text(isEnglish ? "Search Sign" : "Hanapin ang Sign",
+                            style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans')),
+                      ),
+                    ),
+                    Expanded(
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Visibility(
+                            visible: videoControllers.isEmpty && errorMessage == null,
+                            child: Image.asset(
+                              'assets/dictionary/sign_hello.png',
+                              width: 100,
+                              height: 100,
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _buildVideoCarousel(),
+                              if (errorMessage != null)
+                                Text(
+                                  errorMessage!,
+                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ],
     ),
   );
 }
+
 }

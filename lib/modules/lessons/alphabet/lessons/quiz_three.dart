@@ -290,12 +290,23 @@ class _QuizThreeState extends State<QuizThree> {
                 },
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 30),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Lesson quiz for: "${widget.lessonName}"', 
+                style: TextStyle(
+                  fontSize: 20, // Adjust the font size as needed
+                  fontWeight: FontWeight.bold, // Optionally make it bold
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             if (contentImage.isNotEmpty)
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),

@@ -27,17 +27,17 @@ class _AssessmentThreeState extends State<AssessmentThree> {
 
    final List<String> enOptions = [
     'assets/dictionary/family/grandmother.gif',
-    'assets/dictionary/family/friend.gif',
+    'assets/dictionary/family/ate.gif',
   ];
 
     final List<String> phOptions = [
       'assets/dictionary/family/lola.gif',
-      'assets/dictionary/family/kaibigan.gif',
+      'assets/dictionary/family/ate.gif',
     ];
 
     final List<Map<String, dynamic>> assessmentQuestions = [
       {
-        'question': 'Which is the correct sign for "Friend"?',
+        'question': 'Which is the correct sign for "Sister"?',
         'options': [], // To be populated based on the language
         'correctAnswerIndex': 1,
       },
@@ -200,7 +200,7 @@ class _AssessmentThreeState extends State<AssessmentThree> {
               Text(
                 isEnglish
                 ? "Assessment 3: ${question}"
-                : "Pagsusuri 3: Ano ang tamang senyas para sa 'Kaibigan'?",
+                : "Pagsusuri 3: Ano ang tamang senyas para sa 'Ate'?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),

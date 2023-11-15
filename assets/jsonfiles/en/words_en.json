@@ -1,135 +1,135 @@
 [
-    {  
+  {  
     "type": "word",
     "content": "Bat",
     "category": "Animals",
-    "mp4": "dictionary/animals/bat.mp4"
+    "mp4": "dictionary/en/animals/bat.mp4"
   },
   { 
     "type": "word",
     "content": "Bear",
     "category": "Animals",
-    "mp4": "dictionary/animals/bear.mp4"
+    "mp4": "dictionary/en/animals/bear.mp4"
   },
   { 
     "type": "word",
     "content": "Bull",
     "category": "Animals",
-    "mp4": "dictionary/animals/bull.mp4"
+    "mp4": "dictionary/en/animals/bull.mp4"
   },
   { 
     "type": "word",
     "content": "Camel",
     "category": "Animals",
-    "mp4": "dictionary/animals/camel.mp4"
+    "mp4": "dictionary/en/animals/camel.mp4"
   },
   { 
     "type": "word",
     "content": "Cat",
     "category": "Animals",
-    "mp4": "dictionary/animals/cat.mp4"
+    "mp4": "dictionary/en/animals/cat.mp4"
   },
   { 
     "type": "word",
     "content": "Chicken",
     "category": "Animals",
-    "mp4": "dictionary/animals/chicken.mp4"
+    "mp4": "dictionary/en/animals/chicken.mp4"
   },
   { 
     "type": "word",
     "content": "Crab",
     "category": "Animals",
-    "mp4": "dictionary/animals/crab.mp4"
+    "mp4": "dictionary/en/animals/crab.mp4"
   },
   { 
     "type": "word",
     "content": "Crocodile",
     "category": "Animals",
-    "mp4": "dictionary/animals/crocodile.mp4"
+    "mp4": "dictionary/en/animals/crocodile.mp4"
   },
   { 
     "type": "word",
     "content": "Deer",
     "category": "Animals",
-    "mp4": "dictionary/animals/deer.mp4"
+    "mp4": "dictionary/en/animals/deer.mp4"
   },
   { 
     "type": "word",
     "content": "Dolphin",
     "category": "Animals",
-    "mp4": "dictionary/animals/dolphin.mp4"
+    "mp4": "dictionary/en/animals/dolphin.mp4"
   },
   { 
     "type": "word",
     "content": "Donkey",
     "category": "Animals",
-    "mp4": "dictionary/animals/donkey.mp4"
+    "mp4": "dictionary/en/animals/donkey.mp4"
   },
   { 
     "type": "word",
     "content": "Duck",
     "category": "Animals",
-    "mp4": "dictionary/animals/duck.mp4"
+    "mp4": "dictionary/en/animals/duck.mp4"
   },
   { 
     "type": "word",
     "content": "Fish",
     "category": "Animals",
-    "mp4": "dictionary/animals/fish.mp4"
+    "mp4": "dictionary/en/animals/fish.mp4"
   },
   { 
     "type": "word",
     "content": "Flamingo",
     "category": "Animals",
-    "mp4": "dictionary/animals/flamingo.mp4"
+    "mp4": "dictionary/en/animals/flamingo.mp4"
   },
   { 
     "type": "word",
     "content": "Fox",
     "category": "Animals",
-    "mp4": "dictionary/animals/fox.mp4"
+    "mp4": "dictionary/en/animals/fox.mp4"
   },
   { 
     "type": "word",
     "content": "Frog",
     "category": "Animals",
-    "mp4": "dictionary/animals/frog.mp4"
+    "mp4": "dictionary/en/animals/frog.mp4"
   },
   { 
     "type": "word",
     "content": "Giraffe",
     "category": "Animals",
-    "mp4": "dictionary/animals/giraffe.mp4"
+    "mp4": "dictionary/en/animals/giraffe.mp4"
   },
   { 
     "type": "word",
     "content": "Goat",
     "category": "Animals",
-    "mp4": "dictionary/animals/goat.mp4"
+    "mp4": "dictionary/en/animals/goat.mp4"
   },
   { 
     "type": "word",
     "content": "Goose",
     "category": "Animals",
-    "mp4": "dictionary/animals/goose.mp4"
+    "mp4": "dictionary/en/animals/goose.mp4"
   },
   { 
     "type": "word",
     "content": "Gorilla",
     "category": "Animals",
-    "mp4": "dictionary/animals/gorilla.mp4"
+    "mp4": "dictionary/en/animals/gorilla.mp4"
   },
   { 
     "type": "word",
     "content": "Horse",
     "category": "Animals",
-    "mp4": "dictionary/animals/horse.mp4"
+    "mp4": "dictionary/en/animals/horse.mp4"
   },
   { 
     "type": "word",
     "content": "Lobster",
     "category": "Animals",
-    "mp4": "dictionary/animals/lobster.mp4"
+    "mp4": "dictionary/en/animals/lobster.mp4"
   },
 
   { 
@@ -137,43 +137,43 @@
     "type": "word",
     "content": "Circle",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/circle.mp4"
+    "mp4": "dictionary/en/shapes/circle.mp4"
   },
   { 
     "type": "word",
     "content": "Diamond",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/diamond.mp4"
+    "mp4": "dictionary/en/shapes/diamond.mp4"
   },
   { 
     "type": "word",
     "content": "Heart",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/heart.mp4"
+    "mp4": "dictionary/en/shapes/heart.mp4"
   },
   { 
     "type": "word",
     "content": "Hexagon",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/hexagon.mp4"
+    "mp4": "dictionary/en/shapes/hexagon.mp4"
   },
   { 
     "type": "word",
     "content": "Octagon",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/octagon.mp4"
+    "mp4": "dictionary/en/shapes/octagon.mp4"
   },
   { 
     "type": "word",
     "content": "Square",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/square.mp4"
+    "mp4": "dictionary/en/shapes/square.mp4"
   },
   { 
     "type": "word",
     "content": "Triangle",
     "category": "Shapes",
-    "mp4": "dictionary/shapes/triangle.mp4"
+    "mp4": "dictionary/en/shapes/triangle.mp4"
   },
 
 
@@ -181,85 +181,85 @@
     "type": "word",
     "content": "Aunt",
     "category": "Family",
-    "mp4": "dictionary/family/aunt.mp4"
+    "mp4": "dictionary/en/family/aunt.mp4"
   },
   { 
     "type": "word",
     "content": "Baby",
     "category": "Family",
-    "mp4": "dictionary/family/baby.mp4"
+    "mp4": "dictionary/en/family/baby.mp4"
   },
   { 
     "type": "word",
     "content": "Boyfriend",
     "category": "Family",
-    "mp4": "dictionary/family/boyfriend.mp4"
+    "mp4": "dictionary/en/family/boyfriend.mp4"
   },
   { 
     "type": "word",
     "content": "Brother",
     "category": "Family",
-    "mp4": "dictionary/family/brother.mp4"
+    "mp4": "dictionary/en/family/brother.mp4"
   },
   { 
     "type": "word",
     "content": "Father",
     "category": "Family",
-    "mp4": "dictionary/family/father.mp4"
+    "mp4": "dictionary/en/family/father.mp4"
   },
   { 
     "type": "word",
     "content": "Friend",
     "category": "Family",
-    "mp4": "dictionary/family/friend.mp4"
+    "mp4": "dictionary/en/family/friend.mp4"
   },
   { 
     "type": "word",
     "content": "Girlfriend",
     "category": "Family",
-    "mp4": "dictionary/family/girlfriend.mp4"
+    "mp4": "dictionary/en/family/girlfriend.mp4"
   },
   { 
     "type": "word",
     "content": "Grandfather",
     "category": "Family",
-    "mp4": "dictionary/family/grandfather.mp4"
+    "mp4": "dictionary/en/family/grandfather.mp4"
   },
   { 
     "type": "word",
     "content": "Grandmother",
     "category": "Family",
-    "mp4": "dictionary/family/grandmother.mp4"
+    "mp4": "dictionary/en/family/grandmother.mp4"
   },
   { 
     "type": "word",
     "content": "Husband",
     "category": "Family",
-    "mp4": "dictionary/family/husband.mp4"
+    "mp4": "dictionary/en/family/husband.mp4"
   },
   { 
     "type": "word",
     "content": "Nephew",
     "category": "Family",
-    "mp4": "dictionary/family/nephew.mp4"
+    "mp4": "dictionary/en/family/nephew.mp4"
   },
   { 
     "type": "word",
     "content": "Niece",
     "category": "Family",
-    "mp4": "dictionary/family/niece.mp4"
+    "mp4": "dictionary/en/family/niece.mp4"
   },
   { 
     "type": "word",
     "content": "Sister",
     "category": "Family",
-    "mp4": "dictionary/family/sister.mp4"
+    "mp4": "dictionary/en/family/sister.mp4"
   },
   { 
     "type": "word",
     "content": "Uncle",
     "category": "Family",
-    "mp4": "dictionary/family/uncle.mp4"
+    "mp4": "dictionary/en/family/uncle.mp4"
   },
 
 
@@ -268,93 +268,93 @@
     "type": "word",
     "content": "Blue",
     "category": "Colors",
-    "mp4": "dictionary/color/blue.mp4"
+    "mp4": "dictionary/en/color/blue.mp4"
   },
   { 
     "type": "word",
     "content": "Bright",
     "category": "Colors",
-    "mp4": "dictionary/color/bright.mp4"
+    "mp4": "dictionary/en/color/bright.mp4"
   },
   { 
     "type": "word",
     "content": "Gray",
     "category": "Colors",
-    "mp4": "dictionary/color/gray.mp4"
+    "mp4": "dictionary/en/color/gray.mp4"
   },
   { 
     "type": "word",
     "content": "Green",
     "category": "Colors",
-    "mp4": "dictionary/color/green.mp4"
+    "mp4": "dictionary/en/color/green.mp4"
   },
   { 
     "type": "word",
     "content": "Light",
     "category": "Colors",
-    "mp4": "dictionary/color/light.mp4"
+    "mp4": "dictionary/en/color/light.mp4"
   },
   { 
     "type": "word",
     "content": "Orange",
     "category": "Colors",
-    "mp4": "dictionary/color/orange.mp4"
+    "mp4": "dictionary/en/color/orange.mp4"
   },
   { 
     "type": "word",
     "content": "Pink",
     "category": "Colors",
-    "mp4": "dictionary/color/pink.mp4"
+    "mp4": "dictionary/en/color/pink.mp4"
   },
   { 
     "type": "word",
     "content": "Purple",
     "category": "Colors",
-    "mp4": "dictionary/color/purple.mp4"
+    "mp4": "dictionary/en/color/purple.mp4"
   },
   { 
     "type": "word",
     "content": "Rainbow",
     "category": "Colors",
-    "mp4": "dictionary/color/rainbow.mp4"
+    "mp4": "dictionary/en/color/rainbow.mp4"
   },
   { 
     "type": "word",
     "content": "Red",
     "category": "Colors",
-    "mp4": "dictionary/color/red.mp4"
+    "mp4": "dictionary/en/color/red.mp4"
   },
   { 
     "type": "word",
     "content": "Shiny",
     "category": "Colors",
-    "mp4": "dictionary/color/shiny.mp4"
+    "mp4": "dictionary/en/color/shiny.mp4"
   },
   { 
     "type": "word",
     "content": "Yellow",
     "category": "Colors",
-    "mp4": "dictionary/color/yellow.mp4"
+    "mp4": "dictionary/en/color/yellow.mp4"
   }, 
 
   { 
     "type": "word",
     "content": "Congratulations",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/congratulations.mp4"
+    "mp4": "dictionary/en/phrases/congratulations.mp4"
   },
 
   { 
     "type": "word",
     "content": "Goodbye",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/goodbye.mp4"
+    "mp4": "dictionary/en/phrases/goodbye.mp4"
   },
 
   { 
     "type": "word",
     "content": "Sorry",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/sorry.mp4"
+    "mp4": "dictionary/en/phrases/sorry.mp4"
   }
 ]

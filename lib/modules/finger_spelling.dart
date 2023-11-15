@@ -137,115 +137,131 @@ class _FingerSpellingState extends State<FingerSpelling> {
     translateTextToASL();
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Finger Spell',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-            fontFamily: 'FiraSans',
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/bg-signbuddy.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/bg-signbuddy.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 10),
-                TextField(
-                  onChanged: (text) {
-                  setState(() {
-                    inputText = text;
-                    if (text.isNotEmpty) {
-                      hasSignImages = false;
-                      groupASL.clear();
-                    }
-                  });
-                },
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')), // Allow only letters and spaces
-                  ],
-                  decoration: InputDecoration(
-                    labelText: isEnglish ? 'Enter text to translate' : 'Maglagay ng text na isasalin',
-                    labelStyle: TextStyle(
-                      color: Color(0xFF5A5A5A), // Change the label (hint) text color
-                    ),
-                    prefixIcon: const Icon(
-                      Icons.translate,
-                      color: Colors.deepPurpleAccent,
-                    ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.deepPurpleAccent,
+          Column(
+            children: [
+              // SizedBox(height: MediaQuery.of(context).padding.top),
+              AppBar(
+                backgroundColor: const Color(0xFF5A96E3),
+                title: Text(
+                  'Finger Spell',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontFamily: 'FiraSans',
+                  ),
+                ),
+                shape: ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(60),
+                    bottomRight: Radius.circular(60),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 10),
+                      TextField(
+                        onChanged: (text) {
+                          setState(() {
+                            inputText = text;
+                            if (text.isNotEmpty) {
+                              hasSignImages = false;
+                              groupASL.clear();
+                            }
+                          });
+                        },
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+                        ],
+                        decoration: InputDecoration(
+                          labelText: isEnglish ? 'Enter text to translate' : 'Maglagay ng text na isasalin',
+                          labelStyle: TextStyle(
+                            color: Color(0xFF5A5A5A),
+                          ),
+                          prefixIcon: const Icon(
+                            Icons.translate,
+                            color: Colors.deepPurpleAccent,
+                          ),
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.deepPurpleAccent,
+                            ),
+                          ),
+                        ),
+                        maxLength: 50,
                       ),
-                    ),
+                      ElevatedButton(
+                        onPressed: translateTextToASL,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF5BD8FF),
+                        ),
+                        child: Text(
+                          isEnglish ? 'Translate to Sign' : 'Isalin sa Wikang Pasensyas',
+                          style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans'),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: hasSignImages ? toggleLetterVisibility : null,
+                          child: Text(
+                            hasSignImages ? (showLetters ? 'Hide letters' : 'Show letters') : '',
+                            style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans', fontSize: 12),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: groupASL,
+                              ),
+                            ),
+                            Visibility(
+                              visible: !hasSignImages,
+                              child: Container(
+                                width: 330, // Set width to full width
+                                child: Center(
+                                  child: Image.asset(
+                                    'assets/dictionary/sign_s.png',
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  maxLength: 50,
                 ),
-                ElevatedButton(
-                  onPressed: translateTextToASL,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5BD8FF),
-                  ),
-                  child: Text(
-                    isEnglish ? 'Translate to Sign' : 'Isalin sa Wikang Pasensyas',
-                    style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans'),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: hasSignImages ? toggleLetterVisibility : null,
-                    child: Text(
-                      hasSignImages ? (showLetters ? 'Hide letters' : 'Show letters') : '',
-                      style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans', fontSize: 12),
-                    ),
-                  ),
-                ),
-                Expanded(
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: [
-      SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: groupASL,
-        ),
-      ),
-      Visibility(
-        visible: !hasSignImages,
-        child: Container(
-          width: 330, // Set width to full width
-          child: Center(
-            child: Image.asset(
-              'assets/dictionary/sign_s.png',
-              width: 100,
-              height: 100,
-            ),
+              ),
+            ],
           ),
-        ),
-      ),
-    ],
-  ),
-),
-
-              ],
-            ),
-          ),
-       
+        ],
       ),
     );
   }

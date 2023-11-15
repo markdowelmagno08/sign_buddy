@@ -37,7 +37,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
   final List<String> phOptions = [
     'Magandang',
     'buwan',
-    'araw',
+    'umaga',
     'lalaki',
     'umaga',
     'Mayroon',
@@ -51,12 +51,12 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
       'question': 'What sentence does this sign language represent?',
       'imageUrl': {
         'en': 'assets/dictionary/phrases/have_a_nice_day.gif',
-        'ph': 'assets/dictionary/family/magandang_araw.gif',
+        'ph': 'assets/dictionary/phrases/magandang_umaga.gif',
       },
       'options': [],
       'correctAnswer': {
         'en': ['Have', 'a', 'nice', 'day'],
-        'ph': ['Magandang', 'araw'],
+        'ph': ['Magandang', 'umaga'],
       },
     },
   ];

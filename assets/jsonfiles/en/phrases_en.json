@@ -3,67 +3,67 @@
     "type": "phrases",
     "content": "Excuse Me",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/excuse_me.mp4"
+    "mp4": "dictionary/en/phrases/excuse_me.mp4"
   },
   { 
     "type": "phrases",
     "content": "Good Night",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/good_night.mp4"
+    "mp4": "dictionary/en/phrases/good_night.mp4"
   },
   { 
     "type": "phrases",
     "content": "Good to see you",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/good_to_see_you.mp4"
+    "mp4": "dictionary/en/phrases/good_to_see_you.mp4"
   },
   
   { 
     "type": "phrases",
     "content": "Have a nice day",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/have_a_nice_day.mp4"
+    "mp4": "dictionary/en/phrases/have_a_nice_day.mp4"
   },
   { 
     "type": "phrases",
     "content": "Hello",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/hello.mp4"
+    "mp4": "dictionary/en/phrases/hello.mp4"
   },
   { 
     "type": "phrases",
     "content": "Nice to meet you",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/nice_to_meet_you.mp4"
+    "mp4": "dictionary/en/phrases/nice_to_meet_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "How are you",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/how_are_you.mp4"
+    "mp4": "dictionary/en/phrases/how_are_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "See you later",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/see_you_later.mp4"
+    "mp4": "dictionary/en/phrases/see_you_later.mp4"
   },
   { 
     "type": "phrases",
     "content": "Thank you",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/thank_you.mp4"
+    "mp4": "dictionary/en/phrases/thank_you.mp4"
   },
   { 
     "type": "phrases",
     "content": "What's up",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/whats_up.mp4"
+    "mp4": "dictionary/en/phrases/whats_up.mp4"
   },
   { 
     "type": "phrases",
     "content": "You're Welcome",
     "category": "Greetings",
-    "mp4": "dictionary/phrases/youre_welcome.mp4"
+    "mp4": "dictionary/en/phrases/youre_welcome.mp4"
   }
 ]

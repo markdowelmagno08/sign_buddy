@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sign_buddy/modules/create_sign.dart';
-
-import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
@@ -48,11 +45,6 @@ class _HomePageState extends State<HomePage> {
       this.isEnglish = isEnglish;
     });
   }
-
- 
-
-
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -568,7 +560,6 @@ void _navigateToStartLesson(BuildContext context, String lesson) {
     // Handle the case when the lesson is not found
   }
 }
-
 
 
 

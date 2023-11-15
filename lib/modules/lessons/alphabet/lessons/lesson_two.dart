@@ -244,7 +244,18 @@ class _LessonTwoState extends State<LessonTwo> {
                 },
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
+              Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Letter lesson for: "${widget.lessonName}"', 
+                style: TextStyle(
+                  fontSize: 20, 
+                  fontWeight: FontWeight.bold, 
+                ),
+              ),
+            ),
+            const SizedBox(height: 70),
             Align(
               alignment: Alignment.topLeft,
               child: Text(

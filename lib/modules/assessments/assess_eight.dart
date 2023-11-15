@@ -28,22 +28,22 @@ class _AssessmentEightState extends State<AssessmentEight> {
       'matches': [
         {
           'videos': {
-            'en': 'assets/dictionary/family/boyfriend.gif',
-            'ph': 'assets/dictionary/family/kasintahan.gif',
+            'en': 'assets/dictionary/family/cat.gif',
+            'ph': 'assets/dictionary/family/pusa.gif',
           },
           'words': {
-            'en': 'Boyfriend',
-            'ph': 'Kasintahan',
+            'en': 'Cat',
+            'ph': 'Pusa',
           },
         },
         {
           'videos': {
             'en': 'assets/dictionary/family/nephew.gif',
-            'ph': 'assets/dictionary/family/pamangkin.gif',
+            'ph': 'assets/dictionary/family/pamangkin_na_lalake.gif',
           },
           'words': {
             'en': 'Nephew',
-            'ph': 'Pamangkin',
+            'ph': 'Pamangkin na Lalaki',
           },
         },
       ],
@@ -93,10 +93,10 @@ class _AssessmentEightState extends State<AssessmentEight> {
 
         if ( 
           ((selectedVideo ==
-                    'assets/dictionary/family/boyfriend.gif' &&
-                selectedWord == 'Boyfriend') || (selectedVideo ==
-                    'assets/dictionary/family/kasintahan.gif' &&
-                selectedWord == 'Kasintahan')) ||
+                    'assets/dictionary/family/cat.gif' &&
+                selectedWord == 'Cat') || (selectedVideo ==
+                    'assets/dictionary/family/pusa.gif' &&
+                selectedWord == 'Pusa')) ||
             ((selectedVideo ==
                     'assets/dictionary/family/nephew.gif' &&
                 selectedWord == 'Nephew') || (selectedVideo ==
@@ -360,10 +360,10 @@ class _AssessmentEightState extends State<AssessmentEight> {
                           //checks if the selected video or word is match correspondly, it also gets the language using the isEnglish variable
                             if ( 
                               ((selectedVideo ==
-                                        'assets/dictionary/family/boyfriend.gif' &&
-                                    selectedWord == 'Boyfriend') || (selectedVideo ==
-                                        'assets/dictionary/family/kasintahan.gif' &&
-                                    selectedWord == 'Kasintahan')) ||
+                                        'assets/dictionary/family/cat.gif' &&
+                                    selectedWord == 'Cat') || (selectedVideo ==
+                                        'assets/dictionary/family/pusa.gif' &&
+                                    selectedWord == 'Pusa')) ||
                                 
                                 ((selectedVideo ==
                                         'assets/dictionary/family/nephew.gif' &&

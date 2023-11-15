@@ -10,6 +10,16 @@ class FindSign extends StatefulWidget {
   @override
   _FindSignState createState() => _FindSignState();
 }
+class FirestoreCollections {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+  CollectionReference get wordsCollection =>
+      _firestore.collection('dictionary/en/words');
+
+  CollectionReference get phrasesCollection =>
+      _firestore.collection('dictionary/en/phrases');
+}
 
 class _FindSignState extends State<FindSign> {
   final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
@@ -25,12 +35,9 @@ class _FindSignState extends State<FindSign> {
   bool isEnglish = true;
   bool isSlowMotion = false;
 
-  final CollectionReference wordsCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/words');
-  final CollectionReference phrasesCollection =
-      FirebaseFirestore.instance.collection('dictionary/en/phrases');
 
-  CachedVideoPlayerController? _videoController; // Use CachedVideoPlayerController
+  CachedVideoPlayerController? _videoController;
+  final FirestoreCollections firestoreCollections = FirestoreCollections(); 
 
   @override
   void initState() {
@@ -40,9 +47,8 @@ class _FindSignState extends State<FindSign> {
   }
 
   Future<void> loadDictionaryData() async {
-    final wordData = await wordsCollection.get();
-    final phraseData = await phrasesCollection.get();
-
+    final wordData = await firestoreCollections.wordsCollection.get();
+    final phraseData = await firestoreCollections.phrasesCollection.get();
     final loadedDictionary = combineData(wordData, phraseData);
 
     if (mounted) {
@@ -197,149 +203,156 @@ class _FindSignState extends State<FindSign> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Find Sign',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-            fontFamily: 'FiraSans',
-          ),
-        ),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Container(
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Stack(
+      children: [
+        Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/bg-signbuddy.png'),
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Stack(
-                  alignment: Alignment.centerLeft,
-                  children: [
-                    TextField(
-                      controller: searchController,
-                      onChanged: search,
-                      decoration: InputDecoration(
-                        hintText: isEnglish
-                            ? 'Search something....'
-                            : 'Maghanap ng kahit ano.....',
-                        prefixIcon: const Icon(
-                          Icons.search,
+        ),
+        Column(
+          children: [
+            AppBar(
+              backgroundColor: const Color(0xFF5A96E3),
+              title: Text(
+                'Find Sign',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontFamily: 'FiraSans',
+                ),
+              ),
+              shape: ContinuousRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(60),
+                  bottomRight: Radius.circular(60),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Stack(
+                alignment: Alignment.centerLeft,
+                children: [
+                  TextField(
+                    controller: searchController,
+                    onChanged: search,
+                    decoration: InputDecoration(
+                      hintText: isEnglish
+                          ? 'Search something....'
+                          : 'Maghanap ng kahit ano.....',
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.deepPurpleAccent,
+                      ),
+                      suffixIcon: isSearching
+                          ? IconButton(
+                              icon: const Icon(
+                                Icons.clear,
+                                color: Colors.redAccent,
+                              ),
+                              onPressed: clearSearch,
+                            )
+                          : null,
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
                           color: Colors.deepPurpleAccent,
-                        ),
-                        suffixIcon: isSearching
-                            ? IconButton(
-                                icon: const Icon(
-                                  Icons.clear,
-                                  color: Colors.redAccent,
-                                ),
-                                onPressed: clearSearch,
-                              )
-                            : null,
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                          ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (suggestedResults.isNotEmpty)
-                      Expanded(
-                        child: ListView(
-                          children: suggestedResults.map((result) {
-                            return GestureDetector(
-                              onTap: () {
-                                selectSuggestedResult(result);
-                                FocusScope.of(context).unfocus();
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 60),
-                                child: Container(
-                                  padding: const EdgeInsets.all(3),
-                                  child: Text(
-                                    result,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (suggestedResults.isNotEmpty)
+                    Expanded(
+                      child: ListView(
+                        children: suggestedResults.map((result) {
+                          return GestureDetector(
+                            onTap: () {
+                              selectSuggestedResult(result);
+                              FocusScope.of(context).unfocus();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 60),
+                              child: Container(
+                                padding: const EdgeInsets.all(3),
+                                child: Text(
+                                  result,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    if (isSuggestionTapped && searchResults.isNotEmpty)
-                      Column(
-                        children: [
-                          if (searchResults[0]['type'] == 'word' ||
-                              searchResults[0]['type'] == 'phrases')
-                            _buildVideoPlayer(190, 300),
-                          Text(
-                            searchResults[0]['content'],
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
                             ),
-                          ),
-                        ],
-                      ),
-                    Visibility(
-                      visible: !isSearching,
-                      child: Image.asset(
-                        'assets/dictionary/search.png',
-                        width: 100,
-                        height: 100,
+                          );
+                        }).toList(),
                       ),
                     ),
-                    if (termNotFound && !isSuggestionTapped)
-                      Column(
-                        children: [
-                          Text(
-                            '"$query"',
-                            style: const TextStyle(
-                              fontSize: 21,
-                              fontWeight: FontWeight.bold,
-                            ),
+                  if (isSuggestionTapped && searchResults.isNotEmpty)
+                    Column(
+                      children: [
+                        if (searchResults[0]['type'] == 'word' ||
+                            searchResults[0]['type'] == 'phrases')
+                          _buildVideoPlayer(190, 300),
+                        Text(
+                          searchResults[0]['content'],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            isEnglish
-                                ? 'was not found'
-                                : 'ay hindi matagpuan',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontStyle: FontStyle.italic,
-                            ),
+                        ),
+                      ],
+                    ),
+                  Visibility(
+                    visible: !isSearching,
+                    child: Image.asset(
+                      'assets/dictionary/search.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  if (termNotFound && !isSuggestionTapped)
+                    Column(
+                      children: [
+                        Text(
+                          '"$query"',
+                          style: const TextStyle(
+                            fontSize: 21,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
-                  ],
-                ),
+                        ),
+                        Text(
+                          isEnglish
+                              ? 'was not found'
+                              : 'ay hindi matagpuan',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
+      ],
+    ),
+  );
+}
+
 
   Widget _buildVideoPlayer(double height, double width) {
     return GestureDetector(

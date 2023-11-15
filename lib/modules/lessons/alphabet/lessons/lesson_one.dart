@@ -152,7 +152,6 @@ class _LessonOneState extends State<LessonOne> {
 
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
             const SizedBox(height: 50),
             Align(
               alignment: Alignment.topLeft,
@@ -165,8 +164,19 @@ class _LessonOneState extends State<LessonOne> {
                 },
               ),
             ),
-            const SizedBox(height: 100),
-            Align(
+            const SizedBox(height: 70),
+              Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Letter lesson for: "${widget.lessonName}"', 
+                style: TextStyle(
+                  fontSize: 20, 
+                  fontWeight: FontWeight.bold, 
+                ),
+              ),
+            ),
+            const SizedBox(height: 70),
+              Align(
               alignment: Alignment.topLeft,
               child: Text(
                 contentDescription,

@@ -31,7 +31,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
       'question': 'What is being signed here? ',
       'imageUrl': {
         'en': 'assets/dictionary/family/husband.gif',
-        'ph': 'assets/dictionary/family/asawa.gif',
+        'ph': 'assets/dictionary/family/asawang_lalaki.gif',
       },
       'options': ['Husband', 'Thank You', 'Hello', 'Chicken', 'Sister', 'Tree'],
       'correctAnswerIndex': 0,
@@ -40,7 +40,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   ];
    // Define translations for the answer options
     Map<String, String> translations = {
-      'Husband': 'Asawa',
+      'Husband': 'Asawa(Lalaki)',
       'Thank You': 'Salamat',
       'Hello': 'Kumusta',
       'Chicken': 'Manok',
