@@ -100,7 +100,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
             ((selectedVideo ==
                     'assets/dictionary/family/nephew.gif' &&
                 selectedWord == 'Nephew') || (selectedVideo ==
-                    'assets/dictionary/family/pamangkin.gif' &&
+                    'assets/dictionary/family/pamangkin_na_lalake.gif' &&
                 selectedWord == 'Pamangkin')  )) {
           score++;
         }
@@ -368,7 +368,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                                 ((selectedVideo ==
                                         'assets/dictionary/family/nephew.gif' &&
                                     selectedWord == 'Nephew') || (selectedVideo ==
-                                        'assets/dictionary/family/pamangkin.gif' &&
+                                        'assets/dictionary/family/pamangkin_na_lalake.gif' &&
                                     selectedWord == 'Pamangkin')  )) {
                               showResultSnackbar(
                                 context,

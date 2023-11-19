@@ -56,25 +56,38 @@ class _HomePageState extends State<HomePage> {
         key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: const Color(0xFF5A96E3),
-          title: Text(
-           'SignBuddy',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-              fontFamily: 'FiraSans',
-              fontWeight: FontWeight.bold
-            ),
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/app_icon.png',
+                width: 30, 
+                height: 30, 
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'SignBuddy',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontFamily: 'FiraSans',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.feedback),
-              onPressed: () {
-                // Implement search functionality here
-              },
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: Image.asset(
+                isEnglish ? 'assets/america.png' : 'assets/ph.png',
+                width: 25, 
+                height: 25, 
+              ),
             ),
           ],
         ),
-    
         drawer:Drawer(
           child: Container(
             decoration: BoxDecoration(

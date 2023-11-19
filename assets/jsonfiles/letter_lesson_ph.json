@@ -11,8 +11,8 @@
         "correctAnswer": null
       },
       "content2": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Tiya'",
-        "contentImage": ["dictionary/family/aunt.gif"],
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Aso'",
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -41,9 +41,9 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/family/aunt.gif"],
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
         "contentOption": [
-          "Tiya",
+          "Aso",
           "Pusa",
           "Aso",
           "X",
@@ -53,7 +53,7 @@
           "T",
           "B"
         ],
-        "correctAnswer": ["Tiya"]
+        "correctAnswer": ["Aso"]
       }
     },
 
@@ -71,7 +71,7 @@
       },
       "content2": {
         "description": "Ito ang paraan kung paano sinesenyas ang 'Sanggol'",
-        "contentImage": ["dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/ph/family/sanggol.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -100,7 +100,7 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/ph/family/sanggol.mp4"],
         "contentOption": [
           "Sanggol",
           "W",
@@ -127,8 +127,8 @@
         "correctAnswer": null
       },
       "content2": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Kamelyo'",
-        "contentImage": ["dictionary/animals/camel.gif"],
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Congrats'",
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -157,9 +157,9 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/animals/camel.gif"],
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
         "contentOption": [
-          "Kamelyo",
+          "Congrats",
           "P",
           "N",
           "V",
@@ -169,7 +169,7 @@
           "Hilaga",
           "Kambing"
         ],
-        "correctAnswer": ["Kamelyo"]
+        "correctAnswer": ["Congrats"]
       }
     },
     {
@@ -185,7 +185,7 @@
       },
       "content2": {
         "description": "Ito ang paraan kung paano sinesenyas ang 'Dolphin'",
-        "contentImage": ["dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/ph/animals/dolphin.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -214,7 +214,7 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/ph/animals/dolphin.mp4"],
         "contentOption": [
           "Dolphin",
           "A",
@@ -241,8 +241,8 @@
         "correctAnswer": null
       },
       "content2": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Paumanhin'",
-        "contentImage": ["dictionary/phrases/excuse_me.gif"],
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Excuse Me'",
+        "contentImage": ["dictionary/ph/phrases/excuse_me.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -271,9 +271,9 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/phrases/excuse_me.gif"],
+        "contentImage": ["dictionary/ph/phrases/excuse_me.mp4"],
         "contentOption": [
-          "Paumanhin",
+          "Excuse Me",
           "O",
           "P",
           "Q",
@@ -283,7 +283,7 @@
           "Kamusta",
           "Byernes"
         ],
-        "correctAnswer": ["Paumanhin"]
+        "correctAnswer": ["Excuse Me"]
       }
     }
 ]

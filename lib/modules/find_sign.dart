@@ -5,6 +5,8 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:cached_video_player/cached_video_player.dart'; // Import CachedVideoPlayer
 
 class FindSign extends StatefulWidget {
+
+  
   const FindSign({Key? key}) : super(key: key);
 
   @override
@@ -12,16 +14,29 @@ class FindSign extends StatefulWidget {
 }
 class FirestoreCollections {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late String wordsCollectionPath;
+  late String phrasesCollectionPath;
 
+  FirestoreCollections({required bool isEnglish}) {
+    if (isEnglish) {
+      wordsCollectionPath = 'dictionary/en/words';
+      phrasesCollectionPath = 'dictionary/en/phrases';
+    } else {
+      wordsCollectionPath = 'dictionary/ph/words';
+      phrasesCollectionPath = 'dictionary/ph/phrases';
+    }
+  }
 
   CollectionReference get wordsCollection =>
-      _firestore.collection('dictionary/en/words');
+      _firestore.collection(wordsCollectionPath);
 
   CollectionReference get phrasesCollection =>
-      _firestore.collection('dictionary/en/phrases');
+      _firestore.collection(phrasesCollectionPath);
 }
 
 class _FindSignState extends State<FindSign> {
+  
+  
   final AssetFirebaseStorage assetFirebaseStorage = AssetFirebaseStorage();
   List<Map<String, dynamic>> dictionary = [];
   List<String> suggestedResults = [];
@@ -37,15 +52,30 @@ class _FindSignState extends State<FindSign> {
 
 
   CachedVideoPlayerController? _videoController;
-  final FirestoreCollections firestoreCollections = FirestoreCollections(); 
+  late FirestoreCollections firestoreCollections;
 
   @override
   void initState() {
     super.initState();
-    loadDictionaryData();
     getLanguage();
   }
 
+  
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    final firestoreCollections = FirestoreCollections(isEnglish: isEnglish);
+
+    setState(() {
+      this.firestoreCollections = firestoreCollections;
+      this.isEnglish = isEnglish;
+    });
+
+    loadDictionaryData();
+  }
+  
   Future<void> loadDictionaryData() async {
     final wordData = await firestoreCollections.wordsCollection.get();
     final phraseData = await firestoreCollections.phrasesCollection.get();
@@ -56,15 +86,6 @@ class _FindSignState extends State<FindSign> {
         dictionary = loadedDictionary;
       });
     }
-  }
-
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
   }
 
   List<Map<String, dynamic>> combineData(

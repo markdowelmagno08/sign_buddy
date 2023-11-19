@@ -27,7 +27,7 @@ class _AssessmentThreeState extends State<AssessmentThree> {
 
    final List<String> enOptions = [
     'assets/dictionary/family/grandmother.gif',
-    'assets/dictionary/family/ate.gif',
+    'assets/dictionary/family/friend.gif',
   ];
 
     final List<String> phOptions = [
@@ -37,7 +37,7 @@ class _AssessmentThreeState extends State<AssessmentThree> {
 
     final List<Map<String, dynamic>> assessmentQuestions = [
       {
-        'question': 'Which is the correct sign for "Sister"?',
+        'question': 'Which is the correct sign for "Friend"?',
         'options': [], // To be populated based on the language
         'correctAnswerIndex': 1,
       },

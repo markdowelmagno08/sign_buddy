@@ -39,7 +39,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
     'buwan',
     'umaga',
     'lalaki',
-    'umaga',
+    'tita',
     'Mayroon',
     'ang',
     'oo',

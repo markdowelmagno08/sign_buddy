@@ -14,13 +14,24 @@ class CreateSignPage extends StatefulWidget {
 
 class FirestoreCollections {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late String wordsCollectionPath;
+  late String phrasesCollectionPath;
 
+  FirestoreCollections({required bool isEnglish}) {
+    if (isEnglish) {
+      wordsCollectionPath = 'dictionary/en/words';
+      phrasesCollectionPath = 'dictionary/en/phrases';
+    } else {
+      wordsCollectionPath = 'dictionary/ph/words';
+      phrasesCollectionPath = 'dictionary/ph/phrases';
+    }
+  }
 
   CollectionReference get wordsCollection =>
-      _firestore.collection('dictionary/en/words');
+      _firestore.collection(wordsCollectionPath);
 
   CollectionReference get phrasesCollection =>
-      _firestore.collection('dictionary/en/phrases');
+      _firestore.collection(phrasesCollectionPath);
 }
 
 class _CreateSignPageState extends State<CreateSignPage> {
@@ -34,7 +45,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
   String selectedVideoWord = ''; // Store the selected word
   String? errorMessage;
 
-  final FirestoreCollections firestoreCollections = FirestoreCollections();
+  late FirestoreCollections firestoreCollections;
   
 
 
@@ -42,9 +53,22 @@ class _CreateSignPageState extends State<CreateSignPage> {
   @override
   void initState() {
     super.initState();
-    loadDictionaryData();
     disposeVideoControllers();
     getLanguage();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isEnglish = prefs.getBool('isEnglish') ?? true;
+
+    final firestoreCollections = FirestoreCollections(isEnglish: isEnglish);
+
+    setState(() {
+      this.firestoreCollections = firestoreCollections;
+      this.isEnglish = isEnglish;
+    });
+
+    loadDictionaryData();
   }
 
   Future<void> loadDictionaryData() async {
@@ -59,16 +83,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
     }
   }
 
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    if (mounted) {
-      setState(() {
-        this.isEnglish = isEnglish;
-      });
-    }
-  }
+  
 
   List<Map<String, dynamic>> combineData(
       QuerySnapshot wordData, QuerySnapshot phraseData) {
@@ -161,7 +176,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
       setState(() {
          errorMessage = isEnglish
             ? '"$searchText" sign not found'
-            : '"$searchText" pansenyas ay hindi natagpuan';
+            : '"$searchText" ay hindi natagpuan';
         loading = false;
       });
     }
@@ -212,7 +227,7 @@ Widget _buildVideoCarousel() {
               }
             },
             itemCount: videoControllers.length,
-            viewportFraction: 0.8,
+            viewportFraction: 0.9,//adjust the width of the video
             scale: 0.9,
             pagination: SwiperPagination(), // Add pagination dots
             loop: false,

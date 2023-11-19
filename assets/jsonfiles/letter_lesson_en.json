@@ -12,7 +12,7 @@
       },
       "content2": {
         "description": "This is how you sign Aunt.",
-        "contentImage": ["dictionary/family/aunt.gif"],
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -29,9 +29,9 @@
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["alphabet/c.png"],
-        "contentOption": ["Q", "C", "D", "X", "O", "F"],
-        "correctAnswer": ["C"]
+        "contentImage": ["alphabet/a.png"],
+        "contentOption": ["Q", "A", "D", "X", "O", "F"],
+        "correctAnswer": ["A"]
       },
       "content5": {
         "description": "Is this letter A?",
@@ -41,7 +41,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/family/aunt.gif"],
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
         "contentOption": [
           "Aunt",
           "Cat",
@@ -71,7 +71,7 @@
       },
       "content2": {
         "description": "This is how you sign Baby.",
-        "contentImage": ["dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/en/family/baby.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -88,9 +88,9 @@
       },
       "content4": {
         "description": "What sign is this?",
-        "contentImage": ["alphabet/k.png"],
+        "contentImage": ["alphabet/b.png"],
         "contentOption": ["B", "K", "W", "P", "M", "L"],
-        "correctAnswer": ["K"]
+        "correctAnswer": ["B"]
       },
       "content5": {
         "description": "Is this letter B?",
@@ -100,7 +100,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/family/baby.gif"],
+        "contentImage": ["dictionary/en/family/baby.mp4"],
         "contentOption": [
           "Baby",
           "W",
@@ -128,7 +128,7 @@
       },
       "content2": {
         "description": "This is how you sign Camel.",
-        "contentImage": ["dictionary/animals/camel.gif"],
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -157,7 +157,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/animals/camel.gif"],
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
         "contentOption": [
           "Camel",
           "P",
@@ -185,7 +185,7 @@
       },
       "content2": {
         "description": "This is how you sign Dolphin.",
-        "contentImage": ["dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -214,7 +214,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/animals/dolphin.gif"],
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
         "contentOption": [
           "Dolphin",
           "A",
@@ -242,7 +242,7 @@
       },
       "content2": {
         "description": "This is how you sign Excuse Me.",
-        "contentImage": ["dictionary/phrases/excuse_me.gif"],
+        "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -271,7 +271,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/phrases/excuse_me.gif"],
+        "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
         "contentOption": [
           "Excuse Me",
           "O",
@@ -299,7 +299,7 @@
       },
       "content2": {
         "description": "This is how you sign Fish.",
-        "contentImage": ["dictionary/animals/fish.gif"],
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -321,14 +321,14 @@
         "correctAnswer": ["F"]
       },
       "content5": {
-        "description": "Is this letter E?",
-        "contentImage": ["alphabet/c.png"],
+        "description": "Is this letter F?",
+        "contentImage": ["alphabet/f.png"],
         "contentOption": ["Yes", "No"],
-        "correctAnswer": ["No"]
+        "correctAnswer": ["Yes"]
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/animals/fish.gif"],
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
         "contentOption": [
           "Fish",
           "O",
@@ -355,8 +355,8 @@
         "correctAnswer": null
       },
       "content2": {
-        "description": "This is how you sign Fish.",
-        "contentImage": ["dictionary/family/grandfather.gif"],
+        "description": "This is how you sign Grandfather.",
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -385,7 +385,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/family/grandfather.gif"],
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
         "contentOption": [
           "Grandfather",
           "P",
@@ -413,7 +413,7 @@
       },
       "content2": {
         "description": "This is how you sign Hello.",
-        "contentImage": ["dictionary/phrases/hello.gif"],
+        "contentImage": ["dictionary/en/phrases/hello.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -442,7 +442,7 @@
       },
       "content6": {
         "description": "What is being signed here",
-        "contentImage": ["dictionary/family/hello.gif"],
+        "contentImage": ["dictionary/en/family/hello.mp4"],
         "contentOption": [
           "Hello",
           "A",
@@ -456,63 +456,7 @@
         ],
         "correctAnswer": ["Hello"]
       }
-    },
-    {
-      "name": "I",
-      "progress": 0,
-      "locale": "en",
-      "isUnlocked": false,
-      "content1": {
-        "description": "This is the sign for letter 'I'",
-        "contentImage": ["alphabet/i.png"],
-        "contentOption": null,
-        "correctAnswer": null
-      },
-      "content2": {
-        "description": "This is how you sign .",
-        "contentImage": ["dictionary/phrases/.gif"],
-        "contentOption": null,
-        "correctAnswer": null
-      },
-      "content3": {
-        "description": "Which one here is the sign for letter 'I'?",
-        "contentImage": null,
-        "contentOption": [
-          "alphabet/p.png",
-          "alphabet/i.png",
-          "alphabet/n.png",
-          "alphabet/m.png"
-        ],
-        "correctAnswer": ["alphabet/i.png"]
-      },
-      "content4": {
-        "description": "What sign is this?",
-        "contentImage": ["alphabet/i.png"],
-        "contentOption": ["Q", "I", "O", "Z", "X", "C"],
-        "correctAnswer": ["I"]
-      },
-      "content5": {
-        "description": "Is this letter H?",
-        "contentImage": ["alphabet/i.png"],
-        "contentOption": ["Yes", "No"],
-        "correctAnswer": ["Yes"]
-      },
-      "content6": {
-        "description": "What is being signed here",
-        "contentImage": ["dictionary/family/.gif"],
-        "contentOption": [
-          "",
-          "A",
-          "S",
-          "D",
-          "F",
-          "G",
-          "Ireland",
-          "Friend",
-          "Giraffe"
-        ],
-        "correctAnswer": [""]
-      }
     }
+    
   ]
   

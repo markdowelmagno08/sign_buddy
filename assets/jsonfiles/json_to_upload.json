@@ -1,0 +1,545 @@
+[
+    
+      {
+        "name": "L",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'L'",
+          "contentImage": ["alphabet/l.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Light.",
+          "contentImage": ["dictionary/en/color/light.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'L'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/i.png",
+            "alphabet/l.png",
+            "alphabet/m.png",
+            "alphabet/r.png"
+          ],
+          "correctAnswer": ["alphabet/l.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/l.png"],
+          "contentOption": ["A", "H", "O", "F", "L", "X"],
+          "correctAnswer": ["L"]
+        },
+        "content5": {
+          "description": "Is this letter L?",
+          "contentImage": ["alphabet/l.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/color/light.mp4"],
+          "contentOption": [
+            "Light",
+            "L",
+            "M",
+            "I",
+            "R",
+            "Q",
+            "Whats Up?",
+            "Car",
+            "Lane"
+          ],
+          "correctAnswer": ["Light"]
+        }
+      },
+      {
+        "name": "N",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'N'",
+          "contentImage": ["alphabet/niece.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Niece.",
+          "contentImage": ["dictionary/en/family/niece.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'N'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/f.png",
+            "alphabet/m.png",
+            "alphabet/o.png",
+            "alphabet/n.png"
+          ],
+          "correctAnswer": ["alphabet/n.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/n.png"],
+          "contentOption": ["O", "M", "C", "T", "P", "N"],
+          "correctAnswer": ["N"]
+        },
+        "content5": {
+          "description": "Is this letter N?",
+          "contentImage": ["alphabet/n.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/family/niece.mp4"],
+          "contentOption": [
+            "Niece",
+            "O",
+            "M",
+            "C",
+            "T",
+            "P",
+            "Yo",
+            "What?",
+            "Random"
+          ],
+          "correctAnswer": ["Niece"]
+        }
+      },
+      {
+        "name": "O",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'O'",
+          "contentImage": ["alphabet/o.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Orange.",
+          "contentImage": ["dictionary/en/color/orange.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'O'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/s.png",
+            "alphabet/l.png",
+            "alphabet/k.png",
+            "alphabet/o.png"
+          ],
+          "correctAnswer": ["alphabet/o.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/o.png"],
+          "contentOption": ["S", "L", "R", "A", "K", "O"],
+          "correctAnswer": ["O"]
+        },
+        "content5": {
+          "description": "Is this letter O?",
+          "contentImage": ["alphabet/o.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/color/orange.mp4"],
+          "contentOption": [
+            "Orange",
+            "S",
+            "L",
+            "R",
+            "A",
+            "K",
+            "Table",
+            "Happy",
+            "Water"
+          ],
+          "correctAnswer": ["Orange"]
+        }
+      },
+      {
+        "name": "P",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'P'",
+          "contentImage": ["alphabet/p.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Purple.",
+          "contentImage": ["dictionary/en/color/purple.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'P'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/e.png",
+            "alphabet/d.png",
+            "alphabet/h.png",
+            "alphabet/p.png"
+          ],
+          "correctAnswer": ["alphabet/p.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/p.png"],
+          "contentOption": ["N", "C", "E", "D", "H", "P"],
+          "correctAnswer": ["P"]
+        },
+        "content5": {
+          "description": "Is this letter P?",
+          "contentImage": ["alphabet/p.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/color/purple.mp4"],
+          "contentOption": [
+            "Purple",
+            "N", "C", "E", "D", "H",
+            "Windows",
+            "Mountain",
+            "Apple"
+          ],
+          "correctAnswer": ["Purple"]
+        }
+      },
+      {
+        "name": "R",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'R'",
+          "contentImage": ["alphabet/r.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Red.",
+          "contentImage": ["dictionary/en/color/red.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'R'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/f.png",
+            "alphabet/g.png",
+            "alphabet/j.png",
+            "alphabet/m.png"
+          ],
+          "correctAnswer": ["alphabet/r.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/r.png"],
+          "contentOption": ["R", "F", "G", "J", "M", "Q"],
+          "correctAnswer": ["R"]
+        },
+        "content5": {
+          "description": "Is this letter R?",
+          "contentImage": ["alphabet/r.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/color/red.mp4"],
+          "contentOption": [
+            "Red",
+            "F", "G", "J", "M", "Q",
+            "Jacket",
+            "Green",
+            "Hi"
+          ],
+          "correctAnswer": ["Red"]
+        }
+      },
+      {
+        "name": "S",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'S'",
+          "contentImage": ["alphabet/s.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Sister.",
+          "contentImage": ["dictionary/en/family/sister.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'S'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/x.png",
+            "alphabet/y.png",
+            "alphabet/s.png",
+            "alphabet/u.png"
+          ],
+          "correctAnswer": ["alphabet/s.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/s.png"],
+          "contentOption": ["X", "Y", "S", "W", "U", "Q"],
+          "correctAnswer": ["S"]
+        },
+        "content5": {
+          "description": "Is this letter S?",
+          "contentImage": ["alphabet/s.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/family/sister.mp4"],
+          "contentOption": [
+            "Sister",
+            "Y", "S", "W", "U", "Q",
+            "Sunny",
+            "Cat",
+            "Tree"
+          ],
+          "correctAnswer": ["Sister"]
+        }
+      },
+      {
+        "name": "T",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'T'",
+          "contentImage": ["alphabet/t.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Thank you.",
+          "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'T'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/k.png",
+            "alphabet/z.png",
+            "alphabet/g.png",
+            "alphabet/t.png"
+          ],
+          "correctAnswer": ["alphabet/t.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/t.png"],
+          "contentOption": ["Z", "G", "K", "M", "T", "H"],
+          "correctAnswer": ["T"]
+        },
+        "content5": {
+          "description": "Is this letter T?",
+          "contentImage": ["alphabet/t.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+          "contentOption": [
+            "Thank You",
+            "Y", "S", "W", "U", "Q",
+            "Good day",
+            "Rat",
+            "Hey"
+          ],
+          "correctAnswer": ["Thank You"]
+        }
+      },
+      {
+        "name": "U",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'U'",
+          "contentImage": ["alphabet/u.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Uncle.",
+          "contentImage": ["dictionary/en/family/uncle.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'U'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/a.png",
+            "alphabet/i.png",
+            "alphabet/p.png",
+            "alphabet/u.png"
+          ],
+          "correctAnswer": ["alphabet/u.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/u.png"],
+          "contentOption":  ["Q", "R", "V", "N", "U", "L"],
+          "correctAnswer": ["U"]
+        },
+        "content5": {
+          "description": "Is this letter U?",
+          "contentImage": ["alphabet/u.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/family/uncle.mp4"],
+          "contentOption": [
+            "Uncle",
+            "Q", "R", "V", "N", "U",
+            "Home",
+            "Lobster",
+            "School"
+          ],
+          "correctAnswer": ["Uncle"]
+        }
+      },
+      {
+        "name": "W",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'W'",
+          "contentImage": ["alphabet/w.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign What's Up?.",
+          "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'W'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/h.png",
+            "alphabet/s.png",
+            "alphabet/y.png",
+            "alphabet/w.png"
+          ],
+          "correctAnswer": ["alphabet/w.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/u.png"],
+          "contentOption":  ["M", "T", "H", "S", "Y", "W"],
+          "correctAnswer": ["W"]
+        },
+        "content5": {
+          "description": "Is this letter W?",
+          "contentImage": ["alphabet/w.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+          "contentOption": [
+            "What's Up",
+            "Q", "R", "V", "N", "U",
+            "Home",
+            "Lobster",
+            "School"
+          ],
+          "correctAnswer": ["What's Up"]
+        }
+      },
+      {
+        "name": "Y",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'Y'",
+          "contentImage": ["alphabet/y.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Yellow?.",
+          "contentImage": ["dictionary/en/color/yellow.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'Y'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/h.png",
+            "alphabet/s.png",
+            "alphabet/y.png",
+            "alphabet/w.png"
+          ],
+          "correctAnswer": ["alphabet/y.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/y.png"],
+          "contentOption":  ["J", "K", "Y", "Q", "R", "Y"],
+          "correctAnswer": ["Y"]
+        },
+        "content5": {
+          "description": "Is this letter y?",
+          "contentImage": ["alphabet/y.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/color/yellow.mp4"],
+          "contentOption": [
+            "Sister",
+            "J", "K", "Y", "Q", "R",
+            "Yellow",
+            "Flower",
+            "Have"
+          ],
+          "correctAnswer": ["Uncle"]
+        }
+      }
+]
