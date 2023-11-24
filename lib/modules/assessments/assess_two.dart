@@ -60,9 +60,11 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
+    if(mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
   }
 
   // Function to get translated option based on the language flag
@@ -71,25 +73,29 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   }
 
   void checkAnswer() {
-    setState(() {
-      if (selectedAnswerIndex != -1) {
-        answerChecked = true;
-        correctAnswerIndex =
-            assessmentQuestions[currentIndex]['correctAnswerIndex'];
-        if (selectedAnswerIndex == correctAnswerIndex) {
-          score++;
+    if(mounted) {
+      setState(() {
+        if (selectedAnswerIndex != -1) {
+          answerChecked = true;
+          correctAnswerIndex =
+              assessmentQuestions[currentIndex]['correctAnswerIndex'];
+          if (selectedAnswerIndex == correctAnswerIndex) {
+            score++;
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   void nextQuestion() {
-    setState(() {
-      currentIndex++;
-      answerChecked = false;
-      selectedAnswerIndex = -1;
-      correctAnswerIndex = -1;
-    });
+    if(mounted) {
+      setState(() {
+        currentIndex++;
+        answerChecked = false;
+        selectedAnswerIndex = -1;
+        correctAnswerIndex = -1;
+      });
+    }
   }
 
   void navigateToNextAssessment(BuildContext context) {

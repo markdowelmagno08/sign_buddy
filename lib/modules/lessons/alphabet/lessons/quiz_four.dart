@@ -92,9 +92,11 @@ class _QuizFourState extends State<QuizFour> {
       }
     } catch (e) {
       print('Error reading letter_lessons.json: $e');
+      if(mounted) {
       setState(() {
         isLoading = false;
       });
+      }
     }
   }
  
@@ -173,9 +175,11 @@ class _QuizFourState extends State<QuizFour> {
     // Check if the selected option is in the list of correct answers
     bool isAnswerCorrect = correctAnswer.contains(selectedOption);
 
-    setState(() {
-      answerChecked = true;
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+      });
+    }
 
     IconData icon;
     String resultMessage;
@@ -286,10 +290,12 @@ class _QuizFourState extends State<QuizFour> {
     Navigator.pushReplacement(
     context, SlidePageRoute(page: Result(lessonName: widget.lessonName))
     );
-    setState(() {
-      selectedOption = '';
-      answerChecked = false;
-    });
+    if(mounted) {
+      setState(() {
+        selectedOption = '';
+        answerChecked = false;
+      });
+    }
   }
 
   

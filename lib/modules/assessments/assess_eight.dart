@@ -61,10 +61,12 @@ class _AssessmentEightState extends State<AssessmentEight> {
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
+    
+    if(mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
   }
 
   void shuffleOptions(List<Map<String, dynamic>> questions) {
@@ -80,44 +82,48 @@ class _AssessmentEightState extends State<AssessmentEight> {
   }
 
   void checkAnswer() {
-    setState(() {
-      answerChecked = true;
-      if (selectedVideoIndex != -1 && selectedWordIndex != -1) {
-        String languageKey = isEnglish ? 'en' : 'ph';
-        String selectedVideo =
-            assessmentQuestions[currentIndex]['matches'][selectedVideoIndex]
-                ['videos'][languageKey];
-        String selectedWord =
-            assessmentQuestions[currentIndex]['matches'][selectedWordIndex]
-                ['words'][languageKey];
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+        if (selectedVideoIndex != -1 && selectedWordIndex != -1) {
+          String languageKey = isEnglish ? 'en' : 'ph';
+          String selectedVideo =
+              assessmentQuestions[currentIndex]['matches'][selectedVideoIndex]
+                  ['videos'][languageKey];
+          String selectedWord =
+              assessmentQuestions[currentIndex]['matches'][selectedWordIndex]
+                  ['words'][languageKey];
 
-        if ( 
-          ((selectedVideo ==
-                    'assets/dictionary/family/cat.gif' &&
-                selectedWord == 'Cat') || (selectedVideo ==
-                    'assets/dictionary/family/pusa.gif' &&
-                selectedWord == 'Pusa')) ||
+          if ( 
             ((selectedVideo ==
-                    'assets/dictionary/family/nephew.gif' &&
-                selectedWord == 'Nephew') || (selectedVideo ==
-                    'assets/dictionary/family/pamangkin_na_lalake.gif' &&
-                selectedWord == 'Pamangkin')  )) {
-          score++;
+                      'assets/dictionary/family/cat.gif' &&
+                  selectedWord == 'Cat') || (selectedVideo ==
+                      'assets/dictionary/family/pusa.gif' &&
+                  selectedWord == 'Pusa')) ||
+              ((selectedVideo ==
+                      'assets/dictionary/family/nephew.gif' &&
+                  selectedWord == 'Nephew') || (selectedVideo ==
+                      'assets/dictionary/family/pamangkin_na_lalake.gif' &&
+                  selectedWord == 'Pamangkin')  )) {
+            score++;
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   void nextQuestion() {
-    setState(() {
-      currentIndex++;
-      answerChecked = false;
-      selectedVideoIndex = -1;
-      selectedWordIndex = -1;
-      if (currentIndex == assessmentQuestions.length) {
-        navigateToResult(context);
-      }
-    });
+    if(mounted) {
+      setState(() {
+        currentIndex++;
+        answerChecked = false;
+        selectedVideoIndex = -1;
+        selectedWordIndex = -1;
+        if (currentIndex == assessmentQuestions.length) {
+          navigateToResult(context);
+        }
+      });
+    }
   }
 
   void navigateToResult(BuildContext context) {

@@ -145,9 +145,12 @@ class _QuizThreeState extends State<QuizThree> {
     // Check if the selected option is in the list of correct answers
     bool isAnswerCorrect = correctAnswer.contains(selectedOption);
 
-    setState(() {
-      answerChecked = true;
-    });
+
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+      });
+    }
 
     IconData icon;
     String resultMessage;
@@ -259,11 +262,12 @@ class _QuizThreeState extends State<QuizThree> {
     Navigator.pushReplacement(
       context, SlidePageRoute(page: QuizFour(lessonName: widget.lessonName))
     );
-
-    setState(() {
-      selectedOption = '';
-      answerChecked = false;
-    });
+    if(mounted) {
+      setState(() {
+        selectedOption = '';
+        answerChecked = false;
+      });
+    }
   }
 
 

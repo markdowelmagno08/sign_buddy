@@ -51,9 +51,11 @@ class _AssessmentFourState extends State<AssessmentFour> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
+    if(mounted) {
+      setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
   }
 
   String getTranslatedCorrectAnswer(String correctAnswer) {
@@ -61,24 +63,28 @@ class _AssessmentFourState extends State<AssessmentFour> {
 }
 
   void checkAnswer() {
-    setState(() {
-      answerChecked = true;
-      correctAnswer = assessmentQuestions[currentIndex]['correctAnswer'];
-      final translatedCorrectAnswer = getTranslatedCorrectAnswer(correctAnswer);
-      if (typedAnswer.toLowerCase() == translatedCorrectAnswer) {
-        score++;
-      }
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+        correctAnswer = assessmentQuestions[currentIndex]['correctAnswer'];
+        final translatedCorrectAnswer = getTranslatedCorrectAnswer(correctAnswer);
+        if (typedAnswer.toLowerCase() == translatedCorrectAnswer) {
+          score++;
+        }
+      });
+    }
   }
 
 
   void nextQuestion() {
+    if(mounted) {
     setState(() {
       currentIndex++;
       answerChecked = false;
       typedAnswer = '';
       correctAnswer = '';
     });
+    }
   }
 
   void navigateToNextAssessment(BuildContext context) {

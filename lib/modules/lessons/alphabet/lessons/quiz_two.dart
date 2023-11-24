@@ -81,9 +81,11 @@ class _QuizTwoState extends State<QuizTwo> {
       }
     } catch (e) {
       print('Error reading letter_lessons.json: $e');
+      if(mounted) {
       setState(() {
         isLoading = false;
       });
+    }
     }
   }
 
@@ -146,9 +148,11 @@ class _QuizTwoState extends State<QuizTwo> {
     // Check if the selected option is in the list of correct answers
     bool isAnswerCorrect = correctAnswer.contains(selectedOption);
 
-    setState(() {
-      answerChecked = true;
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+      });
+    }
 
     IconData icon;
     String resultMessage;
@@ -260,10 +264,12 @@ class _QuizTwoState extends State<QuizTwo> {
       SlidePageRoute(page: QuizThree(lessonName: widget.lessonName)),
     );
 
-    setState(() {
-      selectedOption = '';
-      answerChecked = false;
-    });
+    if(mounted) {
+      setState(() {
+        selectedOption = '';
+        answerChecked = false;
+      });
+    }
   }
 
   
@@ -418,9 +424,11 @@ class _QuizTwoState extends State<QuizTwo> {
     return GestureDetector(
       onTap: () {
         if (!answerChecked) {
-          setState(() {
-            selectedOption = option;
-          });
+          if(mounted) {
+            setState(() {
+              selectedOption = option;
+            });
+          }
         }
       },
       child: SizedBox(

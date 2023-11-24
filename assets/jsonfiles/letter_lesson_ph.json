@@ -29,9 +29,9 @@
       },
       "content4": {
         "description": "Anong senyas ito?",
-        "contentImage": ["alphabet/c.png"],
-        "contentOption": ["Q", "C", "D", "X", "O", "F"],
-        "correctAnswer": ["C"]
+        "contentImage": ["alphabet/a.png"],
+        "contentOption": ["Q", "A", "D", "X", "O", "F"],
+        "correctAnswer": ["A"]
       },
       "content5": {
         "description": "Ito ba ay titik A?",
@@ -70,8 +70,8 @@
         "correctAnswer": null
       },
       "content2": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Sanggol'",
-        "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Bata'",
+        "contentImage": ["dictionary/ph/family/bata.mp4"],
         "contentOption": null,
         "correctAnswer": null
       },
@@ -88,9 +88,9 @@
       },
       "content4": {
         "description": "Anong senyas ito?",
-        "contentImage": ["alphabet/k.png"],
+        "contentImage": ["alphabet/b.png"],
         "contentOption": ["B", "K", "W", "P", "M", "L"],
-        "correctAnswer": ["K"]
+        "correctAnswer": ["B"]
       },
       "content5": {
         "description": "Ito ba ay titik B?",
@@ -100,9 +100,9 @@
       },
       "content6": {
         "description": "Anong senyas ang ginagamit dito?",
-        "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+        "contentImage": ["dictionary/ph/family/bata.mp4"],
         "contentOption": [
-          "Sanggol",
+          "Bata",
           "W",
           "S",
           "P",
@@ -112,7 +112,7 @@
           "Letra",
           "I(Letra)"
         ],
-        "correctAnswer": ["Sanggol"]
+        "correctAnswer": ["Bata"]
       }
     },
     {

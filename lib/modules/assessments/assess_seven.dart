@@ -62,10 +62,12 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
   ];
 
   void shuffleOptions() {
-    setState(() {
-      enOptions.shuffle(Random());
-      phOptions.shuffle(Random());
-    });
+    if(mounted) {
+      setState(() {
+        enOptions.shuffle(Random());
+        phOptions.shuffle(Random());
+      });
+    }
   }
 
   @override
@@ -79,29 +81,35 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
+    if(mounted) {
     setState(() {
       this.isEnglish = isEnglish;
       assessmentQuestions[0]['options'] = isEnglish ? enOptions : phOptions;
     });
+    }
   }
 
   void checkAnswer() {
-    setState(() {
-      answerChecked = true;
-      Map<String, dynamic> correctAnswer =
-          assessmentQuestions[currentIndex]['correctAnswer'];
-      if (selectedWords.join(' ') == correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
-        score++;
-      }
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+        Map<String, dynamic> correctAnswer =
+            assessmentQuestions[currentIndex]['correctAnswer'];
+        if (selectedWords.join(' ') == correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
+          score++;
+        }
+      });
+    }
   }
 
   void nextQuestion() {
+    if(mounted) {
     setState(() {
       currentIndex++;
       answerChecked = false;
       selectedWords.clear();
     });
+    }
   }
 
   void navigateToNextAssessment(BuildContext context) {

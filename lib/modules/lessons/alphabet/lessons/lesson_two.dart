@@ -151,9 +151,11 @@ class _LessonTwoState extends State<LessonTwo> {
       SlidePageRoute(page: QuizOne(lessonName: widget.lessonName)),
     );
 
-    setState(() {
-      progressAdded = false; // Reset progressAdded
-    });
+    if(mounted) {
+      setState(() {
+        progressAdded = false; // Reset progressAdded
+      });
+    }
   }
 
   Widget buildVideoDisplay() {
@@ -198,9 +200,11 @@ class _LessonTwoState extends State<LessonTwo> {
                       _videoController!.setPlaybackSpeed(0.5);
                       _videoController!.play();
                     }
-                    setState(() {
-                      isSlowMotion = !isSlowMotion;
-                    });
+                    if(mounted) {
+                      setState(() {
+                        isSlowMotion = !isSlowMotion;
+                      });
+                    }
                   },
                   child: ImageIcon(
                     AssetImage(

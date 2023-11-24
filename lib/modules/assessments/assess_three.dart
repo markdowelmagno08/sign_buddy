@@ -54,31 +54,37 @@ class _AssessmentThreeState extends State<AssessmentThree> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
-      setState(() {
-      this.isEnglish = isEnglish;
-      // Populate options based on the selected language
-      assessmentQuestions[0]['options'] = isEnglish ? enOptions : phOptions;
-    });
+      if(mounted) {
+        setState(() {
+        this.isEnglish = isEnglish;
+        // Populate options based on the selected language
+        assessmentQuestions[0]['options'] = isEnglish ? enOptions : phOptions;
+      });
+      }
   }
 
   void checkAnswer() {
-    setState(() {
-      answerChecked = true;
-      correctAnswerIndex =
-          assessmentQuestions[currentIndex]['correctAnswerIndex'];
-      if (selectedAnswerIndex == correctAnswerIndex) {
-        score++;
-      }
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+        correctAnswerIndex =
+            assessmentQuestions[currentIndex]['correctAnswerIndex'];
+        if (selectedAnswerIndex == correctAnswerIndex) {
+          score++;
+        }
+      });
+    }
   }
 
   void nextQuestion() {
-    setState(() {
-      currentIndex++;
-      answerChecked = false;
-      selectedAnswerIndex = -1;
-      correctAnswerIndex = -1;
-    });
+    if(mounted) {
+      setState(() {
+        currentIndex++;
+        answerChecked = false;
+        selectedAnswerIndex = -1;
+        correctAnswerIndex = -1;
+      });
+    }
   }
 
   void navigateToNextAssessment(BuildContext context) {

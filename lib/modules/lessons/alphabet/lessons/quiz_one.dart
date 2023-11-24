@@ -79,9 +79,11 @@ class _QuizOneState extends State<QuizOne> {
       }
     } catch (e) {
       print('Error reading letter_lessons.json: $e');
+      if(mounted) {
       setState(() {
         isLoading = false;
       });
+    }
     }
   }
 

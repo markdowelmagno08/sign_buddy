@@ -49,6 +49,7 @@ class _LessonOneState extends State<LessonOne> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.
 
+    
     if (mounted) {
       setState(() {
         this.isEnglish = isEnglish;
@@ -79,9 +80,11 @@ class _LessonOneState extends State<LessonOne> {
       }
     } catch (e) {
       print('Error reading letter_lessons.json: $e');
+      if(mounted) {
       setState(() {
         isLoading = false;
       });
+      }
     }
   }
 
@@ -136,7 +139,7 @@ class _LessonOneState extends State<LessonOne> {
       context,
       SlidePageRoute(page: LessonTwo(lessonName: widget.lessonName)),
     );
-
+    
     setState(() {
       progressAdded = false; // Reset progressAdded
     });

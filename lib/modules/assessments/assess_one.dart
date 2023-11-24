@@ -46,29 +46,36 @@ class _AssessmentOneState extends State<AssessmentOne> {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
+    if(mounted) {
+        setState(() {
+        this.isEnglish = isEnglish;
+      });
+    }
+    
   }
 
   void checkAnswer() {
-    setState(() {
-      answerChecked = true;
-      correctAnswerIndex =
-          assessmentQuestions[currentIndex]['correctAnswerIndex'];
-      if (selectedAnswerIndex == correctAnswerIndex) {
-        score++;
-      }
-    });
+    if(mounted) {
+      setState(() {
+        answerChecked = true;
+        correctAnswerIndex =
+            assessmentQuestions[currentIndex]['correctAnswerIndex'];
+        if (selectedAnswerIndex == correctAnswerIndex) {
+          score++;
+        }
+      });
+    }
   }
 
   void nextQuestion() {
-    setState(() {
-      currentIndex++;
-      answerChecked = false;
-      selectedAnswerIndex = -1;
-      correctAnswerIndex = -1;
-    });
+    if(mounted) {
+      setState(() {
+        currentIndex++;
+        answerChecked = false;
+        selectedAnswerIndex = -1;
+        correctAnswerIndex = -1;
+      });
+    }
   }
 
   void navigateToNextAssessment(BuildContext context) {
