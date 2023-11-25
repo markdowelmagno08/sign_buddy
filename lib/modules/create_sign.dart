@@ -139,7 +139,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
   }
 
   Future<void> searchAndDisplayVideo(String searchText) async {
-    if(mounted) {
+    if (mounted) {
       setState(() {
         disposeVideoControllers();
         searchResults.clear();
@@ -147,40 +147,46 @@ class _CreateSignPageState extends State<CreateSignPage> {
         errorMessage = null; // Clear the error message
       });
     }
-    
-    
-    final wordsToSearch = searchText.split(" ");
-    
-    for (var word in wordsToSearch) {
-      for (var item in dictionary) {
-        if (item['content'].toLowerCase() == word.toLowerCase()) {
-          searchResults.add({
-            'mp4': item['mp4'],
-            'word': item['content'],
-          });
-          break;
-        }
+
+    final wordsToSearch = searchText.toLowerCase().split(" ");
+
+    for (var phrase in dictionary) {
+      final phraseWords = phrase['content'].toLowerCase().split(" ");
+      if (phraseWords.every((word) => wordsToSearch.contains(word))) {
+        searchResults.add({
+          'mp4': phrase['mp4'],
+          'word': phrase['content'],
+          'sequence': wordsToSearch.indexOf(phraseWords[0]),
+        });
       }
     }
+
+    searchResults.sort((a, b) => a['sequence'].compareTo(b['sequence']));
 
     for (var result in searchResults) {
       await fetchAssetUrls(result['mp4']);
     }
 
-     if (videoControllers.isNotEmpty) {
+    if (videoControllers.isNotEmpty) {
       setState(() {
         selectedVideoWord = searchResults[0]['word']; // Set the word of the first video
-        loading = false; 
+        loading = false;
       });
-      }else {
+    } else {
       setState(() {
-         errorMessage = isEnglish
+        errorMessage = isEnglish
             ? '"$searchText" sign not found'
             : '"$searchText" ay hindi natagpuan';
         loading = false;
       });
     }
   }
+
+
+
+
+
+
 
 Widget _buildVideoCarousel() {
   if (videoControllers.isNotEmpty) {
