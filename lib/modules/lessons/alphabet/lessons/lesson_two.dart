@@ -113,7 +113,6 @@ class _LessonTwoState extends State<LessonTwo> {
             if (contentVideo.isNotEmpty) {
               _videoController =
                   setupVideoController(Uri.parse(contentVideo[0]));
-              _videoController!.play();
             }
           });
         } else {

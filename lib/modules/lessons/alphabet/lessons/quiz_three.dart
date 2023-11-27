@@ -11,6 +11,7 @@ import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class QuizThree extends StatefulWidget {
   final String lessonName;
@@ -322,8 +323,10 @@ class _QuizThreeState extends State<QuizThree> {
                 color: Colors.white, // Color inside the border
                 // Border radius
               ),
-              child: Image.network(
-                contentImage[0]
+              child: CachedNetworkImage(
+                imageUrl: contentImage[0],
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             SizedBox(height: 20),

@@ -27,7 +27,7 @@ class _LettersState extends State<Letters> {
   bool isEnglish = true;
   bool isLoading = true;
 
-  late Timer _refreshTimer; // Declare the Timer
+ 
 
   
 
@@ -99,15 +99,11 @@ class _LettersState extends State<Letters> {
       }
     });
     super.initState();
-
-     _refreshTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      letterLessons();
-    });
+    
   }
+  
    @override
   void dispose() {
-    // Cancel the timer when the widget is disposed
-    _refreshTimer.cancel();
     super.dispose();
   }
   

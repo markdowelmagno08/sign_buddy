@@ -12,6 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
 import 'package:sign_buddy/firebase_storage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 class LessonOne extends StatefulWidget {
   final String lessonName;
 
@@ -203,8 +204,10 @@ class _LessonOneState extends State<LessonOne> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    contentImage[0]
+                  child: CachedNetworkImage(
+                    imageUrl: contentImage[0],
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
               ),

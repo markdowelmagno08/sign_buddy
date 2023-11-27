@@ -10,6 +10,7 @@ import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class QuizTwo extends StatefulWidget {
   final String lessonName;
@@ -325,9 +326,11 @@ class _QuizTwoState extends State<QuizTwo> {
                   color: Colors.white, // Color inside the border
                   // Border radius
                 ),
-                child: Image.network(
-                  contentImage[0]
-                ),
+                child: CachedNetworkImage(
+                    imageUrl: contentImage[0],
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
               ),
             Expanded(
               child: isLoading
