@@ -356,5 +356,281 @@
     "content": "Sorry",
     "category": "Greetings",
     "mp4": "dictionary/en/phrases/sorry.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Canyon",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/canyon.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Clouds",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/clouds.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Desert",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/desert.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Domain Expansion",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/domain_expansion.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Earth",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/earth.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Flower",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/flower.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Forest",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/forest.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Grass",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/grass.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Jungle",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/jungle.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Lake",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/lake.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Land",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/land.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Moon",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/moon.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ocean",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/ocean.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Plains",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/plains.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Rock",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/rock.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Sand",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/sand.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Sky",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/sky.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Stars",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/stars.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Sun",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/sun.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Tree",
+    "category": "Nature",
+    "mp4": "dictionary/en/nature/tree.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Beer",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/beer.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Bread",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/bread.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Cereal",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/cereal.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Champagne",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/champagne.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Coffee",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/coffee.mp4"
+  },
+  {
+    "type": "word",
+    "content": "French Fries",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/french_fries.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Hamburger",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/hamburger.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Hot Chocolate",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/hot_chocolate.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Juice",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/juice.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Ketchup",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/ketchup.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Milk",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/milk.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Milkshake",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/milkshake.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Pancake",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/pancake.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Pepperoni",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/pepperoni.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Pizza",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/pizza.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Sandwich",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/sandwich.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Softdrink",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/softdrink.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Soup",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/soup.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Spaghetti",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/spaghetti.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Taco",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/taco.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Tea",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/tea.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Toast",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/toast.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Tortilla",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/tortilla.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Waffle",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/waffle.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Water",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/water.mp4"
+  },
+  {
+    "type": "word",
+    "content": "Wine",
+    "category": "Food and Drinks",
+    "mp4": "dictionary/en/food_and_drinks/wine.mp4"
   }
 ]

@@ -1,0 +1,431 @@
+[
+    {
+        "name": "01",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": true,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '1'",
+          "contentImage": ["numbers/1.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 1",
+          "contentImage": ["numbers/1.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '1'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/5.png",
+            "numbers/9.png",
+            "numbers/10.png",
+            "numbers/1.png"
+          ],
+          "correctAnswer": ["numbers/1.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/1.png"],
+          "contentOption": ["1", "14", "6", "11", "3", "8"],
+          "correctAnswer": ["1"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/1.png"],
+          "contentOption": null,
+          "correctAnswer": ["1"]
+        }
+              
+    },
+    {
+        "name": "02",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '2'",
+          "contentImage": ["numbers/2.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 2",
+          "contentImage": ["numbers/2.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '2'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/4.png",
+            "numbers/8.png",
+            "numbers/3.png",
+            "numbers/2.png"
+          ],
+          "correctAnswer": ["numbers/2.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/2.png"],
+          "contentOption": ["2", "4", "10", "5", "1", "12"],
+          "correctAnswer": ["2"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/2.png"],
+          "contentOption": null,
+          "correctAnswer": ["2"]
+        }
+        
+        
+    },
+    {
+        "name": "03",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '3'",
+          "contentImage": ["numbers/3.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 3",
+          "contentImage": ["numbers/3.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '3'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/1.png",
+            "numbers/7.png",
+            "numbers/9.png",
+            "numbers/3.png"
+          ],
+          "correctAnswer": ["numbers/3.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/3.png"],
+          "contentOption": ["3", "4", "10", "5", "1", "12"],
+          "correctAnswer": ["3"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/3.png"],
+          "contentOption": null,
+          "correctAnswer": ["3"]
+        }
+        
+        
+        
+    },
+    {
+        "name": "04",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '4'",
+          "contentImage": ["numbers/4.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 4",
+          "contentImage": ["numbers/4.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '4'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/1.png",
+            "numbers/3.png",
+            "numbers/4.png",
+            "numbers/7.png"
+          ],
+          "correctAnswer": ["numbers/4.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/4.png"],
+          "contentOption": ["4", "14", "3", "11", "2", "8"],
+          "correctAnswer": ["4"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/4.png"],
+          "contentOption": null,
+          "correctAnswer": ["4"]
+        }
+
+        
+    },
+    {
+        "name": "05",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '5'",
+          "contentImage": ["numbers/5.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 5",
+          "contentImage": ["numbers/5.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '5'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/5.png",
+            "numbers/9.png",
+            "numbers/10.png",
+            "numbers/3.png"
+          ],
+          "correctAnswer": ["numbers/5.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/5.png"],
+          "contentOption": ["5", "4", "7", "10", "13", "1"],
+          "correctAnswer": ["5"]
+        },
+        
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/5.png"],
+          "contentOption": null,
+          "correctAnswer": ["5"]
+        }
+        
+    },
+    {
+        "name": "06",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '6'",
+          "contentImage": ["numbers/6.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 6",
+          "contentImage": ["numbers/6.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '6'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/8.png",
+            "numbers/5.png",
+            "numbers/6.png",
+            "numbers/3.png"
+          ],
+          "correctAnswer": ["numbers/6.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/6.png"],
+          "contentOption": ["12", "8", "5", "2", "11", "6"],
+          "correctAnswer": ["6"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/6.png"],
+          "contentOption": null,
+          "correctAnswer": ["6"]
+        }
+        
+    },
+    {
+        "name": "07",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '7'",
+          "contentImage": ["numbers/7.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 7",
+          "contentImage": ["numbers/7.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '7'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/7.png",
+            "numbers/4.png",
+            "numbers/10.png",
+            "numbers/6.png"
+          ],
+          "correctAnswer": ["numbers/7.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/7.png"],
+          "contentOption": ["1", "7", "14", "3", "9", "10"],
+          "correctAnswer": ["7"]
+        },
+        
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/7.png"],
+          "contentOption": null,
+          "correctAnswer": ["7"]
+        }
+        
+    },
+   
+    {
+        "name": "08",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '8'",
+          "contentImage": ["numbers/8.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 8",
+          "contentImage": ["numbers/8.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '8'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/1.png",
+            "numbers/8.png",
+            "numbers/10.png",
+            "numbers/3.png"
+          ],
+          "correctAnswer": ["numbers/8.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/8.png"],
+          "contentOption": ["1", "7", "15", "8", "2", "10"],
+          "correctAnswer": ["8"]
+        },
+        
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/8.png"],
+          "contentOption": null,
+          "correctAnswer": ["8"]
+        }
+        
+    },
+    {
+        "name": "09",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '9'",
+          "contentImage": ["numbers/9.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 9",
+          "contentImage": ["numbers/9.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '9'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/2.png",
+            "numbers/4.png",
+            "numbers/6.png",
+            "numbers/9.png"
+          ],
+          "correctAnswer": ["numbers/9.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/9.png"],
+          "contentOption": ["2", "7", "14", "3", "8", "11"],
+          "correctAnswer": ["9"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/9.png"],
+          "contentOption": null,
+          "correctAnswer": ["9"]
+        }
+        
+    },
+    {
+        "name": "10",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang senyas para sa bilang '10'",
+          "contentImage": ["numbers/10.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 10",
+          "contentImage": ["numbers/10.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Alin sa mga ito ang senyas para sa bilang '10'?",
+          "contentImage": null,
+          "contentOption": [
+            "numbers/1.png",
+            "numbers/3.png",
+            "numbers/5.png",
+            "numbers/10.png"
+          ],
+          "correctAnswer": ["numbers/10.png"]
+        },
+        "content4": {
+          "description": "Anong senyas ito?",
+          "contentImage": ["numbers/10.png"],
+          "contentOption": ["10", "5", "1", "12", "9", "7"],
+          "correctAnswer": ["10"]
+        },
+        "content5": {
+          "description": "I-type ang sagot batay sa senyas na ito",
+          "contentImage": ["numbers/10.png"],
+          "contentOption": null,
+          "correctAnswer": ["10"]
+        }
+        
+    }
+
+]

@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
-// import 'dart:convert';
-// import 'dart:io';
-// import 'package:path_provider/path_provider.dart';
-// import 'package:sign_buddy/modules/data/lesson_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_two.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_one.dart';
+import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_numbers.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-class LessonOne extends StatefulWidget {
+class NumberLessonOne extends StatefulWidget {
   final String lessonName;
 
-  const LessonOne({Key? key, required this.lessonName}) : super(key: key);
+  const NumberLessonOne({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<LessonOne> createState() => _LessonOneState();
+  State<NumberLessonOne> createState() => _NumberLessonOneState();
 }
 
-class _LessonOneState extends State<LessonOne> {
+class _NumberLessonOneState extends State<NumberLessonOne> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentImage = [];
@@ -61,7 +57,7 @@ class _LessonOneState extends State<LessonOne> {
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData =
-      await LetterLessonFireStore(userId: userId!)
+      await NumberLessonFireStore(userId: userId!)
             .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
 
       
@@ -76,11 +72,11 @@ class _LessonOneState extends State<LessonOne> {
 
       } else {
         print(
-            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Number lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
-      print('Error reading letter_lessons.json: $e');
+      print('Error reading number_lessons.json: $e');
       if(mounted) {
       setState(() {
         isLoading = false;
@@ -95,7 +91,7 @@ class _LessonOneState extends State<LessonOne> {
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData = 
-      await LetterLessonFireStore(userId: userId!)
+      await NumberLessonFireStore(userId: userId!)
           .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
 
@@ -118,13 +114,13 @@ class _LessonOneState extends State<LessonOne> {
           });
         } else {
           print(
-            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Number lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
       }
     } catch (e) {
-        print('Error reading letter_lessons.json: $e');
+        print('Error reading number_lessons.json: $e');
         if (mounted) {
           setState(() {
             isLoading = true;
@@ -138,7 +134,7 @@ class _LessonOneState extends State<LessonOne> {
   void _nextPage() async {
     Navigator.pushReplacement(
       context,
-      SlidePageRoute(page: LessonTwo(lessonName: widget.lessonName)),
+      SlidePageRoute(page: NumberQuizOne(lessonName: widget.lessonName)),
     );
     
     setState(() {
@@ -163,7 +159,7 @@ class _LessonOneState extends State<LessonOne> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    SlidePageRoute(page: Letters()),
+                    SlidePageRoute(page: Number()),
                   );
                 },
               ),
@@ -172,10 +168,10 @@ class _LessonOneState extends State<LessonOne> {
               Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'Letter lesson for: "${widget.lessonName}"', 
+                'Number lesson for: "${widget.lessonName.startsWith('0') ? widget.lessonName.substring(1) : widget.lessonName}"',
                 style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: FontWeight.bold, 
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -194,7 +190,7 @@ class _LessonOneState extends State<LessonOne> {
               CircularProgressIndicator()
             else if (contentImage.isNotEmpty)
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),//adjust the size of the image
+                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),// adjust the size of the image 
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
@@ -208,6 +204,8 @@ class _LessonOneState extends State<LessonOne> {
                     imageUrl: contentImage[0],
                     placeholder: (context, url) => CircularProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
+                    // width: 180, 
+                    // height: 150,
                   ),
                 ),
               ),
@@ -220,11 +218,11 @@ class _LessonOneState extends State<LessonOne> {
                   onPressed: isLoading || contentImage.isEmpty
                       ? null  // Disable the button if assets are still loading
                       : () async {
-                          if (progress >= 15) {
+                          if (progress >= 24) {
                             _nextPage();
                           } else {
-                            LetterLessonFireStore(userId: uid)
-                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                            NumberLessonFireStore(userId: uid)
+                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 25);
                             print("Progress 1 updated successfully!");
                             _nextPage();
                           }

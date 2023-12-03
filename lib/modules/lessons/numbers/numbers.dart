@@ -4,34 +4,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 
 
-
-
-class Letters extends StatefulWidget {
-  const Letters({Key? key}) : super(key: key);
+class Number extends StatefulWidget {
+  const Number({Key? key}) : super(key: key);
 
   @override
-  State<Letters> createState() => _LettersState();
+  State<Number> createState() => _NumberState();
   
 }
 
 
 
-class _LettersState extends State<Letters> {
-  List letterLessonNames = [];
-  List letterLessonProgress = [];
-  List unlockedLetterLessons = [];
+class _NumberState extends State<Number> {
+  List numberLessonNames = [];
+  List numberLessonProgress = [];
+  List unlockedNumberLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
 
  
-
-  
-
  
 
   Future<void> getLanguage() async {
@@ -47,21 +42,21 @@ class _LettersState extends State<Letters> {
     }
   }
 
-  Future<void> letterLessons() async {
+  Future<void> numberLessons() async {
     
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       final String? userId = Auth().getCurrentUserId();
 
 
-      List<String> letterNames = [];
+      List<String> numberNames = [];
       List<bool> unlockedLessons = [];
-      List<int> letterProgress = [];
+      List<int> numberProgress = [];
 
       QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
           .collection('userData')
           .doc(userId)
-          .collection('letters')
+          .collection('numbers')
           .doc(isEnglish ? 'en' : 'ph')
           .collection('lessons')
           .get();
@@ -69,29 +64,29 @@ class _LettersState extends State<Letters> {
       for (QueryDocumentSnapshot<Map<String, dynamic>> doc
           in querySnapshot.docs) {
         Map<String, dynamic> lessonData = doc.data();
-        letterNames.add(lessonData['name'] as String);
+        numberNames.add(lessonData['name'] as String);
         unlockedLessons.add(lessonData['isUnlocked'] as bool);
-        letterProgress.add(lessonData['progress'] as int);
+        numberProgress.add(lessonData['progress'] as int);
       }
       if (mounted) {
         setState(() {
-          letterLessonNames = letterNames;
-          unlockedLetterLessons = unlockedLessons;
-          letterLessonProgress = letterProgress;
+          numberLessonNames = numberNames;
+          unlockedNumberLessons = unlockedLessons;
+          numberLessonProgress = numberProgress;
         });
       }
 
 
 
     } catch (e) {
-        print('Error updating local letter lessons: $e');
+        print('Error updating local number lessons: $e');
     }
   }
 
   @override
   void initState() {
     getLanguage().then((_) {
-      letterLessons();
+      numberLessons();
 
       if (mounted) {
         setState(() {
@@ -182,7 +177,7 @@ class _LettersState extends State<Letters> {
                       ),
                        Visibility(
                         child: Text(
-                          isEnglish ? 'Learn Alphabets' : 'Matuto ng Alpabeto',
+                          isEnglish ? 'Learn Numbers' : 'Matuto ng Numero',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -210,9 +205,9 @@ class _LettersState extends State<Letters> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  final lessonName = letterLessonNames[index];
-                  final isUnlocked = unlockedLetterLessons[index];
-                  final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
+                  final lessonName = numberLessonNames[index];
+                  final isUnlocked = unlockedNumberLessons[index];
+                  final progress = numberLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Card(
@@ -239,14 +234,16 @@ class _LettersState extends State<Letters> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        lessonName,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: isUnlocked ? Colors.black : Colors.grey,
+                                          lessonName.startsWith('0') ? lessonName.substring(1) : lessonName,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: isUnlocked ? Colors.black : Colors.grey,
+                                          ),
                                         ),
-                                      ),
                                       Text(
-                                        isEnglish ? 'Learn the sign for $lessonName' : 'Senyas para sa $lessonName',
+                                        isEnglish
+                                            ? 'Learn the sign for ${lessonName.startsWith('0') ? lessonName.substring(1) : lessonName}'
+                                            : 'Senyas para sa ${lessonName.startsWith('0') ? lessonName.substring(1) : lessonName}',
                                         style: TextStyle(
                                           color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
                                           fontFamily: 'FiraSans',
@@ -265,7 +262,7 @@ class _LettersState extends State<Letters> {
                                 Navigator.push(
                                   context,
                                   SlidePageRoute(
-                                    page: LessonOne(
+                                    page: NumberLessonOne(
                                       lessonName: lessonName,
                                     ),
                                   ),
@@ -281,7 +278,7 @@ class _LettersState extends State<Letters> {
                   );
                 }
               },
-              childCount: isLoading ? 1 : letterLessonNames.length, // Show 1 item if loading, otherwise show the lesson names
+              childCount: isLoading ? 1 : numberLessonNames.length, // Show 1 item if loading, otherwise show the lesson names
             ),
           ),
         ],

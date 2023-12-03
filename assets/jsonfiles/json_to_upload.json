@@ -1,816 +1,364 @@
 [
-    
-  
   {
-    "name": "F",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'F'",
-      "contentImage": ["alphabet/f.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Family'",
-      "contentImage": ["dictionary/ph/family/family.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'F'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/u.png",
-        "alphabet/v.png",
-        "alphabet/s.png",
-        "alphabet/f.png"
-      ],
-      "correctAnswer": ["alphabet/f.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/f.png"],
-      "contentOption": ["U", "V", "M", "H", "S", "F"],
-      "correctAnswer": ["F"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik F?",
-      "contentImage": ["alphabet/f.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/family.mp4"],
-      "contentOption": [
-        "Salamat",
-        "Kumusta",
-        "Bahay",
-        "Pagkain",
-        "Family",
-        "U", "V", "M", "H"
-      ],
-      "correctAnswer": ["Family"]
-    }
+      "name": "01",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": true,
+      "content1": {
+        "description": "This is the sign for number '1'",
+        "contentImage": ["numbers/1.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 1",
+        "contentImage": ["numbers/1.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '1'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/5.png",
+          "numbers/9.png",
+          "numbers/10.png",
+          "numbers/1.png"
+        ],
+        "correctAnswer": ["numbers/1.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/1.png"],
+        "contentOption": ["1", "14", "6", "11", "3", "8"],
+        "correctAnswer": ["1"]
+      }       
   },
   {
-    "name": "G",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'G'",
-      "contentImage": ["alphabet/g.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Family'",
-      "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'G'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/b.png",
-        "alphabet/d.png",
-        "alphabet/g.png",
-        "alphabet/k.png"
-      ],
-      "correctAnswer": ["alphabet/g.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/g.png"],
-      "contentOption": ["B", "D", "G", "J", "K", "Q"],
-      "correctAnswer": ["G"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik G?",
-      "contentImage": ["alphabet/g.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
-      "contentOption": [
-        "Good luck",
-        "Mahal",
-        "Sampu",
-        "Tubig",
-        "Araw",
-        "B", "D", "G", "J"
-      ],
-      "correctAnswer": ["Good luck"]
-    }
+      "name": "02",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '2'",
+        "contentImage": ["numbers/2.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 2",
+        "contentImage": ["numbers/2.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '2'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/4.png",
+          "numbers/8.png",
+          "numbers/3.png",
+          "numbers/2.png"
+        ],
+        "correctAnswer": ["numbers/2.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/2.png"],
+        "contentOption": ["2", "4", "10", "5", "1", "12"],
+        "correctAnswer": ["2"]
+      }
+      
+      
   },
   {
-    "name": "I",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'I'",
-      "contentImage": ["alphabet/i.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Ibon'",
-      "contentImage": ["dictionary/ph/animals/ibon.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'I'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/l.png",
-        "alphabet/n.png",
-        "alphabet/p.png",
-        "alphabet/r.png"
-      ],
-      "correctAnswer": ["alphabet/i.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/g.png"],
-      "contentOption": ["L", "I", "P", "R", "T", "W"],
-      "correctAnswer": ["I"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik I?",
-      "contentImage": ["alphabet/i.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/animals/ibon.mp4"],
-      "contentOption": [
-        "Ibon",
-        "Maligaya",
-        "Pamilya",
-        "Bahay",
-        "Bayan",
-        "L", "I", "P", "R"
-      ],
-      "correctAnswer": ["Ibon"]
-    }
+      "name": "03",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '3'",
+        "contentImage": ["numbers/3.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 3",
+        "contentImage": ["numbers/3.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '3'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/1.png",
+          "numbers/7.png",
+          "numbers/9.png",
+          "numbers/1.png"
+        ],
+        "correctAnswer": ["numbers/3.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/3.png"],
+        "contentOption": ["3", "4", "10", "5", "1", "12"],
+        "correctAnswer": ["3"]
+      }
+      
   },
   {
-    "name": "K",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'K'",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Kuya'",
-      "contentImage": ["dictionary/ph/family/kuya.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'K'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/a.png",
-        "alphabet/e.png",
-        "alphabet/o.png",
-        "alphabet/u.png"
-      ],
-      "correctAnswer": ["alphabet/i.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": ["A", "E", "K", "U", "S", "N"],
-      "correctAnswer": ["K"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik K?",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/kuya.mp4"],
-      "contentOption": [
-        "Sarap",
-        "Kasiyahan",
-        "Kuya",
-        "Damit",
-        "Tulong",
-        "A", "E", "K", "U"
-      ],
-      "correctAnswer": ["Kuya"]
-    }
+      "name": "04",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '4'",
+        "contentImage": ["numbers/4.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 4",
+        "contentImage": ["numbers/4.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '4'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/1.png",
+          "numbers/3.png",
+          "numbers/4.png",
+          "numbers/7.png"
+        ],
+        "correctAnswer": ["numbers/4.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/4.png"],
+        "contentOption": ["4", "14", "3", "11", "2", "8"],
+        "correctAnswer": ["4"]
+      }
+
+      
   },
   {
-    "name": "K",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'K'",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Kuya'",
-      "contentImage": ["dictionary/ph/family/kuya.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'K'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/a.png",
-        "alphabet/e.png",
-        "alphabet/o.png",
-        "alphabet/u.png"
-      ],
-      "correctAnswer": ["alphabet/i.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": ["A", "E", "K", "U", "S", "N"],
-      "correctAnswer": ["K"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik K?",
-      "contentImage": ["alphabet/k.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/kuya.mp4"],
-      "contentOption": [
-        "Sarap",
-        "Kasiyahan",
-        "Kuya",
-        "Damit",
-        "Tulong",
-        "A", "E", "K", "U"
-      ],
-      "correctAnswer": ["Kuya"]
-    }
+      "name": "05",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '5'",
+        "contentImage": ["numbers/5.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 5",
+        "contentImage": ["numbers/5.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '5'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/5.png",
+          "numbers/9.png",
+          "numbers/10.png",
+          "numbers/3.png"
+        ],
+        "correctAnswer": ["numbers/5.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/5.png"],
+        "contentOption": ["5", "4", "7", "10", "13", "1"],
+        "correctAnswer": ["5"]
+      }
+      
   },
   {
-    "name": "L",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'L'",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Leon'",
-      "contentImage": ["dictionary/ph/animals/leon.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'L'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/b.png",
-        "alphabet/d.png",
-        "alphabet/g.png",
-        "alphabet/l.png"
-      ],
-      "correctAnswer": ["alphabet/l.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": ["B", "D", "G", "L", "M", "Q"],
-      "correctAnswer": ["L"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik L?",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/animals/leon.mp4"],
-      "contentOption": [
-        "Bata",
-        "Lugar",
-        "Leon",
-        "Asawa",
-        "Simbahan",
-        "B", "D", "G", "L"
-      ],
-      "correctAnswer": ["Leon"]
-    }
+      "name": "06",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '6'",
+        "contentImage": ["numbers/6.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 6",
+        "contentImage": ["numbers/6.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '6'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/8.png",
+          "numbers/5.png",
+          "numbers/6.png",
+          "numbers/3.png"
+        ],
+        "correctAnswer": ["numbers/6.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/6.png"],
+        "contentOption": ["12", "8", "5", "2", "11", "6"],
+        "correctAnswer": ["5"]
+      }
+      
   },
   {
-    "name": "L",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'L'",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Leon'",
-      "contentImage": ["dictionary/ph/animals/leon.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'L'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/b.png",
-        "alphabet/d.png",
-        "alphabet/g.png",
-        "alphabet/l.png"
-      ],
-      "correctAnswer": ["alphabet/l.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": ["B", "D", "G", "L", "M", "Q"],
-      "correctAnswer": ["L"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik L?",
-      "contentImage": ["alphabet/l.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/animals/leon.mp4"],
-      "contentOption": [
-        "Bata",
-        "Lugar",
-        "Leon",
-        "Asawa",
-        "Simbahan",
-        "B", "D", "G", "L"
-      ],
-      "correctAnswer": ["Leon"]
-    }
+      "name": "07",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '7'",
+        "contentImage": ["numbers/7.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 7",
+        "contentImage": ["numbers/7.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '7'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/7.png",
+          "numbers/4.png",
+          "numbers/10.png",
+          "numbers/6.png"
+        ],
+        "correctAnswer": ["numbers/7.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/7.png"],
+        "contentOption": ["1", "7", "14", "3", "9", "10"],
+        "correctAnswer": ["7"]
+      }
+      
+  },
+ 
+  {
+      "name": "08",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '8'",
+        "contentImage": ["numbers/8.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 8",
+        "contentImage": ["numbers/8.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '8'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/1.png",
+          "numbers/8.png",
+          "numbers/10.png",
+          "numbers/3.png"
+        ],
+        "correctAnswer": ["numbers/8.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/8.png"],
+        "contentOption": ["4", "13", "6", "8", "2", "11"],
+        "correctAnswer": ["8"]
+      }
+      
   },
   {
-    "name": "M",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'M'",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Mahal Kita'",
-      "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'M'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/m.png",
-        "alphabet/n.png",
-        "alphabet/r.png",
-        "alphabet/s.png"
-      ],
-      "correctAnswer": ["alphabet/m.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption":  ["M", "N", "P", "R", "S", "T"],
-      "correctAnswer": ["M"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik M?",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
-      "contentOption": [
-        "Sagot",
-        "Mahal Kita",
-        "Tanong",
-        "Ganyan",
-        "Kita",
-        "M", "N", "P", "R"
-      ],
-      "correctAnswer": ["Mahal Kita"]
-    }
+      "name": "09",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '9'",
+        "contentImage": ["numbers/9.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 9",
+        "contentImage": ["numbers/9.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '9'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/2.png",
+          "numbers/4.png",
+          "numbers/6.png",
+          "numbers/9.png"
+        ],
+        "correctAnswer": ["numbers/9.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/9.png"],
+        "contentOption": ["10", "5", "1", "12", "9", "7"],
+        "correctAnswer": ["9"]
+      }
+      
   },
   {
-    "name": "M",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'M'",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Mahal Kita'",
-      "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'M'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/m.png",
-        "alphabet/n.png",
-        "alphabet/r.png",
-        "alphabet/s.png"
-      ],
-      "correctAnswer": ["alphabet/m.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption":  ["M", "N", "P", "R", "S", "T"],
-      "correctAnswer": ["M"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik M?",
-      "contentImage": ["alphabet/m.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
-      "contentOption": [
-        "Sagot",
-        "Mahal Kita",
-        "Tanong",
-        "Ganyan",
-        "Kita",
-        "M", "N", "P", "R"
-      ],
-      "correctAnswer": ["Mahal Kita"]
-    }
-  },
-  {
-    "name": "N",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'N'",
-      "contentImage": ["alphabet/n.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Ninang'",
-      "contentImage": ["dictionary/ph/family/ninang.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'N'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/j.png",
-        "alphabet/f.png",
-        "alphabet/v.png",
-        "alphabet/n.png"
-      ],
-      "correctAnswer": ["alphabet/n.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/n.png"],
-      "contentOption":  ["J", "F", "V", "Z", "C", "N"],
-      "correctAnswer": ["N"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik M?",
-      "contentImage": ["alphabet/n.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/ninang.mp4"],
-      "contentOption": [
-        "Ninang",
-        "Magkano?",
-        "Pahiram",
-        "Hindi",
-        "Gusto ko",
-        "J", "F", "V", "Z"
-      ],
-      "correctAnswer": ["Ninang"]
-    }
-  },
-  {
-    "name": "O",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'O'",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Oso'",
-      "contentImage": ["dictionary/ph/animals/oso.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'O'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/v.png",
-        "alphabet/b.png",
-        "alphabet/e.png",
-        "alphabet/o.png"
-      ],
-      "correctAnswer": ["alphabet/o.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption":  ["V", "N", "W", "E", "P", "O"],
-      "correctAnswer": ["O"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik O?",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/animals/oso.mp4"],
-      "contentOption": [
-        "Oso",
-        "Puno",
-        "Isa",
-        "Dalawa",
-        "Larawan",
-        "V", "N", "W", "E"
-      ],
-      "correctAnswer": ["Oso"]
-    }
-  },
-  {
-    "name": "O",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'O'",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Oso'",
-      "contentImage": ["dictionary/ph/animals/oso.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'O'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/v.png",
-        "alphabet/b.png",
-        "alphabet/e.png",
-        "alphabet/o.png"
-      ],
-      "correctAnswer": ["alphabet/o.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption":  ["V", "N", "W", "E", "P", "O"],
-      "correctAnswer": ["O"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik O?",
-      "contentImage": ["alphabet/o.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/animals/oso.mp4"],
-      "contentOption": [
-        "Oso",
-        "Puno",
-        "Isa",
-        "Dalawa",
-        "Larawan",
-        "V", "N", "W", "E"
-      ],
-      "correctAnswer": ["Oso"]
-    }
-  },
-  {
-    "name": "P",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'P'",
-      "contentImage": ["alphabet/p.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Paalam'",
-      "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'P'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/m.png",
-        "alphabet/f.png",
-        "alphabet/k.png",
-        "alphabet/p.png"
-      ],
-      "correctAnswer": ["alphabet/p.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/p.png"],
-      "contentOption":  ["F", "P", "H", "K", "M", "N"],
-      "correctAnswer": ["P"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik P?",
-      "contentImage": ["alphabet/p.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
-      "contentOption": [
-        "Tulog",
-        "Paalam",
-        "Bilis",
-        "Ano ito?",
-        "Paumanhin",
-        "F", "P", "H", "K"
-      ],
-      "correctAnswer": ["Paalam"]
-    }
-  },
-  {
-    "name": "S",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'S'",
-      "contentImage": ["alphabet/s.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Sanggol'",
-      "contentImage": ["dictionary/ph/family/sanggol.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'S'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/t.png",
-        "alphabet/k.png",
-        "alphabet/a.png",
-        "alphabet/f.png"
-      ],
-      "correctAnswer": ["alphabet/s.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/s.png"],
-      "contentOption":  ["S", "T", "K", "A", "F", "J"],
-      "correctAnswer": ["S"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik S?",
-      "contentImage": ["alphabet/s.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/sanggol.mp4"],
-      "contentOption": [
-        "Mabilis",
-        "Pula",
-        "Malamig",
-        "Mabait",
-        "Araw",
-        "S", "T", "K", "A"
-      ],
-      "correctAnswer": ["Sanggol"]
-    }
-  },
-  
-  {
-    "name": "T",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": true,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'T'",
-      "contentImage": ["alphabet/t.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Tito'",
-      "contentImage": ["dictionary/ph/family/tito.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'T'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/z.png",
-        "alphabet/h.png",
-        "alphabet/s.png",
-        "alphabet/t.png"
-      ],
-      "correctAnswer": ["alphabet/t.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/t.png"],
-      "contentOption":  ["X", "T", "S", "N", "Z", "H"],
-      "correctAnswer": ["T"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik T?",
-      "contentImage": ["alphabet/t.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/family/tito.mp4"],
-      "contentOption": [
-        "Libro",
-        "Tito",
-        "Lakad",
-        "Palad",
-        "Sapatos",
-        "X", "T", "S", "N"
-      ],
-      "correctAnswer": ["Tito"]
-    }
+      "name": "10",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for number '10'",
+        "contentImage": ["numbers/10.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign 10",
+        "contentImage": ["numbers/10.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for number '10'?",
+        "contentImage": null,
+        "contentOption": [
+          "numbers/1.png",
+          "numbers/3.png",
+          "numbers/5.png",
+          "numbers/10.png"
+        ],
+        "correctAnswer": ["numbers/10.png"]
+      },
+      "content4": {
+        "description": "What number is this?",
+        "contentImage": ["numbers/10.png"],
+        "contentOption": ["10", "5", "1", "12", "9", "7"],
+        "correctAnswer": ["10"]
+      } 
+      
   }
-  
 ]

@@ -181,7 +181,8 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
 
             switch (language) {
               case 'American - English':
-               UserFirestore(userId: userId).initializeLessons("letters", "en");
+               UserFirestore(userId: userId).initializeLessons("letters",  "en");
+               UserFirestore(userId: userId).initializeLessons("numbers",  "en");
                 setLanguage(true);
                 print("language set successfully for en");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
@@ -189,7 +190,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
               case 'Filipino':
               setLanguage(false);
                UserFirestore(userId: userId).initializeLessons("letters", "ph");
-
+               UserFirestore(userId: userId).initializeLessons("numbers",  "ph");
               print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;

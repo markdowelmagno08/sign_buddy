@@ -14,7 +14,8 @@ import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
 import 'package:sign_buddy/modules/lessons/family.dart';
-import 'package:sign_buddy/modules/lessons/numbers.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_three.dart';
+import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/lessons/shape.dart';
 import 'package:sign_buddy/modules/lessons/animals.dart';
 import 'package:sign_buddy/modules/lessons/nature.dart';
@@ -88,7 +89,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/forgotPass': (context) => ForgotPass(),
         '/basic': (context) => Letters(),
-        '/numbers': (context) => Numbers(),
+        '/numbers': (context) => Number(),
         '/family': (context) => Family(),
         '/colors': (context) => ColorLesson(),
         '/shapes': (context) => Shapes(),

@@ -9,8 +9,8 @@ import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
+
 
 class QuizOne extends StatefulWidget {
   final String lessonName;
@@ -232,6 +232,7 @@ class _QuizOneState extends State<QuizOne> {
                 ],
               ),
             ),
+            // behavior: SnackBarBehavior.floating,
             backgroundColor: backgroundColor,
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,
@@ -307,11 +308,7 @@ class _QuizOneState extends State<QuizOne> {
               style: TextStyle(fontSize: 18),
             ),
             Expanded(
-              child: isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(), // Display option loading indicator
-                    )
-                  : GridView.builder(
+              child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 10,
@@ -417,11 +414,9 @@ class _QuizOneState extends State<QuizOne> {
           borderRadius: BorderRadius.circular(8),
           child: FittedBox(
             fit: BoxFit.cover,
-            child: CachedNetworkImage(
-              imageUrl: option,
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
+            child: Image.network(
+              option,
+            )
           ),
         ),
       ),

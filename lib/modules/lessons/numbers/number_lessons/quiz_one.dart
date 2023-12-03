@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
 import 'package:sign_buddy/firebase_storage.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_three.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_numbers.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_two.dart';
+import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
-class QuizTwo extends StatefulWidget {
+class NumberQuizOne extends StatefulWidget {
   final String lessonName;
 
-  const QuizTwo({Key? key, required this.lessonName}) : super(key: key);
+  const NumberQuizOne({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<QuizTwo> createState() => _QuizTwoState();
+  State<NumberQuizOne> createState() => _NumberQuizOne();
 }
 
-class _QuizTwoState extends State<QuizTwo> {
+class _NumberQuizOne extends State<NumberQuizOne> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentOption = [];
   List<dynamic> correctAnswer = [];
-  List<dynamic> contentImage = [];
 
   String selectedOption = '';
   bool answerChecked = false;
@@ -34,19 +32,18 @@ class _QuizTwoState extends State<QuizTwo> {
   bool isLoading = true;
   bool isEnglish = true;
   int progress = 0;
-  
 
   @override
   void initState() {
     super.initState();
     getLanguage().then((value) {
-      getContent4DataByName(widget.lessonName);
-      getProgress(widget.lessonName);
+      getContent3DataByName(widget.lessonName);
+       getProgress(widget.lessonName);
     });
-    
-    
-  }
+   
+   
 
+  }
   
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
@@ -62,10 +59,10 @@ class _QuizTwoState extends State<QuizTwo> {
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData =
-      await LetterLessonFireStore(userId: userId!)
-            .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
+      await NumberLessonFireStore(userId: userId!)
+            .getUserLessonData(lessonName, isEnglish ? 'en' : 'ph');
 
-      // ignore: unnecessary_null_comparison
+
       if (lessonData != null) {
         if (mounted) {
           setState(() {
@@ -77,11 +74,11 @@ class _QuizTwoState extends State<QuizTwo> {
 
       } else {
         print(
-            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Number lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
-      print('Error reading letter_lessons.json: $e');
+      print('Error reading number_lessons.json: $e');
       if(mounted) {
       setState(() {
         isLoading = false;
@@ -90,48 +87,46 @@ class _QuizTwoState extends State<QuizTwo> {
     }
   }
 
-  void getContent4DataByName(String lessonName) async {
+ void getContent3DataByName(String lessonName) async {
     
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData = 
-      await LetterLessonFireStore(userId: userId!)
+      await NumberLessonFireStore(userId: userId!)
           .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
 
-      if(lessonData != null && lessonData.containsKey('content4')) {
-        Map<String,dynamic> content4data = 
-        lessonData['content4'] as Map<String, dynamic>; 
-        Iterable<dynamic> _contentImage = content4data['contentImage'];
-        String description = content4data['description'] as String;
-        
-        Iterable<dynamic> _contentOption = content4data['contentOption'];
-        Iterable<dynamic> _correctAnswer = content4data['correctAnswer'];
+      if(lessonData != null && lessonData.containsKey('content3')) {
+        Map<String,dynamic> content3data = 
+        lessonData['content3'] as Map<String, dynamic>; 
+        String description = content3data['description'] as String;
+        Iterable<dynamic> _contentOption = content3data['contentOption'];
+        Iterable<dynamic> _correctAnswer = content3data['correctAnswer'];
 
         // Shuffle the contentOption list using the imported function
         _contentOption = shuffleIterable(_contentOption);
 
-        _contentImage = await Future.wait(_contentImage.map((e) => AssetFirebaseStorage().getAsset(e)));
+        _contentOption = await Future.wait(_contentOption.map((e) => AssetFirebaseStorage().getAsset(e)));
+        _correctAnswer =  await Future.wait(_correctAnswer.map((e) => AssetFirebaseStorage().getAsset(e)));
 
 
         if(mounted) {
           setState(() {
             contentDescription = description;
-            contentImage = _contentImage.toList();
-            correctAnswer.addAll(_correctAnswer);
-            contentOption.addAll(_contentOption);
+            contentOption = _contentOption.toList();
+            correctAnswer = _correctAnswer.toList();
             uid = userId;
             isLoading = false;
           });
         } else {
           print(
-            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Number lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
       }
     } catch (e) {
-        print('Error reading letter_lessons.json: $e');
+        print('Error reading Number_lessons.json: $e');
         if (mounted) {
           setState(() {
             isLoading = true;
@@ -140,56 +135,56 @@ class _QuizTwoState extends State<QuizTwo> {
       }
     }
 
-  
+    
+   
 
-
-
-  
   void _checkAnswer() async {
-    // Check if the selected option is in the list of correct answers
-    bool isAnswerCorrect = correctAnswer.contains(selectedOption);
+  // Check if the selected option is in the list of correct answers
+  bool isAnswerCorrect = correctAnswer.contains(selectedOption);
 
-    if(mounted) {
-      setState(() {
-        answerChecked = true;
-      });
-    }
+  setState(() {
+    answerChecked = true;
+  });
 
-    IconData icon;
-    String resultMessage;
+  IconData icon;
+  String resultMessage;
 
-    if (isEnglish) {
-      icon = isAnswerCorrect
-          ? FontAwesomeIcons.solidCircleCheck
-          : FontAwesomeIcons.solidCircleXmark;
-      resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
-    } else {
-      // Use Filipino language icons and messages
-      icon = isAnswerCorrect
-          ? FontAwesomeIcons.solidCircleCheck
-          : FontAwesomeIcons.solidCircleXmark;
-      resultMessage = isAnswerCorrect ? 'Tama' : 'Mali'; // Adjust these translations as needed
-    }
-
-    if (isAnswerCorrect) {
-      if (progress < 63) {
-        // Increment the progress value only if it's less than 47
-        LetterLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
-        print("Progress 4 updated successfully!");
-      }
-    }
-
-    showResultSnackbar(context, resultMessage, icon, () {
-      if (isAnswerCorrect) {
-        _nextPage();
-      } else {
-        Navigator.pushReplacement(
-          context,
-          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
-        );
-      }
-    });
+  if (isEnglish) {
+    icon = isAnswerCorrect
+        ? FontAwesomeIcons.solidCircleCheck
+        : FontAwesomeIcons.solidCircleXmark;
+    resultMessage = isAnswerCorrect ? 'Correct' : 'Incorrect';
+  } else {
+    // Use Filipino language icons and messages
+    icon = isAnswerCorrect
+        ? FontAwesomeIcons.solidCircleCheck
+        : FontAwesomeIcons.solidCircleXmark;
+    resultMessage = isAnswerCorrect ? 'Tama' : 'Mali'; // Adjust these translations as needed
   }
+
+  if (isAnswerCorrect) {
+    if (progress < 49) {
+      // Increment the progress value only if it's less than 47
+      NumberLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 25);
+      print("Progress 3 updated successfully!");
+    }
+  }
+
+  showResultSnackbar(context, resultMessage, icon, () {
+    if (isAnswerCorrect) {
+      _nextPage();
+    } else {
+      Navigator.pushReplacement(
+        context,
+        SlidePageRoute(page: NumberLessonOne(lessonName: widget.lessonName)),
+      );
+    }
+  });
+}
+
+
+
+
 
   void showResultSnackbar(BuildContext context, String message, IconData icon,
       [VoidCallback? callback]) {
@@ -236,7 +231,7 @@ class _QuizTwoState extends State<QuizTwo> {
                 ],
               ),
             ),
-            // behavior: SnackBarBehavior.floating,
+            // behavior: SnackBarBehavior.floating, 
             backgroundColor: backgroundColor,
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,
@@ -263,22 +258,19 @@ class _QuizTwoState extends State<QuizTwo> {
   void _nextPage() async {
     Navigator.pushReplacement(
       context,
-      SlidePageRoute(page: QuizThree(lessonName: widget.lessonName)),
+      SlidePageRoute(page: NumberQuizTwo (lessonName: widget.lessonName)),
     );
 
-    if(mounted) {
-      setState(() {
-        selectedOption = '';
-        answerChecked = false;
-      });
-    }
+    setState(() {
+      selectedOption = '';
+      answerChecked = false;
+    });
   }
 
-  
+ 
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -293,7 +285,7 @@ class _QuizTwoState extends State<QuizTwo> {
                   ScaffoldMessenger.of(context).removeCurrentSnackBar();
                   Navigator.pushReplacement(
                     context,
-                    SlidePageRoute(page: Letters()),
+                    SlidePageRoute(page: const Number()),
                   );
                 },
               ),
@@ -302,7 +294,7 @@ class _QuizTwoState extends State<QuizTwo> {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'Lesson quiz for: "${widget.lessonName}"', 
+                'Lesson Quiz for: "${widget.lessonName.startsWith('0') ? widget.lessonName.substring(1) : widget.lessonName}"',
                 style: TextStyle(
                   fontSize: 20, // Adjust the font size as needed
                   fontWeight: FontWeight.bold, // Optionally make it bold
@@ -310,47 +302,23 @@ class _QuizTwoState extends State<QuizTwo> {
               ),
             ),
             const SizedBox(height: 50),
-
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),
             ),
-            if (contentImage.isNotEmpty) // Check if there's an image to display
-              Container(
-                padding: const EdgeInsets.all(0.0),
-                margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey, // Border color
-                    width: 2, // Border width
-                  ),
-                  color: Colors.white, // Color inside the border
-                  // Border radius
-                ),
-                child: CachedNetworkImage(
-                    imageUrl: contentImage[0],
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                  ),
-              ),
             Expanded(
-              child: isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(), // Display option loading indicator
-                    )
-                  : GridView.builder(
+              child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
+                        crossAxisCount: 2,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
-                        mainAxisExtent: 60
                       ),
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: contentOption.length,
                       itemBuilder: (context, index) {
-                        return _buildLetterOption(
-                          contentOption[index]
+                        return _buildImageOption(
+                          contentOption[index],
                         );
                       },
                     ),
@@ -409,56 +377,49 @@ class _QuizTwoState extends State<QuizTwo> {
     );
   }
 
-  Widget _buildLetterOption(String option) {
-
+  Widget _buildImageOption(String option) {
     bool isSelected = selectedOption == option;
     Color tileColor =
         isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
 
     if (answerChecked) {
-       bool isCorrectAnswer = correctAnswer.contains(option);
+      bool isCorrectAnswer = correctAnswer.contains(option);
       if (isCorrectAnswer) {
         tileColor = Colors.green.withOpacity(0.3); // Correct answer color
       } else if (isSelected) {
-        tileColor =
-            Colors.red.withOpacity(0.3); // Incorrect selected answer color
+        tileColor = Colors.red.withOpacity(0.3); // Incorrect selected answer color
       }
     }
 
     return GestureDetector(
       onTap: () {
         if (!answerChecked) {
-          if(mounted) {
-            setState(() {
-              selectedOption = option;
-            });
-          }
+          setState(() {
+            selectedOption = option;
+          });
         }
       },
-      child: SizedBox(
-        height: 10, // Adjust the height as needed
-        width: 10,
-        child: Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: tileColor,
-            border: Border.all(
-              color: Colors.grey,
-              width: 1.0,
-            ),
-            borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: tileColor,
+          border: Border.all(
+            color: Colors.grey,
+            width: 1.0,
           ),
-          child: Center(
-            child: Text(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: Image.network(
               option,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            )
           ),
         ),
       ),
     );
   }
+
 }

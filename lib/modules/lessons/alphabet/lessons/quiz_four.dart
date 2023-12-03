@@ -9,7 +9,7 @@ import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/shuffle_options.dart';
+import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 
 
@@ -262,6 +262,7 @@ class _QuizFourState extends State<QuizFour> {
                 ],
               ),
             ),
+            // behavior: SnackBarBehavior.floating,
             backgroundColor: backgroundColor,
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,

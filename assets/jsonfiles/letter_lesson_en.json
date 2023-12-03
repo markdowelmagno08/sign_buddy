@@ -458,6 +458,120 @@
       }
     },
     {
+      "name": "J",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for letter 'J'.",
+        "contentImage": ["alphabet/j.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign Juice.",
+        "contentImage": ["dictionary/en/food_and_drinks/juice.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for letter 'J'?",
+        "contentImage": null,
+        "contentOption": [
+          "alphabet/j.png",
+          "alphabet/q.png",
+          "alphabet/f.png",
+          "alphabet/o.png"
+        ],
+        "correctAnswer": ["alphabet/j.png"]
+      },
+      "content4": {
+        "description": "What sign is this?",
+        "contentImage": ["alphabet/j.png"],
+        "contentOption": ["J", "L", "D", "E", "O", "T"],
+        "correctAnswer": ["J"]
+      },
+      "content5": {
+        "description": "Is this letter J?",
+        "contentImage": ["alphabet/j.png"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content6": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/food_and_drinks/juice.mp4"],
+        "contentOption": [
+          "Juice",
+          "Milk",
+          "Pizza",
+          "V",
+          "U",
+          "Jack",
+          "Sky",
+          "A",
+          "Y"
+        ],
+        "correctAnswer": ["Juice"]
+      }
+    },
+    {
+      "name": "K",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is the sign for letter 'K'.",
+        "contentImage": ["alphabet/k.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "This is how you sign Ketchup.",
+        "contentImage": ["dictionary/en/food_and_drinks/ketchup.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Which one here is the sign for letter 'K'?",
+        "contentImage": null,
+        "contentOption": [
+          "alphabet/q.png",
+          "alphabet/k.png",
+          "alphabet/c.png",
+          "alphabet/d.png"
+        ],
+        "correctAnswer": ["alphabet/k.png"]
+      },
+      "content4": {
+        "description": "What sign is this?",
+        "contentImage": ["alphabet/k.png"],
+        "contentOption": ["Q", "C", "D", "E", "B", "K"],
+        "correctAnswer": ["K"]
+      },
+      "content5": {
+        "description": "Is this letter K?",
+        "contentImage": ["alphabet/k.png"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content6": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/food_and_drinks/ketchup.mp4"],
+        "contentOption": [
+          "Ketchup",
+          "Taco",
+          "Kite",
+          "Q",
+          "C",
+          "Moon",
+          "Land",
+          "B",
+          "K"
+        ],
+        "correctAnswer": ["Ketchup"]
+      }
+    },
+    {
       "name": "L",
       "progress": 0,
       "locale": "en",
