@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -61,12 +62,15 @@ class _NumberState extends State<Number> {
           .collection('lessons')
           .get();
 
-      for (QueryDocumentSnapshot<Map<String, dynamic>> doc
-          in querySnapshot.docs) {
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in querySnapshot.docs) {
         Map<String, dynamic> lessonData = doc.data();
-        numberNames.add(lessonData['name'] as String);
-        unlockedLessons.add(lessonData['isUnlocked'] as bool);
-        numberProgress.add(lessonData['progress'] as int);
+        // Check for null values before casting
+        String name = lessonData['name'] as String? ?? ''; // Default to empty string if 'name' is null
+        bool isUnlocked = lessonData['isUnlocked'] as bool? ?? false; // Default to false if 'isUnlocked' is null
+        int progress = lessonData['progress'] as int? ?? 0; // Default to 0 if 'progress' is null
+        numberNames.add(name);
+        unlockedLessons.add(isUnlocked);
+        numberProgress.add(progress);
       }
       if (mounted) {
         setState(() {
@@ -171,7 +175,7 @@ class _NumberState extends State<Number> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/homePage');
+                            Navigator.pop(context);
                           },
                         ),
                       ),
@@ -259,7 +263,7 @@ class _NumberState extends State<Number> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(
                                     page: NumberLessonOne(

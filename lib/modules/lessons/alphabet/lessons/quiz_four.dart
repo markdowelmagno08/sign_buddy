@@ -295,6 +295,11 @@ class _QuizFourState extends State<QuizFour> {
       setState(() {
         selectedOption = '';
         answerChecked = false;
+        if (_videoController != null) {
+          _videoController!.pause();
+          _videoController!.dispose();
+          _videoController = null;
+        }
       });
     }
   }

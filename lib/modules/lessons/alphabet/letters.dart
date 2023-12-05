@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
-
 
 
 
@@ -27,12 +27,20 @@ class _LettersState extends State<Letters> {
   List unlockedLetterLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
-
  
+ @override
+  void initState() {
+    getLanguage().then((_) {
+      letterLessons();
 
-  
-
- 
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    });
+    super.initState();
+  }
 
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
@@ -88,20 +96,7 @@ class _LettersState extends State<Letters> {
     }
   }
 
-  @override
-  void initState() {
-    getLanguage().then((_) {
-      letterLessons();
-
-      if (mounted) {
-        setState(() {
-          isLoading = false;
-        });
-      }
-    });
-    super.initState();
-    
-  }
+  
   
    @override
   void dispose() {
@@ -176,7 +171,7 @@ class _LettersState extends State<Letters> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/homePage');
+                            Navigator.pop(context);
                           },
                         ),
                       ),
@@ -262,7 +257,7 @@ class _LettersState extends State<Letters> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(
                                     page: LessonOne(

@@ -40,11 +40,7 @@ class _LessonTwoState extends State<LessonTwo> {
     });
   }
 
-  @override
-  void dispose() {
-    _videoController?.dispose();
-    super.dispose();
-  }
+  
 
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
@@ -153,8 +149,20 @@ class _LessonTwoState extends State<LessonTwo> {
     if(mounted) {
       setState(() {
         progressAdded = false; // Reset progressAdded
+        if (_videoController != null) {
+          _videoController!.pause();
+          _videoController!.dispose();
+          _videoController = null;
+        }
+        
       });
     }
+  }
+
+  @override
+  void dispose() {
+    _videoController?.dispose();
+    super.dispose();
   }
 
   Widget buildVideoDisplay() {

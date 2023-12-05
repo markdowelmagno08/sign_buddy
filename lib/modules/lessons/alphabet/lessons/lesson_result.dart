@@ -189,12 +189,10 @@ class _ResultState extends State<Result> {
                             userId: Auth().getCurrentUserId()!,
                           ).resetProgress(widget.lessonName, isEnglish ? "en" : "ph");
 
-                          Navigator.push(
-                            context,
-                            SlidePageRoute(
-                              page: Letters(), // Replace with the desired page
-                            ),
-                          );
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => const Letters()));
                           
                         }
                       },
