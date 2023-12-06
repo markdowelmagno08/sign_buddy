@@ -13,15 +13,14 @@ import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/color.dart';
-import 'package:sign_buddy/modules/lessons/family.dart';
-import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_three.dart';
+import 'package:sign_buddy/modules/lessons/family/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/lessons/shape.dart';
-import 'package:sign_buddy/modules/lessons/animals.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals.dart';
 import 'package:sign_buddy/modules/lessons/nature.dart';
 import 'package:sign_buddy/modules/lessons/food.dart';
-import 'package:sign_buddy/modules/lessons/time-and-days.dart';
-import 'package:sign_buddy/modules/lessons/greeting.dart';
+import 'package:sign_buddy/modules/lessons/time_and_days/time-and-days.dart';
+import 'package:sign_buddy/modules/lessons/greetings/greetings.dart';
 
 import 'package:sign_buddy/login_screen.dart';
 

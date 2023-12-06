@@ -1,0 +1,172 @@
+[
+
+    {
+      "name": "Aunt",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": true,
+      "content1": {
+        "description": "This is how you sign Aunt.",
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Baby",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Baby",
+        "contentImage": ["dictionary/en/family/baby.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Boyfriend",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Boyfriend",
+        "contentImage": ["dictionary/en/family/boyfriend.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Brother",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Brother",
+        "contentImage": ["dictionary/en/family/brother.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Father",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Father",
+        "contentImage": ["dictionary/en/family/father.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Friend",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Friend",
+        "contentImage": ["dictionary/en/family/friend.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Girlfriend",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Girlfriend",
+        "contentImage": ["dictionary/en/family/girlfriend.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Grandfather",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Grandfather",
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Grandmother",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Grandmother",
+        "contentImage": ["dictionary/en/family/grandmother.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Husband",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Husband",
+        "contentImage": ["dictionary/en/family/husband.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Nephew",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Nephew",
+        "contentImage": ["dictionary/en/family/nephew.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Niece",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Niece",
+        "contentImage": ["dictionary/en/family/niece.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Sister",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Sister",
+        "contentImage": ["dictionary/en/family/sister.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Uncle",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign Uncle",
+        "contentImage": ["dictionary/en/family/uncle.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    }
+  ]
+  

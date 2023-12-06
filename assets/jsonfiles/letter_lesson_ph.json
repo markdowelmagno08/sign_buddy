@@ -1096,5 +1096,114 @@
         ],
         "correctAnswer": ["Tito"]
       }
+    },
+    {
+      "name": "R",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang senyas para sa titik 'R'",
+        "contentImage": ["alphabet/r.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Rosas'",
+        "contentImage": ["dictionary/ph/color/rosas.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Alin sa mga ito ang senyas para sa titik 'R'?",
+        "contentImage": null,
+        "contentOption": [
+          "alphabet/g.png",
+          "alphabet/p.png",
+          "alphabet/k.png",
+          "alphabet/r.png"
+        ],
+        "correctAnswer": ["alphabet/r.png"]
+      },
+      "content4": {
+        "description": "Anong senyas ito?",
+        "contentImage": ["alphabet/a.png"],
+        "contentOption": ["G", "P", "K", "T", "E", "R"],
+        "correctAnswer": ["R"]
+      },
+      "content5": {
+        "description": "Ito ba ay titik R?",
+        "contentImage": ["alphabet/r.png"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content6": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/color/rosas.mp4"],
+        "contentOption": [
+          "Kuneho",
+          "Isda",
+          "Itim",
+          "Kahel",
+          "Rosas",
+          "G", "P", "K", "T"
+        ],
+        "correctAnswer": ["Rosas"]
+      }
+    },
+    {
+      "name": "U",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang senyas para sa titik 'U'",
+        "contentImage": ["alphabet/u.png"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Ube'",
+        "contentImage": ["dictionary/ph/color/ube.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Alin sa mga ito ang senyas para sa titik 'U'?",
+        "contentImage": null,
+        "contentOption": [
+          "alphabet/R.png",
+          "alphabet/v.png",
+          "alphabet/b.png",
+          "alphabet/u.png"
+        ],
+        "correctAnswer": ["alphabet/u.png"]
+      },
+      "content4": {
+        "description": "Anong senyas ito?",
+        "contentImage": ["alphabet/u.png"],
+        "contentOption":["U", "V", "Y", "B", "L", "M"],
+        "correctAnswer": ["U"]
+      },
+      "content5": {
+        "description": "Ito ba ay titik U?",
+        "contentImage": ["alphabet/u.png"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content6": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/color/ube.mp4"],
+        "contentOption": [
+          "Kuwago",
+          "Ampon",
+          "Bibe",
+          "Ulan",
+          "Ube",
+          "U", "V", "Y", "B"
+        ],
+        "correctAnswer": ["Ube"]
+      }
     }
+    
 ]

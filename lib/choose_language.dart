@@ -179,10 +179,16 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                 .doc(userId)
                 .set({'language': language}, SetOptions(merge: true));
 
+
+            //simplified this code pls
             switch (language) {
               case 'American - English':
                UserFirestore(userId: userId).initializeLessons("letters",  "en");
                UserFirestore(userId: userId).initializeLessons("numbers",  "en");
+               UserFirestore(userId: userId).initializeLessons("family",  "en");
+               UserFirestore(userId: userId).initializeLessons("greetings",  "en");
+               UserFirestore(userId: userId).initializeLessons("animals",  "en");
+               UserFirestore(userId: userId).initializeLessons("time",  "en");
                 setLanguage(true);
                 print("language set successfully for en");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
@@ -191,6 +197,10 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
               setLanguage(false);
                UserFirestore(userId: userId).initializeLessons("letters", "ph");
                UserFirestore(userId: userId).initializeLessons("numbers",  "ph");
+               UserFirestore(userId: userId).initializeLessons("family",  "ph");
+               UserFirestore(userId: userId).initializeLessons("greetings",  "ph");
+               UserFirestore(userId: userId).initializeLessons("animals",  "ph");
+               UserFirestore(userId: userId).initializeLessons("time",  "ph");
               print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;

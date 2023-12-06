@@ -1,0 +1,231 @@
+[
+    {
+      "name": "Ahas",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": true,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Ahas'",
+        "contentImage": ["dictionary/ph/animals/ahas.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Aso",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Aso'",
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Baboy",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Baboy'",
+        "contentImage": ["dictionary/ph/animals/baboy.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Baka",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Baka'",
+        "contentImage": ["dictionary/ph/animals/baka.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Bibe",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Bibe'",
+        "contentImage": ["dictionary/ph/animals/bibe.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Buwaya",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Buwaya'",
+        "contentImage": ["dictionary/ph/animals/buwaya.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Giraffe",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Giraffe'",
+        "contentImage": ["dictionary/ph/animals/giraffe.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Ibon",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Ibon'",
+        "contentImage": ["dictionary/ph/animals/ibon.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Isda",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Isda'",
+        "contentImage": ["dictionary/ph/animals/isda.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Kabayo",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Kabayo'",
+        "contentImage": ["dictionary/ph/animals/kabayo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Kuneho",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Kuneho'",
+        "contentImage": ["dictionary/ph/animals/kuneho.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Kuwago",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Kuwago'",
+        "contentImage": ["dictionary/ph/animals/kuwago.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Leon",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Leon'",
+        "contentImage": ["dictionary/ph/animals/leon.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Manok",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Manok'",
+        "contentImage": ["dictionary/ph/animals/manok.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Mga_Hayop",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Mga Hayop'",
+        "contentImage": ["dictionary/ph/animals/mga_hayop.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Oso",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Oso'",
+        "contentImage": ["dictionary/ph/animals/oso.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Pusa",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Pusa'",
+        "contentImage": ["dictionary/ph/animals/pusa.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Unggoy",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Unggoy'",
+        "contentImage": ["dictionary/ph/animals/unggoy.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Zebra",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Zebra'",
+        "contentImage": ["dictionary/ph/animals/zebra.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    }
+  ]
+  

@@ -4,31 +4,43 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/home_page.dart';
-import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
+import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart';
+import 'package:sign_buddy/modules/lessons/greetings/greetings/lessons_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 
 
-class Number extends StatefulWidget {
-  const Number({Key? key}) : super(key: key);
+
+class Greetings extends StatefulWidget {
+  const Greetings({Key? key}) : super(key: key);
 
   @override
-  State<Number> createState() => _NumberState();
+  State<Greetings> createState() => _GreetingsState();
   
 }
 
 
 
-class _NumberState extends State<Number> {
-  List numberLessonNames = [];
-  List numberLessonProgress = [];
-  List unlockedNumberLessons = [];
+class _GreetingsState extends State<Greetings> {
+  List greetingsLessonName = [];
+  List greetingsLessonProgress = [];
+  List unlockedGreetingsLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+ 
+ @override
+  void initState() {
+    getLanguage().then((_) {
+      greetingsLessons();
 
- 
- 
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    });
+    super.initState();
+  }
 
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
@@ -43,64 +55,48 @@ class _NumberState extends State<Number> {
     }
   }
 
-  Future<void> numberLessons() async {
+  Future<void> greetingsLessons() async {
     
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       final String? userId = Auth().getCurrentUserId();
 
 
-      List<String> numberNames = [];
+      List<String> greetingsNames = [];
       List<bool> unlockedLessons = [];
-      List<int> numberProgress = [];
+      List<int> greetingsProgress = [];
 
       QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
           .collection('userData')
           .doc(userId)
-          .collection('numbers')
+          .collection('greetings')
           .doc(isEnglish ? 'en' : 'ph')
           .collection('lessons')
           .get();
 
-      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in querySnapshot.docs) {
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc
+          in querySnapshot.docs) {
         Map<String, dynamic> lessonData = doc.data();
-        // Check for null values before casting
-        String name = lessonData['name'] as String? ?? ''; // Default to empty string if 'name' is null
-        bool isUnlocked = lessonData['isUnlocked'] as bool? ?? false; // Default to false if 'isUnlocked' is null
-        int progress = lessonData['progress'] as int? ?? 0; // Default to 0 if 'progress' is null
-        numberNames.add(name);
-        unlockedLessons.add(isUnlocked);
-        numberProgress.add(progress);
+        greetingsNames.add(lessonData['name'] as String);
+        unlockedLessons.add(lessonData['isUnlocked'] as bool);
+        greetingsProgress.add(lessonData['progress'] as int);
       }
       if (mounted) {
         setState(() {
-          numberLessonNames = numberNames;
-          unlockedNumberLessons = unlockedLessons;
-          numberLessonProgress = numberProgress;
+          greetingsLessonName = greetingsNames;
+          unlockedGreetingsLessons = unlockedLessons;
+          greetingsLessonProgress = greetingsProgress;
         });
       }
 
 
 
     } catch (e) {
-        print('Error updating local number lessons: $e');
+        print('Error updating local greetings lessons: $e');
     }
   }
 
-  @override
-  void initState() {
-    getLanguage().then((_) {
-      numberLessons();
-
-      if (mounted) {
-        setState(() {
-          isLoading = false;
-        });
-      }
-    });
-    super.initState();
-    
-  }
+  
   
    @override
   void dispose() {
@@ -181,7 +177,7 @@ class _NumberState extends State<Number> {
                       ),
                        Visibility(
                         child: Text(
-                          isEnglish ? 'Learn Numbers' : 'Matuto ng Numero',
+                          isEnglish ? 'Learn Greetings' : 'Matuto ng Pagbati',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -190,7 +186,7 @@ class _NumberState extends State<Number> {
                         ),
                       ),
                       Image.asset(
-                        'assets/lesson-icon/img2.png',
+                        'assets/lesson-icon/img10.png',
                         width: 50,
                         height: 50,
                       ),
@@ -209,9 +205,9 @@ class _NumberState extends State<Number> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  final lessonName = numberLessonNames[index];
-                  final isUnlocked = unlockedNumberLessons[index];
-                  final progress = numberLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
+                  final lessonName = greetingsLessonName[index];
+                  final isUnlocked = unlockedGreetingsLessons[index];
+                  final progress = greetingsLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Card(
@@ -238,12 +234,12 @@ class _NumberState extends State<Number> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                          lessonName.startsWith('0') ? lessonName.substring(1) : lessonName,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: isUnlocked ? Colors.black : Colors.grey,
-                                          ),
+                                        lessonName,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: isUnlocked ? Colors.black : Colors.grey,
                                         ),
+                                      ),
                                       Text.rich(
                                         TextSpan(
                                           text: isEnglish ? 'Learn the sign for ' : 'Senyas para sa ',
@@ -254,7 +250,7 @@ class _NumberState extends State<Number> {
                                           ),
                                           children: <TextSpan>[
                                             TextSpan(
-                                              text: lessonName.startsWith('0') ? lessonName.substring(1) : lessonName,
+                                              text: '$lessonName',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -262,7 +258,6 @@ class _NumberState extends State<Number> {
                                           ],
                                         ),
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -275,7 +270,7 @@ class _NumberState extends State<Number> {
                                 Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(
-                                    page: NumberLessonOne(
+                                    page: GreetingsLessonOne(
                                       lessonName: lessonName,
                                     ),
                                   ),
@@ -291,7 +286,7 @@ class _NumberState extends State<Number> {
                   );
                 }
               },
-              childCount: isLoading ? 1 : numberLessonNames.length, // Show 1 item if loading, otherwise show the lesson names
+              childCount: isLoading ? 1 :greetingsLessonName.length, // Show 1 item if loading, otherwise show the lesson names
             ),
           ),
         ],

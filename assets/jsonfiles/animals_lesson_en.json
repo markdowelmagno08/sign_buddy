@@ -1,0 +1,267 @@
+[
+    {
+      "name": "Bat",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": true,
+      "content1": {
+        "description": "This is how you sign 'Bat'",
+        "contentImage": ["dictionary/en/animals/bat.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Bear",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Bear'",
+        "contentImage": ["dictionary/en/animals/bear.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Bull",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Bull'",
+        "contentImage": ["dictionary/en/animals/bull.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Camel",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Camel'",
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Cat",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Cat'",
+        "contentImage": ["dictionary/en/animals/cat.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Chicken",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Chicken'",
+        "contentImage": ["dictionary/en/animals/chicken.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Crab",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Crab'",
+        "contentImage": ["dictionary/en/animals/crab.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Crocodile",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Crocodile'",
+        "contentImage": ["dictionary/en/animals/crocodile.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Deer",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Deer'",
+        "contentImage": ["dictionary/en/animals/deer.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Dolphin",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Dolphin'",
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Donkey",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Donkey'",
+        "contentImage": ["dictionary/en/animals/donkey.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Duck",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Duck'",
+        "contentImage": ["dictionary/en/animals/duck.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Fish",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Fish'",
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Flamingo",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Flamingo'",
+        "contentImage": ["dictionary/en/animals/flamingo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Fox",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Fox'",
+        "contentImage": ["dictionary/en/animals/fox.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Frog",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Frog'",
+        "contentImage": ["dictionary/en/animals/frog.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Giraffe",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Giraffe'",
+        "contentImage": ["dictionary/en/animals/giraffe.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Goat",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Goat'",
+        "contentImage": ["dictionary/en/animals/goat.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Goose",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Goose'",
+        "contentImage": ["dictionary/en/animals/goose.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Gorilla",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Gorilla'",
+        "contentImage": ["dictionary/en/animals/gorilla.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Horse",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Horse'",
+        "contentImage": ["dictionary/en/animals/horse.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Lobster",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Lobster'",
+        "contentImage": ["dictionary/en/animals/lobster.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    }
+  ]
+  

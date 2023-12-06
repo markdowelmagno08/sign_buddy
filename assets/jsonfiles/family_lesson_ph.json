@@ -1,0 +1,364 @@
+
+    [
+        {
+          "name": "Ampon",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": true,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Ampon'",
+            "contentImage": ["dictionary/ph/family/ampon.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Anak na Babae",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Anak na Babae'",
+            "contentImage": ["dictionary/ph/family/anak_na_babae.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Anak na Lalaki",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Anak na Lalaki'",
+            "contentImage": ["dictionary/ph/family/anak_na_lalaki.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Apo",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Apo'",
+            "contentImage": ["dictionary/ph/family/apo.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Asawang Babae",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Asawang Babae'",
+            "contentImage": ["dictionary/ph/family/asawang_babae.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Asawang Lalaki",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Asawang Lalaki'",
+            "contentImage": ["dictionary/ph/family/asawang_lalaki.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Ate",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Ate'",
+            "contentImage": ["dictionary/ph/family/ate.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Bata",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Bata'",
+            "contentImage": ["dictionary/ph/family/bata.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Buntis",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Buntis'",
+            "contentImage": ["dictionary/ph/family/buntis.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Family",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Family'",
+            "contentImage": ["dictionary/ph/family/family.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Kasal",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Kasal'",
+            "contentImage": ["dictionary/ph/family/kasal.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Kinupkop",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Kinupkop'",
+            "contentImage": ["dictionary/ph/family/kinupkop.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Kuya",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Kuya'",
+            "contentImage": ["dictionary/ph/family/kuya.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Lola",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Lola'",
+            "contentImage": ["dictionary/ph/family/lola.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Lolo",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Lolo'",
+            "contentImage": ["dictionary/ph/family/lolo.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Magulang",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Magulang'",
+            "contentImage": ["dictionary/ph/family/magulang.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Mama",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Mama'",
+            "contentImage": ["dictionary/ph/family/mama.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Mga Bata",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Mga Bata'",
+            "contentImage": ["dictionary/ph/family/mga_bata.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Ninang",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Ninang'",
+            "contentImage": ["dictionary/ph/family/ninang.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Ninong",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Ninong'",
+            "contentImage": ["dictionary/ph/family/ninong.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Pamangkin na Babae",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Pamangkin na Babae'",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_babae.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Pamangkin na Lalaki",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Pamangkin na Lalaki'",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_lalake.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Papa",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Papa'",
+            "contentImage": ["dictionary/ph/family/papa.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Pinsan",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Pinsan'",
+            "contentImage": ["dictionary/ph/family/pinsan.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Sanggol",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Sanggol'",
+            "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Stepbrother",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Stepbrother'",
+            "contentImage": ["dictionary/ph/family/stepbrother.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Stepsister",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Stepsister'",
+            "contentImage": ["dictionary/ph/family/stepsister.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+          "name": "Teenager",
+          "progress": 0,
+          "locale": "ph",
+          "isUnlocked": false,
+          "content1": {
+            "description": "Ito ang paraan kung paano sinesenyas ang 'Teenager'",
+            "contentImage": ["dictionary/ph/family/teenager.mp4"],
+            "contentOption": null,
+            "correctAnswer": null
+          }
+        },
+        {
+            "name": "Tita",
+            "progress": 0,
+            "locale": "ph",
+            "isUnlocked": false,
+            "content1": {
+              "description": "Ito ang paraan kung paano sinesenyas ang 'Tita'",
+              "contentImage": ["dictionary/ph/family/tita.mp4"],
+              "contentOption": null,
+              "correctAnswer": null
+            }
+          },
+          {
+            "name": "Tito",
+            "progress": 0,
+            "locale": "ph",
+            "isUnlocked": false,
+            "content1": {
+              "description": "Ito ang paraan kung paano sinesenyas ang 'Tito'",
+              "contentImage": ["dictionary/ph/family/tito.mp4"],
+              "contentOption": null,
+              "correctAnswer": null
+            }
+          }
+      
+]

@@ -1,0 +1,159 @@
+[
+    {
+      "name": "Condolences",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": true,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Condolences'",
+        "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Congrats",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Congrats'",
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Goodluck",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Goodluck'",
+        "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Happy Birthday",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Happy Birthday'",
+        "contentImage": ["dictionary/ph/phrases/happy_birthday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Ingat Ka",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Ingat Ka'",
+        "contentImage": ["dictionary/ph/phrases/ingat_ka.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Magandang Gabi",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Magandang Gabi'",
+        "contentImage": ["dictionary/ph/phrases/magandang_gabi.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Magandang Hapon",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Magandang Hapon'",
+        "contentImage": ["dictionary/ph/phrases/magandang_hapon.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Magandang Umaga",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Magandang Umaga'",
+        "contentImage": ["dictionary/ph/phrases/magandang_umaga.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Mahal Kita",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Mahal Kita'",
+        "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Mahalaga Ka",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Mahalaga Ka'",
+        "contentImage": ["dictionary/ph/phrases/mahalaga_ka.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Maraming Salamat",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Maraming Salamat'",
+        "contentImage": ["dictionary/ph/phrases/maraming_salamat.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Paalam",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Paalam'",
+        "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Pasensya Na",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Pasensya Na'",
+        "contentImage": ["dictionary/ph/phrases/pasensya_na.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    }
+  ]
+  

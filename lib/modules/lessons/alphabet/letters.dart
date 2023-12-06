@@ -240,12 +240,22 @@ class _LettersState extends State<Letters> {
                                           color: isUnlocked ? Colors.black : Colors.grey,
                                         ),
                                       ),
-                                      Text(
-                                        isEnglish ? 'Learn the sign for $lessonName' : 'Senyas para sa $lessonName',
-                                        style: TextStyle(
-                                          color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
-                                          fontFamily: 'FiraSans',
-                                          fontSize: 15,
+                                      Text.rich(
+                                        TextSpan(
+                                          text: isEnglish ? 'Learn the sign for ' : 'Senyas para sa ',
+                                          style: TextStyle(
+                                            color: isUnlocked ? const Color(0xFF5A96E3) : Colors.grey,
+                                            fontFamily: 'FiraSans',
+                                            fontSize: 13,
+                                          ),
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                              text: '$lessonName',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],

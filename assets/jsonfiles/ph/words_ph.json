@@ -233,7 +233,148 @@
     "content": "Paalam",
     "category": "Pagbati",
     "mp4": "dictionary/ph/phrases/paalam.mp4"
-  }
+  },
+  
+    {
+      "type": "word",
+      "content": "Abril",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/abril.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Agosto",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/agosto.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Biyernes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/biyernes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Disyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/disyembre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Enero",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/enero.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Gabi",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/gabi.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hapon",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hapon.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hulyo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hulyo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hunyo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hunyo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Huwebes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/huwebes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Linggo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/linggo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Lunes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/lunes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Marso",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/marso.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Martes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/martes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Mayo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/mayo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Miyerkules",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/miyerkules.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Nobyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/nobyembre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Octubre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/octubre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Pebrero",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/pebrero.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Sabado",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/sabado.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Setyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/setyembre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Tanghali",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/tanghali.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Umaga",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/umaga.mp4"
+    }
+  
+  
 
 
 

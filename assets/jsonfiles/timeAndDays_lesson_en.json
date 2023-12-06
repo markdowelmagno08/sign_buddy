@@ -1,0 +1,419 @@
+[
+    {
+      "name": "Second",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 1,
+      "content1": {
+        "description": "This is how you sign 'Second'",
+        "contentImage": ["dictionary/en/time_and_days/second.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Minute",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 2,
+      "content1": {
+        "description": "This is how you sign 'Minute'",
+        "contentImage": ["dictionary/en/time_and_days/minute.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Hour",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 3,
+      "content1": {
+        "description": "This is how you sign 'Hour'",
+        "contentImage": ["dictionary/en/time_and_days/hour.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Morning",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 4,
+      "content1": {
+        "description": "This is how you sign 'Morning'",
+        "contentImage": ["dictionary/en/time_and_days/morning.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Afternoon",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 5,
+      "content1": {
+        "description": "This is how you sign 'Afternoon'",
+        "contentImage": ["dictionary/en/time_and_days/afternoon.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Evening",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 6,
+      "content1": {
+        "description": "This is how you sign 'Evening'",
+        "contentImage": ["dictionary/en/time_and_days/evening.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "All Night",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 7,
+      "content1": {
+        "description": "This is how you sign 'All Night'",
+        "contentImage": ["dictionary/en/time_and_days/all_night.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "What time is it",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 8,
+      "content1": {
+        "description": "This is how you sign 'What time is it'",
+        "contentImage": ["dictionary/en/time_and_days/what_time_is_it.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "On Time",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 9,
+      "content1": {
+        "description": "This is how you sign 'On Time'",
+        "contentImage": ["dictionary/en/time_and_days/on_time.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Monday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 10,
+      "content1": {
+        "description": "This is how you sign 'Monday'",
+        "contentImage": ["dictionary/en/time_and_days/monday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Tuesday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 11,
+      "content1": {
+        "description": "This is how you sign 'Tuesday'",
+        "contentImage": ["dictionary/en/time_and_days/tuesday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Wednesday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 12,
+      "content1": {
+        "description": "This is how you sign 'Wednesday'",
+        "contentImage": ["dictionary/en/time_and_days/wednesday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Thursday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 13,
+      "content1": {
+        "description": "This is how you sign 'Thursday'",
+        "contentImage": ["dictionary/en/time_and_days/thursday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Friday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 14,
+      "content1": {
+        "description": "This is how you sign 'Friday'",
+        "contentImage": ["dictionary/en/time_and_days/friday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Saturday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 15,
+      "content1": {
+        "description": "This is how you sign 'Saturday'",
+        "contentImage": ["dictionary/en/time_and_days/saturday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Sunday",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 16,
+      "content1": {
+        "description": "This is how you sign 'Sunday'",
+        "contentImage": ["dictionary/en/time_and_days/sunday.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Day",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 17,
+      "content1": {
+        "description": "This is how you sign 'Day'",
+        "contentImage": ["dictionary/en/time_and_days/day.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Week",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 18,
+      "content1": {
+        "description": "This is how you sign 'Week'",
+        "contentImage": ["dictionary/en/time_and_days/week.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Month",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 19,
+      "content1": {
+        "description": "This is how you sign 'Month'",
+        "contentImage": ["dictionary/en/time_and_days/month.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "January",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 20,
+      "content1": {
+        "description": "This is how you sign 'January'",
+        "contentImage": ["dictionary/en/time_and_days/january.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "February",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 21,
+      "content1": {
+        "description": "This is how you sign 'February'",
+        "contentImage": ["dictionary/en/time_and_days/february.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "March",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 22,
+      "content1": {
+        "description": "This is how you sign 'March'",
+        "contentImage": ["dictionary/en/time_and_days/march.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "April",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 23,
+      "content1": {
+        "description": "This is how you sign 'April'",
+        "contentImage": ["dictionary/en/time_and_days/april.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "May",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 24,
+      "content1": {
+        "description": "This is how you sign 'May'",
+        "contentImage": ["dictionary/en/time_and_days/may.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "June",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "sequence": 25,
+      "content1": {
+        "description": "This is how you sign 'June'",
+        "contentImage": ["dictionary/en/time_and_days/june.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }    
+    },
+    {
+        "name": "July",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 26,
+        "content1": {
+          "description": "This is how you sign 'July'",
+          "contentImage": ["dictionary/en/time_and_days/july.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+    },
+    {
+        "name": "August",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 27,
+        "content1": {
+          "description": "This is how you sign 'August'",
+          "contentImage": ["dictionary/en/time_and_days/august.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "September",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 28,
+        "content1": {
+          "description": "This is how you sign 'September'",
+          "contentImage": ["dictionary/en/time_and_days/september.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "October",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 29,
+        "content1": {
+          "description": "This is how you sign 'October'",
+          "contentImage": ["dictionary/en/time_and_days/october.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "November",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 30,
+        "content1": {
+          "description": "This is how you sign 'November'",
+          "contentImage": ["dictionary/en/time_and_days/november.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "December",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 31,
+        "content1": {
+          "description": "This is how you sign 'December'",
+          "contentImage": ["dictionary/en/time_and_days/december.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Year",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "sequence": 32,
+        "content1": {
+          "description": "This is how you sign 'Year'",
+          "contentImage": ["dictionary/en/time_and_days/year.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      }
+    
+]

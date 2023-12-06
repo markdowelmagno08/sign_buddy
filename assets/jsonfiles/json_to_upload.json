@@ -1,113 +1,147 @@
 [
   
-  {
-    "name": "R",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": false,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'R'",
-      "contentImage": ["alphabet/r.png"],
-      "contentOption": null,
-      "correctAnswer": null
+  
+    {
+      "type": "word",
+      "content": "Abril",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/abril.mp4"
     },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Rosas'",
-      "contentImage": ["dictionary/ph/color/rosas.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
+    {
+      "type": "word",
+      "content": "Agosto",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/agosto.mp4"
     },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'R'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/g.png",
-        "alphabet/p.png",
-        "alphabet/k.png",
-        "alphabet/r.png"
-      ],
-      "correctAnswer": ["alphabet/r.png"]
+    {
+      "type": "word",
+      "content": "Biyernes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/biyernes.mp4"
     },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/a.png"],
-      "contentOption": ["G", "P", "K", "T", "E", "R"],
-      "correctAnswer": ["R"]
+    {
+      "type": "word",
+      "content": "Disyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/disyembre.mp4"
     },
-    "content5": {
-      "description": "Ito ba ay titik R?",
-      "contentImage": ["alphabet/r.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
+    {
+      "type": "word",
+      "content": "Enero",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/enero.mp4"
     },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/color/rosas.mp4"],
-      "contentOption": [
-        "Kuneho",
-        "Isda",
-        "Itim",
-        "Kahel",
-        "Rosas",
-        "G", "P", "K", "T"
-      ],
-      "correctAnswer": ["Rosas"]
+    {
+      "type": "word",
+      "content": "Gabi",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/gabi.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hapon",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hapon.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hulyo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hulyo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Hunyo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/hunyo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Huwebes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/huwebes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Linggo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/linggo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Lunes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/lunes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Marso",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/marso.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Martes",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/martes.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Mayo",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/mayo.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Miyerkules",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/miyerkules.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Nobyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/nobyembre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Octubre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/octubre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Pebrero",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/pebrero.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Sabado",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/sabado.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Setyembre",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/setyembre.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Tanghali",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/tanghali.mp4"
+    },
+    {
+      "type": "word",
+      "content": "Umaga",
+      "category": "Oras at Araw",
+      "mp4": "dictionary/ph/time_and_days/umaga.mp4"
     }
-  },
-  {
-    "name": "U",
-    "progress": 0,
-    "locale": "ph",
-    "isUnlocked": false,
-    "content1": {
-      "description": "Ito ang senyas para sa titik 'U'",
-      "contentImage": ["alphabet/u.png"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content2": {
-      "description": "Ito ang paraan kung paano sinesenyas ang 'Ube'",
-      "contentImage": ["dictionary/ph/color/ube.mp4"],
-      "contentOption": null,
-      "correctAnswer": null
-    },
-    "content3": {
-      "description": "Alin sa mga ito ang senyas para sa titik 'U'?",
-      "contentImage": null,
-      "contentOption": [
-        "alphabet/R.png",
-        "alphabet/v.png",
-        "alphabet/b.png",
-        "alphabet/u.png"
-      ],
-      "correctAnswer": ["alphabet/u.png"]
-    },
-    "content4": {
-      "description": "Anong senyas ito?",
-      "contentImage": ["alphabet/u.png"],
-      "contentOption":["U", "V", "Y", "B", "L", "M"],
-      "correctAnswer": ["U"]
-    },
-    "content5": {
-      "description": "Ito ba ay titik U?",
-      "contentImage": ["alphabet/u.png"],
-      "contentOption": ["Oo", "Hindi"],
-      "correctAnswer": ["Oo"]
-    },
-    "content6": {
-      "description": "Anong senyas ang ginagamit dito?",
-      "contentImage": ["dictionary/ph/color/ube.mp4"],
-      "contentOption": [
-        "Kuwago",
-        "Ampon",
-        "Bibe",
-        "Ulan",
-        "Ube",
-        "U", "V", "Y", "B"
-      ],
-      "correctAnswer": ["Ube"]
-    }
-  }
+  
+  
+
   
   
   

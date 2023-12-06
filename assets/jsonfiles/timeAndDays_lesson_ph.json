@@ -1,0 +1,267 @@
+[
+    {
+      "name": "Umaga",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": true,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Umaga'",
+        "contentImage": ["dictionary/ph/time_and_days/umaga.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Tanghali",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Tanghali'",
+        "contentImage": ["dictionary/ph/time_and_days/tanghali.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Gabi",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Gabi'",
+        "contentImage": ["dictionary/ph/time_and_days/gabi.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Lunes",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Lunes'",
+        "contentImage": ["dictionary/ph/time_and_days/lunes.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Martes",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Martes'",
+        "contentImage": ["dictionary/ph/time_and_days/martes.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Miyerkules",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Miyerkules'",
+        "contentImage": ["dictionary/ph/time_and_days/miyerkules.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Huwebes",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Huwebes'",
+        "contentImage": ["dictionary/ph/time_and_days/huwebes.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Biyernes",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Biyernes'",
+        "contentImage": ["dictionary/ph/time_and_days/biyernes.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Sabado",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Sabado'",
+        "contentImage": ["dictionary/ph/time_and_days/sabado.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Linggo",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Linggo'",
+        "contentImage": ["dictionary/ph/time_and_days/linggo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Enero",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Enero'",
+        "contentImage": ["dictionary/ph/time_and_days/enero.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Pebrero",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Pebrero'",
+        "contentImage": ["dictionary/ph/time_and_days/pebrero.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Marso",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Marso'",
+        "contentImage": ["dictionary/ph/time_and_days/marso.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Abril",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Abril'",
+        "contentImage": ["dictionary/ph/time_and_days/abril.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Mayo",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Mayo'",
+        "contentImage": ["dictionary/ph/time_and_days/mayo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Hunyo",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Hunyo'",
+        "contentImage": ["dictionary/ph/time_and_days/hunyo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Hulyo",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Hulyo'",
+        "contentImage": ["dictionary/ph/time_and_days/hulyo.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Agosto",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Agosto'",
+        "contentImage": ["dictionary/ph/time_and_days/agosto.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Setyembre",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Setyembre'",
+        "contentImage": ["dictionary/ph/time_and_days/setyembre.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Oktubre",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Oktubre'",
+        "contentImage": ["dictionary/ph/time_and_days/oktubre.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Nobyembre",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Nobyembre'",
+        "contentImage": ["dictionary/ph/time_and_days/nobyembre.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    },
+    {
+      "name": "Disyembre",
+      "progress": 0,
+      "locale": "ph",
+      "isUnlocked": false,
+      "content1": {
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Disyembre'",
+        "contentImage": ["dictionary/ph/time_and_days/disyembre.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      }
+    }
+  ]
+  

@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Congratulations",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": true,
+    "content1": {
+      "description": "This is how you sign Congratulations.",
+      "contentImage": ["dictionary/en/phrases/congratulations.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Excuse Me",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Excuse Me",
+      "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Goodnight",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Goodnight.",
+      "contentImage": ["dictionary/en/phrases/good_night.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Good to see you",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Good to see you",
+      "contentImage": ["dictionary/en/phrases/good_to_see_you.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Goodbye",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Goodbye",
+      "contentImage": ["dictionary/en/phrases/goodbye.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Have a nice day",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Have a nice day",
+      "contentImage": ["dictionary/en/phrases/have_a_nice_day.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Hello",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Hello",
+      "contentImage": ["dictionary/en/phrases/hello.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "How are you",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign How are you.",
+      "contentImage": ["dictionary/en/phrases/how_are_you.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Nice to meet you",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Nice to meet you",
+      "contentImage": ["dictionary/en/phrases/nice_to_meet_you.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "See you later",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign See you later",
+      "contentImage": ["dictionary/en/phrases/see_you_later.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Sorry",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Sorry",
+      "contentImage": ["dictionary/en/phrases/sorry.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "Thank you",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign Thank you",
+      "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "What's up",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign What's up",
+      "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  },
+  {
+    "name": "You're Welcome",
+    "progress": 0,
+    "locale": "en",
+    "isUnlocked": false,
+    "content1": {
+      "description": "This is how you sign You're Welcome",
+      "contentImage": ["dictionary/en/phrases/youre_welcome.mp4"],
+      "contentOption": null,
+      "correctAnswer": null
+    }
+  }
+]
