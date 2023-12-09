@@ -1,0 +1,146 @@
+[
+    {
+        "name": "Abo",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": true,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Abo'",
+          "contentImage": ["dictionary/ph/color/abo.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+    },
+    {
+        "name": "Asul",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Asul'",
+          "contentImage": ["dictionary/ph/color/asul.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Berde",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Berde'",
+          "contentImage": ["dictionary/ph/color/berde.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Dilaw",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Dilaw'",
+          "contentImage": ["dictionary/ph/color/dilaw.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Itim",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Itim'",
+          "contentImage": ["dictionary/ph/color/itim.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Kahel",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Kahel'",
+          "contentImage": ["dictionary/ph/color/kahel.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Kayumanggi",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Kayumanggi'",
+          "contentImage": ["dictionary/ph/color/kayumanggi.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Pilak",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Pilak'",
+          "contentImage": ["dictionary/ph/color/pilak.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Pula",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Pula'",
+          "contentImage": ["dictionary/ph/color/pula.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Puti",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Puti'",
+          "contentImage": ["dictionary/ph/color/puti.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Rosas",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Rosas'",
+          "contentImage": ["dictionary/ph/color/rosas.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Ube",
+        "progress": 0,
+        "locale": "ph",
+        "isUnlocked": false,
+        "content1": {
+          "description": "Ito ang paraan kung paano sinesenyas ang 'Ube'",
+          "contentImage": ["dictionary/ph/color/ube.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      }
+]

@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Blue",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": true,
+        "content1": {
+          "description": "This is how you sign 'Blue'",
+          "contentImage": ["dictionary/en/color/blue.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+    },
+    {
+        "name": "Bright",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Bright'",
+          "contentImage": ["dictionary/en/color/bright.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Dark",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Dark'",
+          "contentImage": ["dictionary/en/color/dark.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Gray",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Gray'",
+          "contentImage": ["dictionary/en/color/gray.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Green",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Green'",
+          "contentImage": ["dictionary/en/color/green.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Light",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Light'",
+          "contentImage": ["dictionary/en/color/light.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Orange",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Orange'",
+          "contentImage": ["dictionary/en/color/orange.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Pink",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Pink'",
+          "contentImage": ["dictionary/en/color/pink.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Purple",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Purple'",
+          "contentImage": ["dictionary/en/color/purple.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Rainbow",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Rainbow'",
+          "contentImage": ["dictionary/en/color/rainbow.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Red",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Red'",
+          "contentImage": ["dictionary/en/color/red.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Shiny",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Shiny'",
+          "contentImage": ["dictionary/en/color/shiny.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Yellow",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Yellow'",
+          "contentImage": ["dictionary/en/color/yellow.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      }
+]
