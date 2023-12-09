@@ -145,7 +145,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                               ),
                               inputFormatters: [
-                                CustomInputFormatter(), // Use the custom email input formatter here
+                                CustomInputFormatter(maxLength: 10), // Use the custom email input formatter here
                               ],
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -170,7 +170,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                               ),
                               inputFormatters: [
-                                CustomInputFormatter(), 
+                                CustomInputFormatter(maxLength: 10), 
                               ],
                               validator: (value) {
                               if (value!.isEmpty) {
@@ -195,7 +195,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                               ),
                               inputFormatters: [
-                                EmailInputFormatter(), // Use the custom email input formatter here
+                                EmailInputFormatter(maxLength: 50), // Use the custom email input formatter here
                               ],
                               validator: (value) {
                               if (value!.isEmpty) {
@@ -246,6 +246,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
         editFirstName.text = originalFirstName;
         editLastName.text = originalLastName;
         editEmail.text = originalEmail;
+        
       });
     }
 
@@ -343,8 +344,18 @@ class _UserAccountPageState extends State<UserAccountPage> {
       'lastName': editLastName.text,
     });
 
-    // Refresh the UI with the updated data
-    await getUserAccountData();
+    // Update local state immediately
+    if(mounted) {
+      setState(() {
+      email = editEmail.text;
+      firstName = editFirstName.text;
+      lastName = editLastName.text;
+      _changesSaved = true;
+    });
+
+    }
+    
+
     Navigator.of(context).pop(); // Close the edit profile page
   }
 
@@ -503,6 +514,10 @@ class _UserAccountPageState extends State<UserAccountPage> {
 
 
 class CustomInputFormatter extends TextInputFormatter {
+  final int maxLength;
+
+  CustomInputFormatter({required this.maxLength});
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -510,9 +525,25 @@ class CustomInputFormatter extends TextInputFormatter {
   ) {
     // Allow only alphabetic characters and disallow spaces
     final RegExp regExp = RegExp(r'^[a-zA-Z]*$');
+    
+    // Check if the new value exceeds the maximum length
+    if (newValue.text.length > maxLength) {
+      // Truncate the text to the maximum length
+      final truncatedText = newValue.text.substring(0, maxLength);
+      
+      // Return the truncated text with the updated selection
+      return TextEditingValue(
+        text: truncatedText,
+        selection: TextSelection.collapsed(offset: maxLength),
+      );
+    }
+
+    // If the input matches the allowed pattern, capitalize the first letter
     if (regExp.hasMatch(newValue.text)) {
       return capitalizeFirstLetter(newValue);
     }
+
+    // If the input doesn't match the pattern, revert to the old value
     return oldValue;
   }
 
@@ -529,7 +560,12 @@ class CustomInputFormatter extends TextInputFormatter {
   }
 }
 
+
 class EmailInputFormatter extends TextInputFormatter {
+  final int maxLength;
+
+  EmailInputFormatter({required this.maxLength});
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -537,9 +573,25 @@ class EmailInputFormatter extends TextInputFormatter {
   ) {
     // Allow alphabetic characters, numbers, "@" and ".", and disallow spaces
     final RegExp regExp = RegExp(r'^[a-zA-Z0-9@.]*$');
+
+    // Check if the new value exceeds the maximum length
+    if (newValue.text.length > maxLength) {
+      // Truncate the text to the maximum length
+      final truncatedText = newValue.text.substring(0, maxLength);
+
+      // Return the truncated text with the updated selection
+      return TextEditingValue(
+        text: truncatedText,
+        selection: TextSelection.collapsed(offset: maxLength),
+      );
+    }
+
+    // If the input matches the allowed pattern, allow the new value
     if (regExp.hasMatch(newValue.text)) {
       return newValue;
     }
+
+    // If the input doesn't match the pattern, revert to the old value
     return oldValue;
   }
 }
