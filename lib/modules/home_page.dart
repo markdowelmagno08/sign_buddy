@@ -6,6 +6,7 @@ import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/user_account.dart';
 
 
 
@@ -155,7 +156,13 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.person,
                   title: 'Profile',
                   onTap: () {
-                    // Handle profile tap
+                    Navigator.push(
+                      context,
+                      SlidePageRoute(
+                        page: UserAccountPage()
+                      ),
+                    );
+                    
                   },
                 ),
                 buildListTileWithBorderAndIcon(
@@ -443,9 +450,9 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'icon': 'lesson-icon/img6.png',
     },
     {
-      'en': 'Time and Days',
-      'ph': 'Oras at Araw',
-      'icon': 'lesson-icon/img9.png',
+      'en': 'Colors',
+      'ph': 'Mga Kulay',
+      'icon': 'lesson-icon/img4.png',
     },
   ];
 
@@ -561,6 +568,8 @@ void _navigateToStartLesson(BuildContext context, String lesson) {
     'Mga Hayop': '/animals',
     'Time and Days': '/timeAndDays',
     'Oras at Araw': '/timeAndDays',
+    'Colors' : '/color',
+    'Kulay': '/color',
     'Greetings': '/greeting',
     'Pagbati': '/greeting',
   };

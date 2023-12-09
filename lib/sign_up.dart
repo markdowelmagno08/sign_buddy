@@ -172,7 +172,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong apelyido" ;
+                    return isEnglish ? "Please enter your last name" : "Pakilagay ang iyong apelyido" ;
                   }
                   return null;
                 },

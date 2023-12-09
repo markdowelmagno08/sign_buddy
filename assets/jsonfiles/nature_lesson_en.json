@@ -1,0 +1,230 @@
+[
+    {
+        "name": "Canyon",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": true,
+        "content1": {
+          "description": "This is how you sign 'Canyon'",
+          "contentImage": ["dictionary/en/nature/canyon.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+    },
+    {
+        "name": "Clouds",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Clouds'",
+          "contentImage": ["dictionary/en/nature/clouds.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Desert",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Desert'",
+          "contentImage": ["dictionary/en/nature/desert.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Earth",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Earth'",
+          "contentImage": ["dictionary/en/nature/earth.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Flower",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Flower'",
+          "contentImage": ["dictionary/en/nature/flower.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Forest",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Forest'",
+          "contentImage": ["dictionary/en/nature/forest.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Grass",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Grass'",
+          "contentImage": ["dictionary/en/nature/grass.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Jungle",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Jungle'",
+          "contentImage": ["dictionary/en/nature/jungle.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Lake",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Lake'",
+          "contentImage": ["dictionary/en/nature/lake.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Land",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Land'",
+          "contentImage": ["dictionary/en/nature/land.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Moon",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Moon'",
+          "contentImage": ["dictionary/en/nature/moon.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Ocean",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Ocean'",
+          "contentImage": ["dictionary/en/nature/ocean.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Plains",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Plains'",
+          "contentImage": ["dictionary/en/nature/plains.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Rock",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Rock'",
+          "contentImage": ["dictionary/en/nature/rock.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Sand",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Sand'",
+          "contentImage": ["dictionary/en/nature/sand.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Sky",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Sky'",
+          "contentImage": ["dictionary/en/nature/sky.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Stars",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Stars'",
+          "contentImage": ["dictionary/en/nature/stars.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Sun",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Sun'",
+          "contentImage": ["dictionary/en/nature/sun.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      },
+      {
+        "name": "Tree",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is how you sign 'Tree'",
+          "contentImage": ["dictionary/en/nature/tree.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        }
+      }
+]

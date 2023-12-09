@@ -188,7 +188,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                UserFirestore(userId: userId).initializeLessons("family",  "en");
                UserFirestore(userId: userId).initializeLessons("greetings",  "en");
                UserFirestore(userId: userId).initializeLessons("animals",  "en");
-               UserFirestore(userId: userId).initializeLessons("time",  "en");
+               UserFirestore(userId: userId).initializeLessons("color",  "en");
                 setLanguage(true);
                 print("language set successfully for en");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
@@ -200,7 +200,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
                UserFirestore(userId: userId).initializeLessons("family",  "ph");
                UserFirestore(userId: userId).initializeLessons("greetings",  "ph");
                UserFirestore(userId: userId).initializeLessons("animals",  "ph");
-               UserFirestore(userId: userId).initializeLessons("time",  "ph");
+               UserFirestore(userId: userId).initializeLessons("color",  "ph");
               print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;

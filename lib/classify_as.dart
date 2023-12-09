@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/choose_language.dart';
 import 'package:sign_buddy/modules/assessments/assess_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -138,7 +139,7 @@ class _ClassifyState extends State<Classify> {
                         Navigator.push(
                             context,
                             SlidePageRoute(
-                                page: const Classify()));
+                            page: const ChooseLanguages()));
                       },
                     ),
                   ),

@@ -12,7 +12,7 @@ import 'package:sign_buddy/modules/create_sign.dart';
 import 'package:sign_buddy/modules/find_sign.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
-import 'package:sign_buddy/modules/lessons/color.dart';
+import 'package:sign_buddy/modules/lessons/color/color.dart';
 import 'package:sign_buddy/modules/lessons/family/family.dart';
 import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/lessons/shape.dart';
@@ -27,6 +27,7 @@ import 'package:sign_buddy/login_screen.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:sign_buddy/user_account.dart';
 
 import 'firebase_options.dart';
 import 'front_page.dart';
@@ -90,7 +91,7 @@ class MyApp extends StatelessWidget {
         '/basic': (context) => Letters(),
         '/numbers': (context) => Number(),
         '/family': (context) => Family(),
-        '/colors': (context) => ColorLesson(),
+        '/color': (context) => ColorLesson(),
         '/shapes': (context) => Shapes(),
         '/animals': (context) => Animals(),
         '/nature': (context) => Nature(),
