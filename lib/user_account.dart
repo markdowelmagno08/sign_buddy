@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
+import 'package:sign_buddy/sign_up.dart';
 
 class UserAccountPage extends StatefulWidget {
   const UserAccountPage({Key? key}) : super(key: key);
@@ -195,7 +197,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                               ),
                               inputFormatters: [
-                                EmailInputFormatter(maxLength: 50), // Use the custom email input formatter here
+                                EmailInputFormatter(maxLength: 30), 
                               ],
                               validator: (value) {
                               if (value!.isEmpty) {
@@ -359,116 +361,171 @@ class _UserAccountPageState extends State<UserAccountPage> {
     Navigator.of(context).pop(); // Close the edit profile page
   }
 
-  @override
+   @override
   Widget build(BuildContext context) {
+    if (Auth().isUserAnonymous()) {
+      // If the user is anonymous, display a different UI
+      return Scaffold(
+        body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Stack(
+            children: [
+              // Background Image
+              Image.asset(
+                'assets/bg-signbuddy.png',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Unlock Your Profile – Sign Up Now!",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the sign-up page
+                        Navigator.pushReplacement(
+                        context, SlidePageRoute(page: const SignupPage()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white, backgroundColor: Colors.deepPurpleAccent, // text color
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+    }
+
+    // If the user is not anonymous, display the regular profile view
     return Scaffold(
       body: isLoading
           ? Center(
               child: CircularProgressIndicator(),
             )
           : Stack(
+        children: [
+          // Background Image
+          Image.asset(
+            'assets/bg-signbuddy.png',
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center,
+          ),
+          // Content
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Background Image
-                Image.asset(
-                  'assets/bg-signbuddy.png',
-                  fit: BoxFit.cover,
-                  height: double.infinity,
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                ),
-                // Content
-                SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 300,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF5A96E3).withOpacity(0.8),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(60),
-                            bottomRight: Radius.circular(60),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2), // Shadow color
-                              spreadRadius: 2, // Spread radius
-                              blurRadius: 5, // Blur radius
-                              offset: Offset(0, 3), // Offset (vertical, horizontal)
-                            ),
-                          ],
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(height: 50),
-                              CircleAvatar(
-                                radius: 50,
-                                backgroundColor: Colors.white,
-                                backgroundImage: AssetImage('assets/user_man.png'),
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                '$firstName $lastName',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              ElevatedButton(
-                                onPressed: _editProfileForm,
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: Colors.deepPurpleAccent,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                                ),
-                                child: Text(
-                                  'Edit profile',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Card(
-                        elevation: 8, // Add elevation for a floating effect
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Adjust the radius as needed
-                        ),
-                        margin: EdgeInsets.symmetric(horizontal: 16),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _buildUserInfoItem(firstName, 'First name', FontAwesomeIcons.user),
-                              _buildDivider(),
-                              _buildUserInfoItem(lastName, 'Last name', FontAwesomeIcons.user),
-                              _buildDivider(),
-                              _buildUserInfoItem(email, 'Email', FontAwesomeIcons.envelope),
-                              _buildDivider(),
-                              _buildLanguageItem(userLanguage,'Language', isEnglish ? 'assets/america.png' : 'assets/ph.png'),
-                            ],
-                          ),
-                        ),
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF5A96E3).withOpacity(0.8),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(60),
+                      bottomRight: Radius.circular(60),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
                       ),
                     ],
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 50),
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.white,
+                          backgroundImage: AssetImage('assets/user_man.png'),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          '$firstName $lastName',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: _editProfileForm,
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.deepPurpleAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                          ),
+                          child: Text(
+                            'Edit profile',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Card(
+                  elevation: 8,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 16),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildUserInfoItem(firstName, 'First name', FontAwesomeIcons.user),
+                        _buildDivider(),
+                        _buildUserInfoItem(lastName, 'Last name', FontAwesomeIcons.user),
+                        _buildDivider(),
+                        _buildUserInfoItem(email, 'Email', FontAwesomeIcons.envelope),
+                        _buildDivider(),
+                        _buildLanguageItem(
+                            userLanguage, 'Language', isEnglish ? 'assets/america.png' : 'assets/ph.png'),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
+          ),
+        ],
+      ),
     );
   }
 

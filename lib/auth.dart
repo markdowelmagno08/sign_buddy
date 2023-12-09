@@ -46,4 +46,8 @@ class Auth {
     final user = FirebaseAuth.instance.currentUser;
     return user?.uid;
   }
+  bool isUserAnonymous() {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user != null && user.isAnonymous;
+  }
 }

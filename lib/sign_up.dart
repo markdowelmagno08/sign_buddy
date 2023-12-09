@@ -88,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                             onPressed: () {
                               // Handle "Skip" button action here
                               // For example, navigate to the home page directly
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 SlidePageRoute(page: const HomePage()),
                               );
@@ -408,7 +408,7 @@ class _SignupPageState extends State<SignupPage> {
                 });
 
                 // Perform any additional actions or navigate to the desired screen
-                Navigator.push(context, SlidePageRoute(page: const HomePage()));
+                Navigator.pushReplacement(context, SlidePageRoute(page: const HomePage()));
               } else {
                 // Create a new permanent Firebase account
                 UserCredential userCredential =
@@ -432,7 +432,7 @@ class _SignupPageState extends State<SignupPage> {
                 });
 
                 // Perform any additional actions or navigate to the desired screen
-                Navigator.push(context, SlidePageRoute(page: const HomePage()));
+                Navigator.pushReplacement(context, SlidePageRoute(page: const HomePage()));
                 // Dismiss the loading screen
                 setState(() {
                   loading = false;

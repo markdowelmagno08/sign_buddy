@@ -377,7 +377,7 @@ Widget buildUserData() {
                 ElevatedButton(
                   onPressed: () {
                     // Navigate to sign up page
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context, SlidePageRoute(page: const SignupPage()));
                   },
                   style: ElevatedButton.styleFrom(
