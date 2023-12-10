@@ -151,7 +151,7 @@ class _SignupPageState extends State<SignupPage> {
                     return null;
                   },
                   inputFormatters: [
-                  CustomInputFormatter(), // Apply the custom input formatter here
+                  CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
                 ],
                 ),
               ),
@@ -177,7 +177,7 @@ class _SignupPageState extends State<SignupPage> {
                   return null;
                 },
                 inputFormatters: [
-                  CustomInputFormatter(), // Apply the custom input formatter here
+                  CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
                 ],
               ),
             ),
@@ -471,6 +471,10 @@ Future<bool> _checkIfEmailExists(String email) async {
 
 
 class CustomInputFormatter extends TextInputFormatter {
+  final int maxLength;
+
+  CustomInputFormatter({required this.maxLength});
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -478,10 +482,38 @@ class CustomInputFormatter extends TextInputFormatter {
   ) {
     // Allow only alphabetic characters and disallow spaces
     final RegExp regExp = RegExp(r'^[a-zA-Z]*$');
-    if (regExp.hasMatch(newValue.text)) {
-      return newValue;
+    
+    // Check if the new value exceeds the maximum length
+    if (newValue.text.length > maxLength) {
+      // Truncate the text to the maximum length
+      final truncatedText = newValue.text.substring(0, maxLength);
+      
+      // Return the truncated text with the updated selection
+      return TextEditingValue(
+        text: truncatedText,
+        selection: TextSelection.collapsed(offset: maxLength),
+      );
     }
+
+    // If the input matches the allowed pattern, capitalize the first letter
+    if (regExp.hasMatch(newValue.text)) {
+      return capitalizeFirstLetter(newValue);
+    }
+
+    // If the input doesn't match the pattern, revert to the old value
     return oldValue;
+  }
+
+  TextEditingValue capitalizeFirstLetter(TextEditingValue value) {
+    // Capitalize the first letter
+    String newText = value.text;
+    if (newText.isNotEmpty) {
+      newText = newText[0].toUpperCase() + newText.substring(1);
+    }
+    return TextEditingValue(
+      text: newText,
+      selection: value.selection,
+    );
   }
 }
 

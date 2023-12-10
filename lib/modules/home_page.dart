@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
@@ -186,45 +187,48 @@ class _HomePageState extends State<HomePage> {
                     // Handle settings tap
                   },
                 ),
-                
+
+                //hide the logout button for authenticated users
+                if (Auth().isUserAnonymous()) 
                 buildListTileWithBorderAndIcon(
                   icon: Icons.exit_to_app,
                   title: 'Logout',
                   onTap: () async {
-                    bool confirmLogout = await showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        content: Text(isEnglish ? 'Are you sure you want to logout?' : 'Sigurado ka bang nais mong mag-logout?',
-                          style: TextStyle(
-                            fontFamily: 'FiraSans',
-                            fontWeight: FontWeight.w300,
-                          )),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, false),
-                            child: Text(isEnglish ? 'CANCEL' : 'KANSEL',
-                              style: TextStyle(
-                                color: Colors.black,
-                              )),
-                          ),
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, true),
-                            child: const Text('LOGOUT',
-                              style: TextStyle(
-                                color: Colors.red,
-                              )),
-                          ),
-                        ],
-                      ),
-                    );
+                      bool confirmLogout = await showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text(isEnglish ? 'Are you sure you want to logout?' : 'Sigurado ka bang nais mong mag-logout?',
+                            style: TextStyle(
+                              fontFamily: 'FiraSans',
+                              fontWeight: FontWeight.w300,
+                            )),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, false),
+                              child: Text(isEnglish ? 'CANCEL' : 'KANSEL',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                )),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, true),
+                              child: const Text('LOGOUT',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                )),
+                            ),
+                          ],
+                        ),
+                      );
 
-                    if (confirmLogout == true) {
-                      await FirebaseAuth.instance.signOut();
-                      // ignore: use_build_context_synchronously
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, '/', (route) => false);
+                      if (confirmLogout == true) {
+                        await FirebaseAuth.instance.signOut();
+                        // ignore: use_build_context_synchronously
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/', (route) => false);
+                      }
                     }
-                  },
+                  
                 ),
                 // Footer with version number
                 Spacer(), // Ensures the footer is centered vertically
