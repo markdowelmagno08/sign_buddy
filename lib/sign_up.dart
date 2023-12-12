@@ -26,6 +26,7 @@ class _SignupPageState extends State<SignupPage> {
 
   bool loading = false;
   bool isEnglish = true;
+  bool passwordsMatch = false;
 
   final TextEditingController _firstName = TextEditingController();
   final TextEditingController _lastName = TextEditingController();
@@ -47,6 +48,25 @@ class _SignupPageState extends State<SignupPage> {
     setState(() {
       this.isEnglish = isEnglish;
     });
+  }
+  void _updatePasswordsMatch() {
+    if (_confirmPassword.text.isNotEmpty) {
+      if(mounted) {
+        setState(() {
+        passwordsMatch =
+            _confirmPassword.text == _password.text;
+      });
+
+      }
+       
+    } else {
+      if(mounted) {
+          setState(() {
+          passwordsMatch = false;
+        });
+      }
+      
+    }
   }
 
   @override
@@ -77,7 +97,7 @@ class _SignupPageState extends State<SignupPage> {
                           //   },
                           // ),
                         ),
-                        const SizedBox(height: 70),
+                        const SizedBox(height: 30),
                         _header(),
                         const SizedBox(height: 40),
                         _inputField(),
@@ -128,59 +148,51 @@ class _SignupPageState extends State<SignupPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                child: TextFormField(
-                  controller: _firstName,
-                  decoration: InputDecoration(
-                    hintText: isEnglish ? "First Name" :  "Pangalan",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide.none,
-                    ),
-                    fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-                    filled: true,
-                    prefixIcon: const Icon(Icons.person),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong pangalan" ;
-                    }
-                    return null;
-                  },
-                  inputFormatters: [
-                  CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
-                ],
-                ),
+        Container(
+          child: TextFormField(
+            controller: _firstName,
+            decoration: InputDecoration(
+              hintText: isEnglish ? "First Name" :  "Pangalan",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide.none,
               ),
+              fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+              filled: true,
+              prefixIcon: const Icon(Icons.person),
             ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: TextFormField(
-                controller: _lastName,
-                decoration: InputDecoration(
-                  hintText: isEnglish ? "Last Name" : "Apelyido",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide.none,
-                  ),
-                  fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
-                  filled: true,
-                  prefixIcon: const Icon(Icons.person),
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return isEnglish ? "Please enter your last name" : "Pakilagay ang iyong apelyido" ;
-                  }
-                  return null;
-                },
-                inputFormatters: [
-                  CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
-                ],
-              ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong pangalan" ;
+              }
+              return null;
+            },
+            inputFormatters: [
+            CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
+          ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        TextFormField(
+          controller: _lastName,
+          decoration: InputDecoration(
+            hintText: isEnglish ? "Last Name" : "Apelyido",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide.none,
             ),
+            fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+            filled: true,
+            prefixIcon: const Icon(Icons.person),
+          ),
+          validator: (value) {
+            if (value!.isEmpty) {
+              return isEnglish ? "Please enter your last name" : "Pakilagay ang iyong apelyido" ;
+            }
+            return null;
+          },
+          inputFormatters: [
+            CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
           ],
         ),
         const SizedBox(height: 10),
@@ -215,6 +227,13 @@ class _SignupPageState extends State<SignupPage> {
         const SizedBox(height: 10),
         TextFormField(
           controller: _password,
+          onChanged: (value) {
+            if(mounted) {
+              setState(() {
+                _updatePasswordsMatch();
+              });
+              }
+          },
           decoration: InputDecoration(
             hintText: "Password",
             border: OutlineInputBorder(
@@ -250,6 +269,13 @@ class _SignupPageState extends State<SignupPage> {
         const SizedBox(height: 10),
         TextFormField(
           controller: _confirmPassword,
+          onChanged: (value) {
+            if(mounted) {
+              setState(() {
+                _updatePasswordsMatch();
+              });
+              }
+          },
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
             hintText: isEnglish ? "Confirm Password": "Kumpirmahin ang Password",
@@ -278,12 +304,27 @@ class _SignupPageState extends State<SignupPage> {
               return isEnglish ? "Please re-enter your password" : "Pakilagay muli ang iyong password";
             } else if (value.length < 8) {
               return isEnglish ? 'Password must be at least 8 characters long' : "Ang password ay dapat hindi kukulangin sa walong(8) karakter.";
-            } else if (value != _password.text) {
-              return isEnglish ? "Passwords do not match" : "Hindi tugma ang mga password";
             }
             return null;
           },
           obscureText: _obscureConfirmPassword,
+        ),
+        SizedBox(height: 10),
+        if (_confirmPassword.text.isNotEmpty)
+        Row(
+          children: [
+            Icon(
+              passwordsMatch ? Icons.check : Icons.error,
+              color: passwordsMatch ? Colors.green : Colors.red,
+            ),
+            SizedBox(width: 5),
+            Text(
+              passwordsMatch ? 'Passwords match' : 'Passwords do not match',
+              style: TextStyle(
+                color: passwordsMatch ? Colors.green : Colors.red,
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 30),
         ElevatedButton(

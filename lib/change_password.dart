@@ -56,6 +56,24 @@ class _ChangePasswordState extends State<ChangePassword> {
       );
     }
   }
+  Future<void> _showLoadingDialog() async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 16),
+              Text('Changing Password...'),
+            ],
+          ),
+        );
+      },
+    );
+  }
   void _updatePasswordsMatch() {
     if (confirmNewPasswordController.text.isNotEmpty) {
       if(mounted) {
@@ -116,8 +134,9 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _changePassword();
                   Navigator.of(context).pop();
+                  _changePassword();
+                  
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green, 
@@ -141,25 +160,24 @@ class _ChangePasswordState extends State<ChangePassword> {
   Future<void> _changePassword() async {
     if (_formKey.currentState!.validate()) {
       try {
+        // Show loading dialog
+        _showLoadingDialog();
+
         User? user = FirebaseAuth.instance.currentUser;
         if (user != null) {
           // Reauthenticate the user before changing the password
           AuthCredential credential = EmailAuthProvider.credential(
               email: user.email!, password: currentPasswordController.text);
 
-          try {
-            await user.reauthenticateWithCredential(credential);
-          } catch (e) {
-            // If reauthentication fails, show an error message and return
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  isEnglish
-                      ? 'Password change failed. Please check your current password.'
-                      : 'Reauthentication error. Pakiverify ang iyong kasalukuyang password.',
-                ),
-                duration: Duration(seconds: 2),
-              ),
+          await user.reauthenticateWithCredential(credential);
+
+          // Check if the new password is the same as the old password
+          if (currentPasswordController.text == newPasswordController.text) {
+            Navigator.of(context).pop(); // Close loading dialog
+            _showSnackbar(
+              isEnglish
+                  ? 'New password cannot be the same as the old password.'
+                  : 'Ang bagong password ay hindi maaaring katulad ng lumang password.',
             );
             return;
           }
@@ -168,27 +186,31 @@ class _ChangePasswordState extends State<ChangePassword> {
           await user.updatePassword(newPasswordController.text);
 
           // Password change successful, show success message or navigate back
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Password changed successfully!'),
-              duration: Duration(seconds: 2),
-            ),
-          );
+          Navigator.of(context).pop(); // Close loading dialog
+          _showSnackbar('Password changed successfully!');
           Navigator.of(context).pop();
         }
       } catch (e) {
-        // Handle errors, e.g., show an error message to the user
-        print("Error changing password: $e");
-        // Show error message in a snackbar
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Failed to change password: $e'),
-            duration: Duration(seconds: 2),
-          ),
+        // If reauthentication fails, show an error message and return
+        Navigator.of(context).pop(); // Close loading dialog
+        _showSnackbar(
+          isEnglish
+              ? 'Password change failed. Please check your current password.'
+              : 'Reauthentication error. Pakiverify ang iyong kasalukuyang password.',
         );
       }
     }
   }
+
+  void _showSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
 
   @override
   void dispose() {
@@ -263,11 +285,15 @@ class _ChangePasswordState extends State<ChangePassword> {
                                       obscureText: !_currentPasswordVisible,
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(),
+                                        
                                         focusedBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Colors.deepPurpleAccent,
                                           ),
+                                          
                                         ),
+                                        fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                                        filled: true,
                                         suffixIcon: IconButton(
                                           icon: Icon(
                                             _currentPasswordVisible
@@ -328,6 +354,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                             color: Colors.deepPurpleAccent,
                                           ),
                                         ),
+                                        fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                                        filled: true,
                                         suffixIcon: IconButton(
                                           icon: Icon(
                                             _newPasswordVisible
@@ -366,7 +394,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Confirm new Password',
+                                      'Confirm new password',
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.black,
@@ -395,6 +423,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                             color: Colors.deepPurpleAccent,
                                           ),
                                         ),
+                                        fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                                        filled: true,
                                         suffixIcon: IconButton(
                                           icon: Icon(
                                             _confirmNewPasswordVisible

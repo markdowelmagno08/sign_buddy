@@ -29,40 +29,52 @@ class _LoginPageState extends State<LoginPage> {
   String errorMessage = '';
 
 
+  @override
+  void dispose() {
+    // Dispose the text editing controllers when the State is disposed
+    _email.dispose();
+    _password.dispose();
+
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return loading
         ? Loading(text: 'Loading . . . ')
         : Scaffold(
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(18, 50, 20, 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: CustomBackButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context, SlidePageRoute(page: FrontPage()));
-                            },
-                          ),
-                        ),
+            body: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 50),
+                      alignment: Alignment.topLeft,
+                      child: CustomBackButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(context, SlidePageRoute(page: FrontPage()));
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
                         SizedBox(height: 70),
                         _header(),
-                        _inputField(),
-                        SizedBox(height: 10),
-                        _forgotPassword(),
-                        SizedBox(height: 10),
-                        _signup(context),
-                      ],
+                      _inputField(),
+                      SizedBox(height: 10),
+                      _forgotPassword(),
+                      SizedBox(height: 10), 
+                      _signup(context),
+                        ],
+                      ),
                     ),
-                  ),
+                    
+                  ],
                 ),
               ),
             ),
@@ -98,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.person),
+            prefixIcon: Icon(Icons.email),
           ),
           validator: (value) {
             if (value!.isEmpty) {
@@ -181,9 +193,9 @@ class _LoginPageState extends State<LoginPage> {
   _forgotPassword() {
     return TextButton(
       onPressed: () {
-        Navigator.push(context, SlidePageRoute(page: ForgotPass()));
+        Navigator.push(context, SlidePageRoute(page: ForgotPassword()));
       },
-      child: Text("Forgot Password"),
+      child: Text("Forgot password?"),
     );
   }
 

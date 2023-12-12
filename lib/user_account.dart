@@ -146,7 +146,6 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('firstNameField'),
                                     controller: editFirstName,
                                     decoration: InputDecoration(
-                                      labelText: 'First Name',
                                       hintText: 'Enter your first name',
                                       suffixIcon: Icon(FontAwesomeIcons.user, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
@@ -171,7 +170,6 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('lastNameField'),
                                     controller: editLastName,
                                     decoration: InputDecoration(
-                                      labelText: 'Last Name',
                                       hintText: 'Enter your last name',
                                       suffixIcon: Icon(FontAwesomeIcons.user, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
@@ -196,7 +194,6 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editEmail,
                                     key: Key('emailField'),
                                     decoration: InputDecoration(
-                                      labelText: 'Email',
                                       hintText: 'Enter your email',
                                       suffixIcon: Icon(FontAwesomeIcons.envelope, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
@@ -490,7 +487,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                           borderRadius: BorderRadius.circular(10),
                                           side: BorderSide(color: Colors.grey),
                                         ),
-                                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                                        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                                       ),
                                       child: Text(
                                         'Sign out',
@@ -996,4 +993,5 @@ class EmailInputFormatter extends TextInputFormatter {
     // If the input doesn't match the pattern, revert to the old value
     return oldValue;
   }
+  
 }

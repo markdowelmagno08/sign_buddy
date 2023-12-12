@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
         '/classify': (context) => Classify(),
         '/homePage': (context) => AuthenticationWrapper(),
         '/login': (context) => LoginPage(),
-        '/forgotPass': (context) => ForgotPass(),
+        '/forgotPass': (context) => ForgotPassword(),
         '/basic': (context) => Letters(),
         '/numbers': (context) => Number(),
         '/family': (context) => Family(),
