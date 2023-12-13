@@ -147,7 +147,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editFirstName,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your first name',
-                                      suffixIcon: Icon(FontAwesomeIcons.user, color: Colors.deepPurpleAccent),
+                                      suffixIcon: FaIcon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -171,7 +171,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editLastName,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your last name',
-                                      suffixIcon: Icon(FontAwesomeIcons.user, color: Colors.deepPurpleAccent),
+                                      suffixIcon: FaIcon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -195,7 +195,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('emailField'),
                                     decoration: InputDecoration(
                                       hintText: 'Enter your email',
-                                      suffixIcon: Icon(FontAwesomeIcons.envelope, color: Colors.deepPurpleAccent),
+                                      suffixIcon: FaIcon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(

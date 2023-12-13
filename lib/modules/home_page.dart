@@ -101,46 +101,38 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Column(
               children: [
-                SizedBox(
-                  height: 250,
-                  child: DrawerHeader(
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF5A96E3),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(
-                                5.0), // do adjust the margin of avatar and Text "Juan Dela Cruz"
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                padding: const EdgeInsets.only(left: 85),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.black,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                    child: const CircleAvatar(
-                                      radius: 30,
-                                      backgroundImage: AssetImage(
-                                          'assets/user_man.png'), 
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                buildUserData() // class for fetching user
-                              ],
+                DrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF5A96E3),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // CircleAvatar with the user image
+                       Padding(
+                        padding: const EdgeInsets.only(left: 9),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.white, 
+                              width: 2.0, 
                             ),
                           ),
+                          child: CircleAvatar(
+                            radius: 45,
+                            backgroundImage: AssetImage('assets/user_man.png'),
+                          ),
                         ),
-                        IconButton(
+                      ),
+
+                      // User data in the center
+                      buildUserData(),
+
+                      // IconButton on the top right
+                      Padding(
+                        padding: const EdgeInsets.only(bottom:120),
+                        child: IconButton(
                           icon: const Icon(Icons.close),
                           color: Colors.white,
                           onPressed: () {
@@ -149,10 +141,11 @@ class _HomePageState extends State<HomePage> {
                             });
                           },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
+                const SizedBox(height: 10),
                 // ListTile with border and ">" icon
                 buildListTileWithBorderAndIcon(
                   icon: Icons.person,
@@ -167,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                     
                   },
                 ),
+               
                 buildListTileWithBorderAndIcon(
                   icon: Icons.info,
                   title: 'About',
@@ -371,19 +365,18 @@ Widget buildUserData() {
           lastName.isEmpty) {
         return Column(
           children: [
+            SizedBox(height: 50),
              Text(
-              'Save progress, make a profile!',
+              'Make a profile!',
               style: TextStyle(
-                  color: Colors.white, fontSize: 11, fontFamily: 'FiraSans'),
+                  color: Colors.white, fontSize: 15, fontFamily: 'FiraSans', fontWeight: FontWeight.bold ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Row(
               // Wrap the buttons in a Row
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                    width: 20), // Add some spacing between the buttons
+              children: [// Add some spacing between the buttons
                 ElevatedButton(
                   onPressed: () {
                     // Navigate to sign up page
@@ -407,13 +400,14 @@ Widget buildUserData() {
       }
 
       return Padding(
-        padding: const EdgeInsets.only(left: 85),
+        padding: const EdgeInsets.only(left: 20),
         child: Text(
           '${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontFamily: 'FiraSans',
+            fontWeight: FontWeight.bold
           ),
         ),
       );
