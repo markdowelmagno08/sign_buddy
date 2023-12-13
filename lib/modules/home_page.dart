@@ -5,6 +5,7 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
+import 'package:sign_buddy/settings.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/user_account.dart';
@@ -177,7 +178,12 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.settings,
                   title: 'Settings',
                   onTap: () {
-                    // Handle settings tap
+                    Navigator.push(
+                      context,
+                      SlidePageRoute(
+                        page: MySettings()
+                      ),
+                    );
                   },
                 ),
                 buildListTileWithBorderAndIcon(

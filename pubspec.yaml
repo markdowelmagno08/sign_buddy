@@ -43,6 +43,7 @@ dependencies:
   cached_video_player: ^2.0.4
   card_swiper: ^3.0.1
   cached_network_image: ^3.3.0
+  flutter_cache_manager: ^3.3.1
   
   
   
