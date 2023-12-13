@@ -322,7 +322,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 context, SlidePageRoute(page: const SignupPage()));
                           },
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
+                            foregroundColor: Color.fromARGB(255, 71, 63, 63),
                             backgroundColor: Color(0xFF5BD8FF),
                             // text color
                             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),

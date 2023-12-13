@@ -324,7 +324,7 @@ Widget buildListTileWithBorderAndIcon({
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
           side: const BorderSide(
-            color: Colors.black,
+            color: Color(0xFF5A96E3),
             width: 1.0,
           ),
         ),
@@ -374,7 +374,6 @@ Widget buildUserData() {
             ),
             const SizedBox(height: 10),
             Row(
-              // Wrap the buttons in a Row
               mainAxisAlignment: MainAxisAlignment.center,
               children: [// Add some spacing between the buttons
                 ElevatedButton(
@@ -399,15 +398,26 @@ Widget buildUserData() {
         return name[0].toUpperCase() + name.substring(1);
       }
 
+      String formattedName(String firstName, String lastName) {
+        if (firstName.length > 5 || lastName.length > 5) {
+          return '$firstName\n$lastName';
+        } else {
+          return '$firstName $lastName';
+        }
+      }
+
       return Padding(
         padding: const EdgeInsets.only(left: 20),
         child: Text(
-          '${capitalizeFirstLetter(firstName)} ${capitalizeFirstLetter(lastName)}',
+          formattedName(
+            capitalizeFirstLetter(firstName),
+            capitalizeFirstLetter(lastName),
+          ),
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontFamily: 'FiraSans',
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           ),
         ),
       );
@@ -492,8 +502,8 @@ class _LessonsScreenState extends State<LessonsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(41, 20, 20, 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 40, left: 45),
               child: Text(
                 isEnglish ? 'Lessons' : 'Mga Lesson',
                 textAlign: TextAlign.start,
@@ -503,7 +513,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -573,7 +583,7 @@ void _navigateToStartLesson(BuildContext context, String lesson) {
     'Time and Days': '/timeAndDays',
     'Oras at Araw': '/timeAndDays',
     'Colors' : '/color',
-    'Kulay': '/color',
+    'Mga Kulay': '/color',
     'Greetings': '/greeting',
     'Pagbati': '/greeting',
   };
