@@ -221,7 +221,6 @@ class _LoginPageState extends State<LoginPage> {
       setState(() => loading = true); // Show the loading screen
 
       try {
-        await Future.delayed(Duration(seconds: 1)); // Simulate a 1-second delay
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email.text.trim(),
           password: _password.text.trim(),
@@ -229,7 +228,6 @@ class _LoginPageState extends State<LoginPage> {
 
         _email.clear();
         _password.clear();
-
 
         // Navigate to the HomePage
         Navigator.push(context, SlidePageRoute(page: HomePage()));
@@ -239,14 +237,28 @@ class _LoginPageState extends State<LoginPage> {
           loading = false;
         });
       } catch (e) {
+        String errorMessage;
+        if (e is FirebaseAuthException) {
+          if (e.code == 'user-not-found') {
+            errorMessage = 'No user found with this email. Please register first.';
+          } else if (e.code == 'too-many-requests') {
+            errorMessage = 'Access has been temporarily disabled due to many failed login attempts. Please try again later.';
+          } else {
+            errorMessage = 'Login Failed. Please check your email and password.';
+          }
+        } else {
+          errorMessage = 'An unexpected error occurred. Please try again later.';
+        }
+
         setState(() {
           loading = false;
-          errorMessage = 'Please check your email and password';
+          this.errorMessage = errorMessage;
         });
+
         _showErrorDialog(errorMessage);
       }
     }
-  }
+}
 
 
   void _showErrorDialog(String message) {

@@ -301,9 +301,13 @@ class _SignupPageState extends State<SignupPage> {
           ),
           validator: (value) {
             if (value!.isEmpty) {
-              return isEnglish ? "Please re-enter your password" : "Pakilagay muli ang iyong password";
-            } else if (value.length < 8) {
-              return isEnglish ? 'Password must be at least 8 characters long' : "Ang password ay dapat hindi kukulangin sa walong(8) karakter.";
+              return isEnglish ? "Please enter your password" : " Pakilagay ang iyong password";
+            } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$').hasMatch(value)) {
+              return isEnglish
+                  ? 'Password must:\n- Be at least 8 characters long\n- Contain at least one uppercase letter\n- Contain at least one digit'
+                  : "Dapat ang password: \n Maging hindi bababa sa walong(8) karakter ang haba\n- Maglagay ng hindi bababa sa isang malaking titik\n- Maglagay ng hindi bababa sa isang numero ";
+            } else if (_confirmPassword.text.isNotEmpty && value != _confirmPassword.text) {
+              return isEnglish ? 'Passwords do not match' : 'Hindi tugma ang mga password';
             }
             return null;
           },
@@ -328,7 +332,7 @@ class _SignupPageState extends State<SignupPage> {
         ),
         const SizedBox(height: 30),
         ElevatedButton(
-          onPressed: _submitForm,
+          onPressed: passwordsMatch ? _submitForm : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF5BD8FF),
             shape: RoundedRectangleBorder(
