@@ -7,8 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/change_password.dart';
 import 'package:sign_buddy/front_page.dart';
+import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
+import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/sign_up.dart';
 
 class UserAccountPage extends StatefulWidget {
@@ -147,7 +149,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editFirstName,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your first name',
-                                      suffixIcon: FaIcon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
+                                      suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -156,7 +158,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                       ),
                                     ),
                                     inputFormatters: [
-                                      CustomInputFormatter(maxLength: 10),
+                                      CustomInputFormatter(maxLength: 15),
                                     ],
                                     validator: (value) {
                                       if (value!.isEmpty) {
@@ -171,7 +173,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editLastName,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your last name',
-                                      suffixIcon: FaIcon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
+                                      suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -180,7 +182,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                       ),
                                     ),
                                     inputFormatters: [
-                                      CustomInputFormatter(maxLength: 10),
+                                      CustomInputFormatter(maxLength: 15),
                                     ],
                                     validator: (value) {
                                       if (value!.isEmpty) {
@@ -195,7 +197,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('emailField'),
                                     decoration: InputDecoration(
                                       hintText: 'Enter your email',
-                                      suffixIcon: FaIcon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
+                                      suffixIcon: Icon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -282,67 +284,77 @@ class _UserAccountPageState extends State<UserAccountPage> {
   @override
     Widget build(BuildContext context) {
       if (Auth().isUserAnonymous()) {
-        // If the user is anonymous, display a different UI
+        // If the user is anonymous, display this ui
         return Scaffold(
-          body: isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Stack(
-                children: [
-                  // Background Image
-                  Image.asset(
-                    'assets/bg-signbuddy.png',
-                    fit: BoxFit.cover,
-                    height: double.infinity,
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                  ),
-                  // Image at the top
-                  
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/signup-img.png',
-                          height: 120, 
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "Unlock Your Profile – Sign Up Now!",
-                          style: TextStyle(fontSize: 18),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Navigate to the sign-up page
-                            Navigator.pushReplacement(
-                                context, SlidePageRoute(page: const SignupPage()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Color.fromARGB(255, 71, 63, 63),
-                            backgroundColor: Color(0xFF5BD8FF),
-                            // text color
-                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+        body: isLoading
+          ? Center(
+            child: CircularProgressIndicator(),
+          )
+          : Stack(
+            children: [
+              // Background Image
+              Image.asset(
+                'assets/bg-signbuddy.png',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
               ),
+              // Back Button aligned to top-left
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 10),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: CustomBackButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+              // Image at the top
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/signup-img.png',
+                      height: 120,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Unlock Your Profile – Sign Up Now!",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the sign-up page
+                        Navigator.pushReplacement(context, SlidePageRoute(page: const SignupPage()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Color.fromARGB(255, 71, 63, 63),
+                        backgroundColor: Color(0xFF5BD8FF),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
       );
 
-      }
+
+            }
 
       // If the user is not anonymous, display the regular profile view
       return Scaffold(
@@ -365,9 +377,10 @@ class _UserAccountPageState extends State<UserAccountPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        
                         // Profile Section
                         Container(
-                          height: 300,
+                          height: 330,
                           decoration: BoxDecoration(
                             color: const Color(0xFF5A96E3).withOpacity(0.8),
                             borderRadius: BorderRadius.only(
@@ -388,11 +401,37 @@ class _UserAccountPageState extends State<UserAccountPage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(height: 50),
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: Colors.white,
-                                  backgroundImage: AssetImage('assets/user_man.png'),
+                                // Back Button
+                                Padding(
+                                  padding: EdgeInsets.only(top: 35, left: 10),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: IconButton(
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.arrowLeft,
+                                        color: Colors.white,
+                                        size: 25,
+                                      ),
+                                      onPressed: () {
+                                       Navigator.pop(context);
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.white, 
+                                        width: 2.0, 
+                                      ),
+                                    ),
+                                  child: CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor: Colors.white,
+                                    backgroundImage: AssetImage('assets/user_man.png'),
+                                  ),
                                 ),
                                 SizedBox(height: 8),
                                 Text(
@@ -433,7 +472,6 @@ class _UserAccountPageState extends State<UserAccountPage> {
                           children: [
                             Padding(
                             padding: EdgeInsets.only(bottom: 16, left: 16), 
-                              
                               child: Text(
                                 'Profile',
                                 style: TextStyle(
@@ -530,60 +568,22 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      width: double.infinity,
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Row(
-                                          children: [
-                                            FaIcon(
-                                              FontAwesomeIcons.key, 
-                                              color: Colors.deepPurpleAccent,
-                                            ),
-                                            SizedBox(width: 15), 
-                                            TextButton(
-                                              onPressed: () {
-                                               Navigator.push(context, SlidePageRoute(page: const ChangePassword()));
-                                              },
-                                              child: Text(
-                                                'Change password',
-                                                style: TextStyle(
-                                                   color: Color.fromARGB(255, 71, 63, 63),
-                                                  fontSize: 16,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                    _buildListTile(
+                                      icon: FontAwesomeIcons.key,
+                                      text: 'Change password',
+                                      onPressed: () {
+                                        Navigator.push(context, SlidePageRoute(page: const ChangePassword()));
+                                      },
+                                       iconTextSpacing: 18.0 // Customize the spacing for this ListTile
                                     ),
                                     _buildDivider(),
-                                    Container(
-                                      width: double.infinity,
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Row(
-                                          children: [
-                                            FaIcon(
-                                              FontAwesomeIcons.userXmark, // Change this to the desired icon for Delete Account
-                                              color: Colors.deepPurpleAccent,
-                                            ),
-                                            SizedBox(width: 10), // Adjust the spacing between icon and text
-                                            TextButton(
-                                              onPressed: () async {
-                                                _showDeleteConfirmationDialog();
-                                              },
-                                              child: Text(
-                                                'Delete account',
-                                                style: TextStyle(
-                                                   color: Color.fromARGB(255, 71, 63, 63),
-                                                  fontSize: 16,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                    _buildListTile(
+                                      icon: FontAwesomeIcons.userXmark,
+                                      text: 'Delete account',
+                                      onPressed: () async {
+                                        _showDeleteConfirmationDialog();
+                                      },
+                                      iconTextSpacing: 12.0 // Customize the spacing for this ListTile
                                     ),
                                   ],
                                 ),
@@ -597,8 +597,41 @@ class _UserAccountPageState extends State<UserAccountPage> {
                   ),
                 ],
               ),
-      );
-    }
+            );
+          }
+
+ Widget _buildListTile({required IconData icon, required String text, required VoidCallback onPressed, double iconTextSpacing = 0}) {
+  return ListTile(
+    contentPadding: EdgeInsets.zero,
+    title: Row(
+      children: [
+        FaIcon(
+          icon,
+          color: Colors.deepPurpleAccent,
+        ),
+        SizedBox(width: iconTextSpacing), // Adjust the spacing between icon and text
+        Text(
+          text,
+          style: TextStyle(
+            color: Color.fromARGB(255, 71, 63, 63),
+            fontSize: 16,
+            fontFamily: 'FiraSans',
+            fontWeight: FontWeight.bold
+          ),
+        ),
+      ],
+    ),
+    onTap: onPressed,
+  );
+}
+
+  Widget _buildDivider() {
+    return Divider(
+      color: Colors.deepPurpleAccent,
+      height: 5,
+      thickness: 1,
+    );
+  }
 
 
 
@@ -903,12 +936,7 @@ Future<void> _deleteAccount() async {
     );
   }
 
-  Widget _buildDivider() {
-    return Divider(
-      height: 8,
-      color: Colors.deepPurpleAccent,
-    );
-  }
+  
 }
 
 
@@ -922,8 +950,8 @@ class CustomInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    // Allow only alphabetic characters and disallow spaces
-    final RegExp regExp = RegExp(r'^[a-zA-Z]*$');
+    // Allow only alphabetic characters with zero or one space
+    final RegExp regExp = RegExp(r'^[a-zA-Z]*\s?[a-zA-Z]*$');
     
     // Check if the new value exceeds the maximum length
     if (newValue.text.length > maxLength) {

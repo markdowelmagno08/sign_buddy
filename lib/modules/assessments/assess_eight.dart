@@ -104,7 +104,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                       'assets/dictionary/family/nephew.gif' &&
                   selectedWord == 'Nephew') || (selectedVideo ==
                       'assets/dictionary/family/pamangkin_na_lalake.gif' &&
-                  selectedWord == 'Pamangkin')  )) {
+                  selectedWord == 'Pamangkin na Lalaki')  )) {
             score++;
           }
         }
@@ -375,7 +375,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
                                         'assets/dictionary/family/nephew.gif' &&
                                     selectedWord == 'Nephew') || (selectedVideo ==
                                         'assets/dictionary/family/pamangkin_na_lalake.gif' &&
-                                    selectedWord == 'Pamangkin')  )) {
+                                    selectedWord == 'Pamangkin na Lalaki')  )) {
                               showResultSnackbar(
                                 context,
                                 isEnglish ? 'Correct' : "Tama",

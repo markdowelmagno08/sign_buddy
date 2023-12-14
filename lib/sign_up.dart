@@ -168,7 +168,7 @@ class _SignupPageState extends State<SignupPage> {
               return null;
             },
             inputFormatters: [
-            CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
+            CustomInputFormatter(maxLength: 15), // Apply the custom input formatter here
           ],
           ),
         ),
@@ -192,7 +192,7 @@ class _SignupPageState extends State<SignupPage> {
             return null;
           },
           inputFormatters: [
-            CustomInputFormatter(maxLength: 10), // Apply the custom input formatter here
+            CustomInputFormatter(maxLength: 15), // Apply the custom input formatter here
           ],
         ),
         const SizedBox(height: 10),
@@ -525,8 +525,8 @@ class CustomInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    // Allow only alphabetic characters and disallow spaces
-    final RegExp regExp = RegExp(r'^[a-zA-Z]*$');
+    // Allow only alphabetic characters with zero or one space
+    final RegExp regExp = RegExp(r'^[a-zA-Z]*\s?[a-zA-Z]*$');
     
     // Check if the new value exceeds the maximum length
     if (newValue.text.length > maxLength) {

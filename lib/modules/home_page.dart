@@ -130,8 +130,8 @@ class _HomePageState extends State<HomePage> {
                       buildUserData(),
 
                       // IconButton on the top right
-                      Padding(
-                        padding: const EdgeInsets.only(bottom:120),
+                      Align(
+                        alignment: Alignment.topRight,
                         child: IconButton(
                           icon: const Icon(Icons.close),
                           color: Colors.white,
@@ -399,12 +399,19 @@ Widget buildUserData() {
       }
 
       String formattedName(String firstName, String lastName) {
-        if (firstName.length > 5 || lastName.length > 5) {
-          return '$firstName\n$lastName';
-        } else {
-          return '$firstName $lastName';
-        }
+      List<String> firstNameWords = firstName.split(' ');
+
+      if (firstNameWords.length > 1) {
+        // If the first name has more than one word, put the second word on a new line
+        return '${capitalizeFirstLetter(firstNameWords[0])}\n${capitalizeFirstLetter(firstNameWords[1])}\n$lastName';
+      } else if (firstName.length > 5 || lastName.length > 5) {
+        // If the first name has one word and is longer than 5 characters or the last name is longer than 5 characters, put them on a new line
+        return '$firstName\n$lastName';
+      } else {
+        // Otherwise, concatenate the first and last names with a space
+        return '$firstName $lastName';
       }
+    }
 
       return Padding(
         padding: const EdgeInsets.only(left: 20),
