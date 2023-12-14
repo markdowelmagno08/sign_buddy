@@ -242,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
           if (e.code == 'user-not-found') {
             errorMessage = 'No user found with this email. Please register first.';
           } else if (e.code == 'too-many-requests') {
-            errorMessage = 'Access has been temporarily disabled due to many failed login attempts. Please try again later.';
+            errorMessage = 'Login attempts exceeded. Please try again later.\n\n Please try again later in 10 minutes.';
           } else {
             errorMessage = 'Login Failed. Please check your email and password.';
           }
