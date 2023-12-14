@@ -56,8 +56,9 @@ class _FindSignState extends State<FindSign> {
 
   @override
   void initState() {
-    super.initState();
+    
     getLanguage();
+    super.initState();
   }
 
   

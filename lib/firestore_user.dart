@@ -27,6 +27,21 @@ class UserFirestore {
     await userDocRef.set(userData);
   }
 
+  Future<void> createNewAnonymousAccount() async {
+    try {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('userData');
+      DocumentReference userDocRef = users.doc(userId);
+
+      await userDocRef.set({
+        
+        'isNewAccount': true,
+      });
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
   Future<void> initializeLessons(String lessonCategory, String locale) async {
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;

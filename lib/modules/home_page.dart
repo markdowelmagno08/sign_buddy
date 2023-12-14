@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/locale.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
@@ -11,12 +12,217 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/user_account.dart';
 
 
+class LessonsScreen extends StatefulWidget {
+  const LessonsScreen({Key? key}) : super(key: key);
+
+  @override
+  _LessonsScreenState createState() => _LessonsScreenState();
+}
+
+
+
+class _LessonsScreenState extends State<LessonsScreen> {
+  int? selectedLessonIndex;
+
+  final List<Map<String, dynamic>> lessons = [
+    {
+      'en': 'Alphabet',
+      'ph': 'Alpabeto',
+      'icon': 'lesson-icon/img1.png',
+    },
+    {
+      'en': 'Numbers',
+      'ph': 'Mga Numero',
+      'icon': 'lesson-icon/img2.png',
+    },
+    {
+      'en': 'Family',
+      'ph': 'Pamilya',
+      'icon': 'lesson-icon/img3.png',
+    },
+    {
+      'en': 'Greetings',
+      'ph': 'Pagbati',
+      'icon': 'lesson-icon/img10.png',
+    },
+    {
+      'en': 'Animals',
+      'ph': 'Mga Hayop',
+      'icon': 'lesson-icon/img6.png',
+    },
+    {
+      'en': 'Colors',
+      'ph': 'Mga Kulay',
+      'icon': 'lesson-icon/img4.png',
+    },
+  ];
+
+  bool isEnglish = true;
+  bool isLoading = true;
+
+  Future<void> getLanguageFromFirestore() async {
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('userData')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .get();
+
+      if (snapshot.exists) {
+        String languageFromFirestore = snapshot.get('language');
+
+        // Check if the language is English
+        if (languageFromFirestore == 'English') {
+          setLanguage(true);
+          setState(() {
+            
+            // Update the state variable isEnglish based on the fetched language
+            isEnglish = languageFromFirestore == 'English';
+          });
+        } else {
+            setLanguage(false);
+            setState(() {
+            // Update the state variable isEnglish based on the fetched language
+            isEnglish = false;
+          });
+        }        
+      }
+    } catch (e) {
+      print('Error fetching language from Firestore: $e');
+    }
+  }
+
+  
+
+  @override
+  void initState() {
+    getLanguageFromFirestore().then((_) {
+      setState(() {
+        
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/bg-signbuddy.png'), // Replace with your background image path
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 40, left: 45),
+              child: Text(
+                isEnglish ? 'Lessons' : 'Mga Aralin',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1,
+                ),
+                itemCount: lessons.length,
+                itemBuilder: (context, index) {
+                  final lesson = lessons[index];
+                  final lessonName = isEnglish ? lesson['en'] : lesson['ph'];
+
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        _navigateToStartLesson(context, lessonName);
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/${lesson['icon']}',
+                            width: 48,
+                            height: 48,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            lessonName,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+void _navigateToStartLesson(BuildContext context, String lesson) {
+  final lessonMap = {
+    'Alphabet': '/basic',
+    'Alpabeto': '/basic',
+    'Numbers': '/numbers',
+    'Mga Numero': '/numbers',
+    'Family': '/family',
+    'Pamilya': '/family',
+    'Animals': '/animals',
+    'Mga Hayop': '/animals',
+    'Time and Days': '/timeAndDays',
+    'Oras at Araw': '/timeAndDays',
+    'Colors' : '/color',
+    'Mga Kulay': '/color',
+    'Greetings': '/greeting',
+    'Pagbati': '/greeting',
+  };
+
+  final route = lessonMap[lesson];
+
+  if (route != null) {
+    Navigator.pushNamed(context, route);
+  } else {
+    // Handle the case when the lesson is not found
+  }
+}
+
+
+
+
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
+  
   _HomePageState createState() => _HomePageState();
 }
 
@@ -24,31 +230,68 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
   bool isEnglish = true;
+  bool isLoading = true;
 
   final List<Widget> _screens = [
-    const LessonsScreen(),
+    LessonsScreen(),
     AlphabetScreen(),
     // FindSign(),
     FingerSpelling(),
     // CreateSignPage(),
   ];
 
+
+
+   
+
+  
+
+  Future<void> getLanguageFromFirestore() async {
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('userData')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .get();
+
+      if (snapshot.exists) {
+        String languageFromFirestore = snapshot.get('language');
+
+        // Check if the language is English
+        if (languageFromFirestore == 'English') {
+          setLanguage(true);
+          setState(() {
+            
+            // Update the state variable isEnglish based on the fetched language
+            isEnglish = languageFromFirestore == 'English';
+          });
+        } else {
+            setLanguage(false);
+            setState(() {
+            // Update the state variable isEnglish based on the fetched language
+            isEnglish = false;
+          });
+        }        
+      }
+    } catch (e) {
+      print('Error fetching language from Firestore: $e');
+    }
+  }
+
+  
+
   @override
   void initState() {
-    super.initState();
-    getLanguage();
-
-  }
-
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    setState(() {
-      this.isEnglish = isEnglish;
+    getLanguageFromFirestore().then((_) {
+      setState(() {
+        
+      });
     });
+    super.initState();
   }
-  @override
+
+
+
+    @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
@@ -222,8 +465,10 @@ class _HomePageState extends State<HomePage> {
                       );
 
                       if (confirmLogout == true) {
-                        await FirebaseAuth.instance.signOut();
-                        // ignore: use_build_context_synchronously
+                        
+                         await Auth().signOut();
+                         
+                        
                         Navigator.pushNamedAndRemoveUntil(
                             context, '/', (route) => false);
                       }
@@ -431,179 +676,4 @@ Widget buildUserData() {
     },
   );
 }
-
-class LessonsScreen extends StatefulWidget {
-  const LessonsScreen({Key? key}) : super(key: key);
-
-  @override
-  _LessonsScreenState createState() => _LessonsScreenState();
-}
-
-
-
-class _LessonsScreenState extends State<LessonsScreen> {
-  int? selectedLessonIndex;
-
-  final List<Map<String, dynamic>> lessons = [
-    {
-      'en': 'Alphabet',
-      'ph': 'Alpabeto',
-      'icon': 'lesson-icon/img1.png',
-    },
-    {
-      'en': 'Numbers',
-      'ph': 'Mga Numero',
-      'icon': 'lesson-icon/img2.png',
-    },
-    {
-      'en': 'Family',
-      'ph': 'Pamilya',
-      'icon': 'lesson-icon/img3.png',
-    },
-    {
-      'en': 'Greetings',
-      'ph': 'Pagbati',
-      'icon': 'lesson-icon/img10.png',
-    },
-    {
-      'en': 'Animals',
-      'ph': 'Mga Hayop',
-      'icon': 'lesson-icon/img6.png',
-    },
-    {
-      'en': 'Colors',
-      'ph': 'Mga Kulay',
-      'icon': 'lesson-icon/img4.png',
-    },
-  ];
-
-  bool isEnglish = true;
-
-  @override
-  void initState() {
-    super.initState();
-    getLanguage();
-
-  }
-
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-                'assets/bg-signbuddy.png'), // Replace with your background image path
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40, left: 45),
-              child: Text(
-                isEnglish ? 'Lessons' : 'Mga Lesson',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-            Expanded(
-              child: GridView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 1,
-                ),
-                itemCount: lessons.length,
-                itemBuilder: (context, index) {
-                  final lesson = lessons[index];
-                  final lessonName = isEnglish ? lesson['en'] : lesson['ph'];
-
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      side: const BorderSide(
-                        color: Colors.black,
-                        width: 1.0,
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        _navigateToStartLesson(context, lessonName);
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/${lesson['icon']}',
-                            width: 48,
-                            height: 48,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            lessonName,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-void _navigateToStartLesson(BuildContext context, String lesson) {
-  final lessonMap = {
-    'Alphabet': '/basic',
-    'Alpabeto': '/basic',
-    'Numbers': '/numbers',
-    'Mga Numero': '/numbers',
-    'Family': '/family',
-    'Pamilya': '/family',
-    'Animals': '/animals',
-    'Mga Hayop': '/animals',
-    'Time and Days': '/timeAndDays',
-    'Oras at Araw': '/timeAndDays',
-    'Colors' : '/color',
-    'Mga Kulay': '/color',
-    'Greetings': '/greeting',
-    'Pagbati': '/greeting',
-  };
-
-  final route = lessonMap[lesson];
-
-  if (route != null) {
-    Navigator.pushNamed(context, route);
-  } else {
-    // Handle the case when the lesson is not found
-  }
-}
-
-
-
 

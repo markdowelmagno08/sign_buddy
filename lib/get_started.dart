@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 
 import 'package:flutter/material.dart';
+import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/choose_language.dart';
+import 'package:sign_buddy/firestore_user.dart';
 import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -22,6 +24,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   final PageController _pageController = PageController(initialPage: 0);
 
   int _currentPage = 0;
+  bool loading = false;
 
   List<String> assessments = [
     'Share any specific requirements or preferences you have, so we can personalize your app experience',
@@ -82,8 +85,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
+    return Scaffold( 
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -95,7 +97,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
           children: [
             PageView.builder(
               controller: _pageController,
-               physics: NeverScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               itemCount: assessments.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
@@ -198,7 +200,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                           Icon(
                             Icons.error_outline,
                             color: Colors.red,
-                            size: 60, 
+                            size: 60,
                           ),
                           SizedBox(height: 20),
                           Text(
@@ -213,8 +215,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             'Please ensure that you have someone accompanying you before using this app.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                            fontSize: 16,
-                          ),
+                              fontSize: 16,
+                            ),
                           ),
                           const SizedBox(height: 20),
                           ElevatedButton(
@@ -222,6 +224,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                               backgroundColor: Color(0xFF5BD8FF),
                             ),
                             onPressed: () {
+                              signInAnonymously();
                               Navigator.push(
                                   context, SlidePageRoute(page: ChooseLanguages()));
                             },
@@ -238,9 +241,75 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   ),
                 ),
               ),
+            if (loading) LoadingDialog(),
           ],
         ),
       ),
     );
+  }
+
+  Widget LoadingDialog() {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 20),
+              Text(
+                'Loading...',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> signInAnonymously() async {
+    try {
+      setState(() {
+        loading = true;
+      });
+
+      await Auth().signInAnonymously();
+      String? userId = Auth().getCurrentUserId();
+
+      if (userId != null) {
+        UserFirestore(userId: userId).createNewAnonymousAccount();
+        UserFirestore(userId: userId).initializeLessons("letters", "en");
+        UserFirestore(userId: userId).initializeLessons("numbers", "en");
+        UserFirestore(userId: userId).initializeLessons("family", "en");
+        UserFirestore(userId: userId).initializeLessons("greetings", "en");
+        UserFirestore(userId: userId).initializeLessons("animals", "en");
+        UserFirestore(userId: userId).initializeLessons("color", "en");
+        UserFirestore(userId: userId).initializeLessons("letters", "ph");
+        UserFirestore(userId: userId).initializeLessons("numbers", "ph");
+        UserFirestore(userId: userId).initializeLessons("family", "ph");
+        UserFirestore(userId: userId).initializeLessons("greetings", "ph");
+        UserFirestore(userId: userId).initializeLessons("animals", "ph");
+        UserFirestore(userId: userId).initializeLessons("color", "ph");
+      } else {
+        print("User ID is null");
+        setState(() {
+          loading = false;
+        });
+      }
+    } catch (e) {
+      print("Error during authentication: $e");
+      setState(() {
+        loading = false;
+      });
+    }
   }
 }

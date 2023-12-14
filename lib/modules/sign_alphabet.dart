@@ -73,8 +73,9 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
 
   @override
   void initState() {
-    super.initState();
+    
     getLanguage();
+    super.initState();
 
   }
 

@@ -47,8 +47,9 @@ class _FingerSpellingState extends State<FingerSpelling> {
 
   @override
   void initState() {
-    super.initState();
+    
     getLanguage();
+    super.initState();
   }
 
   Future<void> getLanguage() async {

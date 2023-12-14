@@ -29,6 +29,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
   bool isLoading = true;
   bool isEnglish = true;
   bool _changesSaved = false; // Add this line
+  
 
   final TextEditingController editFirstName = TextEditingController();
   final TextEditingController editEmail = TextEditingController();
@@ -41,14 +42,16 @@ class _UserAccountPageState extends State<UserAccountPage> {
     super.initState();
   }
 
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
+   Future<void> getLanguage() async {
+      final prefs = await SharedPreferences.getInstance();
+      final locale = prefs.getBool('isEnglish');
 
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
-  }
+      if (mounted) {
+        setState(() {
+          isEnglish = locale!;
+        });
+      }
+    }
 
   Future<void> getUserAccountData() async {
     String? id = Auth().getCurrentUserId();
@@ -766,10 +769,18 @@ class _UserAccountPageState extends State<UserAccountPage> {
             ),
             ElevatedButton(
               onPressed: () async {
+                
                 await Auth().signOut();
+                 // Update language preference after signing out
+                await getLanguage();
                 // Navigate back to the home screen or any other screen
-                Navigator.pushReplacement(context, SlidePageRoute(page: const FrontPage()));// Close the dialog
-              },
+                 // Navigate back to the home screen or any other screen
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const FrontPage()),
+                    (route) => false);
+                },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
@@ -951,17 +962,20 @@ class CustomInputFormatter extends TextInputFormatter {
     TextEditingValue newValue,
   ) {
     // Allow only alphabetic characters with zero or one space
-    final RegExp regExp = RegExp(r'^[a-zA-Z]*\s?[a-zA-Z]*$');
-    
+    final RegExp regExp = RegExp(r'^[a-zA-Z]*( [a-zA-Z]*)?$');
+
+    // Remove spaces from the character count
+    final int actualLength = newValue.text.replaceAll(' ', '').length;
+
     // Check if the new value exceeds the maximum length
-    if (newValue.text.length > maxLength) {
+    if (actualLength > maxLength) {
       // Truncate the text to the maximum length
-      final truncatedText = newValue.text.substring(0, maxLength);
+      final truncatedText = _truncateText(newValue.text, maxLength);
       
       // Return the truncated text with the updated selection
       return TextEditingValue(
         text: truncatedText,
-        selection: TextSelection.collapsed(offset: maxLength),
+        selection: TextSelection.collapsed(offset: truncatedText.length),
       );
     }
 
@@ -985,7 +999,17 @@ class CustomInputFormatter extends TextInputFormatter {
       selection: value.selection,
     );
   }
+
+  String _truncateText(String text, int maxLength) {
+    // Truncate the text to the maximum length
+    if (text.length > maxLength) {
+      final truncatedText = text.substring(0, maxLength);
+      return truncatedText.replaceAll(' ', ''); // Remove spaces from the truncated text
+    }
+    return text;
+  }
 }
+
 
 
 class EmailInputFormatter extends TextInputFormatter {

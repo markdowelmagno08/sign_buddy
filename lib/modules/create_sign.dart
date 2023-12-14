@@ -52,9 +52,10 @@ class _CreateSignPageState extends State<CreateSignPage> {
 
   @override
   void initState() {
-    super.initState();
+    
     disposeVideoControllers();
     getLanguage();
+    super.initState();
   }
 
   Future<void> getLanguage() async {

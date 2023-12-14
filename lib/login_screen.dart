@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 50),
+                      padding: EdgeInsets.only(top: 50, left: 10),
                       alignment: Alignment.topLeft,
                       child: CustomBackButton(
                         onPressed: () {
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(30.0),
                       child: Column(
                         children: [
                         SizedBox(height: 70),
@@ -224,6 +224,7 @@ class _LoginPageState extends State<LoginPage> {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email.text.trim(),
           password: _password.text.trim(),
+          
         );
 
         _email.clear();

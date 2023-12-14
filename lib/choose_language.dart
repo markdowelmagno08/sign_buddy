@@ -22,7 +22,7 @@ class ChooseLanguages extends StatefulWidget {
 
 class _ChooseLanguagesState extends State<ChooseLanguages> {
   final List<Map<String, dynamic>> languages = [
-    {'name': 'American - English', 'flag': 'america.png'},
+    {'name': 'English', 'flag': 'america.png'},
     {'name': 'Filipino', 'flag': 'ph.png'},
   ];
 
@@ -166,41 +166,28 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
       await InternetConnectivityService.checkInternetOrShowDialog(
         context: context,
         onLogin: () async {
-          final UserCredential userCredential =
-              await FirebaseAuth.instance.signInAnonymously();
-          final User? currentUser = userCredential.user;
+
+          User? currentUser = FirebaseAuth.instance.currentUser;
 
           if (currentUser != null) {
-            final String userId = currentUser.uid;
+             
             setState(() => loading = true);
 
             await FirebaseFirestore.instance
                 .collection('userData')
-                .doc(userId)
+                .doc(currentUser.uid)
                 .set({'language': language}, SetOptions(merge: true));
-
-
             //simplified this code pls
             switch (language) {
-              case 'American - English':
-               UserFirestore(userId: userId).initializeLessons("letters",  "en");
-               UserFirestore(userId: userId).initializeLessons("numbers",  "en");
-               UserFirestore(userId: userId).initializeLessons("family",  "en");
-               UserFirestore(userId: userId).initializeLessons("greetings",  "en");
-               UserFirestore(userId: userId).initializeLessons("animals",  "en");
-               UserFirestore(userId: userId).initializeLessons("color",  "en");
+              case 'English':
+               
                 setLanguage(true);
                 print("language set successfully for en");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;
               case 'Filipino':
               setLanguage(false);
-               UserFirestore(userId: userId).initializeLessons("letters", "ph");
-               UserFirestore(userId: userId).initializeLessons("numbers",  "ph");
-               UserFirestore(userId: userId).initializeLessons("family",  "ph");
-               UserFirestore(userId: userId).initializeLessons("greetings",  "ph");
-               UserFirestore(userId: userId).initializeLessons("animals",  "ph");
-               UserFirestore(userId: userId).initializeLessons("color",  "ph");
+               
               print("language set successfully for ph");
                 Navigator.push(context, SlidePageRoute(page: Classify()));
                 break;
