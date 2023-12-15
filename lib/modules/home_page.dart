@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sign_buddy/about_app.dart';
 import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/feedback.dart';
 import 'package:sign_buddy/locale.dart';
 import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -419,6 +421,12 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.info,
                   title: 'About',
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      SlidePageRoute(
+                        page: AboutApp()
+                      ),
+                    );
                     
                   },
                 ),
@@ -438,7 +446,12 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.feedback,
                   title: 'Feedback',
                   onTap: () {
-                    // Handle settings tap
+                   Navigator.push(
+                      context,
+                      SlidePageRoute(
+                        page: FeedbackApp(),
+                      ),
+                    );
                   },
                 ),
 

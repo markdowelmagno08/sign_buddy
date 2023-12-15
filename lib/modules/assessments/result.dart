@@ -68,7 +68,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
 
   String getCongratulatoryMessage() {
     if (widget.score == widget.totalQuestions) {
-      return isEnglish ?  "Congratulations! You got a perfect score!" : "Pagbati!, Nakakuha ka ng perpektong puntos";
+      return isEnglish ?  "Congratulations! You got a perfect score!" : "Pagbati! Nakakuha ka ng perpektong puntos";
     } else {
       return "";
     }
