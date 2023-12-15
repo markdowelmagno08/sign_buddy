@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_buddy/actors.dart';
@@ -108,6 +109,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class AuthenticationWrapper extends StatefulWidget {
   const AuthenticationWrapper({Key? key}) : super(key: key);
 
@@ -126,19 +128,42 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
 
   Future<void> _checkAuthentication() async {
     final user = FirebaseAuth.instance.currentUser;
-    setState(() {
-      _user = user;
-    });
+
+    if (user != null) {
+      // Check if "knowLevel" exists in Firestore
+      final docSnapshot =
+          await FirebaseFirestore.instance.collection('userData').doc(user.uid).get();
+
+      if (docSnapshot.exists) {
+        // Check if "knowLevel" field exists
+        if (docSnapshot.data()!.containsKey('knowLevel') && docSnapshot['knowLevel'] != null) {
+          setState(() {
+            _user = user;
+          });
+        } else {
+          // "knowLevel" not found or is null, navigate to FrontPage
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => FrontPage()),
+          );
+        }
+      } else {
+        // Document does not exist, navigate to FrontPage
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => FrontPage()),
+        );
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     if (_user != null) {
-      // User is authenticated, navigate directly to the HomePage
+      // User is authenticated and has "knowLevel", navigate to HomePage
       return HomePage();
     } else {
-      // User is not authenticated, remain on the FrontPage
+      // User is not authenticated or does not have "knowLevel", navigate to FrontPage
       return FrontPage();
     }
   }
 }
+
