@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/change_password.dart';
 import 'package:sign_buddy/front_page.dart';
-import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -28,13 +27,32 @@ class _UserAccountPageState extends State<UserAccountPage> {
   String userLanguage = "";
   bool isLoading = true;
   bool isEnglish = true;
-  bool _changesSaved = false; // Add this line
+  bool _changesSaved = false; 
+
+
+  final List<String> userImages = [
+    'assets/user_img/user_1.png',
+    'assets/user_img/user_2.png',
+    'assets/user_img/user_3.png',
+    'assets/user_img/user_4.png',
+    'assets/user_img/user_5.png',
+    'assets/user_img/user_6.png',
+    'assets/user_img/user_7.png',
+    'assets/user_img/user_8.png',
+    'assets/user_img/user_9.png',
+    'assets/user_img/user_10.png',
+    'assets/user_img/user_11.png',
+    'assets/user_img/user_12.png',
+  ];
   
 
   final TextEditingController editFirstName = TextEditingController();
   final TextEditingController editEmail = TextEditingController();
   final TextEditingController editLastName = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  
+
 
    @override
   void initState() {
@@ -96,6 +114,12 @@ class _UserAccountPageState extends State<UserAccountPage> {
   String originalLastName = editLastName.text;
   String originalEmail = editEmail.text;
 
+  // Get the user ID
+    String? userId = Auth().getCurrentUserId();
+
+    // Use the user ID to get a randomly selected profile image
+    String? selectedProfileImage = getProfileImageForUser(userId);
+
   await Navigator.of(context).push(
     MaterialPageRoute<void>(
       builder: (BuildContext context) {
@@ -139,9 +163,22 @@ class _UserAccountPageState extends State<UserAccountPage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
-                                child: CircleAvatar(
-                                  radius: 50,
-                                  backgroundImage: AssetImage('assets/user_man.png'),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 45,
+                                    backgroundColor: Colors.grey,
+                                    // Use the randomly selected profile image
+                                    backgroundImage: selectedProfileImage != null
+                                        ? AssetImage(selectedProfileImage)
+                                        : AssetImage('assets/user_man.png'), // Provide a default image if needed
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 20),
@@ -286,6 +323,10 @@ class _UserAccountPageState extends State<UserAccountPage> {
 
   @override
     Widget build(BuildContext context) {
+
+     
+
+      
       if (Auth().isUserAnonymous()) {
         // If the user is anonymous, display this ui
         return Scaffold(
@@ -355,9 +396,16 @@ class _UserAccountPageState extends State<UserAccountPage> {
             ],
           ),
       );
+    }
+    
 
+    // Get the user ID
+    String? userId = Auth().getCurrentUserId();
 
-            }
+    // Use the user ID to get a randomly selected profile image
+    String? selectedProfileImage = getProfileImageForUser(userId);
+      
+    
 
       // If the user is not anonymous, display the regular profile view
       return Scaffold(
@@ -423,17 +471,20 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                                 SizedBox(height: 20),
                                 Container(
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.white, 
-                                        width: 2.0, 
-                                      ),
-                                    ),
-                                  child: CircleAvatar(
-                                    radius: 50,
-                                    backgroundColor: Colors.white,
-                                    backgroundImage: AssetImage('assets/user_man.png'),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: Colors.grey,
+                                  // Use the randomly selected profile image
+                                  backgroundImage: selectedProfileImage != null
+                                      ? AssetImage(selectedProfileImage)
+                                      : AssetImage('assets/user_man.png'), // Provide a default image if needed
                                   ),
                                 ),
                                 SizedBox(height: 8),
@@ -635,6 +686,24 @@ class _UserAccountPageState extends State<UserAccountPage> {
       thickness: 1,
     );
   }
+
+  //randomly gives the user an profile image
+  String? getProfileImageForUser(String? userId) {
+      if (userId == null) {
+        // Handle the case where userId is null (if needed)
+        return null;
+      }
+
+  
+      // Use the user ID to generate a random index for selecting a profile image
+      int randomIndex = userId.hashCode % userImages.length;
+
+      // Ensure the index is non-negative
+      randomIndex = randomIndex < 0 ? -randomIndex : randomIndex;
+
+      // Return the selected profile image
+      return userImages[randomIndex];
+    }
 
 
 

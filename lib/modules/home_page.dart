@@ -74,9 +74,8 @@ class _LessonsScreenState extends State<LessonsScreen> {
         if (languageFromFirestore == 'English') {
           setLanguage(true);
           setState(() {
-            
-            // Update the state variable isEnglish based on the fetched language
-            isEnglish = languageFromFirestore == 'English';
+          // Update the state variable isEnglish based on the fetched language
+          isEnglish = languageFromFirestore == 'English';
           });
         } else {
             setLanguage(false);
@@ -293,6 +292,14 @@ class _HomePageState extends State<HomePage> {
 
     @override
   Widget build(BuildContext context) {
+
+    // Get the user ID
+    String? userId = Auth().getCurrentUserId();
+
+    // Use the user ID to get a randomly selected profile image
+    String? selectedProfileImage = getProfileImageForUser(userId);
+
+
     return WillPopScope(
       onWillPop: () async {
         // Return false to indicate that you don't want to pop the route
@@ -358,15 +365,19 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: Colors.white, 
-                              width: 2.0, 
+                              color: Colors.white,
+                              width: 2.0,
                             ),
                           ),
                           child: CircleAvatar(
                             radius: 45,
-                            backgroundImage: AssetImage('assets/user_man.png'),
+                            backgroundColor: Colors.grey,
+                            // Use the randomly selected profile image
+                            backgroundImage: selectedProfileImage != null
+                                ? AssetImage(selectedProfileImage)
+                                : AssetImage('assets/user_man.png'), // Provide a default image if needed
                           ),
-                        ),
+                        )
                       ),
 
                       // User data in the center
@@ -408,7 +419,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.info,
                   title: 'About',
                   onTap: () {
-                    // Handle about tap
+                    
                   },
                 ),
                 buildListTileWithBorderAndIcon(
@@ -435,12 +446,12 @@ class _HomePageState extends State<HomePage> {
                 if (Auth().isUserAnonymous()) 
                 buildListTileWithBorderAndIcon(
                   icon: Icons.exit_to_app,
-                  title: 'Logout',
+                  title: 'Sign out',
                   onTap: () async {
                       bool confirmLogout = await showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          content: Text(isEnglish ? 'Are you sure you want to logout?' : 'Sigurado ka bang nais mong mag-logout?',
+                          content: Text(isEnglish ? 'Are you sure you want to sign out?' : 'Sigurado ka bang nais mong mag-sign out?',
                             style: TextStyle(
                               fontFamily: 'FiraSans',
                               fontWeight: FontWeight.w300,
@@ -455,7 +466,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             TextButton(
                               onPressed: () => Navigator.pop(context, true),
-                              child: const Text('LOGOUT',
+                              child: const Text('SIGN OUT',
                                 style: TextStyle(
                                   color: Colors.red,
                                 )),
@@ -556,6 +567,39 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+//randomly gives the user an profile image
+  String? getProfileImageForUser(String? userId) {
+      if (userId == null) {
+        // Handle the case where userId is null (if needed)
+        return null;
+      }
+
+      // List of user profile images
+      final List<String> userImages = [
+        'assets/user_img/user_1.png',
+        'assets/user_img/user_2.png',
+        'assets/user_img/user_3.png',
+        'assets/user_img/user_4.png',
+        'assets/user_img/user_5.png',
+        'assets/user_img/user_6.png',
+        'assets/user_img/user_7.png',
+        'assets/user_img/user_8.png',
+        'assets/user_img/user_9.png',
+        'assets/user_img/user_10.png',
+        'assets/user_img/user_11.png',
+        'assets/user_img/user_12.png',
+      ];
+
+      // Use the user ID to generate a random index for selecting a profile image
+      int randomIndex = userId.hashCode % userImages.length;
+
+      // Ensure the index is non-negative
+      randomIndex = randomIndex < 0 ? -randomIndex : randomIndex;
+
+      // Return the selected profile image
+      return userImages[randomIndex];
+    }
 
 Widget buildListTileWithBorderAndIcon({
   required IconData icon,
