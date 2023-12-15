@@ -36,24 +36,24 @@
     }
 
     Future<void> _sendResetCode() async {
-  if (_formKey.currentState!.validate()) {
-    // Show loading dialog
-    showDialog(
-      context: context,
-      barrierDismissible: false, // prevent user from dismissing the dialog
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 16),
-              Text('Sending Reset Link...'),
-            ],
-          ),
-        );
-      },
-    );
+    if (_formKey.currentState!.validate()) {
+      // Show loading dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false, // prevent user from dismissing the dialog
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('Sending Reset Link...'),
+              ],
+            ),
+          );
+        },
+      );
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(

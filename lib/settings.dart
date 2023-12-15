@@ -222,6 +222,22 @@ class _MySettingsState extends State<MySettings> {
 
 
   Future<void> _deleteAccount() async {
+    showDialog(
+        context: context,
+        barrierDismissible: false, // prevent user from dismissing the dialog
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('Deleting account...'),
+              ],
+            ),
+          );
+        },
+      );
     // Perform necessary logic to delete the account from the Firestore database
     String? userId = Auth().getCurrentUserId();
 

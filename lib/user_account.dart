@@ -934,53 +934,69 @@ class _UserAccountPageState extends State<UserAccountPage> {
     );
   }
 
-Future<void> _deleteAccount() async {
-  // Perform necessary logic to delete the account from the Firestore database
-  String? userId = Auth().getCurrentUserId();
+  Future<void> _deleteAccount() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // prevent user from dismissing the dialog
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 16),
+              Text('Deleting account...'),
+            ],
+          ),
+        );
+      },
+    );
+    // Perform necessary logic to delete the account from the Firestore database
+    String? userId = Auth().getCurrentUserId();
 
-  try {
-    // Show a loading dialog
-      Navigator.of(context).push(
-        PageRouteBuilder(
-          opaque: false, // Make the loading page non-opaque
-          pageBuilder: (context, _, __) {
-            return const Loading(text: 'Loading . . . '); 
-          },
-        ),
-      );
+    try {
+      // Show a loading dialog
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            opaque: false, // Make the loading page non-opaque
+            pageBuilder: (context, _, __) {
+              return const Loading(text: 'Loading . . . '); 
+            },
+          ),
+        );
 
-    if(userId != null) {
-      await FirebaseFirestore.instance
-      .collection('userData')
-      .doc(userId)
-      .delete();
+      if(userId != null) {
+        await FirebaseFirestore.instance
+        .collection('userData')
+        .doc(userId)
+        .delete();
 
-      // Delete the user from Firebase Authentication
-      User? currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
-        await currentUser.delete();
-      }
+        // Delete the user from Firebase Authentication
+        User? currentUser = FirebaseAuth.instance.currentUser;
+        if (currentUser != null) {
+          await currentUser.delete();
+        }
 
-      await Auth().signOut();
-      // Close the loading dialog
-      if (!context.mounted) return;
-      Navigator.pop(context);
-
-      // Navigate back to the home screen or any other screen
-      Navigator.pushReplacement(context, SlidePageRoute(page: const FrontPage()));
-
-    } else {
-        // Handle the case where user ID is null
-        print("User ID is null or empty.");
+        await Auth().signOut();
+        // Close the loading dialog
+        if (!context.mounted) return;
         Navigator.pop(context);
-      }
-    } catch (e) {
-        // Handle errors, e.g., show an error dialog
-        print("Error deleting progress: $e");
-        Navigator.pop(context); // Close the loading dialog
-      }
-  
-}
+
+        // Navigate back to the home screen or any other screen
+        Navigator.pushReplacement(context, SlidePageRoute(page: const FrontPage()));
+
+      } else {
+          // Handle the case where user ID is null
+          print("User ID is null or empty.");
+          Navigator.pop(context);
+        }
+      } catch (e) {
+          // Handle errors, e.g., show an error dialog
+          print("Error deleting progress: $e");
+          Navigator.pop(context); // Close the loading dialog
+        }
+    
+  }
 
 
 
