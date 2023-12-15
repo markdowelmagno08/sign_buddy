@@ -127,7 +127,7 @@ class _AssessmentEightState extends State<AssessmentEight> {
   }
 
   void navigateToResult(BuildContext context) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       SlidePageRoute(
         page: AssessmentResult(

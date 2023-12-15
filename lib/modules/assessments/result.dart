@@ -155,7 +155,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
                     child: ElevatedButton(
                       onPressed: () async {
                         await _storeAssessmentResult();
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           SlidePageRoute(page: const SignupPage()),
                         );

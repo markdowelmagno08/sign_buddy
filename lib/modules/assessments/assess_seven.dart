@@ -114,14 +114,14 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
 
   void navigateToNextAssessment(BuildContext context) {
     if (currentIndex < assessmentQuestions.length - 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         SlidePageRoute(
           page: AssessmentSeven(score: widget.score + score),
         ),
       );
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         SlidePageRoute(
           page: AssessmentEight(score: widget.score + score),

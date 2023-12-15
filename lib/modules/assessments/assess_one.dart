@@ -87,7 +87,7 @@ class _AssessmentOneState extends State<AssessmentOne> {
         ),
       );
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
           context, SlidePageRoute(page: AssessmentTwo(score: score)));
     }
   }
