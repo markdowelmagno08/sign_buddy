@@ -25,9 +25,11 @@ class _UserAccountPageState extends State<UserAccountPage> {
   String firstName = "";
   String lastName = "";
   String userLanguage = "";
+  String classification = "";
   bool isLoading = true;
   bool isEnglish = true;
   bool _changesSaved = false; 
+    
 
 
   final List<String> userImages = [
@@ -45,10 +47,12 @@ class _UserAccountPageState extends State<UserAccountPage> {
     'assets/user_img/user_12.png',
   ];
   
+  
 
   final TextEditingController editFirstName = TextEditingController();
   final TextEditingController editEmail = TextEditingController();
   final TextEditingController editLastName = TextEditingController();
+  TextEditingController editClassification = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   
@@ -71,6 +75,9 @@ class _UserAccountPageState extends State<UserAccountPage> {
       }
     }
 
+  List<String> classificationOptions = ['Speech Impaired', 'Non-Disabled'];
+  
+
   Future<void> getUserAccountData() async {
     String? id = Auth().getCurrentUserId();
     if (id != null) {
@@ -85,17 +92,21 @@ class _UserAccountPageState extends State<UserAccountPage> {
           firstName = data["firstName"];
           lastName = data["lastName"];
           userLanguage = data["language"];
+          classification = data["classification"];
         } else {
           email = "";
           firstName = "";
           lastName = "";
           userLanguage = "";
+          classification = "";
         }
 
         // Set initial values for text editing controllers
         editEmail.text = email;
         editFirstName.text = firstName;
         editLastName.text = lastName;
+        editClassification.text = classification;
+
 
         isLoading = false;
       });
@@ -113,6 +124,9 @@ class _UserAccountPageState extends State<UserAccountPage> {
   String originalFirstName = editFirstName.text;
   String originalLastName = editLastName.text;
   String originalEmail = editEmail.text;
+  String originalClassification = classification;
+  String originalClassificationInput = editClassification.text;
+
 
   // Get the user ID
     String? userId = Auth().getCurrentUserId();
@@ -263,6 +277,28 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                       return null;
                                     },
                                   ),
+                                  SizedBox(height: 16),
+                                    GestureDetector(
+                                      onTap: () {
+                                        _showClassificationDialog();
+                                      },
+                                      child: AbsorbPointer(
+                                        child: TextFormField(
+                                          key: Key('classificationField'),
+                                          controller: editClassification,
+                                          decoration: InputDecoration(
+                                            hintText: 'Select classification',
+                                            suffixIcon: Icon(Icons.radio_button_checked, color: Colors.deepPurpleAccent),
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.deepPurpleAccent,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                 ],
                               ),
                             ],
@@ -304,9 +340,115 @@ class _UserAccountPageState extends State<UserAccountPage> {
       editFirstName.text = originalFirstName;
       editLastName.text = originalLastName;
       editEmail.text = originalEmail;
+      classification = originalClassification;
+      editClassification.text = originalClassificationInput;
+
     });
   }
 }
+
+void _showClassificationDialog() {
+  String? originalClassification = classification;
+  String? selectedValue = classification;
+
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return SimpleDialog(
+            title: Text('Select Classification'),
+            children: [
+              ...classificationOptions.map((String value) {
+                return RadioListTile<String>(
+                  title: Text(value),
+                  value: value,
+                  groupValue: selectedValue,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue;
+                      classification = newValue ?? "";
+                    });
+                  },
+                );
+              }).toList(),
+              Padding(
+                padding: const EdgeInsets.only(right: 15, top: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        // Reset the classification to the original value
+                        setState(() {
+                          classification = originalClassification;
+                        });
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontFamily: 'Fira Sans'
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),    
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        editClassification.text = classification;
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green, 
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      ),
+                      child: Text(
+                        'Okay',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    },
+  );
+}
+
+// Modify _saveChanges method to handle classification restoration
+Future<void> _saveChanges() async {
+  // Perform necessary logic to save changes to the Firestore database
+  String id = Auth().getCurrentUserId()!;
+  await FirebaseFirestore.instance.collection('userData').doc(id).update({
+    'email': editEmail.text,
+    'firstName': editFirstName.text,
+    'lastName': editLastName.text,
+    'classification': classification,
+  });
+
+  // Update local state immediately
+  if (mounted) {
+    setState(() {
+      email = editEmail.text;
+      firstName = editFirstName.text;
+      lastName = editLastName.text;
+      _changesSaved = true;
+    });
+  }
+
+
+  Navigator.of(context).pop(); // Close the edit profile page
+}
+
+
 
 
   @override
@@ -315,6 +457,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
     editFirstName.dispose();
     editEmail.dispose();
     editLastName.dispose();
+    
 
     super.dispose();
   }
@@ -554,6 +697,8 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     _buildDivider(),
                                     _buildUserInfoItem(email, 'Email', FontAwesomeIcons.solidEnvelope),
                                     _buildDivider(),
+                                    _buildUserInfoItem(classification, 'Classification', FontAwesomeIcons.solidAddressBook),
+                                    _buildDivider(),
                                     _buildLanguageItem(
                                       userLanguage,
                                       'Language',
@@ -781,29 +926,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
 
 
 
-  Future<void> _saveChanges() async {
-    // Perform necessary logic to save changes to the Firestore database
-    String id = Auth().getCurrentUserId()!;
-    await FirebaseFirestore.instance.collection('userData').doc(id).update({
-      'email': editEmail.text,
-      'firstName': editFirstName.text,
-      'lastName': editLastName.text,
-    });
-
-    // Update local state immediately
-    if(mounted) {
-      setState(() {
-      email = editEmail.text;
-      firstName = editFirstName.text;
-      lastName = editLastName.text;
-      _changesSaved = true;
-    });
-
-    }
-    
-
-    Navigator.of(context).pop(); // Close the edit profile page
-  }
+  
 
   Future<void> _showSignOutConfirmationDialog() async {
     return showDialog<void>(
