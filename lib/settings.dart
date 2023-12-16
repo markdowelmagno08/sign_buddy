@@ -261,7 +261,11 @@ class _MySettingsState extends State<MySettings> {
           Navigator.pop(context);
 
           // Navigate back to the home screen or any other screen
-          Navigator.pushReplacement(context, SlidePageRoute(page: const FrontPage()));
+          Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute<void>(
+              builder: (BuildContext context) => const FrontPage()),
+          (route) => false);
         } else {
           // Handle the case where the user is not anonymous
           print("User is not anonymous or user is null.");
