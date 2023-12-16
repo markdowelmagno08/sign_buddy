@@ -85,31 +85,33 @@ class _UserAccountPageState extends State<UserAccountPage> {
           await FirebaseFirestore.instance.collection('userData').doc(id).get();
       final data = snapshot.data();
 
-      setState(() {
-        userId = id;
-        if (data != null && data.containsKey("email")) {
-          email = data["email"];
-          firstName = data["firstName"];
-          lastName = data["lastName"];
-          userLanguage = data["language"];
-          classification = data["classification"];
-        } else {
-          email = "";
-          firstName = "";
-          lastName = "";
-          userLanguage = "";
-          classification = "";
-        }
+      if (mounted) {
+        setState(() {
+          userId = id;
+          if (data != null && data.containsKey("email")) {
+            email = data["email"];
+            firstName = data["firstName"];
+            lastName = data["lastName"];
+            userLanguage = data["language"];
+            classification = data["classification"];
+          } else {
+            email = "";
+            firstName = "";
+            lastName = "";
+            userLanguage = "";
+            classification = "";
+          }
 
-        // Set initial values for text editing controllers
-        editEmail.text = email;
-        editFirstName.text = firstName;
-        editLastName.text = lastName;
-        editClassification.text = classification;
+          // Set initial values for text editing controllers
+          editEmail.text = email;
+          editFirstName.text = firstName;
+          editLastName.text = lastName;
+          editClassification.text = classification;
 
 
-        isLoading = false;
-      });
+          isLoading = false;
+        });
+      }
     } else {
       print("User ID is null or empty.");
       setState(() {
@@ -336,14 +338,16 @@ class _UserAccountPageState extends State<UserAccountPage> {
   );
   // If the user did not save changes, restore the original values
   if (!_changesSaved) {
-    setState(() {
-      editFirstName.text = originalFirstName;
-      editLastName.text = originalLastName;
-      editEmail.text = originalEmail;
-      classification = originalClassification;
-      editClassification.text = originalClassificationInput;
+    if (mounted) {
+      setState(() {
+        editFirstName.text = originalFirstName;
+        editLastName.text = originalLastName;
+        editEmail.text = originalEmail;
+        classification = originalClassification;
+        editClassification.text = originalClassificationInput;
 
-    });
+      });
+    }
   }
 }
 
@@ -366,10 +370,12 @@ void _showClassificationDialog() {
                   value: value,
                   groupValue: selectedValue,
                   onChanged: (String? newValue) {
-                    setState(() {
-                      selectedValue = newValue;
-                      classification = newValue ?? "";
-                    });
+                    if (mounted) {
+                      setState(() {
+                        selectedValue = newValue;
+                        classification = newValue ?? "";
+                      });
+                    }
                   },
                 );
               }).toList(),
@@ -382,9 +388,11 @@ void _showClassificationDialog() {
                       onPressed: () {
                         Navigator.of(context).pop();
                         // Reset the classification to the original value
-                        setState(() {
-                          classification = originalClassification;
-                        });
+                        if (mounted) {
+                          setState(() {
+                            classification = originalClassification;
+                          });
+                        }
                       },
                       child: Text(
                         'Cancel',
