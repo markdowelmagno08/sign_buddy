@@ -77,9 +77,8 @@ class MyApp extends StatelessWidget {
           // Add more text styles here as needed.
         ),
       ),
-      initialRoute: '/',
+      home: AuthenticationWrapper(),
       routes: {
-        '/': (context) => AuthenticationWrapper(),
         '/actors': (context) => Actors(),
         '/One': (context) => AssessmentOne(),
         '/get_started': (context) => GetStartedPage(),
@@ -118,52 +117,93 @@ class AuthenticationWrapper extends StatefulWidget {
 }
 
 class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
-  User? _user;
+  late Future<bool> _authenticationCheck;
 
   @override
   void initState() {
     super.initState();
-    _checkAuthentication();
+    _authenticationCheck = _checkAuthentication();
   }
 
-  Future<void> _checkAuthentication() async {
+  Future<bool> _checkAuthentication() async {
     final user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      // Check if "knowLevel" exists in Firestore
       final docSnapshot =
           await FirebaseFirestore.instance.collection('userData').doc(user.uid).get();
 
       if (docSnapshot.exists) {
-        // Check if "knowLevel" field exists
-        if (docSnapshot.data()!.containsKey('knowLevel') && docSnapshot['knowLevel'] != null) {
+        if (docSnapshot.data()!.containsKey('knowLevel') &&
+            docSnapshot['knowLevel'] != null) {
           setState(() {
-            _user = user;
           });
+          return true;
         } else {
           // "knowLevel" not found or is null, navigate to FrontPage
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => FrontPage()),
           );
+          return false;
         }
       } else {
         // Document does not exist, navigate to FrontPage
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => FrontPage()),
         );
+        return false;
       }
+    } else {
+      return false;
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    if (_user != null) {
-      // User is authenticated and has "knowLevel", navigate to HomePage
-      return HomePage();
-    } else {
-      // User is not authenticated or does not have "knowLevel", navigate to FrontPage
-      return FrontPage();
+    Widget build(BuildContext context) {
+      return FutureBuilder<bool>(
+        future: _authenticationCheck,
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              // Customized loading indicator with image and text
+              return Container(
+                color: Colors.white, 
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/app_icon.png', 
+                        width: 120, 
+                        height: 120, 
+                      ),
+                      SizedBox(height: 16),
+                      
+                      Padding(
+                        padding: const EdgeInsets.only(left: 60, right: 60),
+                        child: LinearProgressIndicator(
+                          backgroundColor: Colors.grey[300], 
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.deepPurpleAccent), 
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            case ConnectionState.done:
+              if (snapshot.data == true) {
+                // User is authenticated and has "knowLevel", navigate to HomePage
+                return HomePage();
+              } else {
+                // User is not authenticated or does not have "knowLevel", navigate to FrontPage
+                return FrontPage();
+              }
+            default:
+              // Handle other cases
+              return FrontPage();
+          }
+        },
+      );
     }
-  }
-}
 
+}
