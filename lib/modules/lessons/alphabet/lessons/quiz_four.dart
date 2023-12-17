@@ -309,44 +309,38 @@ class _QuizFourState extends State<QuizFour> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+          title: Text('Letter lesson', style: TextStyle(color: Colors.black, fontSize: 16)),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(60),
+              bottomRight: Radius.circular(60),
+            ),
+          ),
+          iconTheme: IconThemeData(color: Colors.black), 
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
+            },
+          ),
+        ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CustomBackButton(
-                
-                onPressed: () {
-                  ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.pushReplacement(
-                    context,
-                    SlidePageRoute(page: Letters()),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 30),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Lesson quiz for: "${widget.lessonName}"', 
-                style: TextStyle(
-                  fontSize: 20, // Adjust the font size as needed
-                  fontWeight: FontWeight.bold, // Optionally make it bold
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 70),
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             if (contentVideo.isNotEmpty)
               buildVideoDisplay(),
+              SizedBox(height: 20),
             Expanded(
               child: isLoading
                   ? Center(

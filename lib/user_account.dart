@@ -362,7 +362,11 @@ void _showClassificationDialog() {
       return StatefulBuilder(
         builder: (context, setState) {
           return SimpleDialog(
-            title: Text('Select Classification'),
+            title: Text('Select Classification', 
+            style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'FiraSans'
+            )),
             children: [
               ...classificationOptions.map((String value) {
                 return RadioListTile<String>(
@@ -398,7 +402,7 @@ void _showClassificationDialog() {
                         'Cancel',
                         style: TextStyle(
                           color: Colors.black45,
-                          fontFamily: 'Fira Sans'
+                          fontFamily: 'FiraSans'
                         ),
                       ),
                     ),

@@ -9,6 +9,17 @@
         "contentImage": ["dictionary/en/animals/bat.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/bat.mp4"],
+        "contentOption": [
+          "animal_option/bat.png",
+          "animal_option/bear.png",
+          "animal_option/bull.png",
+          "animal_option/camel.png"
+        ],
+        "correctAnswer": ["animal_option/bat.png"]
       }
     },
     {

@@ -294,38 +294,31 @@ class _NumberQuizThreeState extends State<NumberQuizThree> {
  @override
 Widget build(BuildContext context) {
   return Scaffold(
+    appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+        title: Text('Lesson Quiz', style: TextStyle(color: Colors.black, fontSize: 16)),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            ScaffoldMessenger.of(context).removeCurrentSnackBar();
+            Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
+          },
+        ),
+      ),
     body: SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CustomBackButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.pushReplacement(
-                    context,
-                    SlidePageRoute(page: Number()),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 30),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Lesson Quiz for: "${widget.lessonName.startsWith('0') ? widget.lessonName.substring(1) : widget.lessonName}"',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
-
+            const SizedBox(height: 100),
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),

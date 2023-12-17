@@ -273,56 +273,51 @@ class _QuizOneState extends State<QuizOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+        title: Text('Lesson Quiz', style: TextStyle(color: Colors.black, fontSize: 16)),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            ScaffoldMessenger.of(context).removeCurrentSnackBar();
+            Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));// This will pop the current screen
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CustomBackButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                  Navigator.pushReplacement(
-                    context,
-                    SlidePageRoute(page: const Letters()),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 30),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Lesson quiz for: "${widget.lessonName}"', 
-                style: TextStyle(
-                  fontSize: 20, // Adjust the font size as needed
-                  fontWeight: FontWeight.bold, // Optionally make it bold
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 100),
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),
             ),
+            const SizedBox(height: 30),
             Expanded(
               child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: contentOption.length,
-                      itemBuilder: (context, index) {
-                        return _buildImageOption(
-                          contentOption[index],
-                        );
-                      },
-                    ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: contentOption.length,
+                itemBuilder: (context, index) {
+                  return _buildImageOption(
+                    contentOption[index],
+                  );
+                },
+              ),
             ),
             Builder(
               builder: (context) {

@@ -15,6 +15,7 @@ import 'package:sign_buddy/modules/finger_spelling.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/color/color.dart';
 import 'package:sign_buddy/modules/lessons/family/family.dart';
+import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
 import 'package:sign_buddy/modules/lessons/shape.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals.dart';

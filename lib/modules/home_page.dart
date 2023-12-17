@@ -38,9 +38,9 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'icon': 'lesson-icon/img2.png',
     },
     {
-      'en': 'Family',
-      'ph': 'Pamilya',
-      'icon': 'lesson-icon/img3.png',
+      'en': 'Animals',
+      'ph': 'Mga Hayop',
+      'icon': 'lesson-icon/img6.png',
     },
     {
       'en': 'Greetings',
@@ -48,9 +48,9 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'icon': 'lesson-icon/img10.png',
     },
     {
-      'en': 'Animals',
-      'ph': 'Mga Hayop',
-      'icon': 'lesson-icon/img6.png',
+      'en': 'Family',
+      'ph': 'Pamilya',
+      'icon': 'lesson-icon/img3.png',
     },
     {
       'en': 'Colors',
