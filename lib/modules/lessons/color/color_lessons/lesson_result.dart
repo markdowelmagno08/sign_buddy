@@ -143,7 +143,7 @@ class _ResultState extends State<Result> {
                                   ),
                                   SizedBox(width: 5),
                                   Text(
-                                    isEnglish ? 'Reset Progress?' : 'I-reset ang Progres?',
+                                    isEnglish ? 'Reset Progress?' : 'I-reset ang Progreso',
                                     style: TextStyle(
                                       fontFamily: 'FiraSans',
                                       fontWeight: FontWeight.bold,

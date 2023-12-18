@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Import the FirebaseAuth package
+import 'package:firebase_auth/firebase_auth.dart'; 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
@@ -15,10 +16,34 @@ class FeedbackApp extends StatefulWidget {
   State<FeedbackApp> createState() => _FeedbackAppState();
 }
 
+
+
+
+
+
 class _FeedbackAppState extends State<FeedbackApp> {
   final _feedbackFormKey = GlobalKey<FormState>();
   final TextEditingController _feedbackController = TextEditingController();
   bool isLoading = true;
+  bool isEnglish = true;
+
+
+  @override
+    void initState() {
+      getLanguage();
+      super.initState();
+    }
+
+  Future<void> getLanguage() async {
+      final prefs = await SharedPreferences.getInstance();
+      final locale = prefs.getBool('isEnglish');
+
+      if (mounted) {
+        setState(() {
+          isEnglish = locale!;
+        });
+      }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +83,7 @@ class _FeedbackAppState extends State<FeedbackApp> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Unlock Your Profile\nShare Your Feedback!",
+                      "Simulan ang Iyong Profile\nIbahagi ang Iyong Feedback",
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
@@ -138,7 +163,10 @@ class _FeedbackAppState extends State<FeedbackApp> {
                                       SizedBox(height: 20),
                                       Center(
                                         child: Text(
-                                          "Share your thoughts with us! \nWhether it's a suggestion, a problem report, or any other feedback \nWe want to hear from you!",
+                                          isEnglish ? 
+                                          "Share your thoughts with us! \nWhether it's a suggestion, a problem report, or any other feedback \nWe want to hear from you!" 
+                                          : 'Ibahagi ang iyong mga iniisip o pansin sa amin! Maging ito\'y rekomendasyon, ulat ng problema, o anumang iba pang feedback. Nais naming marinig mula sa iyo',
+                                          
                                           style: TextStyle(fontSize: 16, height: 1.5),
                                           textAlign: TextAlign.center,
                                         ),
@@ -253,8 +281,33 @@ class _FeedbackAppState extends State<FeedbackApp> {
 }
 
 
-class ThankYouScreen extends StatelessWidget {
-    const ThankYouScreen({ Key? key}) : super(key: key);
+class ThankYouScreen extends StatefulWidget {
+  const ThankYouScreen({Key? key}) : super(key: key);
+
+  @override
+  _ThankYouScreenState createState() => _ThankYouScreenState();
+}
+
+class _ThankYouScreenState extends State<ThankYouScreen> {
+  bool isEnglish = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getLanguage();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final locale = prefs.getBool('isEnglish');
+
+    if (mounted) {
+      setState(() {
+        isEnglish = locale!; 
+      });
+    }
+  }
+    
     
   
   @override
@@ -271,13 +324,13 @@ class ThankYouScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'Thank You!',
+                isEnglish ? 'Thank You!' : 'Maraming Salamat!',
                 style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold, fontSize: 24),
               ),
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  'We truly appreciate your feedback',
+                  'Lubos kaming nagpapasalamat sa iyong feedback',
                   style: TextStyle(fontFamily: 'FiraSans',fontSize: 17),
                   textAlign: TextAlign.center,
                 ),

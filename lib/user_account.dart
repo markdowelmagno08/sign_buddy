@@ -204,7 +204,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('firstNameField'),
                                     controller: editFirstName,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your first name',
+                                      hintText:  isEnglish ? 'Enter your first name' : 'Ilagay ng pangalan',
                                       suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
@@ -228,7 +228,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     key: Key('lastNameField'),
                                     controller: editLastName,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your last name',
+                                      hintText:  isEnglish ? 'Enter your last name' : 'Ilagay ang apelyido',
                                       suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
@@ -252,7 +252,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                     controller: editEmail,
                                     key: Key('emailField'),
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your email',
+                                      hintText:  isEnglish ? 'Enter your email' : 'Ilagay ang iyong email',
                                       suffixIcon: Icon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
                                       border: OutlineInputBorder(),
                                       focusedBorder: const OutlineInputBorder(
@@ -289,7 +289,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                           key: Key('classificationField'),
                                           controller: editClassification,
                                           decoration: InputDecoration(
-                                            hintText: 'Select classification',
+                                            hintText: isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
                                             suffixIcon: Icon(Icons.radio_button_checked, color: Colors.deepPurpleAccent),
                                             border: OutlineInputBorder(),
                                             focusedBorder: const OutlineInputBorder(
@@ -322,7 +322,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                               ),
                               padding: EdgeInsets.all(16.0),
                             ),
-                            child: Text('Save Changes', style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
+                            child: Text(isEnglish ? 'Save Changes' : 'I-save ang mga pagbabago', style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
                           ),
                         ),
                       ],
@@ -362,7 +362,7 @@ void _showClassificationDialog() {
       return StatefulBuilder(
         builder: (context, setState) {
           return SimpleDialog(
-            title: Text('Select Classification', 
+            title: Text(isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
             style: TextStyle(
             fontWeight: FontWeight.bold,
             fontFamily: 'FiraSans'
@@ -522,7 +522,7 @@ Future<void> _saveChanges() async {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Unlock Your Profile – Sign Up Now!",
+                      "Simulan ang Iyong Profile – Mag-sign up Ngayon!",
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
@@ -663,7 +663,7 @@ Future<void> _saveChanges() async {
                                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                                   ),
                                   child: Text(
-                                    'Edit profile',
+                                    isEnglish ? 'Edit profile' : 'I-Edit ang Profile',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -703,18 +703,16 @@ Future<void> _saveChanges() async {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    _buildUserInfoItem(firstName, 'First name', FontAwesomeIcons.solidUser),
+                                    _buildUserInfoItem(firstName, isEnglish ? 'First name' : 'Pangalan', FontAwesomeIcons.solidUser),
                                     _buildDivider(),
-                                    _buildUserInfoItem(lastName, 'Last name', FontAwesomeIcons.solidUser),
+                                    _buildUserInfoItem(lastName,  isEnglish ? 'Last name' : 'Apelyido', FontAwesomeIcons.solidUser),
                                     _buildDivider(),
                                     _buildUserInfoItem(email, 'Email', FontAwesomeIcons.solidEnvelope),
                                     _buildDivider(),
-                                    _buildUserInfoItem(classification, 'Classification', FontAwesomeIcons.solidAddressBook),
+                                    _buildUserInfoItem(classification,  isEnglish ? 'Classification' : 'Klasipikasyon', FontAwesomeIcons.solidAddressBook),
                                     _buildDivider(),
                                     _buildLanguageItem(
-                                      userLanguage,
-                                      'Language',
-                                      isEnglish ? 'assets/america.png' : 'assets/ph.png',
+                                      userLanguage,  isEnglish ? 'Language' : 'Wikang Pangsenyas' , isEnglish ? 'assets/america.png' : 'assets/ph.png',
                                     ),
                                   ],
                                 ),
@@ -739,7 +737,7 @@ Future<void> _saveChanges() async {
                                         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                                       ),
                                       child: Text(
-                                        'Sign out',
+                                         isEnglish ? 'Sign out' : 'Mag-sign out',
                                         style: TextStyle(fontSize: 16, color: Colors.black),
                                       ),
                                     ),
@@ -781,7 +779,7 @@ Future<void> _saveChanges() async {
                                   children: [
                                     _buildListTile(
                                       icon: FontAwesomeIcons.key,
-                                      text: 'Change password',
+                                      text:  isEnglish ? 'Change password' : 'Magpalit ng password',
                                       onPressed: () {
                                         Navigator.push(context, SlidePageRoute(page: const ChangePassword()));
                                       },
@@ -790,7 +788,7 @@ Future<void> _saveChanges() async {
                                     _buildDivider(),
                                     _buildListTile(
                                       icon: FontAwesomeIcons.userXmark,
-                                      text: 'Delete account',
+                                      text:  isEnglish ? 'Delete account' : 'Mag-delete ng account',
                                       onPressed: () async {
                                         _showDeleteConfirmationDialog();
                                       },
@@ -896,10 +894,10 @@ Future<void> _saveChanges() async {
                   color: Colors.orange, 
                 ),
                 SizedBox(width: 8), // Add some space between the icon and text
-                Text('Confirm Changes', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
+                Text(isEnglish ? 'Confirm Changes' : 'Kumpirmahin', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
               ],
             ),
-            content: Text('Are you sure you want to save the changes?', style: TextStyle(fontFamily: 'FiraSans')),
+            content: Text(isEnglish ? 'Are you sure you want to save the changes?' : 'Sigurado ka bang nais mong i-save ang mga pagbabago', style: TextStyle(fontFamily: 'FiraSans')),
             actions: [
               TextButton(
                 onPressed: () {
@@ -925,7 +923,7 @@ Future<void> _saveChanges() async {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 ),
                 child: Text(
-                  'Confirm',
+                  isEnglish ? 'Confirm' : 'Kumpirmahin',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -953,12 +951,12 @@ Future<void> _saveChanges() async {
               ),
               SizedBox(width: 8), // Add space between the icon and text
               Text(
-                'Confirm Sign Out',
+                isEnglish ? 'Confirm Sign Out' : 'Kumpirmahin',
                 style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          content: Text('Are you sure you want to sign out?', style: TextStyle(fontFamily: 'FiraSans')),
+          content: Text(isEnglish ?  'Are you sure you want to sign out?' : "Sigurado ka bang nais mong mag-sign out?", style: TextStyle(fontFamily: 'FiraSans')),
           actions: [
             TextButton(
               onPressed: () {

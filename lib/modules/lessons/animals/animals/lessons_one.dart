@@ -240,7 +240,7 @@ class _AnimalsLessonOneState extends State<AnimalsLessonOne> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-        title: Text('Animal Lesson',  style: TextStyle(color: Colors.black, fontSize: 16)),
+        title: Text(isEnglish ? 'Animal Lesson' : 'Aralin sa mga Hayop',  style: TextStyle(color: Colors.black, fontSize: 16)),
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(60),

@@ -282,7 +282,7 @@ class _NumberQuizTwoState extends State<NumberQuizTwo> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-        title: Text('Lesson Quiz', style: TextStyle(color: Colors.black, fontSize: 16)),
+        title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(60),

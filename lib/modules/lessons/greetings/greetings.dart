@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings/lessons_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';

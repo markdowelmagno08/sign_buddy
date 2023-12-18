@@ -319,7 +319,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(width: 5),
             Text(
-              passwordsMatch ? 'Passwords match' : 'Passwords do not match',
+              passwordsMatch ? (isEnglish ? 'Passwords match' : 'Ang password ay nagtugma') : (isEnglish ? 'Passwords do not match' : 'Ang password ay hindi nagtugma'),
               style: TextStyle(
                 color: passwordsMatch ? Colors.green : Colors.red,
               ),

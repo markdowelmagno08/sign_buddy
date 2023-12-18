@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AboutApp extends StatefulWidget {
   const AboutApp({super.key});
@@ -9,6 +10,27 @@ class AboutApp extends StatefulWidget {
 }
 
 class _AboutAppState extends State<AboutApp> {
+
+ bool isEnglish = true;
+
+
+   @override
+  void initState() {
+    getLanguage();
+    super.initState();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final locale = prefs.getBool('isEnglish');
+
+    if (mounted) {
+      setState(() {
+        isEnglish = locale!;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +76,7 @@ class _AboutAppState extends State<AboutApp> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'SignBuddy for Everyone',
+                        isEnglish ? 'SignBuddy for Everyone' : 'SignBuddy para sa Lahat',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -68,7 +90,8 @@ class _AboutAppState extends State<AboutApp> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    'Welcome to SignBuddy! Our app is designed to make learning and using sign language an enjoyable and accessible experience for everyone.',
+                    isEnglish ? 'Welcome to SignBuddy! Our app is designed to make learning and using sign language an enjoyable and accessible experience for everyone.'
+                    : 'Maligayang pagdating sa SignBuddy! Ang aming aplikasyon ay idinisenyo upang gawing bukas at madaling gamitin ang Wikang Pansenyas para sa lahat',
                     style: TextStyle(
                       fontSize: 17,
                       fontFamily: 'FiraSans',

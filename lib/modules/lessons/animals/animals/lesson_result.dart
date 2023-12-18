@@ -199,7 +199,7 @@ class _ResultState extends State<Result> {
                             color: Color(0xFF5BD8FF),
                           ),
                           Text(
-                            isEnglish ? 'Reset Progress' : 'I-reset ang Progres',
+                            isEnglish ? 'Reset Progress' : 'I-reset ang Progreso',
                             style: TextStyle(
                               color: Colors.grey.shade700,
                             ),

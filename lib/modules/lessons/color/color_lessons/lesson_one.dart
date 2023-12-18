@@ -239,7 +239,7 @@ class _ColorsLessonOneState extends State<ColorLessonOne> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-        title: Text('Color Lesson',  style: TextStyle(color: Colors.black, fontSize: 16)),
+        title: Text(isEnglish ? 'Color Lesson' : 'Aralin sa mga Kulay',  style: TextStyle(color: Colors.black, fontSize: 16)),
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(60),

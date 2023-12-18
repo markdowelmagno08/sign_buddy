@@ -152,7 +152,7 @@ class _LessonOneState extends State<LessonOne> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text('Alphabet Lesson', style: TextStyle(color: Colors.black, fontSize: 16)),
+          title: Text(isEnglish ? 'Alphabet Lesson' : 'Aralin sa Alpabeto', style: TextStyle(color: Colors.black, fontSize: 16)),
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(60),
