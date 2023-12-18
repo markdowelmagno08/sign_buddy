@@ -377,13 +377,9 @@ class _NumberQuizOne extends State<NumberQuizOne> {
     Color tileColor =
         isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
 
-    if (answerChecked) {
+    if (answerChecked && isSelected) {
       bool isCorrectAnswer = correctAnswer.contains(option);
-      if (isCorrectAnswer) {
-        tileColor = Colors.green.withOpacity(0.3); // Correct answer color
-      } else if (isSelected) {
-        tileColor = Colors.red.withOpacity(0.3); // Incorrect selected answer color
-      }
+      tileColor = isCorrectAnswer ? Colors.green.withOpacity(0.3): Colors.red.withOpacity(0.3);
     }
 
     return GestureDetector(

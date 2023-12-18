@@ -11,6 +11,7 @@ import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 
 class AnimalsQuizOne extends StatefulWidget {
@@ -483,11 +484,11 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: FittedBox(
+          child: CachedNetworkImage(
+            imageUrl: option,
             fit: BoxFit.cover,
-            child: Image.network(
-              option,
-            )
+            placeholder: (context, url) => CircularProgressIndicator(), // You can customize the placeholder
+            errorWidget: (context, url, error) => Icon(Icons.error), // You can customize the error widget
           ),
         ),
       ),
