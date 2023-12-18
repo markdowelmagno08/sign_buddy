@@ -283,11 +283,11 @@ class _AnimalsLessonTwoState extends State<AnimalsLessonOne> {
                   onPressed: isLoading || contentVideo.isEmpty
                       ? null  // Disable the button if assets are still loading
                       : () async {
-                          if (progress >= 31) {
+                          if (progress >= 19) {
                             _nextPage();
                           } else {
                             AnimalsLessonFireStore(userId: uid)
-                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
                             print("Progress 1 updated successfully!");
                             _nextPage();
                           }

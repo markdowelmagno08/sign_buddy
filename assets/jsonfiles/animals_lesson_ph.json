@@ -9,6 +9,38 @@
         "contentImage": ["dictionary/ph/animals/ahas.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/ahas.mp4"],
+        "contentOption": [
+          "animal_option/ph/ahas.png",
+          "animal_option/ph/kabayo.png",
+          "animal_option/ph/pusa.png",
+          "animal_option/ph/bibe.png"
+        ],
+        "correctAnswer": ["animal_option/ph/ahas.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Ahas'?",
+        "contentImage": ["dictionary/ph/animals/ahas.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/ahas.mp4"],
+        "contentOption": ["Ahas", "Buwan", "Bituin", "Y", "Z", "Apple", "Bintana", "V", "C"],
+        "correctAnswer": ["Ahas"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Ahas'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/ahas.mp4",
+          "dictionary/ph/animals/bibe.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/ahas.mp4"]
       }
     },
     {
@@ -21,6 +53,38 @@
         "contentImage": ["dictionary/ph/animals/aso.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
+        "contentOption": [
+          "animal_option/ph/kuneho.png",
+          "animal_option/ph/baboy.png",
+          "animal_option/ph/giraffe.png",
+          "animal_option/ph/aso.png"
+        ],
+        "correctAnswer": ["animal_option/ph/aso.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Aso'?",
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/aso.mp4"],
+        "contentOption": ["Aso", "Ulan", "Pusa", "X", "P", "Saging", "Salamin", "U", "G"],
+        "correctAnswer": ["Aso"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Aso'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/aso.mp4",
+          "dictionary/ph/animals/leon.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/aso.mp4"]
       }
     },
     {
@@ -33,6 +97,38 @@
         "contentImage": ["dictionary/ph/animals/baboy.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/baboy.mp4"],
+        "contentOption": [
+          "animal_option/ph/buwaya.png",
+          "animal_option/ph/zebra.png",
+          "animal_option/ph/ibon.png",
+          "animal_option/ph/baboy.png"
+        ],
+        "correctAnswer": ["animal_option/ph/baboy.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Baboy'?",
+        "contentImage": ["dictionary/ph/animals/baboy.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/baboy.mp4"],
+        "contentOption": ["Toro", "Ilog", "Puno", "W", "Q", "Ubas", "Baboy", "D", "K"],
+        "correctAnswer": ["Baboy"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Baboy'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/baboy.mp4",
+          "dictionary/ph/animals/kabayo.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/baboy.mp4"]
       }
     },
     {
@@ -45,6 +141,38 @@
         "contentImage": ["dictionary/ph/animals/baka.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/baka.mp4"],
+        "contentOption": [
+          "animal_option/ph/oso.png",
+          "animal_option/ph/leon.png",
+          "animal_option/ph/baka.png",
+          "animal_option/ph/isda.png"
+        ],
+        "correctAnswer": ["animal_option/ph/baka.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Baka'?",
+        "contentImage": ["dictionary/ph/animals/baka.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/baka.mp4"],
+        "contentOption": ["Kamelyo", "Lupa", "Hangin", "L", "H", "Lampara", "Baka", "N", "J"],
+        "correctAnswer": ["Baka"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Baka'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/baka.mp4",
+          "dictionary/ph/animals/giraffe.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/baka.mp4"]
       }
     },
     {
@@ -57,6 +185,38 @@
         "contentImage": ["dictionary/ph/animals/bibe.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/bibe.mp4"],
+        "contentOption": [
+          "animal_option/ph/aso.png",
+          "animal_option/ph/kabayo.png",
+          "animal_option/ph/pusa.png",
+          "animal_option/ph/bibe.png"
+        ],
+        "correctAnswer": ["animal_option/ph/bibe.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Bibe'?",
+        "contentImage": ["dictionary/ph/animals/bibe.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/bibe.mp4"],
+        "contentOption": ["Pusa", "Langit", "Daga", "O", "F", "Orange", "Bibe", "E", "M"],
+        "correctAnswer": ["Bibe"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Bibe'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/bibe.mp4",
+          "dictionary/ph/animals/kuneho.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/bibe.mp4"]
       }
     },
     {
@@ -69,6 +229,38 @@
         "contentImage": ["dictionary/ph/animals/buwaya.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/buwaya.mp4"],
+        "contentOption": [
+          "animal_option/ph/kuwago.png",
+          "animal_option/ph/buwaya.png",
+          "animal_option/ph/manok.png",
+          "animal_option/ph/ibon.png"
+        ],
+        "correctAnswer": ["animal_option/ph/buwaya.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Buwaya'?",
+        "contentImage": ["dictionary/ph/animals/buwaya.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/buwaya.mp4"],
+        "contentOption": ["Manok", "Rubyni", "Ibon", "S", "I", "Buwaya", "Kandila", "A", "R"],
+        "correctAnswer": ["Buwaya"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Buwaya'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/buwaya.mp4",
+          "dictionary/ph/animals/ibon.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/buwaya.mp4"]
       }
     },
     {
@@ -81,6 +273,38 @@
         "contentImage": ["dictionary/ph/animals/giraffe.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/giraffe.mp4"],
+        "contentOption": [
+          "animal_option/ph/oso.png",
+          "animal_option/ph/aso.png",
+          "animal_option/ph/buwaya.png",
+          "animal_option/ph/giraffe.png"
+        ],
+        "correctAnswer": ["animal_option/ph/giraffe.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Giraffe'?",
+        "contentImage": ["dictionary/ph/animals/giraffe.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/giraffe.mp4"],
+        "contentOption": ["Kape", "Tsaa", "Giraffe", "B", "X", "Lemon", "Sombrero", "P", "T"],
+        "correctAnswer": ["Giraffe"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Giraffe'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/giraffe.mp4",
+          "dictionary/ph/animals/baka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/giraffe.mp4"]
       }
     },
     {
@@ -93,6 +317,38 @@
         "contentImage": ["dictionary/ph/animals/ibon.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/ibon.mp4"],
+        "contentOption": [
+          "animal_option/ph/kuneho.png",
+          "animal_option/ph/zebra.png",
+          "animal_option/ph/ibon.png",
+          "animal_option/ph/kabayo.png"
+        ],
+        "correctAnswer": ["animal_option/ph/ibon.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Ibon'?",
+        "contentImage": ["dictionary/ph/animals/ibon.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/ibon.mp4"],
+        "contentOption":["Buwaya", "Ibon", "Kanta", "J", "K", "Salamin", "Gitarang", "H", "U"],
+        "correctAnswer": ["Ibon"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Ibon'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/ibon.mp4",
+          "dictionary/ph/animals/manok.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/ibon.mp4"]
       }
     },
     {
@@ -105,6 +361,38 @@
         "contentImage": ["dictionary/ph/animals/isda.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/isda.mp4"],
+        "contentOption": [
+          "animal_option/ph/manok.png",
+          "animal_option/ph/isda.png",
+          "animal_option/ph/kuwago.png",
+          "animal_option/ph/unggoy.png"
+        ],
+        "correctAnswer": ["animal_option/ph/isda.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Isda'?",
+        "contentImage": ["dictionary/ph/animals/isda.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/isda.mp4"],
+        "contentOption":  ["Usa", "Antelope", "Kapayapaan", "R", "E", "Tigre", "Isda", "Z", "Y"],
+        "correctAnswer": ["Isda"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Isda'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/isda.mp4",
+          "dictionary/ph/animals/kabayo.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/isda.mp4"]
       }
     },
     {
@@ -117,6 +405,38 @@
         "contentImage": ["dictionary/ph/animals/kabayo.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/kabayo.mp4"],
+        "contentOption": [
+          "animal_option/ph/baboy.png",
+          "animal_option/ph/bibe.png",
+          "animal_option/ph/kuneho.png",
+          "animal_option/ph/kabayo.png"
+        ],
+        "correctAnswer": ["animal_option/ph/kabayo.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Kabayo'?",
+        "contentImage": ["dictionary/ph/animals/kabayo.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/kabayo.mp4"],
+        "contentOption":  ["Itik", "Umaga", "Kabayo", "M", "B", "Gansa", "Payong", "C", "O"],
+        "correctAnswer": ["Kabayo"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Kabayo'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/kabayo.mp4",
+          "dictionary/ph/animals/manok.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/kabayo.mp4"]
       }
     },
     {
@@ -129,6 +449,38 @@
         "contentImage": ["dictionary/ph/animals/kuneho.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/kuneho.mp4"],
+        "contentOption": [
+          "animal_option/ph/kuneho.png",
+          "animal_option/ph/leon.png",
+          "animal_option/ph/buwaya.png",
+          "animal_option/ph/ibon.png"
+        ],
+        "correctAnswer": ["animal_option/ph/kuneho.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Kuneho'?",
+        "contentImage": ["dictionary/ph/animals/kuneho.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/kuneho.mp4"],
+        "contentOption":  ["Kuneho", "Lumikha", "Shark", "G", "L", "Dragon", "Kastilyo", "X", "V"],
+        "correctAnswer": ["Kuneho"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Kuneho'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/kuneho.mp4",
+          "dictionary/ph/animals/bibe.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/kuneho.mp4"]
       }
     },
     {
@@ -141,6 +493,38 @@
         "contentImage": ["dictionary/ph/animals/kuwago.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/kuwago.mp4"],
+        "contentOption": [
+          "animal_option/ph/manok.png",
+          "animal_option/ph/ibon.png",
+          "animal_option/ph/kuwago.png",
+          "animal_option/ph/kuneho.png"
+        ],
+        "correctAnswer": ["animal_option/ph/kuwago.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Kuwago'?",
+        "contentImage": ["dictionary/ph/animals/kuwago.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/kuwago.mp4"],
+        "contentOption":  ["Langit", "Gansa", "Kuwago", "C", "N", "Itik", "Salamin", "V", "E"],
+        "correctAnswer": ["Kuwago"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Kuwago'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/kuwago.mp4",
+          "dictionary/ph/animals/leon.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/kuwago.mp4"]
       }
     },
     {
@@ -153,6 +537,38 @@
         "contentImage": ["dictionary/ph/animals/leon.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/leon.mp4"],
+        "contentOption": [
+          "animal_option/ph/aso.png",
+          "animal_option/ph/leon.png",
+          "animal_option/ph/buwaya.png",
+          "animal_option/ph/ibon.png"
+        ],
+        "correctAnswer": ["animal_option/ph/leon.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Leon'?",
+        "contentImage": ["dictionary/ph/animals/leon.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/leon.mp4"],
+        "contentOption":  ["Leon", "Tsaa", "Tasa", "B", "X", "Lemon", "Sombrero", "P", "T"],
+        "correctAnswer": ["Leon"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Leon'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/leon.mp4",
+          "dictionary/ph/animals/manok.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/leon.mp4"]
       }
     },
     {
@@ -165,18 +581,38 @@
         "contentImage": ["dictionary/ph/animals/manok.mp4"],
         "contentOption": null,
         "correctAnswer": null
-      }
-    },
-    {
-      "name": "Mga_Hayop",
-      "progress": 0,
-      "locale": "ph",
-      "isUnlocked": false,
-      "content1": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Mga Hayop'",
-        "contentImage": ["dictionary/ph/animals/mga_hayop.mp4"],
-        "contentOption": null,
-        "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/manok.mp4"],
+        "contentOption": [
+          "animal_option/ph/kabayo.png",
+          "animal_option/ph/zebra.png",
+          "animal_option/ph/manok.png",
+          "animal_option/ph/bibe.png"
+        ],
+        "correctAnswer": ["animal_option/ph/manok.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Manok'?",
+        "contentImage": ["dictionary/ph/animals/manok.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/manok.mp4"],
+        "contentOption": ["Manok", "Asno", "Epiko", "A", "D", "Bahaghari", "Bintana", "F", "G"],
+        "correctAnswer": ["Manok"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Manok'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/manok.mp4",
+          "dictionary/ph/animals/baka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/manok.mp4"]
       }
     },
     {
@@ -189,6 +625,38 @@
         "contentImage": ["dictionary/ph/animals/oso.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/oso.mp4"],
+        "contentOption": [
+          "animal_option/ph/manok.png",
+          "animal_option/ph/oso.png",
+          "animal_option/ph/baboy.png",
+          "animal_option/ph/buwaya.png"
+        ],
+        "correctAnswer": ["animal_option/ph/oso.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Oso'?",
+        "contentImage": ["dictionary/ph/animals/oso.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/oso.mp4"],
+        "contentOption": ["Kambing", "Kuneho", "Hanggan", "J", "S", "Orange", "Oso", "T", "R"],
+        "correctAnswer": ["Oso"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Oso'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/oso.mp4",
+          "dictionary/ph/animals/baboy.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/oso.mp4"]
       }
     },
     {
@@ -201,6 +669,38 @@
         "contentImage": ["dictionary/ph/animals/pusa.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/pusa.mp4"],
+        "contentOption": [
+          "animal_option/ph/ibon.png",
+          "animal_option/ph/kabayo.png",
+          "animal_option/ph/pusa.png",
+          "animal_option/ph/leon.png"
+        ],
+        "correctAnswer": ["animal_option/ph/pusa.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Pusa'?",
+        "contentImage": ["dictionary/ph/animals/pusa.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/pusa.mp4"],
+        "contentOption": ["Palaka", "Pusa", "Paru-paro", "O", "P", "Xylophone", "Pluma", "F", "K"],
+        "correctAnswer": ["Pusa"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Pusa'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/pusa.mp4",
+          "dictionary/ph/animals/aso.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/pusa.mp4"]
       }
     },
     {
@@ -213,6 +713,38 @@
         "contentImage": ["dictionary/ph/animals/unggoy.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/unggoy.mp4"],
+        "contentOption": [
+          "animal_option/ph/baboy.png",
+          "animal_option/ph/unggoy.png",
+          "animal_option/ph/oso.png",
+          "animal_option/ph/kuwago.png"
+        ],
+        "correctAnswer": ["animal_option/ph/unggoy.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Unggoy'?",
+        "contentImage": ["dictionary/ph/animals/unggoy.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/unggoy.mp4"],
+        "contentOption": ["Oso", "Ulan", "Unggoy", "X", "P", "Saging", "Salamin", "U", "G"],
+        "correctAnswer": ["Unggoy"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Unggoy'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/unggoy.mp4",
+          "dictionary/ph/animals/baka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/unggoy.mp4"]
       }
     },
     {
@@ -225,7 +757,40 @@
         "contentImage": ["dictionary/ph/animals/zebra.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "Anong senyas ang ginagamit dito?'",
+        "contentImage": ["dictionary/ph/animals/zebra.mp4"],
+        "contentOption": [
+          "animal_option/ph/manok.png",
+          "animal_option/ph/baboy.png",
+          "animal_option/ph/aso.png",
+          "animal_option/ph/zebra.png"
+        ],
+        "correctAnswer": ["animal_option/ph/zebra.png"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Zebra'?",
+        "contentImage": ["dictionary/ph/animals/zebra.mp4"],
+        "contentOption": ["Oo", "Hindi"],
+        "correctAnswer": ["Oo"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/animals/zebra.mp4"],
+        "contentOption": ["Itik", "Umaga", "Zebra", "M", "B", "Gansa", "Payong", "C", "O"],
+        "correctAnswer": ["Zebra"]
+      },
+      "content6": {
+        "description": "Alin ang tamang senyas para sa 'Zebra'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/animals/zebra.mp4",
+          "dictionary/ph/animals/baboy.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/animals/zebra.mp4"]
       }
+      
     }
   ]
   

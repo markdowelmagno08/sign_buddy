@@ -5,6 +5,8 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_animals.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/lessons_one.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/quiz_two.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -196,9 +198,9 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
   }
 
   if (isAnswerCorrect) {
-    if (progress < 47) {
+    if (progress < 39) {
       // Increment the progress value only if it's less than 47
-      AnimalsLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+      AnimalsLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
       print("Progress 3 updated successfully!");
     }
   }
@@ -207,10 +209,10 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
       if (isAnswerCorrect) {
         _nextPage();
       } else {
-        // Navigator.pushReplacement(
-        //   context,
-        //   SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
-        // );
+        Navigator.pushReplacement(
+          context,
+          SlidePageRoute(page: AnimalsLessonOne(lessonName: widget.lessonName)),
+        );
       }
     });
   }
@@ -289,24 +291,24 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
   }
 
   void _nextPage() async {
-    // Navigator.pushReplacement(
-    //   context,
-    //   SlidePageRoute(page: AnimalsQuizTwo(lessonName: widget.lessonName)),
-    // );
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: AnimalsQuizTwo(lessonName: widget.lessonName)),
+    );
 
-    if(mounted) {
-      setState(() {
-        progressAdded = false; // Reset progressAdded
-        selectedOption = '';
-        answerChecked = false;
-        if (_videoController != null) {
-          _videoController!.pause();
-          _videoController!.dispose();
-          _videoController = null;
-        }
-        
-      });
-    }
+      if(mounted) {
+        setState(() {
+          progressAdded = false; // Reset progressAdded
+          selectedOption = '';
+          answerChecked = false;
+          if (_videoController != null) {
+            _videoController!.pause();
+            _videoController!.dispose();
+            _videoController = null;
+          }
+          
+        });
+      }
   }
 
   Widget buildVideoDisplay() {
@@ -350,7 +352,11 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
 
   @override
     Widget build(BuildContext context) {
-      return Scaffold(
+      return isLoading
+          ? Center(
+            child: CircularProgressIndicator(),
+          )
+          :Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 209, 209, 209),
           title: Text('Lesson Quiz', style: TextStyle(color: Colors.black, fontSize: 16)),
@@ -452,13 +458,9 @@ class _AnimalsQuizOneState extends State<AnimalsQuizOne> {
     Color tileColor =
         isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
 
-    if (answerChecked) {
+    if (answerChecked && isSelected) {
       bool isCorrectAnswer = correctAnswer.contains(option);
-      if (isCorrectAnswer) {
-        tileColor = Colors.green.withOpacity(0.3); // Correct answer color
-      } else if (isSelected) {
-        tileColor = Colors.red.withOpacity(0.3); // Incorrect selected answer color
-      }
+      tileColor = isCorrectAnswer ? Colors.green.withOpacity(0.3): Colors.red.withOpacity(0.3);
     }
 
     return GestureDetector(

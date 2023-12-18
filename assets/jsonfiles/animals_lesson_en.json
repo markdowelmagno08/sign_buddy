@@ -14,13 +14,35 @@
         "description": "What is being sign here?'",
         "contentImage": ["dictionary/en/animals/bat.mp4"],
         "contentOption": [
-          "animal_option/bat.png",
-          "animal_option/bear.png",
-          "animal_option/bull.png",
-          "animal_option/camel.png"
+          "animal_option/en/bat.png",
+          "animal_option/en/donkey.png",
+          "animal_option/en/giraffe.png",
+          "animal_option/en/lobster.png"
         ],
-        "correctAnswer": ["animal_option/bat.png"]
+        "correctAnswer": ["animal_option/en/bat.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Bat?'",
+        "contentImage": ["dictionary/en/animals/bat.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/bat.mp4"],
+        "contentOption": ["Bat", "Moon", "Star", "Y", "Z", "Apple", "Window", "V", "C"],
+        "correctAnswer": ["Bat"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Bat?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/bat.mp4",
+          "dictionary/en/animals/crocodile.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/bat.mp4"]
       }
+
     },
     {
       "name": "Bear",
@@ -32,6 +54,38 @@
         "contentImage": ["dictionary/en/animals/bear.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/bear.mp4"],
+        "contentOption": [
+          "animal_option/en/bear.png",
+          "animal_option/en/deer.png",
+          "animal_option/en/crab.png",
+          "animal_option/en/duck.png"
+        ],
+        "correctAnswer": ["animal_option/en/bear.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Bear?'",
+        "contentImage": ["dictionary/en/animals/bear.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/bear.mp4"],
+        "contentOption": ["Bear", "Rain", "Cloud", "X", "P", "Banana", "Mirror", "U", "G"],
+        "correctAnswer": ["Bear"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Bear'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/bear.mp4",
+          "dictionary/en/animals/frog.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/bear.mp4"]
       }
     },
     {
@@ -44,6 +98,38 @@
         "contentImage": ["dictionary/en/animals/bull.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/bull.mp4"],
+        "contentOption": [
+          "animal_option/en/bull.png",
+          "animal_option/en/gorilla.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/crocodile.png"
+        ],
+        "correctAnswer": ["animal_option/en/bull.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Bull?'",
+        "contentImage": ["dictionary/en/animals/bull.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/bull.mp4"],
+        "contentOption": ["Bull", "River", "Tree", "W", "Q", "Grapes", "Chair", "D", "K"],
+        "correctAnswer": ["Bull"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Bull'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/bull.mp4",
+          "dictionary/en/animals/goose.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/bull.mp4"]
       }
     },
     {
@@ -56,6 +142,38 @@
         "contentImage": ["dictionary/en/animals/camel.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
+        "contentOption": [
+          "animal_option/en/camel.png",
+          "animal_option/en/frog.png",
+          "animal_option/en/cat.png",
+          "animal_option/en/fish.png"
+        ],
+        "correctAnswer": ["animal_option/en/camel.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Camel?'",
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/camel.mp4"],
+        "contentOption": ["Camel", "Earth", "Wind", "L", "H", "Lamp", "Book", "N", "J"],
+        "correctAnswer": ["Camel"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Camel'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/camel.mp4",
+          "dictionary/en/animals/dolphin.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/camel.mp4"]
       }
     },
     {
@@ -68,6 +186,38 @@
         "contentImage": ["dictionary/en/animals/cat.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/cat.mp4"],
+        "contentOption": [
+          "animal_option/en/deer.png",
+          "animal_option/en/frog.png",
+          "animal_option/en/cat.png",
+          "animal_option/en/fish.png"
+        ],
+        "correctAnswer": ["animal_option/en/cat.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Cat?'",
+        "contentImage": ["dictionary/en/animals/cat.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/cat.mp4"],
+        "contentOption": ["Cat", "Sky", "Mouse", "O", "F", "Orange", "Frame", "E", "M"],
+        "correctAnswer": ["Cat"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Cat'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/cat.mp4",
+          "dictionary/en/animals/fox.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/cat.mp4"]
       }
     },
     {
@@ -80,6 +230,38 @@
         "contentImage": ["dictionary/en/animals/chicken.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/chicken.mp4"],
+        "contentOption": [
+          "animal_option/en/bear.png",
+          "animal_option/en/giraffe.png",
+          "animal_option/en/lobster.png",
+          "animal_option/en/chicken.png"
+        ],
+        "correctAnswer": ["animal_option/en/chicken.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Chicken?'",
+        "contentImage": ["dictionary/en/animals/chicken.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/chicken.mp4"],
+        "contentOption": ["Chicken", "Ruby", "Bird", "S", "I", "Clock", "Candle", "A", "R"],
+        "correctAnswer": ["Chicken"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Chicken'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/chicken.mp4",
+          "dictionary/en/animals/goat.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/chicken.mp4"]
       }
     },
     {
@@ -92,7 +274,40 @@
         "contentImage": ["dictionary/en/animals/crab.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/crab.mp4"],
+        "contentOption": [
+          "animal_option/en/dolphin.png",
+          "animal_option/en/crab.png",
+          "animal_option/en/fox.png",
+          "animal_option/en/goose.png"
+        ],
+        "correctAnswer": ["animal_option/en/crab.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Crab?'",
+        "contentImage": ["dictionary/en/animals/crab.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/crab.mp4"],
+        "contentOption": ["Coffee", "Tea", "Crab", "B", "X", "Lemon", "Hat", "P", "T"],
+        "correctAnswer": ["Crab"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Crab'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/crab.mp4",
+          "dictionary/en/animals/lobster.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/crab.mp4"]
       }
+    
     },
     {
       "name": "Crocodile",
@@ -104,6 +319,38 @@
         "contentImage": ["dictionary/en/animals/crocodile.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/crocodile.mp4"],
+        "contentOption": [
+          "animal_option/en/bat.png",
+          "animal_option/en/goat.png",
+          "animal_option/en/crocodile.png",
+          "animal_option/en/gorilla.png"
+        ],
+        "correctAnswer": ["animal_option/en/crocodile.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Crocodile?'",
+        "contentImage": ["dictionary/en/animals/crocodile.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/crocodile.mp4"],
+        "contentOption": ["Crocodile", "Alligator", "Song", "J", "K", "Mirror", "Guitar", "H", "U"],
+        "correctAnswer": ["Crocodile"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Crocodile'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/crocodile.mp4",
+          "dictionary/en/animals/donkey.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/crocodile.mp4"]
       }
     },
     {
@@ -116,6 +363,38 @@
         "contentImage": ["dictionary/en/animals/deer.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/deer.mp4"],
+        "contentOption": [
+          "animal_option/en/bull.png",
+          "animal_option/en/deer.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/fish.png"
+        ],
+        "correctAnswer": ["animal_option/en/deer.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Deer?'",
+        "contentImage": ["dictionary/en/animals/deer.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/deer.mp4"],
+        "contentOption": ["Deer", "Antelope", "Peace", "R", "E", "Tiger", "Puzzle", "Z", "Y"],
+        "correctAnswer": ["Deer"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Deer'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/deer.mp4",
+          "dictionary/en/animals/giraffe.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/deer.mp4"]
       }
     },
     {
@@ -128,7 +407,40 @@
         "contentImage": ["dictionary/en/animals/dolphin.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
+        "contentOption": [
+          "animal_option/en/dolphin.png",
+          "animal_option/en/duck.png",
+          "animal_option/en/lobster.png",
+          "animal_option/en/horse.png"
+        ],
+        "correctAnswer": ["animal_option/en/dolphin.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Dolphin?'",
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/dolphin.mp4"],
+        "contentOption": ["Dolphin", "Journey", "Shark", "V", "N", "Mouse", "Key", "F", "Q"],
+        "correctAnswer": ["Dolphin"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Dolphin'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/dolphin.mp4",
+          "dictionary/en/animals/fish.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/dolphin.mp4"]
       }
+      
     },
     {
       "name": "Donkey",
@@ -140,6 +452,38 @@
         "contentImage": ["dictionary/en/animals/donkey.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/donkey.mp4"],
+        "contentOption": [
+          "animal_option/en/fox.png",
+          "animal_option/en/giraffe.png",
+          "animal_option/en/donkey.png",
+          "animal_option/en/dolphin.png"
+        ],
+        "correctAnswer": ["animal_option/en/donkey.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Donkey?'",
+        "contentImage": ["dictionary/en/animals/donkey.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/donkey.mp4"],
+        "contentOption": ["Donkey", "Justice", "Deer", "I", "S", "Orange", "Frame", "X", "W"],
+        "correctAnswer": ["Donkey"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Donkey'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/donkey.mp4",
+          "dictionary/en/animals/duck.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/donkey.mp4"]
       }
     },
     {
@@ -152,6 +496,38 @@
         "contentImage": ["dictionary/en/animals/duck.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/duck.mp4"],
+        "contentOption": [
+          "animal_option/en/crocodile.png",
+          "animal_option/en/duck.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/deer.png"
+        ],
+        "correctAnswer": ["animal_option/en/duck.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Duck?'",
+        "contentImage": ["dictionary/en/animals/duck.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/duck.mp4"],
+        "contentOption": ["Duck", "Dawn", "Twilight", "M", "B", "Goose", "Umbrella", "C", "O"],
+        "correctAnswer": ["Duck"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Duck'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/duck.mp4",
+          "dictionary/en/animals/flamingo.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/duck.mp4"]
       }
     },
     {
@@ -164,6 +540,38 @@
         "contentImage": ["dictionary/en/animals/fish.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
+        "contentOption": [
+          "animal_option/en/crab.png",
+          "animal_option/en/goose.png",
+          "animal_option/en/bat.png",
+          "animal_option/en/fish.png"
+        ],
+        "correctAnswer": ["animal_option/en/fish.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Fish?'",
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/fish.mp4"],
+        "contentOption": ["Fish", "Create", "Shark", "G", "L", "Dragon", "Castle", "X", "V"],
+        "correctAnswer": ["Fish"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Fish'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/fish.mp4",
+          "dictionary/en/animals/gorilla.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/fish.mp4"]
       }
     },
     {
@@ -176,6 +584,38 @@
         "contentImage": ["dictionary/en/animals/flamingo.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/flamingo.mp4"],
+        "contentOption": [
+          "animal_option/en/donkey.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/horse.png",
+          "animal_option/en/lobster.png"
+        ],
+        "correctAnswer": ["animal_option/en/flamingo.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Flamingo?'",
+        "contentImage": ["dictionary/en/animals/flamingo.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/flamingo.mp4"],
+        "contentOption": ["Flamingo", "Dodo", "Balance", "Y", "Z", "Lemon", "Globe", "W", "A"],
+        "correctAnswer": ["Flamingo"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Flamingo'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/flamingo.mp4",
+          "dictionary/en/animals/horse.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/flamingo.mp4"]
       }
     },
     {
@@ -188,7 +628,40 @@
         "contentImage": ["dictionary/en/animals/fox.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/fox.mp4"],
+        "contentOption": [
+          "animal_option/en/cat.png",
+          "animal_option/en/fish.png",
+          "animal_option/en/fox.png",
+          "animal_option/en/flamingo.png"
+        ],
+        "correctAnswer": ["animal_option/en/fox.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Fox?'",
+        "contentImage": ["dictionary/en/animals/fox.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/fox.mp4"],
+        "contentOption": ["Fox", "Tranquil", "Calm", "X", "D", "Canine", "Planet", "N", "Q"],
+        "correctAnswer": ["Fox"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Fox'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/fox.mp4",
+          "dictionary/en/animals/giraffe.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/fox.mp4"]
       }
+    
     },
     {
       "name": "Frog",
@@ -200,6 +673,38 @@
         "contentImage": ["dictionary/en/animals/frog.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/frog.mp4"],
+        "contentOption": [
+          "animal_option/en/gorilla.png",
+          "animal_option/en/frog.png",
+          "animal_option/en/chicken.png",
+          "animal_option/en/giraffe.png"
+        ],
+        "correctAnswer": ["animal_option/en/frog.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Frog?'",
+        "contentImage": ["dictionary/en/animals/frog.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/frog.mp4"],
+        "contentOption": ["Frog", "Radiant", "Buttefly", "O", "P", "Xylophone", "Quill", "F", "K"],
+        "correctAnswer": ["Frog"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Frog'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/frog.mp4",
+          "dictionary/en/animals/goat.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/frog.mp4"]
       }
     },
     {
@@ -212,6 +717,38 @@
         "contentImage": ["dictionary/en/animals/giraffe.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/giraffe.mp4"],
+        "contentOption": [
+          "animal_option/en/crocodile.png",
+          "animal_option/en/deer.png",
+          "animal_option/en/giraffe.png",
+          "animal_option/en/bat.png"
+        ],
+        "correctAnswer": ["animal_option/en/giraffe.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Giraffe?'",
+        "contentImage": ["dictionary/en/animals/giraffe.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/giraffe.mp4"],
+        "contentOption": ["Giraffe", "Enchanted", "Wolf", "U", "Z", "Lemon", "Globe", "B", "H"],
+        "correctAnswer": ["Giraffe"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Giraffe'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/giraffe.mp4",
+          "dictionary/en/animals/goat.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/giraffe.mp4"]
       }
     },
     {
@@ -224,6 +761,38 @@
         "contentImage": ["dictionary/en/animals/goat.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/goat.mp4"],
+        "contentOption": [
+          "animal_option/en/goat.png",
+          "animal_option/en/horse.png",
+          "animal_option/en/donkey.png",
+          "animal_option/en/duck.png"
+        ],
+        "correctAnswer": ["animal_option/en/goat.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Goat?'",
+        "contentImage": ["dictionary/en/animals/goat.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/goat.mp4"],
+        "contentOption":["Goat", "Rabbit", "Timeless", "J", "S", "Orange", "Frame", "T", "R"],
+        "correctAnswer": ["Goat"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Goat'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/goat.mp4",
+          "dictionary/en/animals/goose.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/goat.mp4"]
       }
     },
     {
@@ -236,6 +805,38 @@
         "contentImage": ["dictionary/en/animals/goose.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/goose.mp4"],
+        "contentOption": [
+          "animal_option/en/lobster.png",
+          "animal_option/en/frog.png",
+          "animal_option/en/fish.png",
+          "animal_option/en/goose.png"
+        ],
+        "correctAnswer": ["animal_option/en/goose.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Goose?'",
+        "contentImage": ["dictionary/en/animals/goose.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/goose.mp4"],
+        "contentOption":["Sky", "Goose", "Galaxy", "C", "N", "Duckling", "Mirror", "V", "E"],
+        "correctAnswer": ["Goose"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Goose'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/goose.mp4",
+          "dictionary/en/animals/gorilla.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/goose.mp4"]
       }
     },
     {
@@ -248,8 +849,42 @@
         "contentImage": ["dictionary/en/animals/gorilla.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/gorilla.mp4"],
+        "contentOption": [
+          "animal_option/en/giraffe.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/gorilla.png",
+          "animal_option/en/fox.png"
+        ],
+        "correctAnswer": ["animal_option/en/gorilla.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Gorilla?'",
+        "contentImage": ["dictionary/en/animals/gorilla.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/gorilla.mp4"],
+        "contentOption":["Gorilla", "Waterfall", "Monkey", "W", "L", "Tiger", "Frame", "X", "Q"],
+        "correctAnswer": ["Gorila"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Gorilla'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/gorilla.mp4",
+          "dictionary/en/animals/horse.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/gorilla.mp4"]
       }
+    
     },
+    
     {
       "name": "Horse",
       "progress": 0,
@@ -260,6 +895,38 @@
         "contentImage": ["dictionary/en/animals/horse.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/horse.mp4"],
+        "contentOption": [
+          "animal_option/en/horse.png",
+          "animal_option/en/crab.png",
+          "animal_option/en/dolphin.png",
+          "animal_option/en/chicken.png"
+        ],
+        "correctAnswer": ["animal_option/en/horse.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Horse?'",
+        "contentImage": ["dictionary/en/animals/horse.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/horse.mp4"],
+        "contentOption":["Horse", "Donkey", "Epic", "A", "D", "Rainbow", "Window", "F", "G"],
+        "correctAnswer": ["Horse"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Horse'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/horse.mp4",
+          "dictionary/en/animals/lobster.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/horse.mp4"]
       }
     },
     {
@@ -272,6 +939,38 @@
         "contentImage": ["dictionary/en/animals/lobster.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content3": {
+        "description": "What is being sign here?'",
+        "contentImage": ["dictionary/en/animals/lobster.mp4"],
+        "contentOption": [
+          "animal_option/en/lobster.png",
+          "animal_option/en/flamingo.png",
+          "animal_option/en/gorilla.png",
+          "animal_option/en/lobster.png"
+        ],
+        "correctAnswer": ["animal_option/en/lobster.png"]
+      },
+      "content4": {
+        "description": "Is this the sign for 'Lobster?'",
+        "contentImage": ["dictionary/en/animals/lobster.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/animals/lobster.mp4"],
+        "contentOption":["Lobster", "Tea", "Cup", "B", "X", "Lemon", "Hat", "P", "T"],
+        "correctAnswer": ["Lobster"]
+      },
+      "content6": {
+        "description": "Which video represents the sign for 'Lobster'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/animals/lobster.mp4",
+          "dictionary/en/animals/crab.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/animals/lobster.mp4"]
       }
     }
   ]

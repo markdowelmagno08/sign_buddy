@@ -3,9 +3,11 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_animals.dart';
+
+import 'package:sign_buddy/modules/lessons/animals/animals.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/lessons_one.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/quiz_four.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,16 +15,16 @@ import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 
 
-class QuizFour extends StatefulWidget {
+class AnimalsQuizThree extends StatefulWidget {
   final String lessonName;
 
-  const QuizFour({Key? key, required this.lessonName}) : super(key: key);
+  const AnimalsQuizThree({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<QuizFour> createState() => _QuizFourState();
+  State<AnimalsQuizThree> createState() => _AnimalsQuizFourState();
 }
 
-class _QuizFourState extends State<QuizFour> {
+class _AnimalsQuizFourState extends State<AnimalsQuizThree> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentOption = [];
@@ -43,14 +45,11 @@ class _QuizFourState extends State<QuizFour> {
   void initState() {
     super.initState();
     getLanguage().then((value) {
-      if (progress >= 90) {
-      LetterLessonFireStore(userId: uid)
-          .unlockLesson(widget.lessonName, isEnglish ? "en" : "ph");
-    }
-      getContent6DataByName(widget.lessonName);
+      getContent5DataByName(widget.lessonName);
       getProgress(widget.lessonName);
     });
-  
+    
+    
   }
   @override
   void dispose() {
@@ -72,7 +71,7 @@ class _QuizFourState extends State<QuizFour> {
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData =
-      await LetterLessonFireStore(userId: userId!)
+      await AnimalsLessonFireStore(userId: userId!)
             .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
 
       // ignore: unnecessary_null_comparison
@@ -87,11 +86,11 @@ class _QuizFourState extends State<QuizFour> {
 
       } else {
         print(
-            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Animals lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
-      print('Error reading letter_lessons.json: $e');
+      print('Error reading animals_lessons.json: $e');
       if(mounted) {
       setState(() {
         isLoading = false;
@@ -101,23 +100,23 @@ class _QuizFourState extends State<QuizFour> {
   }
  
 
-  void getContent6DataByName(String lessonName) async {
+  void getContent5DataByName(String lessonName) async {
     
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData = 
-      await LetterLessonFireStore(userId: userId!)
+      await AnimalsLessonFireStore(userId: userId!)
           .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
 
-      if(lessonData != null && lessonData.containsKey('content6')) {
-        Map<String,dynamic> content6data = 
-        lessonData['content6'] as Map<String, dynamic>; 
-        Iterable<dynamic> _contentVideo = content6data['contentImage'];
-        String description = content6data['description'] as String;
+      if(lessonData != null && lessonData.containsKey('content5')) {
+        Map<String,dynamic> content5data = 
+        lessonData['content5'] as Map<String, dynamic>; 
+        Iterable<dynamic> _contentVideo = content5data['contentImage'];
+        String description = content5data['description'] as String;
         
-        Iterable<dynamic> _contentOption = content6data['contentOption'];
-        Iterable<dynamic> _correctAnswer = content6data['correctAnswer'];
+        Iterable<dynamic> _contentOption = content5data['contentOption'];
+        Iterable<dynamic> _correctAnswer = content5data['correctAnswer'];
 
         // Shuffle the contentOption list using the imported function
         _contentOption = shuffleIterable(_contentOption);
@@ -143,13 +142,13 @@ class _QuizFourState extends State<QuizFour> {
           });
         } else {
           print(
-            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Animals lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
       }
     } catch (e) {
-        print('Error reading letter_lessons.json: $e');
+        print('Error reading animals_lessons.json: $e');
         if (mounted) {
           setState(() {
             isLoading = true;
@@ -198,9 +197,9 @@ class _QuizFourState extends State<QuizFour> {
     }
 
     if (isAnswerCorrect) {
-      if (progress < 95) {
+      if (progress < 79) {
         // Increment the progress value only if it's less than 47
-        LetterLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
+        AnimalsLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
         print("Progress 6 updated successfully!");
       }
     }
@@ -211,7 +210,7 @@ class _QuizFourState extends State<QuizFour> {
       } else {
         Navigator.pushReplacement(
           context,
-          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
+          SlidePageRoute(page: AnimalsLessonOne(lessonName: widget.lessonName)),
         );
       }
     });
@@ -289,7 +288,7 @@ class _QuizFourState extends State<QuizFour> {
   void _nextPage() {
     
     Navigator.pushReplacement(
-    context, SlidePageRoute(page: Result(lessonName: widget.lessonName))
+    context, SlidePageRoute(page: AnimalsQuizFour(lessonName: widget.lessonName))
     );
     if(mounted) {
       setState(() {
@@ -323,7 +322,7 @@ class _QuizFourState extends State<QuizFour> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
+              Navigator.pushReplacement(context, SlidePageRoute(page: Animals()));
             },
           ),
         ),
@@ -460,14 +459,10 @@ class _QuizFourState extends State<QuizFour> {
     bool isSelected = selectedOption == option;
     Color tileColor =
         isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
-    if (answerChecked) {
+
+    if (answerChecked && isSelected) {
       bool isCorrectAnswer = correctAnswer.contains(option);
-      if (isCorrectAnswer) {
-        tileColor = Colors.green.withOpacity(0.3); // Correct answer color
-      } else if (isSelected) {
-        tileColor =
-            Colors.red.withOpacity(0.3); // Incorrect selected answer color
-      }
+      tileColor = isCorrectAnswer ? Colors.green.withOpacity(0.3): Colors.red.withOpacity(0.3);
     }
 
     return GestureDetector(

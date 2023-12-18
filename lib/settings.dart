@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/front_page.dart';
+import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
 class MySettings extends StatefulWidget {
@@ -242,6 +243,15 @@ class _MySettingsState extends State<MySettings> {
     String? userId = Auth().getCurrentUserId();
 
     try {
+      // Show a loading dialog
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            opaque: false, // Make the loading page non-opaque
+            pageBuilder: (context, _, __) {
+              return const Loading(text: 'Loading . . . '); 
+            },
+          ),
+        );
       if (userId != null) {
         // Delete user data from Firestore
         await FirebaseFirestore.instance.collection('userData').doc(userId).delete();

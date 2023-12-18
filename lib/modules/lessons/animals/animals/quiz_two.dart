@@ -1,63 +1,52 @@
+import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/firestore_data/lesson_alphabet.dart';
-import 'package:sign_buddy/firebase_storage.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
+import 'package:sign_buddy/auth.dart';
+import 'package:sign_buddy/firebase_storage.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_animals.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/lessons_one.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals/quiz_three.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
-import 'package:cached_video_player/cached_video_player.dart';
 
-
-class QuizFour extends StatefulWidget {
+class AnimalsQuizTwo extends StatefulWidget {
   final String lessonName;
 
-  const QuizFour({Key? key, required this.lessonName}) : super(key: key);
+  const AnimalsQuizTwo({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<QuizFour> createState() => _QuizFourState();
+  State<AnimalsQuizTwo> createState() => _AnimalsQuizTwoState();
 }
 
-class _QuizFourState extends State<QuizFour> {
+class _AnimalsQuizTwoState extends State<AnimalsQuizTwo> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentOption = [];
   List<dynamic> correctAnswer = [];
   List<dynamic> contentVideo = [];
   CachedVideoPlayerController? _videoController;
-  bool isSlowMotion = false;
 
   String selectedOption = '';
   bool answerChecked = false;
   bool progressAdded = false; // Track whether progress has been added
-  
   bool isLoading = true;
   bool isEnglish = true;
   int progress = 0;
+
 
   @override
   void initState() {
     super.initState();
     getLanguage().then((value) {
-      if (progress >= 90) {
-      LetterLessonFireStore(userId: uid)
-          .unlockLesson(widget.lessonName, isEnglish ? "en" : "ph");
-    }
-      getContent6DataByName(widget.lessonName);
+      getContent4DataByName(widget.lessonName);
       getProgress(widget.lessonName);
     });
-  
+    
+    
   }
-  @override
-  void dispose() {
-    _videoController?.dispose();
-    super.dispose();
-  }
-  
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.
@@ -68,11 +57,14 @@ class _QuizFourState extends State<QuizFour> {
       });
     }
   }
+
+
+
   Future<void> getProgress(String lessonName) async {
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData =
-      await LetterLessonFireStore(userId: userId!)
+      await AnimalsLessonFireStore(userId: userId!)
             .getUserLessonData(lessonName, isEnglish ? "en" : "ph");
 
       // ignore: unnecessary_null_comparison
@@ -87,37 +79,34 @@ class _QuizFourState extends State<QuizFour> {
 
       } else {
         print(
-            'By Progress: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Animal lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
-      print('Error reading letter_lessons.json: $e');
-      if(mounted) {
+      print('Error reading animal_lessons.json: $e');
       setState(() {
         isLoading = false;
       });
-      }
     }
   }
- 
 
-  void getContent6DataByName(String lessonName) async {
+  void getContent4DataByName(String lessonName) async {
     
     try {
       final userId = Auth().getCurrentUserId();
       Map<String, dynamic>? lessonData = 
-      await LetterLessonFireStore(userId: userId!)
+      await AnimalsLessonFireStore(userId: userId!)
           .getLessonData(lessonName, isEnglish ? "en" : "ph");
 
 
-      if(lessonData != null && lessonData.containsKey('content6')) {
-        Map<String,dynamic> content6data = 
-        lessonData['content6'] as Map<String, dynamic>; 
-        Iterable<dynamic> _contentVideo = content6data['contentImage'];
-        String description = content6data['description'] as String;
+      if(lessonData != null && lessonData.containsKey('content4')) {
+        Map<String,dynamic> content4data = 
+        lessonData['content4'] as Map<String, dynamic>; 
+        Iterable<dynamic> _contentVideo = content4data['contentImage'];
+        String description = content4data['description'] as String;
         
-        Iterable<dynamic> _contentOption = content6data['contentOption'];
-        Iterable<dynamic> _correctAnswer = content6data['correctAnswer'];
+        Iterable<dynamic> _contentOption = content4data['contentOption'];
+        Iterable<dynamic> _correctAnswer = content4data['correctAnswer'];
 
         // Shuffle the contentOption list using the imported function
         _contentOption = shuffleIterable(_contentOption);
@@ -134,22 +123,20 @@ class _QuizFourState extends State<QuizFour> {
             uid = userId;
             isLoading = false;
 
-            // Initialize the video player with the first video URL
             if (contentVideo.isNotEmpty) {
               _videoController =
-              setupVideoController(Uri.parse(contentVideo[0]));
-              _videoController!.play();
+                  setupVideoController(Uri.parse(contentVideo[0]));
             }
           });
         } else {
           print(
-            'By Content: Letter lesson "$lessonName" was not found within the Firestore.');
+            'By Content: Animal lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
 
       }
     } catch (e) {
-        print('Error reading letter_lessons.json: $e');
+        print('Error reading animal_lessons.json: $e');
         if (mounted) {
           setState(() {
             isLoading = true;
@@ -171,9 +158,12 @@ class _QuizFourState extends State<QuizFour> {
     return controller;
   }
 
+  
+
   void _checkAnswer() async {
     // Check if the selected option is in the list of correct answers
     bool isAnswerCorrect = correctAnswer.contains(selectedOption);
+
 
     if(mounted) {
       setState(() {
@@ -198,10 +188,10 @@ class _QuizFourState extends State<QuizFour> {
     }
 
     if (isAnswerCorrect) {
-      if (progress < 95) {
+      if (progress < 59) {
         // Increment the progress value only if it's less than 47
-        LetterLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
-        print("Progress 6 updated successfully!");
+        AnimalsLessonFireStore(userId: uid).incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
+        print("Progress 5 updated successfully!");
       }
     }
 
@@ -211,7 +201,7 @@ class _QuizFourState extends State<QuizFour> {
       } else {
         Navigator.pushReplacement(
           context,
-          SlidePageRoute(page: LessonOne(lessonName: widget.lessonName)),
+          SlidePageRoute(page: AnimalsLessonOne(lessonName: widget.lessonName)),
         );
       }
     });
@@ -267,7 +257,7 @@ class _QuizFourState extends State<QuizFour> {
             duration: const Duration(days: 365), // Change duration as needed
             dismissDirection: DismissDirection.none,
             action: SnackBarAction(
-              label: isEnglish ? 'Next' : 'Susunod',
+             label: isEnglish ? 'Next' : 'Susunod',
               textColor: Colors.grey.shade700,
               backgroundColor: Color(0xFF5BD8FF),
               onPressed: () {
@@ -288,11 +278,14 @@ class _QuizFourState extends State<QuizFour> {
 
   void _nextPage() {
     
-    Navigator.pushReplacement(
-    context, SlidePageRoute(page: Result(lessonName: widget.lessonName))
-    );
+
+  Navigator.pushReplacement(
+    context, SlidePageRoute(page: AnimalsQuizThree(lessonName: widget.lessonName))
+  );
+
     if(mounted) {
       setState(() {
+        progressAdded = false; // Reset progressAdded
         selectedOption = '';
         answerChecked = false;
         if (_videoController != null) {
@@ -300,124 +293,10 @@ class _QuizFourState extends State<QuizFour> {
           _videoController!.dispose();
           _videoController = null;
         }
+        
       });
     }
   }
-
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text('Lesson Quiz', style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(60),
-              bottomRight: Radius.circular(60),
-            ),
-          ),
-          iconTheme: IconThemeData(color: Colors.black), 
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
-            },
-          ),
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 70),
-            Text(
-              contentDescription,
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            if (contentVideo.isNotEmpty)
-              buildVideoDisplay(),
-              SizedBox(height: 20),
-            Expanded(
-              child: isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(), // Display option loading indicator
-                    )
-                  : GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        mainAxisExtent: 50
-                      ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: contentOption.length,
-                      itemBuilder: (context, index) {
-                        return _buildWordOption(
-                          contentOption[index],
-                        );
-                      },
-                    ),
-            ),
-            SizedBox(height: 20), // Add spacing for the "Check" button
-            Builder(
-              builder: (context) {
-                return Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Visibility(
-                      visible: !answerChecked,
-                      child: ElevatedButton(
-                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            selectedOption.isNotEmpty
-                                ? Color(0xFF5BD8FF)
-                                : Colors.grey,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.check,
-                                size: 18,
-                                color: selectedOption.isNotEmpty
-                                    ? Colors.grey.shade700
-                                    : Colors.white,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                isEnglish ? 'Check' : 'Tsek',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: selectedOption.isNotEmpty
-                                      ? Colors.grey.shade700
-                                      : Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget buildVideoDisplay() {
     if (_videoController != null && _videoController!.value.isInitialized) {
       return Column(
@@ -444,10 +323,10 @@ class _QuizFourState extends State<QuizFour> {
                 child: CachedVideoPlayer(_videoController!),
               ),
             ),
-          ),    
+          ),
+          
         ],
       );
-      
     } else {
       return Center(
         child: CircularProgressIndicator(),
@@ -455,50 +334,176 @@ class _QuizFourState extends State<QuizFour> {
     }
   }
 
-  Widget _buildWordOption(String option) {
-      
-    bool isSelected = selectedOption == option;
-    Color tileColor =
-        isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
-    if (answerChecked) {
-      bool isCorrectAnswer = correctAnswer.contains(option);
-      if (isCorrectAnswer) {
-        tileColor = Colors.green.withOpacity(0.3); // Correct answer color
-      } else if (isSelected) {
-        tileColor =
-            Colors.red.withOpacity(0.3); // Incorrect selected answer color
-      }
-    }
+   @override
+  void dispose() {
+    _videoController?.dispose();
+    super.dispose();
+  }
 
-    return GestureDetector(
-      onTap: () {
-        if (!answerChecked) {
-          setState(() {
-            selectedOption = option;
-          });
-        }
-      },
-      child: SizedBox(
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+          title: Text('Animal lesson', style: TextStyle(color: Colors.black, fontSize: 16)),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(60),
+              bottomRight: Radius.circular(60),
+            ),
+          ),
+          iconTheme: IconThemeData(color: Colors.black), 
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: Animals()));
+            },
+          ),
+        ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 100),
+            Text(
+              contentDescription,
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 20),
+            if (contentVideo.isNotEmpty) buildVideoDisplay(),
+            SizedBox(height: 20),
+            isLoading
+              ? CircularProgressIndicator() // Display loading indicator
+              : _buildYesNoOption(),
+            SizedBox(height: 20), // Add spacing for the "Check" button
+            Expanded(
+              child: Builder(
+                builder: (context) {
+                  return Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Visibility(
+                        visible: !answerChecked,
+                        child: ElevatedButton(
+                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              selectedOption.isNotEmpty
+                                  ? Color(0xFF5BD8FF)
+                                  : Colors.grey,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.check,
+                                  size: 18,
+                                  color: selectedOption.isNotEmpty
+                                      ? Colors.grey.shade700
+                                      : Colors.white,
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                   isEnglish ? 'Check' : 'Tsek',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: selectedOption.isNotEmpty
+                                        ? Colors.grey.shade700
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildYesNoOption() {
+  List<String> options = contentOption.cast<String>(); // Ensure that options are of type String
+
+  bool isAnswerChecked = answerChecked;
+  String selectedOption = this.selectedOption;
+
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: options.map((option) {
+      bool isOptionSelected = selectedOption == option;
+      bool isCorrectAnswer = correctAnswer.contains(option);
+
+      Color tileColor = isOptionSelected
+          ? (isAnswerChecked
+              ? (isCorrectAnswer
+                  ? Colors.green.withOpacity(0.3)
+                  : Colors.red.withOpacity(0.3))
+              : Colors.grey.withOpacity(0.2))
+          : Colors.transparent;
+
+      IconData icon = isCorrectAnswer
+          ? FontAwesomeIcons.thumbsUp
+          : FontAwesomeIcons.thumbsDown;
+
+      return GestureDetector(
+        onTap: () {
+          if (!isAnswerChecked) {
+            setState(() {
+              this.selectedOption = option;
+            });
+          }
+        },
         child: Container(
+          width: 70,
+          height: 70,
+          margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: tileColor,
             border: Border.all(
               color: Colors.grey,
               width: 1.0,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(50),
           ),
-          child: Center(
-            child: Text(
-              option,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                color: Color(0xFF5BD8FF),
+                size: 25,
               ),
-            ),
+              SizedBox(height: 5),
+              Text(
+                option,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-    );
-  }
+      );
+    }).toList(),
+  );
+}
+
 }
