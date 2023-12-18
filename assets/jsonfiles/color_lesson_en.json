@@ -1,158 +1,491 @@
 [
-    {
-        "name": "Blue",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": true,
-        "content1": {
-          "description": "This is how you sign 'Blue'",
-          "contentImage": ["dictionary/en/color/blue.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+  {
+      "name": "Blue",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": true,
+      "content1": {
+        "description": "This is how you sign 'Blue'",
+        "contentImage": ["dictionary/en/color/blue.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/blue.mp4"],
+        "contentOption": ["Sky", "Ocean", "Frog", "Blueberry", "Blue", "K", "C", "S", "A"],
+        "correctAnswer": ["Blue"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/blue.mp4"],
+        "contentOption": [
+          "color_option/en/blue.png",
+          "color_option/en/red.png",
+          "color_option/en/green.png",
+          "color_option/en/rainbow.png"
+        ],
+        "correctAnswer": ["color_option/en/blue.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Blue?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/blue.mp4",
+          "dictionary/en/color/red.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/blue.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Blue?'",
+        "contentImage": ["dictionary/en/color/blue.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+  },
+  {
+      "name": "Bright",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Bright'",
+        "contentImage": ["dictionary/en/color/bright.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/bright.mp4"],
+        "contentOption": ["Sun", "Meadow", "Butterfly", "Lemon", "Bright", "T", "R", "S", "X"],
+        "correctAnswer": ["Bright"]
+      },
+      "content3": {
+        "description": "What is color being sign here?",
+        "contentImage": ["dictionary/en/color/bright.mp4"],
+        "contentOption": [
+          "color_option/en/purple.png",
+          "color_option/en/dark.png",
+          "color_option/en/orange.png",
+          "color_option/en/bright.png"
+        ],
+        "correctAnswer": ["color_option/en/bright.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Bright?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/bright.mp4",
+          "dictionary/en/color/yellow.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/bright.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Bright?'",
+        "contentImage": ["dictionary/en/color/bright.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
     },
     {
-        "name": "Bright",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Bright'",
-          "contentImage": ["dictionary/en/color/bright.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+      "name": "Dark",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Dark'",
+        "contentImage": ["dictionary/en/color/dark.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
       },
-      {
-        "name": "Dark",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Dark'",
-          "contentImage": ["dictionary/en/color/dark.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/dark.mp4"],
+        "contentOption": ["Night", "Forest", "Panther", "Chocolate", "Dark", "D", "Z", "X", "F"],
+        "correctAnswer": ["Dark"]
       },
-      {
-        "name": "Gray",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Gray'",
-          "contentImage": ["dictionary/en/color/gray.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/dark.mp4"],
+        "contentOption": [
+          "color_option/en/dark.png",
+          "color_option/en/bright.png",
+          "color_option/en/red.png",
+          "color_option/en/green.png"
+        ],
+        "correctAnswer": ["color_option/en/dark.png"]
+          
       },
-      {
-        "name": "Green",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Green'",
-          "contentImage": ["dictionary/en/color/green.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+      "content4": {
+        "description": "Which video represents the sign for 'Dark?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/dark.mp4",
+          "dictionary/en/color/rainbow.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/dark.mp4"]
       },
-      {
-        "name": "Light",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Light'",
-          "contentImage": ["dictionary/en/color/light.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Orange",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Orange'",
-          "contentImage": ["dictionary/en/color/orange.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Pink",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Pink'",
-          "contentImage": ["dictionary/en/color/pink.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Purple",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Purple'",
-          "contentImage": ["dictionary/en/color/purple.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Rainbow",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Rainbow'",
-          "contentImage": ["dictionary/en/color/rainbow.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Red",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Red'",
-          "contentImage": ["dictionary/en/color/red.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Shiny",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Shiny'",
-          "contentImage": ["dictionary/en/color/shiny.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
-      },
-      {
-        "name": "Yellow",
-        "progress": 0,
-        "locale": "en",
-        "isUnlocked": false,
-        "content1": {
-          "description": "This is how you sign 'Yellow'",
-          "contentImage": ["dictionary/en/color/yellow.mp4"],
-          "contentOption": null,
-          "correctAnswer": null
-        }
+      "content5": {
+        "description": "Is this the sign for 'Dark?'",
+        "contentImage": ["dictionary/en/color/dark.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
       }
+    },
+    {
+      "name": "Gray",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Gray'",
+        "contentImage": ["dictionary/en/color/gray.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/gray.mp4"],
+        "contentOption": ["Cloud", "Elephant", "Rock", "Silver", "Gray", "B", "K", "S", "A"],
+        "correctAnswer": ["Gray"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/gray.mp4"],
+        "contentOption": [
+          "color_option/en/orange.png",
+          "color_option/en/yellow.png",
+          "color_option/en/purple.png",
+          "color_option/en/gray.png"
+        ],
+        "correctAnswer": ["color_option/en/gray.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Gray?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/gray.mp4",
+          "dictionary/en/color/pink.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/gray.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Gray?'",
+        "contentImage": ["dictionary/en/color/gray.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+    
+    },
+    {
+      "name": "Green",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Green'",
+        "contentImage": ["dictionary/en/color/green.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/green.mp4"],
+        "contentOption": ["Forest", "Leaf", "Frog", "Apple", "Green", "U", "G", "X", "F"],
+        "correctAnswer": ["Green"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/green.mp4"],
+        "contentOption": [
+          "color_option/en/green.png",
+          "color_option/en/blue.png",
+          "color_option/en/red.png",
+          "color_option/en/bright.png"
+          ],
+          "correctAnswer": ["color_option/en/green.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Green?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/green.mp4",
+          "dictionary/en/color/orange.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/green.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Green?'",
+        "contentImage": ["dictionary/en/color/green.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+      
+    },
+    {
+      "name": "Orange",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Orange'",
+        "contentImage": ["dictionary/en/color/orange.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/orange.mp4"],
+        "contentOption": ["Sunset", "Tiger", "Orange", "Carrot", "Orange", "L", "I", "S", "X"],
+        "correctAnswer": ["Orange"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/orange.mp4"],
+        "contentOption": [
+          "color_option/en/orange.png",
+          "color_option/en/purple.png",
+          "color_option/en/yellow.png",
+          "color_option/en/dark.png"
+        ],
+        "correctAnswer": ["color_option/en/orange.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Orange?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/light.mp4",
+          "dictionary/en/color/orange.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/orange.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Orange?'",
+        "contentImage": ["dictionary/en/color/orange.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+      
+    },
+    {
+      "name": "Pink",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Pink'",
+        "contentImage": ["dictionary/en/color/pink.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/pink.mp4"],
+        "contentOption": ["Flower", "Bubblegum", "Pig", "Strawberry", "Pink", "Q", "O", "X", "F"],
+        "correctAnswer": ["Pink"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/pink.mp4"],
+        "contentOption": [
+          "color_option/en/green.png",
+          "color_option/en/blue.png",
+          "color_option/en/red.png",
+          "color_option/en/pink.png"
+          ],
+          "correctAnswer": ["color_option/en/pink.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Pink?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/bright.mp4",
+          "dictionary/en/color/pink.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/pink.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Pink?'",
+        "contentImage": ["dictionary/en/color/pink.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+    },
+    {
+      "name": "Purple",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Purple'",
+        "contentImage": ["dictionary/en/color/purple.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/purple.mp4"],
+        "contentOption": ["Lavender", "Grapes", "Dragon", "Eggplant", "Purple", "W", "P", "X", "F"],
+        "correctAnswer": ["Purple"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/purple.mp4"],
+        "contentOption": [
+          "color_option/en/yellow.png",
+          "color_option/en/purple.png",
+          "color_option/en/blue.png",
+          "color_option/en/orange.png"
+        ],
+        "correctAnswer": ["color_option/en/purple.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Purple?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/blue.mp4",
+          "dictionary/en/color/purple.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/purple.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Purple?'",
+        "contentImage": ["dictionary/en/color/purple.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+    },
+    {
+      "name": "Rainbow",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Rainbow'",
+        "contentImage": ["dictionary/en/color/rainbow.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/rainbow.mp4"],
+        "contentOption": ["Sky", "Butterfly", "Parrot", "Skittles", "Rainbow", "H", "G", "X", "F"],
+        "correctAnswer": ["Rainbow"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/rainbow.mp4"],
+        "contentOption": [
+          "color_option/en/yellow.png",
+          "color_option/en/orange.png",
+          "color_option/en/rainbow.png",
+          "color_option/en/purple.png"
+        ],
+        "correctAnswer": ["color_option/en/rainbow.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Rainbow?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/light.mp4",
+          "dictionary/en/color/rainbow.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/rainbow.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Rainbow?'",
+        "contentImage": ["dictionary/en/color/rainbow.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+    },
+    {
+      "name": "Red",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Red'",
+        "contentImage": ["dictionary/en/color/red.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/red.mp4"],
+        "contentOption": ["Rose", "Ladybug", "Apple", "Cherry", "Red", "F", "A", "I", "F"],
+        "correctAnswer": ["Red"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/red.mp4"],
+        "contentOption": [
+          "color_option/en/bright.png",
+          "color_option/en/red.png",
+          "color_option/en/green.png",
+          "color_option/en/blue.png"
+          ],
+          "correctAnswer": ["color_option/en/red.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Red?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/red.mp4",
+          "dictionary/en/color/green.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/red.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Red?'",
+        "contentImage": ["dictionary/en/color/red.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+    },
+    {
+      "name": "Yellow",
+      "progress": 0,
+      "locale": "en",
+      "isUnlocked": false,
+      "content1": {
+        "description": "This is how you sign 'Yellow'",
+        "contentImage": ["dictionary/en/color/yellow.mp4"],
+        "contentOption": null,
+        "correctAnswer": null
+      },
+      "content2": {
+        "description": "What is being signed here",
+        "contentImage": ["dictionary/en/color/yellow.mp4"],
+        "contentOption": ["Sunflower", "Lemon", "Duck", "Banana", "Yellow", "A", "F", "S", "X"],
+        "correctAnswer": ["Yellow"]
+      },
+      "content3": {
+        "description": "What color is being sign here?",
+        "contentImage": ["dictionary/en/color/yellow.mp4"],
+        "contentOption": [
+          "color_option/en/green.png",
+          "color_option/en/blue.png",
+          "color_option/en/red.png",
+          "color_option/en/yellow.png"
+          ],
+          "correctAnswer": ["color_option/en/yellow.png"]
+      },
+      "content4": {
+        "description": "Which video represents the sign for 'Yellow?'",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/color/gray.mp4",
+          "dictionary/en/color/yellow.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/color/yellow.mp4"]
+      },
+      "content5": {
+        "description": "Is this the sign for 'Yellow?'",
+        "contentImage": ["dictionary/en/color/yellow.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      }
+      
+    }
 ]

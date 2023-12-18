@@ -43,6 +43,11 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'icon': 'lesson-icon/img6.png',
     },
     {
+      'en': 'Colors',
+      'ph': 'Mga Kulay',
+      'icon': 'lesson-icon/img4.png',
+    },
+    {
       'en': 'Greetings',
       'ph': 'Pagbati',
       'icon': 'lesson-icon/img10.png',
@@ -52,11 +57,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'ph': 'Pamilya',
       'icon': 'lesson-icon/img3.png',
     },
-    {
-      'en': 'Colors',
-      'ph': 'Mga Kulay',
-      'icon': 'lesson-icon/img4.png',
-    },
+    
   ];
 
   bool isEnglish = true;

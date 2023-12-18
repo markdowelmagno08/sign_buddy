@@ -9,7 +9,50 @@
           "contentImage": ["dictionary/ph/color/abo.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/abo.mp4"],
+          "contentOption": [
+            "Abo",
+            "Pusa",
+            "Tupa",
+            "X",
+            "U",
+            "Kahel",
+            "Imahe",
+            "T",
+            "B"
+          ],
+          "correctAnswer": ["Abo"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/abo.mp4"],
+          "contentOption": [
+            "color_option/ph/abo.png",
+            "color_option/ph/pilak.png",
+            "color_option/ph/pula.png",
+            "color_option/ph/rosas.png"
+          ],
+          "correctAnswer": ["color_option/ph/abo.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Abo'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/abo.mp4",
+            "dictionary/ph/color/itim.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/abo.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Abo'?",
+          "contentImage": ["dictionary/ph/color/abo.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
+
     },
     {
         "name": "Asul",
@@ -21,6 +64,48 @@
           "contentImage": ["dictionary/ph/color/asul.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/asul.mp4"],
+          "contentOption": [
+            "Bahay",
+            "Puno",
+            "Ina",
+            "Ama",
+            "Asul",
+            "X",
+            "Y",
+            "Z",
+            "W"
+            ],
+          "correctAnswer": ["Asul"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/asul.mp4"],
+          "contentOption": [
+            "color_option/ph/kahel.png",
+            "color_option/ph/pilak.png",
+            "color_option/ph/asul.png",
+            "color_option/ph/dilaw.png"
+          ],
+          "correctAnswer": ["color_option/ph/asul.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Asul'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/asul.mp4",
+            "dictionary/ph/color/berde.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/asul.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Asul'?",
+          "contentImage": ["dictionary/ph/color/asul.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -33,6 +118,48 @@
           "contentImage": ["dictionary/ph/color/berde.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/berde.mp4"],
+          "contentOption": [
+            "Berde",
+            "Sampaguita",
+            "Kamay",
+            "Pamilya",
+            "Karne",
+            "Q",
+            "R",
+            "S",
+            "T"
+          ],
+          "correctAnswer": ["Berde"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/berde.mp4"],
+          "contentOption": [
+            "color_option/ph/dilaw.png",
+            "color_option/ph/pula.png",
+            "color_option/ph/kahel.png",
+            "color_option/ph/berde.png"
+            ],
+            "correctAnswer": ["color_option/ph/berde.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Berde'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/berde.mp4",
+            "dictionary/ph/color/pilak.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/berde.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Berde'?",
+          "contentImage": ["dictionary/ph/color/berde.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -45,6 +172,48 @@
           "contentImage": ["dictionary/ph/color/dilaw.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/dilaw.mp4"],
+          "contentOption": [
+            "Tubig",
+            "Wika",
+            "Lapis",
+            "Araw",
+            "Dilaw",
+            "U",
+            "V",
+            "J",
+            "K"
+            ],
+          "correctAnswer": ["Dilaw"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/dilaw.mp4"],
+          "contentOption": [
+            "color_option/ph/pula.png",
+            "color_option/ph/dilaw.png",
+            "color_option/ph/rosas.png",
+            "color_option/ph/puti.png"
+          ],
+          "correctAnswer": ["color_option/ph/dilaw.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Dilaw'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/dilaw.mp4",
+            "dictionary/ph/color/pula.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/dilaw.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Dilaw'?",
+          "contentImage": ["dictionary/ph/color/dilaw.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -57,6 +226,48 @@
           "contentImage": ["dictionary/ph/color/itim.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/itim.mp4"],
+          "contentOption": [
+            "Lupa",
+            "Bata",
+            "Tindahan",
+            "Kwento",
+            "Itim",
+            "L",
+            "M",
+            "N",
+            "O"
+          ],
+          "correctAnswer": ["Itim"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/itim.mp4"],
+          "contentOption": [
+            "color_option/ph/dilaw.png",
+            "color_option/ph/itim.png",
+            "color_option/ph/pilak.png",
+            "color_option/ph/puti.png"
+          ],
+          "correctAnswer": ["color_option/ph/itim.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Itim'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/itim.mp4",
+            "dictionary/ph/color/kayumanggi.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/itim.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Itim'?",
+          "contentImage": ["dictionary/ph/color/itim.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -69,6 +280,48 @@
           "contentImage": ["dictionary/ph/color/kahel.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/kahel.mp4"],
+          "contentOption": [
+            "Umaga",
+            "Kahel",
+            "Larawan",
+            "Bayani",
+            "Pagkain",
+            "E",
+            "F",
+            "G",
+            "H"
+            ],
+          "correctAnswer": ["Kahel"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/kahel.mp4"],
+          "contentOption": [
+            "color_option/ph/kahel.png",
+            "color_option/ph/pilak.png",
+            "color_option/ph/ube.png",
+            "color_option/ph/asul.png"
+            ],
+            "correctAnswer": ["color_option/ph/kahel.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Kahel'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/puti.mp4",
+            "dictionary/ph/color/kahel.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/kahel.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Kahel'?",
+          "contentImage": ["dictionary/ph/color/kahel.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -81,6 +334,48 @@
           "contentImage": ["dictionary/ph/color/kayumanggi.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/kayumanggi.mp4"],
+          "contentOption": [
+            "Laro",
+            "Musika",
+            "Baboy",
+            "Isda",
+            "Kayumanggi",
+            "P",
+            "Q",
+            "R",
+            "S"
+          ],
+          "correctAnswer": ["Kayumanggi"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/kayumanggi.mp4"],
+          "contentOption": [
+            "color_option/ph/dilaw.png",
+            "color_option/ph/kayumanggi.png",
+            "color_option/ph/pula.png",
+            "color_option/ph/ube.png"
+            ],
+            "correctAnswer": ["color_option/ph/kayumanggi.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Kayumanggi'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/kayumanggi.mp4",
+            "dictionary/ph/color/ube.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/kayumanggi.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Kayumanggi'?",
+          "contentImage": ["dictionary/ph/color/kayumanggi.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -93,6 +388,48 @@
           "contentImage": ["dictionary/ph/color/pilak.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/pilak.mp4"],
+          "contentOption": [
+            "Dagat",
+            "Bundok",
+            "Saging",
+            "Pilak",
+            "Anak",
+            "A",
+            "B",
+            "C",
+            "D"
+            ],
+          "correctAnswer": ["Pilak"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/pilak.mp4"],
+          "contentOption": [
+            "color_option/ph/pilak.png",
+            "color_option/ph/asul.png",
+            "color_option/ph/puti.png",
+            "color_option/ph/abo.png"
+          ],
+          "correctAnswer": ["color_option/ph/pilak.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Pilak'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/pilak.mp4",
+            "dictionary/ph/color/pula.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/pilak.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Pilak'?",
+          "contentImage": ["dictionary/ph/color/pilak.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -105,6 +442,48 @@
           "contentImage": ["dictionary/ph/color/pula.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/pula.mp4"],
+          "contentOption": [
+            "Babae",
+            "Lalaki",
+            "Damo",
+            "Buhok",
+            "Pula",
+            "T",
+            "U",
+            "V",
+            "W"
+          ],
+          "correctAnswer": ["Pula"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/pula.mp4"],
+          "contentOption": [
+            "color_option/ph/dilaw.png",
+            "color_option/ph/pula.png",
+            "color_option/ph/rosas.png",
+            "color_option/ph/kayumanggi.png"
+            ],
+            "correctAnswer": ["color_option/ph/pula.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Pula'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/abo.mp4",
+            "dictionary/ph/color/pula.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/pula.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Pula'?",
+          "contentImage": ["dictionary/ph/color/pula.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -117,6 +496,48 @@
           "contentImage": ["dictionary/ph/color/puti.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/puti.mp4"],
+          "contentOption": [
+            "Sapatos",
+            "Tsaa",
+            "Puti",
+            "Kariton",
+            "Utak",
+            "X",
+            "Y",
+            "Z",
+            "A"
+            ],
+          "correctAnswer": ["Puti"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/puti.mp4"],
+          "contentOption": [
+            "color_option/ph/puti.png",
+            "color_option/ph/kayumanggi.png",
+            "color_option/ph/kahel.png",
+            "color_option/ph/pilak.png"
+          ],
+          "correctAnswer": ["color_option/ph/puti.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Puti'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/ube.mp4",
+            "dictionary/ph/color/puti.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/puti.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Puti'?",
+          "contentImage": ["dictionary/ph/color/puti.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -129,6 +550,48 @@
           "contentImage": ["dictionary/ph/color/rosas.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/rosas.mp4"],
+          "contentOption": [
+            "Papel",
+            "Rosas",
+            "Bato",
+            "Bulaklak",
+            "Keso",
+            "M",
+            "N",
+            "O",
+            "P"
+          ],
+          "correctAnswer": ["Rosas"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/rosas.mp4"],
+          "contentOption": [
+            "color_option/ph/rosas.png",
+            "color_option/ph/ube.png",
+            "color_option/ph/pula.png",
+            "color_option/ph/dilaw.png"
+            ],
+            "correctAnswer": ["color_option/ph/rosas.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Rosas'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/rosas.mp4",
+            "dictionary/ph/color/kahel.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/rosas.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Rosas'?",
+          "contentImage": ["dictionary/ph/color/rosas.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       },
       {
@@ -141,6 +604,48 @@
           "contentImage": ["dictionary/ph/color/ube.mp4"],
           "contentOption": null,
           "correctAnswer": null
+        },
+        "content2": {
+          "description": "Anong senyas ang ginagamit dito?",
+          "contentImage": ["dictionary/ph/color/ube.mp4"],
+          "contentOption": [
+            "Pula",
+            "Sampaguita",
+            "Kamay",
+            "Pamilya",
+            "Ube",
+            "F",
+            "G",
+            "H",
+            "I"
+          ],
+          "correctAnswer": ["Ube"]
+        },
+        "content3": {
+          "description": "Anong senyas ang ginagamit dito?'",
+          "contentImage": ["dictionary/ph/color/ube.mp4"],
+          "contentOption": [
+            "color_option/ph/berde.png",
+            "color_option/ph/pilak.png",
+            "color_option/ph/puti.png",
+            "color_option/ph/ube.png"
+            ],
+            "correctAnswer": ["color_option/ph/ube.png"]
+        },
+        "content4": {
+          "description": "Alin ang tamang senyas para sa kulay 'Ube'?",
+          "contentImage": null,
+          "contentOption": [
+            "dictionary/ph/color/rosas.mp4",
+            "dictionary/ph/color/ube.mp4"
+          ],
+          "correctAnswer": ["dictionary/ph/color/ube.mp4"]
+        },
+        "content5": {
+          "description": "Ito ba ang senyas para sa 'Ube'?",
+          "contentImage": ["dictionary/ph/color/ube.mp4"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
         }
       }
 ]

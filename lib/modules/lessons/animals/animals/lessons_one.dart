@@ -16,10 +16,10 @@ class AnimalsLessonOne extends StatefulWidget {
   const AnimalsLessonOne({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<AnimalsLessonOne> createState() => _AnimalsLessonTwoState();
+  State<AnimalsLessonOne> createState() => _AnimalsLessonOneState();
 }
 
-class _AnimalsLessonTwoState extends State<AnimalsLessonOne> {
+class _AnimalsLessonOneState extends State<AnimalsLessonOne> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentVideo = [];

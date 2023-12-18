@@ -5,8 +5,8 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_color.dart';
 import 'package:sign_buddy/modules/lessons/color/color.dart';
+import 'package:sign_buddy/modules/lessons/color/color_lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 
 class ColorLessonOne extends StatefulWidget {
@@ -15,10 +15,10 @@ class ColorLessonOne extends StatefulWidget {
   const ColorLessonOne({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<ColorLessonOne> createState() => _ColorLessonTwoState();
+  State<ColorLessonOne> createState() => _ColorsLessonOneState();
 }
 
-class _ColorLessonTwoState extends State<ColorLessonOne> {
+class _ColorsLessonOneState extends State<ColorLessonOne> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentVideo = [];
@@ -70,7 +70,7 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
         }
       } else {
         print(
-            'By Progress: Color lesson "$lessonName" was not found within the Firestore.');
+            'By Progress: Colors lesson "$lessonName" was not found within the Firestore.');
         isLoading = true;
       }
     } catch (e) {
@@ -112,12 +112,12 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
           });
         } else {
           print(
-              'By Content: color lesson "$lessonName" was not found within the Firestore.');
+              'By Content: Colors lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
       }
     } catch (e) {
-      print('Error reading color_lessons.json: $e');
+      print('Error reading colors_lessons.json: $e');
       if (mounted) {
         setState(() {
           isLoading = true;
@@ -140,10 +140,10 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
   }
 
   void _nextPage() async {
-    // Navigator.pushReplacement(
-    //   context,
-    //   SlidePageRoute(page: QuizOne(lessonName: widget.lessonName)),
-    // );
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: ColorQuizOne(lessonName: widget.lessonName)),
+    );
 
     if(mounted) {
       setState(() {
@@ -237,34 +237,29 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+        title: Text('Color Lesson',  style: TextStyle(color: Colors.black, fontSize: 16)),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: ColorLesson()));// This will pop the current screen
+            },
+          ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CustomBackButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    SlidePageRoute(page: ColorLesson()),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 70),
-              Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Color lesson for: "${widget.lessonName}"', 
-                style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: FontWeight.bold, 
-                ),
-              ),
-            ),
             const SizedBox(height: 70),
             Align(
               alignment: Alignment.topLeft,
@@ -276,7 +271,7 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             if (contentVideo.isNotEmpty) buildVideoDisplay(),
             Expanded(
               child: Align(
@@ -287,11 +282,11 @@ class _ColorLessonTwoState extends State<ColorLessonOne> {
                   onPressed: isLoading || contentVideo.isEmpty
                       ? null  // Disable the button if assets are still loading
                       : () async {
-                          if (progress >= 31) {
+                          if (progress >= 19) {
                             _nextPage();
                           } else {
                             ColorLessonFireStore(userId: uid)
-                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
                             print("Progress 1 updated successfully!");
                             _nextPage();
                           }
