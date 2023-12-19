@@ -21,7 +21,27 @@ class _ChangePasswordState extends State<ChangePassword> {
   bool isEnglish = true;
   bool isTyping = false;
 
+  
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+
+   @override
+  void initState() {
+    getLanguage();
+    super.initState();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final locale = prefs.getBool('isEnglish');
+
+    if (mounted) {
+      setState(() {
+        isEnglish = locale!;
+      });
+    }
+  }
 
   Future<void> changePassword(String currentPassword, String newPassword) async {
     try {
@@ -67,7 +87,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 16),
-              Text('Changing Password...'),
+              Text(isEnglish ? 'Changing password...' : 'Nagpapalit ng password'),
             ],
           ),
         );
@@ -94,14 +114,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     }
   }
 
-  Future<void> getLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isEnglish = prefs.getBool('isEnglish') ?? true;
-
-    setState(() {
-      this.isEnglish = isEnglish;
-    });
-  }
+ 
 
   Future<void> _showConfirmationDialog() async {
     if (_formKey.currentState!.validate()) {
@@ -116,10 +129,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                   color: Colors.orange,
                 ),
                 SizedBox(width: 8), // Add some space between the icon and text
-                Text('Password change', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
+                Text(isEnglish ? 'Password change' : 'Pagpapalit ng password', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
               ],
             ),
-            content: Text('Are you sure you want to change your password?', style: TextStyle(fontFamily: 'FiraSans')),
+            content: Text(isEnglish ? 'Are you sure you want to change your password?' : 'Sigurado ka bang nais mong palitan ang iyong password?', style: TextStyle(fontFamily: 'FiraSans')),
             actions: [
               TextButton(
                 onPressed: () {
@@ -146,7 +159,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 ),
                 child: Text(
-                  'Confirm',
+                  isEnglish ? 'Confirm' : 'Kumpirmahin',
                   style: TextStyle(fontSize: 16),
                 ),
               ),
@@ -271,7 +284,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Current password',
+                                      isEnglish ? 'Current password' : 'Kasalukuyang password',
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.black,
@@ -327,7 +340,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'New password',
+                                      isEnglish ? 'New password' : 'Bagong password',
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.black,
@@ -344,7 +357,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                           setState(() {
                                             _updatePasswordsMatch();
                                           });
-
                                         }
                                       },
                                       decoration: InputDecoration(
@@ -394,7 +406,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Confirm new password',
+                                      isEnglish ? 'Confirm new password' : 'Kumpirmahin ang bagong password',
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.black,
@@ -469,7 +481,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                         ),
                                         SizedBox(width: 5),
                                         Text(
-                                          passwordsMatch ? 'Passwords match' : 'Passwords do not match',
+                                           passwordsMatch ? (isEnglish ? 'Passwords match' : 'Ang password ay nagtugma') : (isEnglish ? 'Passwords do not match' : 'Ang password ay hindi nagtugma'),
                                           style: TextStyle(
                                             color: passwordsMatch ? Colors.green : Colors.red,
                                           ),
@@ -499,7 +511,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           padding: EdgeInsets.all(16.0),
                         ),
                         child: Text(
-                          'Change password',
+                          isEnglish ? 'Change password' : 'Baguhin ang password',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

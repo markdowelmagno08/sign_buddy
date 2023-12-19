@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/front_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
@@ -16,6 +17,29 @@ class MySettings extends StatefulWidget {
 }
 
 class _MySettingsState extends State<MySettings> {
+
+
+  bool isEnglish = true;
+
+
+   @override
+  void initState() {
+    getLanguage();
+    super.initState();
+  }
+
+  Future<void> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final locale = prefs.getBool('isEnglish');
+
+    if (mounted) {
+      setState(() {
+        isEnglish = locale!;
+      });
+    }
+  }
+
+  
   Future<void> clearCache() async {
     final cacheDir = await path_provider.getTemporaryDirectory();
     if (cacheDir.existsSync()) {
@@ -101,7 +125,7 @@ class _MySettingsState extends State<MySettings> {
                         if (Auth().isUserAnonymous())
                         _buildListTile(
                           icon: FontAwesomeIcons.userXmark,
-                          text: 'Delete account',
+                          text: isEnglish ? 'Delete account' : 'Mag-delete ng account',
                           onPressed: () {
                             _showDeleteConfirmationDialog();
                           },
@@ -167,7 +191,7 @@ class _MySettingsState extends State<MySettings> {
                 color: Colors.redAccent,
               ),
               SizedBox(width: 8),
-              Text('Confirm Deletion', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
+              Text(isEnglish ? 'Confirm Deletion' : 'Kumpirmahin', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
             ],
           ),
           content: RichText(
@@ -175,10 +199,10 @@ class _MySettingsState extends State<MySettings> {
               style: TextStyle(fontFamily: 'FiraSans', color: Colors.black, fontSize: 15),
               children: [
                 TextSpan(
-                  text: 'Are you sure you want to delete your account?\n\n',
+                  text: isEnglish ? 'Are you sure you want to delete your account?\n\n' : 'Sigurado ka bang nais mong burahin ang iyong account?',
                 ),
                 TextSpan(
-                  text: 'This action cannot be undone.',
+                  text: isEnglish ? 'This action cannot be undone': 'Hindi maaaring bawiin ang hakbang na ito',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ],
@@ -233,7 +257,7 @@ class _MySettingsState extends State<MySettings> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 16),
-                Text('Deleting account...'),
+                Text(isEnglish ? 'Deleting account...' : 'Pagbubura ng account'),
               ],
             ),
           );

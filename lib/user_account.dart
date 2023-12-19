@@ -522,7 +522,7 @@ Future<void> _saveChanges() async {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Simulan ang Iyong Profile – Mag-sign up Ngayon!",
+                      "Simulan ang Iyong Profile\nMag-sign up Ngayon!",
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
@@ -1013,7 +1013,7 @@ Future<void> _saveChanges() async {
                 color: Colors.redAccent,
               ),
               SizedBox(width: 8),
-              Text('Confirm Deletion', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
+              Text(isEnglish ? 'Confirm Deletion' : 'Kumpirmahin', style: TextStyle(fontFamily: 'FiraSans', fontWeight: FontWeight.bold)),
             ],
           ),
           content: RichText(
@@ -1021,10 +1021,10 @@ Future<void> _saveChanges() async {
               style: TextStyle(fontFamily: 'FiraSans', color: Colors.black, fontSize: 15),
               children: [
                 TextSpan(
-                  text: 'Are you sure you want to delete your account?\n\n',
+                  text: isEnglish ? 'Are you sure you want to delete your account?\n\n' : 'Sigurado ka bang nais mong burahin ang iyong account?',
                 ),
                 TextSpan(
-                  text: 'This action cannot be undone.',
+                  text: isEnglish ? 'This action cannot be undone': 'Hindi maaaring bawiin ang hakbang na ito',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ],
@@ -1078,7 +1078,7 @@ Future<void> _saveChanges() async {
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 16),
-              Text('Deleting account...'),
+              Text(isEnglish ? 'Deleting account...' : 'Pagbubura ng account'),
             ],
           ),
         );

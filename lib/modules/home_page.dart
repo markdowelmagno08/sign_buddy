@@ -10,7 +10,6 @@ import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/settings.dart';
 import 'package:sign_buddy/sign_up.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/user_account.dart';
 
 
@@ -580,6 +579,99 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  Widget buildUserData() {
+  return FutureBuilder<DocumentSnapshot>(
+    future: FirebaseFirestore.instance
+        .collection('userData')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const CircularProgressIndicator();
+      }
+
+      if (snapshot.hasError) {
+        return const Text('Error fetching data');
+      }
+
+      var userData = snapshot.data!.data() as Map<String, dynamic>;
+      var firstName = userData['firstName'];
+      var lastName = userData['lastName'];
+
+      // Check if firstName or lastName is empty
+      if (firstName == null ||
+          firstName.isEmpty ||
+          lastName == null ||
+          lastName.isEmpty) {
+        return Column(
+          children: [
+            SizedBox(height: 30),
+             Text(
+              isEnglish ? 'Make a profile!' : 'Simulan ang\nprofile!',
+              style: TextStyle(
+                  color: Colors.white, fontSize: 15, fontFamily: 'FiraSans', fontWeight: FontWeight.bold ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [// Add some spacing between the buttons
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigate to sign up page
+                    Navigator.pushReplacement(
+                        context, SlidePageRoute(page: const SignupPage()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurpleAccent,
+                  ),
+                  child: const Text('Sign Up'),
+                ),
+              ],
+            ),
+          ],
+        );
+      }
+
+      // Capitalize the first letter
+      String capitalizeFirstLetter(String name) {
+        return name[0].toUpperCase() + name.substring(1);
+      }
+
+      String formattedName(String firstName, String lastName) {
+      List<String> firstNameWords = firstName.split(' ');
+
+      if (firstNameWords.length > 1) {
+        // If the first name has more than one word, put the second word on a new line
+        return '${capitalizeFirstLetter(firstNameWords[0])}\n${capitalizeFirstLetter(firstNameWords[1])}\n$lastName';
+      } else if (firstName.length > 5 || lastName.length > 5) {
+        // If the first name has one word and is longer than 5 characters or the last name is longer than 5 characters, put them on a new line
+        return '$firstName\n$lastName';
+      } else {
+        // Otherwise, concatenate the first and last names with a space
+        return '$firstName $lastName';
+      }
+    }
+
+      return Padding(
+        padding: const EdgeInsets.only(left: 20),
+        child: Text(
+          formattedName(
+            capitalizeFirstLetter(firstName),
+            capitalizeFirstLetter(lastName),
+          ),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontFamily: 'FiraSans',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
+    },
+  );
+}
+
 }
 
 //randomly gives the user an profile image
@@ -639,99 +731,6 @@ Widget buildListTileWithBorderAndIcon({
         ),
       ),
     ),
-  );
-}
-
-Widget buildUserData() {
-  return FutureBuilder<DocumentSnapshot>(
-    future: FirebaseFirestore.instance
-        .collection('userData')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get(),
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return const CircularProgressIndicator();
-      }
-
-      if (snapshot.hasError) {
-        return const Text('Error fetching data');
-      }
-
-      var userData = snapshot.data!.data() as Map<String, dynamic>;
-      var firstName = userData['firstName'];
-      var lastName = userData['lastName'];
-
-      // Check if firstName or lastName is empty
-      if (firstName == null ||
-          firstName.isEmpty ||
-          lastName == null ||
-          lastName.isEmpty) {
-        return Column(
-          children: [
-            SizedBox(height: 50),
-             Text(
-              'Make a profile!',
-              style: TextStyle(
-                  color: Colors.white, fontSize: 15, fontFamily: 'FiraSans', fontWeight: FontWeight.bold ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [// Add some spacing between the buttons
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigate to sign up page
-                    Navigator.pushReplacement(
-                        context, SlidePageRoute(page: const SignupPage()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurpleAccent,
-                  ),
-                  child: const Text('Sign Up'),
-                ),
-              ],
-            ),
-          ],
-        );
-      }
-
-      // Capitalize the first letter
-      String capitalizeFirstLetter(String name) {
-        return name[0].toUpperCase() + name.substring(1);
-      }
-
-      String formattedName(String firstName, String lastName) {
-      List<String> firstNameWords = firstName.split(' ');
-
-      if (firstNameWords.length > 1) {
-        // If the first name has more than one word, put the second word on a new line
-        return '${capitalizeFirstLetter(firstNameWords[0])}\n${capitalizeFirstLetter(firstNameWords[1])}\n$lastName';
-      } else if (firstName.length > 5 || lastName.length > 5) {
-        // If the first name has one word and is longer than 5 characters or the last name is longer than 5 characters, put them on a new line
-        return '$firstName\n$lastName';
-      } else {
-        // Otherwise, concatenate the first and last names with a space
-        return '$firstName $lastName';
-      }
-    }
-
-      return Padding(
-        padding: const EdgeInsets.only(left: 20),
-        child: Text(
-          formattedName(
-            capitalizeFirstLetter(firstName),
-            capitalizeFirstLetter(lastName),
-          ),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontFamily: 'FiraSans',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      );
-    },
   );
 }
 

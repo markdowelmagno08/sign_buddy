@@ -564,11 +564,17 @@ class EmailInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    // Allow alphabetic characters, numbers, "@" and ".", and disallow spaces
-    final RegExp regExp = RegExp(r'^[a-zA-Z0-9@.]*$');
-    if (regExp.hasMatch(newValue.text)) {
-      return newValue;
+    // Allow alphabetic characters, numbers, "@" and ".", disallow spaces, and convert to lowercase
+    final RegExp regExp = RegExp(r'^[a-z0-9@.]*$');
+    String formattedValue = newValue.text.toLowerCase(); // Convert to lowercase
+    
+    if (regExp.hasMatch(formattedValue)) {
+      return TextEditingValue(
+        text: formattedValue,
+        selection: newValue.selection,
+      );
     }
+    
     return oldValue;
   }
 }

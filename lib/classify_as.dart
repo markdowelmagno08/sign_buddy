@@ -204,9 +204,9 @@ class _ClassifyState extends State<Classify> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 28),
+                      padding: const EdgeInsets.only(right: 35),
                       child: SizedBox(
-                        width: 120,
+                        width: 140,
                         height: 40,
                         child: ElevatedButton(
                           onPressed: selectedClassify != null
