@@ -83,7 +83,7 @@ class _FeedbackAppState extends State<FeedbackApp> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Simulan ang Iyong Profile\nIbahagi ang Iyong Feedback",
+                      isEnglish ? 'Unlock Your Profile\nShare Your Feedback!' : "Simulan ang Iyong Profile\nIbahagi ang Iyong Feedback",
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),

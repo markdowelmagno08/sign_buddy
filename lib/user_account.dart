@@ -522,7 +522,7 @@ Future<void> _saveChanges() async {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Simulan ang Iyong Profile\nMag-sign up Ngayon!",
+                      isEnglish ? 'Unlock Your Profile – Sign Up Now!' : "Simulan ang Iyong Profile\nMag-sign up Ngayon!",
                       style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),

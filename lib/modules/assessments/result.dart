@@ -150,7 +150,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 30),
                   child: SizedBox(
-                    width: 120,
+                    width: 140,
                     height: 40,
                     child: ElevatedButton(
                       onPressed: () async {
