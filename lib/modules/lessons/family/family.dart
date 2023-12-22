@@ -7,6 +7,7 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+import 'package:sign_buddy/sign_up.dart';
 
 
 
@@ -140,6 +141,78 @@ class _FamilyState extends State<Family> {
 
   @override
   Widget build(BuildContext context) {
+
+    if (Auth().isUserAnonymous()) {
+        // If the user is anonymous, display this ui
+        return Scaffold(
+        body: isLoading
+          ? Center(
+            child: CircularProgressIndicator(),
+          )
+          : Stack(
+            children: [
+              // Background Image
+              Image.asset(
+                'assets/bg-signbuddy.png',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
+              ),
+              // Back Button aligned to top-left
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 10),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: CustomBackButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+              // Image at the top
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/lesson-img.png',
+                      height: 120,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      isEnglish ? 'Unlock More Lessons – Sign Up Now!' : "Buksan ang Karagdagang mga Aralin\nMag-sign up Ngayon!",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigate to the sign-up page
+                        Navigator.pushReplacement(context, SlidePageRoute(page: const SignupPage()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Color.fromARGB(255, 71, 63, 63),
+                        backgroundColor: Color(0xFF5BD8FF),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+      );
+    }
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [

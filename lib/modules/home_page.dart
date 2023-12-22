@@ -47,15 +47,16 @@ class _LessonsScreenState extends State<LessonsScreen> {
       'icon': 'lesson-icon/img4.png',
     },
     {
-      'en': 'Greetings',
-      'ph': 'Pagbati',
-      'icon': 'lesson-icon/img10.png',
-    },
-    {
       'en': 'Family',
       'ph': 'Pamilya',
       'icon': 'lesson-icon/img3.png',
     },
+    {
+      'en': 'Greetings',
+      'ph': 'Pagbati',
+      'icon': 'lesson-icon/img10.png',
+    },
+    
     
   ];
 

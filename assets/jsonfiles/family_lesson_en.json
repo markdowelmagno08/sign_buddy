@@ -6,10 +6,42 @@
       "locale": "en",
       "isUnlocked": true,
       "content1": {
-        "description": "This is how you sign Aunt.",
+        "description": "This is how you sign 'Aunt'",
         "contentImage": ["dictionary/en/family/aunt.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Aunt'?",
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
+        "contentOption": [
+          "family_option/en/aunt.png",
+          "family_option/en/grandfather.png",
+          "family_option/en/brother.png",
+          "family_option/en/sister.png"
+        ],
+        "correctAnswer": ["family_option/en/aunt.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Aunt'?",
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/aunt.mp4"],
+        "contentOption": ["Aunt", "Moon", "Star", "Y", "Z", "Apple", "Window", "V", "C"],
+        "correctAnswer": ["Aunt"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Aunt'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/aunt.mp4",
+          "dictionary/en/family/uncle.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/aunt.mp4"]
       }
     },
     {
@@ -18,10 +50,43 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Baby",
+        "description": "This is how you sign 'Baby'",
         "contentImage": ["dictionary/en/family/baby.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Baby'?",
+        "contentImage": ["dictionary/en/family/baby.mp4"],
+        "contentOption": [
+          "family_option/en/brother.png",
+          "family_option/en/father.png",
+          "family_option/en/uncle.png",
+          "family_option/en/baby.png"
+        ],
+        "correctAnswer": ["family_option/en/baby.png"]
+      },
+    
+      "content3": {
+        "description": "Is this the sign for 'Baby'?",
+        "contentImage": ["dictionary/en/family/baby.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/baby.mp4"],
+        "contentOption": ["Table", "Chair", "Laptop", "Orange", "Y", "Z", "V", "C", "Baby"],
+        "correctAnswer": ["Baby"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Baby'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/baby.mp4",
+          "dictionary/en/family/husband.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/baby.mp4"]
       }
     },
     {
@@ -30,10 +95,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Boyfriend",
+        "description": "This is how you sign 'Boyfriend'",
         "contentImage": ["dictionary/en/family/boyfriend.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Boyfriend'?",
+        "contentImage": ["dictionary/en/family/boyfriend.mp4"],
+        "contentOption": [
+          "family_option/en/sister.png",
+          "family_option/en/grandmother.png",
+          "family_option/en/boyfriend.png",
+          "family_option/en/aunt.png"
+        ],
+        "correctAnswer": ["family_option/en/boyfriend.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Boyfriend'?",
+        "contentImage": ["dictionary/en/family/boyfriend.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/boyfriend.mp4"],
+        "contentOption": ["Moon", "Star", "Apple", "Window", "Q", "W", "E", "R", "Boyfriend"],
+        "correctAnswer": ["Boyfriend"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Boyfriend'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/boyfriend.mp4",
+          "dictionary/en/family/husband.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/boyfriend.mp4"]
       }
     },
     {
@@ -42,11 +139,44 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Brother",
+        "description": "This is how you sign 'Brother'",
         "contentImage": ["dictionary/en/family/brother.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Brother'?",
+        "contentImage": ["dictionary/en/family/brother.mp4"],
+        "contentOption": [
+          "family_option/en/niece.png",
+          "family_option/en/brother.png",
+          "family_option/en/father.png",
+          "family_option/en/husband.png"
+        ],
+        "correctAnswer": ["family_option/en/brother.png"]
+      },
+      "content3": {
+      "description": "Is this the sign for 'Brother'?",
+      "contentImage": ["dictionary/en/family/brother.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/brother.mp4"],
+        "contentOption": ["Desk", "Chair", "Laptop", "Orange", "Y", "U", "I", "O", "Brother"],
+        "correctAnswer": ["Brother"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Brother'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/brother.mp4",
+          "dictionary/en/family/sister.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/brother.mp4"]
       }
+      
     },
     {
       "name": "Father",
@@ -54,10 +184,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Father",
+        "description": "This is how you sign 'Father'",
         "contentImage": ["dictionary/en/family/father.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Father?'",
+        "contentImage": ["dictionary/en/family/father.mp4"],
+        "contentOption": [
+          "family_option/en/grandfather.png",
+          "family_option/en/father.png",
+          "family_option/en/sister.png",
+          "family_option/en/nephew.png"
+        ],
+        "correctAnswer": ["family_option/en/father.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Father'?",
+        "contentImage": ["dictionary/en/family/father.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/father.mp4"],
+        "contentOption": ["Book", "Pear", "Glass", "Table", "A", "S", "D", "F", "Father"],
+        "correctAnswer": ["Father"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Father'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/father.mp4",
+          "dictionary/en/family/husband.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/father.mp4"]
       }
     },
     {
@@ -66,10 +228,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Friend",
+        "description": "This is how you sign 'Friend'",
         "contentImage": ["dictionary/en/family/friend.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Friend'?",
+        "contentImage": ["dictionary/en/family/friend.mp4"],
+        "contentOption": [
+          "family_option/en/grandmother.png",
+          "family_option/en/uncle.png",
+          "family_option/en/friend.png",
+          "family_option/en/father.png"
+        ],
+        "correctAnswer": ["family_option/en/friend.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Friend'?",
+        "contentImage": ["dictionary/en/family/friend.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/friend.mp4"],
+        "contentOption": ["Grape", "Piano", "Window", "Book", "H", "J", "K", "L", "Friend"],
+        "correctAnswer": ["Friend"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Friend'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/friend.mp4",
+          "dictionary/en/family/boyfriend.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/friend.mp4"]
       }
     },
     {
@@ -78,10 +272,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Girlfriend",
+        "description": "This is how you sign 'Girlfriend'",
         "contentImage": ["dictionary/en/family/girlfriend.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Girlfriend'?",
+        "contentImage": ["dictionary/en/family/girlfriend.mp4"],
+        "contentOption": [
+          "family_option/en/girlfriend.png",
+          "family_option/en/boyfriend.png",
+          "family_option/en/sister.png",
+          "family_option/en/aunt.png"
+        ],
+        "correctAnswer": ["family_option/en/girlfriend.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Girlfriend'?",
+        "contentImage": ["dictionary/en/family/girlfriend.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/girlfriend.mp4"],
+        "contentOption": ["Chair", "Ocean", "Orange", "Cloud", "X", "C", "V", "B", "Girlfriend"],
+        "correctAnswer": ["Girlfriend"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Girlfriend'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/girlfriend.mp4",
+          "dictionary/en/family/grandfather.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/girlfriend.mp4"]
       }
     },
     {
@@ -90,10 +316,43 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Grandfather",
+        "description": "This is how you sign 'Grandfather'",
         "contentImage": ["dictionary/en/family/grandfather.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Grandfather'?",
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
+        "contentOption": [
+          "family_option/en/grandmother.png",
+          "family_option/en/grandfather.png",
+          "family_option/en/sister.png",
+          "family_option/en/uncle.png"
+        ],
+        "correctAnswer": ["family_option/en/grandfather.png"]
+      
+      },
+      "content3": {
+        "description": "Is this the sign for 'Grandfather'?",
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/grandfather.mp4"],
+        "contentOption": ["Apple", "Bird", "River", "Book", "M", "Q", "W", "E", "Grandfather"],
+        "correctAnswer": ["Grandfather"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Grandfather'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/grandfather.mp4",
+          "dictionary/en/family/brother.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/grandfather.mp4"]
       }
     },
     {
@@ -102,10 +361,43 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Grandmother",
+        "description": "This is how you sign 'Grandmother'",
         "contentImage": ["dictionary/en/family/grandmother.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Grandmother'?",
+        "contentImage": ["dictionary/en/family/grandmother.mp4"],
+        "contentOption": [
+          "family_option/en/father.png",
+          "family_option/en/grandmother.png",
+          "family_option/en/niece.png",
+          "family_option/en/husband.png"
+        ],
+        "correctAnswer": ["family_option/en/grandmother.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Grandmother'?",
+        "contentImage": ["dictionary/en/family/grandmother.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/grandmother.mp4"],
+        "contentOption": ["Tree", "Chair", "Ocean", "Book", "T", "Y", "U", "I", "Grandmother"],
+        "correctAnswer": ["Grandmother"]
+      
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Grandmother'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/grandmother.mp4",
+          "dictionary/en/family/boyfriend.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/grandmother.mp4"]
       }
     },
     {
@@ -114,11 +406,44 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Husband",
+        "description": "This is how you sign 'Husband'",
         "contentImage": ["dictionary/en/family/husband.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Husband'?",
+        "contentImage": ["dictionary/en/family/husband.mp4"],
+        "contentOption": [
+          "family_option/en/uncle.png",
+          "family_option/en/sister.png",
+          "family_option/en/brother.png",
+          "family_option/en/husband.png"
+        ],
+        "correctAnswer": ["family_option/en/husband.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Husband'?",
+        "contentImage": ["dictionary/en/family/husband.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/husband.mp4"],
+        "contentOption": ["Chair", "River", "Orange", "Cloud", "P", "A", "S", "D", "Husband"],
+        "correctAnswer": ["Husband"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Husband'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/husband.mp4",
+          "dictionary/en/family/baby.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/husband.mp4"]
       }
+      
     },
     {
       "name": "Nephew",
@@ -126,11 +451,44 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Nephew",
+        "description": "This is how you sign 'Nephew'",
         "contentImage": ["dictionary/en/family/nephew.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Nephew'?",
+        "contentImage": ["dictionary/en/family/nephew.mp4"],
+        "contentOption": [
+          "family_option/en/grandfather.png",
+          "family_option/en/nephew.png",
+          "family_option/en/friend.png",
+          "family_option/en/father.png"
+        ],
+        "correctAnswer": ["family_option/en/nephew.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Nephew'?",
+        "contentImage": ["dictionary/en/family/nephew.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/nephew.mp4"],
+        "contentOption": ["Book", "Leaf", "Glass", "Tree", "G", "H", "J", "K", "Nephew"],
+        "correctAnswer": ["Nephew"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Nephew'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/nephew.mp4",
+          "dictionary/en/family/niece.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/nephew.mp4"]
       }
+      
     },
     {
       "name": "Niece",
@@ -138,10 +496,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Niece",
+        "description": "This is how you sign 'Niece'",
         "contentImage": ["dictionary/en/family/niece.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Niece'?",
+        "contentImage": ["dictionary/en/family/niece.mp4"],
+        "contentOption": [
+          "family_option/en/sister.png",
+          "family_option/en/niece.png",
+          "family_option/en/baby.png",
+          "family_option/en/uncle.png"
+        ],
+        "correctAnswer": ["family_option/en/niece.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Niece'?",
+        "contentImage": ["dictionary/en/family/niece.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/niece.mp4"],
+        "contentOption": ["Sky", "Piano", "Window", "Book", "Z", "X", "C", "V", "Niece"],
+        "correctAnswer": ["Niece"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Niece'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/niece.mp4",
+          "dictionary/en/family/friend.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/niece.mp4"]
       }
     },
     {
@@ -150,10 +540,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Sister",
+        "description": "This is how you sign 'Sister'",
         "contentImage": ["dictionary/en/family/sister.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Sister'?",
+        "contentImage": ["dictionary/en/family/sister.mp4"],
+        "contentOption": [
+          "family_option/en/brother.png",
+          "family_option/en/sister.png",
+          "family_option/en/father.png",
+          "family_option/en/baby.png"
+        ],
+        "correctAnswer": ["family_option/en/sister.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Sister'?",
+        "contentImage": ["dictionary/en/family/sister.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "Which image shows the sign for 'Sister'?",
+        "contentImage": ["dictionary/en/family/sister.mp4"],
+        "contentOption": ["Chair", "Ocean", "Orange", "Cloud", "N", "M", "Q", "W", "Sister"],
+        "correctAnswer": ["Sister"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Sister'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/sister.mp4",
+          "dictionary/en/family/brother.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/sister.mp4"]
       }
     },
     {
@@ -162,10 +584,42 @@
       "locale": "en",
       "isUnlocked": false,
       "content1": {
-        "description": "This is how you sign Uncle",
+        "description": "This is how you sign 'Uncle'",
         "contentImage": ["dictionary/en/family/uncle.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Which image shows the sign for 'Uncle'?",
+        "contentImage": ["dictionary/en/family/uncle.mp4"],
+        "contentOption": [
+          "family_option/en/aunt.png",
+          "family_option/en/uncle.png",
+          "family_option/en/grandfather.png",
+          "family_option/en/niece.png"
+        ],
+        "correctAnswer": ["family_option/en/uncle.png"]
+      },
+      "content3": {
+        "description": "Is this the sign for 'Uncle'?",
+        "contentImage": ["dictionary/en/family/uncle.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content4": {
+        "description": "What is being signed here?",
+        "contentImage": ["dictionary/en/family/uncle.mp4"],
+        "contentOption": ["Apple", "Bird", "River", "Book", "R", "T", "Y", "U", "Uncle"],
+        "correctAnswer": ["Uncle"]
+      },
+      "content5": {
+        "description": "Which video represents the sign for 'Uncle'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/en/family/uncle.mp4",
+          "dictionary/en/family/aunt.mp4"
+        ],
+        "correctAnswer": ["dictionary/en/family/uncle.mp4"]
       }
     }
   ]

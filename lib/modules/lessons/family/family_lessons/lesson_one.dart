@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/auth.dart';
-import 'package:sign_buddy/modules/firestore_data/lesson_family.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/modules/firestore_data/lesson_family.dart';
 import 'package:sign_buddy/modules/lessons/family/family.dart';
+import 'package:sign_buddy/modules/lessons/family/family_lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 
 class FamilyLessonOne extends StatefulWidget {
@@ -15,10 +15,10 @@ class FamilyLessonOne extends StatefulWidget {
   const FamilyLessonOne({Key? key, required this.lessonName}) : super(key: key);
 
   @override
-  State<FamilyLessonOne> createState() => _FamilyLessonTwoState();
+  State<FamilyLessonOne> createState() => _FamilyLessonOneState();
 }
 
-class _FamilyLessonTwoState extends State<FamilyLessonOne> {
+class _FamilyLessonOneState extends State<FamilyLessonOne> {
   String contentDescription = "";
   String uid = "";
   List<dynamic> contentVideo = [];
@@ -74,7 +74,7 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
         isLoading = true;
       }
     } catch (e) {
-      print('Error reading Family_lessons.json: $e');
+      print('Error reading family_lessons.json: $e');
       setState(() {
         isLoading = false;
       });
@@ -112,12 +112,12 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
           });
         } else {
           print(
-              'By Content: Family lesson "$lessonName" was not found within the Firestore.');
+              'By Content: family lesson "$lessonName" was not found within the Firestore.');
           isLoading = true;
         }
       }
     } catch (e) {
-      print('Error reading Family_lessons.json: $e');
+      print('Error reading family_lessons.json: $e');
       if (mounted) {
         setState(() {
           isLoading = true;
@@ -140,10 +140,10 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
   }
 
   void _nextPage() async {
-    // Navigator.pushReplacement(
-    //   context,
-    //   SlidePageRoute(page: QuizOne(lessonName: widget.lessonName)),
-    // );
+    Navigator.pushReplacement(
+      context,
+      SlidePageRoute(page: FamilyQuizOne(lessonName: widget.lessonName)),
+    );
 
     if(mounted) {
       setState(() {
@@ -235,36 +235,31 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+        title: Text(isEnglish ? 'Family Lesson' : 'Aralin sa Pamilya',  style: TextStyle(color: Colors.black, fontSize: 16)),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: Family()));// This will pop the current screen
+            },
+          ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 50),
-            Align(
-              alignment: Alignment.topLeft,
-              child: CustomBackButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    SlidePageRoute(page: Family()),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 70),
-              Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Family lesson for: "${widget.lessonName}"', 
-                style: TextStyle(
-                  fontSize: 20, 
-                  fontWeight: FontWeight.bold, 
-                ),
-              ),
-            ),
             const SizedBox(height: 70),
             Align(
               alignment: Alignment.topLeft,
@@ -276,7 +271,7 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             if (contentVideo.isNotEmpty) buildVideoDisplay(),
             Expanded(
               child: Align(
@@ -287,11 +282,11 @@ class _FamilyLessonTwoState extends State<FamilyLessonOne> {
                   onPressed: isLoading || contentVideo.isEmpty
                       ? null  // Disable the button if assets are still loading
                       : () async {
-                          if (progress >= 31) {
+                          if (progress >= 19) {
                             _nextPage();
                           } else {
                             FamilyLessonFireStore(userId: uid)
-                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 20);
                             print("Progress 1 updated successfully!");
                             _nextPage();
                           }
