@@ -348,7 +348,7 @@ class _FamilyQuizFourState extends State<FamilyQuizThree> {
                         crossAxisCount: 3,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
-                        mainAxisExtent: 50
+                        mainAxisExtent: 60
                       ),
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -452,46 +452,55 @@ class _FamilyQuizFourState extends State<FamilyQuizThree> {
     }
   }
 
-  Widget _buildWordOption(String option) {
-      
-    bool isSelected = selectedOption == option;
-    Color tileColor =
-        isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
+Widget _buildWordOption(String option) {
+  bool isSelected = selectedOption == option;
+  Color tileColor =
+      isSelected ? Colors.grey.withOpacity(0.5) : Colors.transparent;
 
-    if (answerChecked && isSelected) {
-      bool isCorrectAnswer = correctAnswer.contains(option);
-      tileColor = isCorrectAnswer ? Colors.green.withOpacity(0.3): Colors.red.withOpacity(0.3);
-    }
+  if (answerChecked && isSelected) {
+    bool isCorrectAnswer = correctAnswer.contains(option);
+    tileColor = isCorrectAnswer ? Colors.green.withOpacity(0.3) : Colors.red.withOpacity(0.3);
+  }
 
-    return GestureDetector(
-      onTap: () {
-        if (!answerChecked) {
-          setState(() {
-            selectedOption = option;
-          });
-        }
-      },
-      child: SizedBox(
-        child: Container(
-          decoration: BoxDecoration(
-            color: tileColor,
-            border: Border.all(
-              color: Colors.grey,
-              width: 1.0,
-            ),
-            borderRadius: BorderRadius.circular(10),
+  List<String> words = option.split(" "); // Split the option by spaces
+
+  double fontSize = words.length > 2 ? 12.0 : 16.0; // Adjust the font size based on the number of words
+
+  return GestureDetector(
+    onTap: () {
+      if (!answerChecked) {
+        setState(() {
+          selectedOption = option;
+        });
+      }
+    },
+    child: SizedBox(
+      child: Container(
+        decoration: BoxDecoration(
+          color: tileColor,
+          border: Border.all(
+            color: Colors.grey,
+            width: 1.0,
           ),
-          child: Center(
-            child: Text(
-              option,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: words.map((word) {
+              return Text(
+                word,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }).toList(),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

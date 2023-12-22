@@ -1,29 +1,52 @@
 
     [
         {
-          "name": "Ampon",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": true,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Ampon'",
-            "contentImage": ["dictionary/ph/family/ampon.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
-        {
           "name": "Anak na Babae",
           "progress": 0,
           "locale": "ph",
-          "isUnlocked": false,
+          "isUnlocked": true,
           "content1": {
             "description": "Ito ang paraan kung paano sinesenyas ang 'Anak na Babae'",
             "contentImage": ["dictionary/ph/family/anak_na_babae.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Anak na Babae'?",
+            "contentImage": ["dictionary/ph/family/anak_na_babae.mp4"],
+            "contentOption": [
+              "family_option/ph/anak_na_babae.png",
+              "family_option/ph/tito.png",
+              "family_option/ph/magulang.png",
+              "family_option/ph/pamangkin_na_lalake.png"
+            ],
+            "correctAnswer": ["family_option/ph/anak_na_babae.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Anak na Babae'?",
+            "contentImage": ["dictionary/ph/family/anak_na_babae.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/anak_na_babae.mp4"],
+            "contentOption": ["Anak Na Babae", "Ate", "Bituin", "Pamangkin na Babae", "Bintana", "A", "E","I", "O"],
+            "correctAnswer": ["Anak Na Babae"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Anak na Babae'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/anak_na_babae.mp4",
+              "dictionary/ph/family/ate.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/anak_na_babae.mp4"]
           }
         },
+
+
+        
         {
           "name": "Anak na Lalaki",
           "progress": 0,
@@ -34,20 +57,54 @@
             "contentImage": ["dictionary/ph/family/anak_na_lalaki.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Anak na Lalaki'?",
+            "contentImage": ["dictionary/ph/family/anak_na_lalaki.mp4"],
+            "contentOption": [
+              "family_option/ph/tita.png",
+              "family_option/ph/sanggol.png",
+              "family_option/ph/anak_na_lalaki.png",
+              "family_option/ph/ate.png"
+            ],
+            "correctAnswer": ["family_option/ph/anak_na_lalaki.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Anak na Lalaki'?",
+            "contentImage": ["dictionary/ph/family/anak_na_lalaki.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/anak_na_lalaki.mp4"],
+            "contentOption": [
+              "Mama",
+              "Anak na Lalaki",
+              "Gatas",
+              "Pusa",
+              "Pamangkin na Lalaki",
+              "J",
+              "V",
+              "L",
+              "K"
+            ],
+            "correctAnswer": ["Anak na Lalaki"]
+          },
+          
+          
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Anak na Lalaki'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/anak_na_lalaki.mp4",
+              "dictionary/ph/family/mga_bata.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/anak_na_lalaki.mp4"]
           }
         },
-        {
-          "name": "Apo",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Apo'",
-            "contentImage": ["dictionary/ph/family/apo.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
+
+
         {
           "name": "Asawang Babae",
           "progress": 0,
@@ -58,8 +115,52 @@
             "contentImage": ["dictionary/ph/family/asawang_babae.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Asawang Babae'?",
+            "contentImage": ["dictionary/ph/family/asawang_babae.mp4"],
+            "contentOption": [
+              "family_option/ph/papa.png",
+              "family_option/ph/kuya.png",
+              "family_option/ph/asawang_babae.png",
+              "family_option/ph/sanggol.png"
+            ],
+            "correctAnswer": ["family_option/ph/asawang_babae.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Asawang Babae'?",
+            "contentImage": ["dictionary/ph/family/asawang_babae.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/asawang_babae.mp4"],
+            "contentOption": [
+              "Lakad",
+              "Gulay",
+              "Asawang Babae",
+              "Tindahan",
+              "Trabaho",
+              "M",
+              "N",
+              "P",
+              "R"
+            ],
+            "correctAnswer": ["Asawang Babae"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Asawang Babae'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/asawang_babae.mp4",
+              "dictionary/ph/family/tita.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/asawang_babae.mp4"]
           }
         },
+
+
         {
           "name": "Asawang Lalaki",
           "progress": 0,
@@ -70,6 +171,48 @@
             "contentImage": ["dictionary/ph/family/asawang_lalaki.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Asawang Lalaki'?",
+            "contentImage": ["dictionary/ph/family/asawang_lalaki.mp4"],
+            "contentOption": [
+              "family_option/ph/ate.png",
+              "family_option/ph/tita.png",
+              "family_option/ph/asawang_lalaki.png",
+              "family_option/ph/lolo.png"
+            ],
+            "correctAnswer": ["family_option/ph/asawang_lalaki.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Asawang Lalaki'?",
+            "contentImage": ["dictionary/ph/family/asawang_lalaki.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/asawang_lalaki.mp4"],
+            "contentOption": [
+              "Kamay",
+              "Asawang Lalaki",
+              "Pinya",
+              "Sapatos",
+              "Bola",
+              "F",
+              "G",
+              "W",
+              "Y"
+            ],
+            "correctAnswer": ["Asawang Lalaki"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Asawang Lalaki'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/asawang_lalaki.mp4",
+              "dictionary/ph/family/papa.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/asawang_lalaki.mp4"]
           }
         },
         {
@@ -82,6 +225,48 @@
             "contentImage": ["dictionary/ph/family/ate.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Ate'?",
+            "contentImage": ["dictionary/ph/family/ate.mp4"],
+            "contentOption": [
+              "family_option/ph/ate.png",
+              "family_option/ph/mama.png",
+              "family_option/ph/magulang.png",
+              "family_option/ph/kuya.png"
+            ],
+            "correctAnswer": ["family_option/ph/ate.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Ate'?",
+            "contentImage": ["dictionary/ph/family/ate.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/ate.mp4"],
+            "contentOption": [
+              "Pamilya",
+              "Ate",
+              "Lapis",
+              "Sipilyo",
+              "Sala",
+              "T",
+              "C",
+              "D",
+              "J"
+            ],
+            "correctAnswer": ["Ate"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Ate'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/ate.mp4",
+              "dictionary/ph/family/lolo.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/ate.mp4"]
           }
         },
         {
@@ -94,18 +279,48 @@
             "contentImage": ["dictionary/ph/family/bata.mp4"],
             "contentOption": null,
             "correctAnswer": null
-          }
-        },
-        {
-          "name": "Buntis",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Buntis'",
-            "contentImage": ["dictionary/ph/family/buntis.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Bata'?",
+            "contentImage": ["dictionary/ph/family/bata.mp4"],
+            "contentOption": [
+              "family_option/ph/kuya.png",
+              "family_option/ph/bata.png",
+              "family_option/ph/pamangkin_na_lalake.png",
+              "family_option/ph/ate.png"
+            ],
+            "correctAnswer": ["family_option/ph/bata.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Bata'?",
+            "contentImage": ["dictionary/ph/family/bata.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/bata.mp4"],
+            "contentOption": [
+              "Bata",
+              "Kwento",
+              "Mesa",
+              "Sapatos",
+              "Silya",
+              "U",
+              "V",
+              "Z",
+              "X"
+            ],
+            "correctAnswer": ["Bata"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Bata'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/bata.mp4",
+              "dictionary/ph/family/mama.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/bata.mp4"]
           }
         },
         {
@@ -118,30 +333,48 @@
             "contentImage": ["dictionary/ph/family/family.mp4"],
             "contentOption": null,
             "correctAnswer": null
-          }
-        },
-        {
-          "name": "Kasal",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Kasal'",
-            "contentImage": ["dictionary/ph/family/kasal.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
-        {
-          "name": "Kinupkop",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Kinupkop'",
-            "contentImage": ["dictionary/ph/family/kinupkop.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Family'?",
+            "contentImage": ["dictionary/ph/family/family.mp4"],
+            "contentOption": [
+              "family_option/ph/magulang.png",
+              "family_option/ph/family.png",
+              "family_option/ph/pamangkin_na_babae.png",
+              "family_option/ph/tita.png"
+            ],
+            "correctAnswer": ["family_option/ph/family.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Family'?",
+            "contentImage": ["dictionary/ph/family/family.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/family.mp4"],
+            "contentOption": [
+              "Inumin",
+              "Family",
+              "Bilao",
+              "Kamiseta",
+              "Saging",
+              "E",
+              "H",
+              "I",
+              "R"
+            ],
+            "correctAnswer": ["Family"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Family'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/family.mp4",
+              "dictionary/ph/family/magulang.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/family.mp4"]
           }
         },
         {
@@ -154,6 +387,48 @@
             "contentImage": ["dictionary/ph/family/kuya.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Kuya'?",
+            "contentImage": ["dictionary/ph/family/kuya.mp4"],
+            "contentOption": [
+              "family_option/ph/kuya.png",
+              "family_option/ph/ate.png",
+              "family_option/ph/papa.png",
+              "family_option/ph/sanggol.png"
+            ],
+            "correctAnswer": ["family_option/ph/kuya.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Kuya'?",
+            "contentImage": ["dictionary/ph/family/kuya.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/kuya.mp4"],
+            "contentOption": [
+              "Laruan",
+              "Kuya",
+              "Kamatis",
+              "Ubas",
+              "Silya",
+              "O",
+              "P",
+              "R",
+              "Q"
+            ],
+            "correctAnswer": ["Kuya"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Kuya'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/kuya.mp4",
+              "dictionary/ph/family/tito.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/kuya.mp4"]
           }
         },
         {
@@ -166,6 +441,48 @@
             "contentImage": ["dictionary/ph/family/lola.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Lola'?",
+            "contentImage": ["dictionary/ph/family/lola.mp4"],
+            "contentOption": [
+              "family_option/ph/mama.png",
+              "family_option/ph/lolo.png",
+              "family_option/ph/anak_na_lalaki.png",
+              "family_option/ph/lola.png"
+            ],
+            "correctAnswer": ["family_option/ph/lola.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Lola'?",
+            "contentImage": ["dictionary/ph/family/lola.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/lola.mp4"],
+            "contentOption": [
+              "Lupa",
+              "Lola",
+              "Karne",
+              "Lolo",
+              "Sapatos",
+              "K",
+              "M",
+              "N",
+              "J"
+            ],
+            "correctAnswer": ["Lola"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Lola'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/lola.mp4",
+              "dictionary/ph/family/ate.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/lola.mp4"]
           }
         },
         {
@@ -178,6 +495,48 @@
             "contentImage": ["dictionary/ph/family/lolo.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Lolo'?",
+            "contentImage": ["dictionary/ph/family/lolo.mp4"],
+            "contentOption": [
+              "family_option/ph/lolo.png",
+              "family_option/ph/papa.png",
+              "family_option/ph/ate.png",
+              "family_option/ph/mama.png"
+            ],
+            "correctAnswer": ["family_option/ph/lolo.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Lolo'?",
+            "contentImage": ["dictionary/ph/family/lolo.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/lolo.mp4"],
+            "contentOption": [
+              "Lapis",
+              "Lolo",
+              "Kahoy",
+              "Ilog",
+              "Isda",
+              "F",
+              "G",
+              "W",
+              "Y"
+            ],
+            "correctAnswer": ["Lolo"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Lolo'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/lolo.mp4",
+              "dictionary/ph/family/pamangkin_na_lalake.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/lolo.mp4"]
           }
         },
         {
@@ -190,6 +549,48 @@
             "contentImage": ["dictionary/ph/family/magulang.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Magulang'?",
+            "contentImage": ["dictionary/ph/family/magulang.mp4"],
+            "contentOption": [
+              "family_option/ph/sanggol.png",
+              "family_option/ph/lolo.png",
+              "family_option/ph/tito.png",
+              "family_option/ph/papa.png"
+            ],
+            "correctAnswer": ["family_option/ph/magulang.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Magulang'?",
+            "contentImage": ["dictionary/ph/family/magulang.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/magulang.mp4"],
+            "contentOption": [
+              "Mukha",
+              "Magulang",
+              "Niyog",
+              "Oso",
+              "Itlog",
+              "U",
+              "V",
+              "Z",
+              "X"
+            ],
+            "correctAnswer": ["Magulang"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Magulang'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/magulang.mp4",
+              "dictionary/ph/family/papa.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/magulang.mp4"]
           }
         },
         {
@@ -202,6 +603,48 @@
             "contentImage": ["dictionary/ph/family/mama.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Mama'?",
+            "contentImage": ["dictionary/ph/family/mama.mp4"],
+            "contentOption": [
+              "family_option/ph/mama.png",
+              "family_option/ph/papa.png",
+              "family_option/ph/anak_na_babae.png",
+              "family_option/ph/anak_na_lalaki.png"
+            ],
+            "correctAnswer": ["family_option/ph/mama.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Mama'?",
+            "contentImage": ["dictionary/ph/family/mama.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito",
+            "contentImage": ["dictionary/ph/family/mama.mp4"],
+            "contentOption": [
+              "Mama",
+              "Nanay",
+              "Oso",
+              "Pusa",
+              "Aso",
+              "T",
+              "C",
+              "D",
+              "J"
+            ],
+            "correctAnswer": ["Mama"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Mama'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/mama.mp4",
+              "dictionary/ph/family/anak_na_babae.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/mama.mp4"]
           }
         },
         {
@@ -214,30 +657,48 @@
             "contentImage": ["dictionary/ph/family/mga_bata.mp4"],
             "contentOption": null,
             "correctAnswer": null
-          }
-        },
-        {
-          "name": "Ninang",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Ninang'",
-            "contentImage": ["dictionary/ph/family/ninang.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
-        {
-          "name": "Ninong",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Ninong'",
-            "contentImage": ["dictionary/ph/family/ninong.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Mga Bata'?",
+            "contentImage": ["dictionary/ph/family/mga_bata.mp4"],
+            "contentOption": [
+              "family_option/ph/family.png",
+              "family_option/ph/mga_bata.png",
+              "family_option/ph/sanggol.png",
+              "family_option/ph/papa.png"
+            ],
+            "correctAnswer": ["family_option/ph/mga_bata.png"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/mga_bata.mp4"],
+            "contentOption": [
+              "Mga Bata",
+              "Kwento",
+              "Pera",
+              "Ilog",
+              "Gatas",
+              "U",
+              "V",
+              "Z",
+              "X"
+            ],
+            "correctAnswer": ["Mga Bata"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Mga Bata'?",
+            "contentImage": ["dictionary/ph/family/mga_bata.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Mga Bata'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/mga_bata.mp4",
+              "dictionary/ph/family/pamangkin_na_lalake.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/mga_bata.mp4"]
           }
         },
         {
@@ -250,6 +711,48 @@
             "contentImage": ["dictionary/ph/family/pamangkin_na_babae.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Pamangkin na Babae'?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_babae.mp4"],
+            "contentOption": [
+              "family_option/ph/anak_na_babae.png",
+              "family_option/ph/pamangkin_na_babae.png",
+              "family_option/ph/lolo.png",
+              "family_option/ph/ate.png"
+            ],
+            "correctAnswer": ["family_option/ph/pamangkin_na_babae.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Pamangkin na Babae'?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_babae.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_babae.mp4"],
+            "contentOption": [
+              "Pamangkin na Babae",
+              "Saging",
+              "Ilog",
+              "Lupa",
+              "Anak na Lalaki",
+              "O",
+              "P",
+              "R",
+              "Q"
+            ],
+            "correctAnswer": ["Pamangkin na Babae"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Pamangkin na Babae'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/pamangkin_na_babae.mp4",
+              "dictionary/ph/family/magulang.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/pamangkin_na_babae.mp4"]
           }
         },
         {
@@ -262,6 +765,48 @@
             "contentImage": ["dictionary/ph/family/pamangkin_na_lalake.mp4"],
             "contentOption": null,
             "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Pamangkin na Lalaki'?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_lalake.mp4"],
+            "contentOption": [
+              "family_option/ph/lola.png",
+              "family_option/ph/ate.png",
+              "family_option/ph/pamangkin_na_lalake.png",
+              "family_option/ph/magulang.png"
+            ],
+            "correctAnswer": ["family_option/ph/pamangkin_na_lalake.png"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Pamangkin na Lalaki'?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_lalake.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/pamangkin_na_lalake.mp4"],
+            "contentOption": [
+              "Pamangkin na Lalaki",
+              "Kape",
+              "Gatas",
+              "Bola",
+              "Asawang Lalaki",
+              "E",
+              "H",
+              "I",
+              "R"
+            ],
+            "correctAnswer": ["Pamangkin na Lalaki"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Pamangkin na Lalaki'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/pamangkin_na_lalake.mp4",
+              "dictionary/ph/family/lola.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/pamangkin_na_lalake.mp4"]
           }
         },
         {
@@ -274,18 +819,48 @@
             "contentImage": ["dictionary/ph/family/papa.mp4"],
             "contentOption": null,
             "correctAnswer": null
-          }
-        },
-        {
-          "name": "Pinsan",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Pinsan'",
-            "contentImage": ["dictionary/ph/family/pinsan.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Papa'?",
+            "contentImage": ["dictionary/ph/family/papa.mp4"],
+            "contentOption": [
+              "family_option/ph/papa.png",
+              "family_option/ph/mama.png",
+              "family_option/ph/lola.png",
+              "family_option/ph/kuya.png"
+            ],
+            "correctAnswer": ["family_option/ph/papa.png"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/papa.mp4"],
+            "contentOption": [
+              "Papa",
+              "Lapis",
+              "Saging",
+              "Ibon",
+              "Pinya",
+              "U",
+              "V",
+              "W",
+              "X"
+            ],
+            "correctAnswer": ["Papa"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Papa'?",
+            "contentImage": ["dictionary/ph/family/papa.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Papa'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/papa.mp4",
+              "dictionary/ph/family/tito.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/papa.mp4"]
           }
         },
         {
@@ -298,42 +873,48 @@
             "contentImage": ["dictionary/ph/family/sanggol.mp4"],
             "contentOption": null,
             "correctAnswer": null
-          }
-        },
-        {
-          "name": "Stepbrother",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Stepbrother'",
-            "contentImage": ["dictionary/ph/family/stepbrother.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
-        {
-          "name": "Stepsister",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Stepsister'",
-            "contentImage": ["dictionary/ph/family/stepsister.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
-          }
-        },
-        {
-          "name": "Teenager",
-          "progress": 0,
-          "locale": "ph",
-          "isUnlocked": false,
-          "content1": {
-            "description": "Ito ang paraan kung paano sinesenyas ang 'Teenager'",
-            "contentImage": ["dictionary/ph/family/teenager.mp4"],
-            "contentOption": null,
-            "correctAnswer": null
+          },
+          "content2": {
+            "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Sanggol'?",
+            "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+            "contentOption": [
+              "family_option/ph/sanggol.png",
+              "family_option/ph/anak_na_babae.png",
+              "family_option/ph/ate.png",
+              "family_option/ph/mga_bata.png"
+            ],
+            "correctAnswer": ["family_option/ph/sanggol.png"]
+          },
+          "content4": {
+            "description": "Anong senyas ang ginagamit dito?",
+            "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+            "contentOption": [
+              "Sanggol",
+              "Baboy",
+              "Ilog",
+              "Silya",
+              "Kwento",
+              "F",
+              "G",
+              "W",
+              "Y"
+            ],
+            "correctAnswer": ["Sanggol"]
+          },
+          "content3": {
+            "description": "Ito ba ang senyas para sa 'Sanggol'?",
+            "contentImage": ["dictionary/ph/family/sanggol.mp4"],
+            "contentOption": ["Yes", "No"],
+            "correctAnswer": ["Yes"]
+          },
+          "content5": {
+            "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Sanggol'?",
+            "contentImage": null,
+            "contentOption": [
+              "dictionary/ph/family/sanggol.mp4",
+              "dictionary/ph/family/anak_na_lalaki.mp4"
+            ],
+            "correctAnswer": ["dictionary/ph/family/sanggol.mp4"]
           }
         },
         {
@@ -346,6 +927,49 @@
               "contentImage": ["dictionary/ph/family/tita.mp4"],
               "contentOption": null,
               "correctAnswer": null
+            },
+            "content2": {
+              "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Tita'?",
+              "contentImage": ["dictionary/ph/family/tita.mp4"],
+              "contentOption": [
+                "family_option/ph/ate.png",
+                "family_option/ph/pamangkin_na_babae.png",
+                "family_option/ph/lolo.png",
+                "family_option/ph/tita.png"
+              ],
+              "correctAnswer": ["family_option/ph/tita.png"]
+            },
+            
+            "content3": {
+              "description": "Ito ba ang senyas para sa 'Tita'?",
+              "contentImage": ["dictionary/ph/family/tita.mp4"],
+              "contentOption": ["Yes", "No"],
+              "correctAnswer": ["Yes"]
+            },
+            "content4": {
+              "description": "Anong senyas ang ginagamit dito?",
+              "contentImage": ["dictionary/ph/family/tita.mp4"],
+              "contentOption": [
+                "Tita",
+                "Gatas",
+                "Puso",
+                "Laruan",
+                "Silya",
+                "A",
+                "E",
+                "I",
+                "O"
+              ],
+              "correctAnswer": ["Tita"]
+            },
+            "content5": {
+              "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Tita'?",
+              "contentImage": null,
+              "contentOption": [
+                "dictionary/ph/family/tita.mp4",
+                "dictionary/ph/family/pamangkin_na_babae.mp4"
+              ],
+              "correctAnswer": ["dictionary/ph/family/tita.mp4"]
             }
           },
           {
@@ -358,6 +982,48 @@
               "contentImage": ["dictionary/ph/family/tito.mp4"],
               "contentOption": null,
               "correctAnswer": null
+            },
+            "content2": {
+              "description": "Alin sa mga larawan ang nagpapakita ng senyas para sa 'Tito'?",
+              "contentImage": ["dictionary/ph/family/tito.mp4"],
+              "contentOption": [
+                "family_option/ph/kuya.png",
+                "family_option/ph/tito.png",
+                "family_option/ph/lola.png",
+                "family_option/ph/tita.png"
+              ],
+              "correctAnswer": ["family_option/ph/tito.png"]
+            },
+            "content4": {
+              "description": "Anong senyas ang ginagamit dito?",
+              "contentImage": ["dictionary/ph/family/tito.mp4"],
+              "contentOption": [
+                "Tito",
+                "Kamiseta",
+                "Trabaho",
+                "Silya",
+                "Bata",
+                "F",
+                "G",
+                "W",
+                "Y"
+              ],
+              "correctAnswer": ["Tito"]
+            },
+            "content3": {
+              "description": "Ito ba ang senyas para sa 'Tito'?",
+              "contentImage": ["dictionary/ph/family/tito.mp4"],
+              "contentOption": ["Yes", "No"],
+              "correctAnswer": ["Yes"]
+            },
+            "content5": {
+              "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Tito'?",
+              "contentImage": null,
+              "contentOption": [
+                "dictionary/ph/family/tito.mp4",
+                "dictionary/ph/family/lolo.mp4"
+              ],
+              "correctAnswer": ["dictionary/ph/family/tito.mp4"]
             }
           }
       

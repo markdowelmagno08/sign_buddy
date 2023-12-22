@@ -383,7 +383,7 @@ class _FamilyQuizOneState extends State<FamilyQuizOne> {
               const SizedBox(height: 30),
               Text(
                 contentDescription,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 15),
               if (contentVideo.isNotEmpty) buildVideoDisplay(),
