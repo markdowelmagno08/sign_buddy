@@ -9,6 +9,33 @@
         "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
+        "contentOption": [ "luck",  "Ingat", "ka", "good", "paalam",  "Pasensya", "na",  "Gabi", "Umaga","Condolences"],
+        "correctAnswer": ["Condolences"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Condolences'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/condolences.mp4",
+          "dictionary/ph/phrases/ingat_ka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/condolences.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Condolences'?",
+        "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
+        "contentOption": ["Puno", "Kamay", "Lapis", "Condolences", "Plantsa", "Karagatan", "Araw", "Susi", "Tubig"],
+        "correctAnswer": ["Condolences"]
       }
     },
     {
@@ -21,10 +48,38 @@
         "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
+        "contentOption": ["Huwag", "Gabi", "luck", "kang", "Congrats", "Mahalaga", "Kita", "mag-alala", "Umaga", "ka", "Happy"],
+        "correctAnswer": ["Congrats"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Congrats'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/congrats.mp4",
+          "dictionary/ph/phrases/good_luck.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/congrats.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Congrats'?",
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/congrats.mp4"],
+        "contentOption": ["Tulay", "Lamesa", "Congrats", "Saklay", "Lupa", "Lobo", "Pusa", "Tsinelas", "Damit"],
+        "correctAnswer": ["Congrats"]
       }
+      
     },
     {
-      "name": "Goodluck",
+      "name": "Good luck",
       "progress": 0,
       "locale": "ph",
       "isUnlocked": false,
@@ -33,6 +88,33 @@
         "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
+        "contentOption": ["Good", "Kamusta ", "na", "Magandang", "luck", "Birthday", "Salamat", "Umaga", "Hapon", "kita", "Mahalaga"],
+        "correctAnswer": ["Good" ,"luck"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Good luck'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/good_luck.mp4",
+          "dictionary/ph/phrases/ingat_ka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/good_luck.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Good luck'?",
+        "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/good_luck.mp4"],
+        "contentOption": ["Araw", "Sapatos", "Good luck", "Papel", "Silya", "Laruan", "Kamay", "Lobo", "Tubig"],
+        "correctAnswer": ["Good luck"]
       }
     },
     {
@@ -45,18 +127,72 @@
         "contentImage": ["dictionary/ph/phrases/happy_birthday.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/happy_birthday.mp4"],
+        "contentOption": ["salamat", "Gusto", "Happy", "Birthday", "ano", "Pangalan", "mo",  "Pera", "ako", "Wala"],
+        "correctAnswer": ["Happy", "Birthday"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Happy Birthday'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/happy_birthday.mp4",
+          "dictionary/ph/phrases/magandang_gabi.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/happy_birthday.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Happy Birthday'?",
+        "contentImage": ["dictionary/ph/phrases/happy_birthday.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/happy_birthday.mp4"],
+        "contentOption": ["Papel", "Karayom", "Suka", "Happy Birthday", "Saging", "Tsokolate", "Bisikleta", "Saging", "Tubig"],
+        "correctAnswer": ["Happy Birthday"]
       }
     },
     {
-      "name": "Ingat Ka",
+      "name": "Ingat ka",
       "progress": 0,
       "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Ingat Ka'",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Ingat ka'",
         "contentImage": ["dictionary/ph/phrases/ingat_ka.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/ingat_ka.mp4"],
+        "contentOption": ["Paalam", "magandang", "umaga", "Hapon", "Na", "Gabi", "Kita", "Birthday", "luck", "Ingat", "Paumanhin", "ka"],
+        "correctAnswer": ["Ingat" ,"ka"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Ingat Ka'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/ingat_ka.mp4",
+          "dictionary/ph/phrases/magandang_umaga.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/ingat_ka.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Ingat Ka'?",
+        "contentImage": ["dictionary/ph/phrases/ingat_ka.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/ingat_ka.mp4"],
+        "contentOption": ["Ingat Ka", "Saklay", "Sulyap", "Karayom", "Sapatos", "Lamesa", "Plantsa", "Suka", "Saging"],
+        "correctAnswer": ["Ingat Ka"]
       }
     },
     {
@@ -69,6 +205,33 @@
         "contentImage": ["dictionary/ph/phrases/magandang_gabi.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/magandang_gabi.mp4"],
+        "contentOption": ["Hapon", "Birthday", "Magandang", "Salamat", "ka", "luck", "Umaga", "Happy", "Paumanhin", "Gabi"],
+        "correctAnswer": ["Magandang" ,"Gabi"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Magandang Gabi'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/magandang_gabi.mp4",
+          "dictionary/ph/phrases/magandang_hapon.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/magandang_gabi.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Magandang Gabi'?",
+        "contentImage": ["dictionary/ph/phrases/magandang_gabi.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/magandang_gabi.mp4"],
+        "contentOption": ["Lupa", "Magandang Gabi", "Susi", "Bisikleta", "Plantsa", "Karagatan", "Papel", "Laruan", "Tubig"],
+        "correctAnswer": ["Magandang Gabi"]
       }
     },
     {
@@ -81,7 +244,36 @@
         "contentImage": ["dictionary/ph/phrases/magandang_hapon.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/magandang_hapon.mp4"],
+        "contentOption": ["Mahalaga", "Kita", "Na", "luck", "Paumanhin", "Magandang", "Birthday", "Hapon", "Salamat", "Ingat", "ka"],
+        "correctAnswer": ["Magandang","Hapon"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Magandang Hapon'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/magandang_hapon.mp4",
+          "dictionary/ph/phrases/mahal_kita.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/magandang_hapon.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Magandang Hapon'?",
+        "contentImage": ["dictionary/ph/phrases/magandang_hapon.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/magandang_hapon.mp4"],
+        "contentOption": ["Damit", "Lamesa", "Magandang Hapon", "Sapatos", "Suklay", "Tulay", "Laruan", "Tsinelas", "Araw"],
+        "correctAnswer": ["Magandang Hapon"]
       }
+      
+      
     },
     {
       "name": "Magandang Umaga",
@@ -93,6 +285,33 @@
         "contentImage": ["dictionary/ph/phrases/magandang_umaga.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/magandang_umaga.mp4"],
+        "contentOption": ["Paalam", "Magandang", "Umaga", "Hapon", "Na", "Gabi", "Kita", "Birthday", "luck", "Ingat"],
+        "correctAnswer": ["Magandang", "Umaga"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Magandang Umaga'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/magandang_umaga.mp4",
+          "dictionary/ph/phrases/mahalaga_ka.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/magandang_umaga.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Magandang Umaga'?",
+        "contentImage": ["dictionary/ph/phrases/magandang_umaga.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/magandang_umaga.mp4"],
+        "contentOption": ["Suka", "Magandang Umaga", "Plantsa", "Araw", "Karayom", "Sapatos", "Laruan", "Suklay", "Tsinelas"],
+        "correctAnswer": ["Magandang Umaga"]
       }
     },
     {
@@ -105,18 +324,72 @@
         "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
+        "contentOption": ["Hapon", "Kita", "Happy", "luck", "Paalam", "Mahal", "Birthday", "Na", "Gusto",  "ka", "Umaga" ],
+        "correctAnswer": ["Mahal","Kita"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Mahal Kita'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/mahal_kita.mp4",
+          "dictionary/ph/phrases/maraming_salamat.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/mahal_kita.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Condolences'?",
+        "contentImage": ["dictionary/ph/phrases/condolences.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/mahal_kita.mp4"],
+        "contentOption": ["Tubig", "Silya", "Susi", "Mahal Kita", "Tsinelas", "Puno", "Suka", "Saging", "Lamesa"],
+        "correctAnswer": ["Mahal Kita"]
       }
     },
     {
-      "name": "Mahalaga Ka",
+      "name": "Mahalaga ka",
       "progress": 0,
       "locale": "ph",
       "isUnlocked": false,
       "content1": {
-        "description": "Ito ang paraan kung paano sinesenyas ang 'Mahalaga Ka'",
+        "description": "Ito ang paraan kung paano sinesenyas ang 'Mahalaga ka",
         "contentImage": ["dictionary/ph/phrases/mahalaga_ka.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/mahalaga_ka.mp4"],
+        "contentOption": ["Umaga", "Gabi", "Happy", "Kita", "Na", "Mahalaga", "luck", "Salamat", "Ingat",   "ka"],
+        "correctAnswer": ["Mahalaga", "ka"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Mahalaga Ka'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/mahalaga_ka.mp4",
+          "dictionary/ph/phrases/paalam.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/mahalaga_ka.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Mahalaga Ka'?",
+        "contentImage": ["dictionary/ph/phrases/mahalaga_ka.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/mahalaga_ka.mp4"],
+        "contentOption": ["Saklay", "Bisikleta", "Lupa", "Mahalaga Ka", "Sulyap", "Sapatos", "Laruan", "Silya", "Tsokolate"],
+        "correctAnswer": ["Mahalaga Ka"]
       }
     },
     {
@@ -129,6 +402,33 @@
         "contentImage": ["dictionary/ph/phrases/maraming_salamat.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/maraming_salamat.mp4"],
+        "contentOption": ["na", "Umaga", "Salamat", "Happy", "paumanhin", "Maraming", "Hapon", "luck", "gusto",  "paalam"],
+        "correctAnswer": ["Maraming", "Salamat"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Maraming Salamat'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/maraming_salamat.mp4",
+          "dictionary/ph/phrases/pasensya_na.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/maraming_salamat.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Maraming Salamat'?",
+        "contentImage": ["dictionary/ph/phrases/maraming_salamat.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/maraming_salamat.mp4"],
+        "contentOption": ["Tubig", "Maraming Salamat", "Susi", "Plantsa", "Karayom", "Laruan", "Tsinelas", "Laruan", "Suklay"],
+        "correctAnswer": ["Maraming Salamat"]
       }
     },
     {
@@ -141,6 +441,33 @@
         "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
+        "contentOption": ["Na", "Hapon", "Birthday", "kita",  "happy", "magandang", "ka", "luck", "Paalam", "ingat",  "paumanhin"],
+        "correctAnswer": ["Paalam"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Paalam'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/paalam.mp4",
+          "dictionary/ph/phrases/condolences.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/paalam.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Paalam'?",
+        "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/paalam.mp4"],
+        "contentOption": ["Laruan", "Suklay", "Paalam", "Silya", "Tubig", "Suklay", "Laruan", "Plantsa", "Sapatos"],
+        "correctAnswer": ["Paalam"]
       }
     },
     {
@@ -153,6 +480,33 @@
         "contentImage": ["dictionary/ph/phrases/pasensya_na.mp4"],
         "contentOption": null,
         "correctAnswer": null
+      },
+      "content2": {
+        "description": "Pumili ng salitang opsyon para makabuo ng parirala o pangungusap",
+        "contentImage": ["dictionary/ph/phrases/pasensya_na.mp4"],
+        "contentOption": ["na", "Umaga", "Gabi", "Magandang", "kita", "Gusto", "Hapon", "birthday", "Ingat", "Pasensya"],
+        "correctAnswer": ["Pasensya", "na"]
+      },
+      "content3": {
+        "description": "Alin sa mga bidyo ang nagpapakita ng senyas para sa 'Pasensya Na'?",
+        "contentImage": null,
+        "contentOption": [
+          "dictionary/ph/phrases/pasensya_na.mp4",
+          "dictionary/ph/phrases/happy_birthday.mp4"
+        ],
+        "correctAnswer": ["dictionary/ph/phrases/pasensya_na.mp4"]
+      },
+      "content4": {
+        "description": "Ito ba ang senyas para sa 'Pasensya Na'?",
+        "contentImage": ["dictionary/ph/phrases/pasensya_na.mp4"],
+        "contentOption": ["Yes", "No"],
+        "correctAnswer": ["Yes"]
+      },
+      "content5": {
+        "description": "Anong senyas ang ginagamit dito?",
+        "contentImage": ["dictionary/ph/phrases/pasensya_na.mp4"],
+        "contentOption": ["Puno", "Lamesa", "Silya", "Pasensya Na", "Suklay", "Sapatos", "Laruan", "Araw", "Tsinelas"],
+        "correctAnswer": ["Pasensya Na"]
       }
     }
   ]

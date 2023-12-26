@@ -5,23 +5,79 @@
     "locale": "en",
     "isUnlocked": true,
     "content1": {
-      "description": "This is how you sign Congratulations.",
+      "description": "This is how you sign 'Congratulations'",
       "contentImage": ["dictionary/en/phrases/congratulations.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/congratulations.mp4"],
+      "contentOption": ["Nice", "later",  "are", "to", "How", "you",  "Good", "Thank", "Hello", "See", "Excuse","Congratulations"],
+      "correctAnswer": ["Congratulations"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Congratulations'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/congratulations.mp4",
+        "dictionary/en/phrases/have_a_nice_day.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/congratulations.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Congratulations'?",
+      "contentImage": ["dictionary/en/phrases/congratulations.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/congratulations.mp4"],
+      "contentOption": ["Good", "Thank", "Hello", "Y", "Z", "Congratulations", "Window", "V", "C"],
+      "correctAnswer": ["Congratulations"]
     }
   },
   {
     "name": "Excuse Me",
     "progress": 0,
     "locale": "en",
-    "isUnlocked": false,
+    "isUnlocked": true,
     "content1": {
-      "description": "This is how you sign Excuse Me",
+      "description": "This is how you sign 'Excuse Me'",
       "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a phrase or sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
+      "contentOption": ["me", "later", "Thank", "Good", "are", "Hello", "to", "You're", "How", "Excuse", "See",  "What's" ],
+      "correctAnswer": ["Excuse", "me"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Excuse Me'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/excuse_me.mp4",
+        "dictionary/en/phrases/how_are_you.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/excuse_me.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Excuse Me'?",
+      "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/excuse_me.mp4"],
+      "contentOption": ["Tree", "Car", "Excuse Me", "Hat", "I'm fine", "Bird", "Hello", "Sun", "Moon"],
+      "correctAnswer": ["Excuse Me"]
     }
+    
+    
   },
   {
     "name": "Goodnight",
@@ -29,10 +85,37 @@
     "locale": "en",
     "isUnlocked": false,
     "content1": {
-      "description": "This is how you sign Goodnight.",
+      "description": "This is how you sign 'Goodnight'",
       "contentImage": ["dictionary/en/phrases/good_night.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/good_night.mp4"],
+      "contentOption": [ "are", "you", "Thank", "See", "later", "to", "Hello", "Nice", "Goodnight", "Excuse", "What's", "How"],
+      "correctAnswer": ["Goodnight"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Goodnight'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/good_night.mp4",
+        "dictionary/en/phrases/see_you_later.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/good_night.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Goodnight'?",
+      "contentImage": ["dictionary/en/phrases/good_night.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/good_night.mp4"],
+      "contentOption": ["Dog", "Goodnight", "Goodbye", "Chair", "Rain", "Hello", "Book", "Pen", "Window"],
+      "correctAnswer": ["Goodnight"]
     }
   },
   {
@@ -41,10 +124,37 @@
     "locale": "en",
     "isUnlocked": false,
     "content1": {
-      "description": "This is how you sign Good to see you",
+      "description": "This is how you sign 'Good to see you'",
       "contentImage": ["dictionary/en/phrases/good_to_see_you.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/good_to_see_you.mp4"],
+      "contentOption": ["later", "Thank", "Good", "How", "see", "to", "Excuse", "are",  "Nice", "Hello", "Goodnight", "you"],
+      "correctAnswer": ["Good", "to", "see", "you"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Good to see you'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/good_to_see_you.mp4",
+        "dictionary/en/phrases/hello.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/good_to_see_you.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Good to see you'?",
+      "contentImage": ["dictionary/en/phrases/good_to_see_you.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/good_to_see_you.mp4"],
+      "contentOption": ["Apple", "Ball", "Good to see you", "Good luck", "Tree", "Chair", "Window", "Car", "Book"],
+      "correctAnswer": ["Good to see you"]
     }
   },
   {
@@ -53,10 +163,37 @@
     "locale": "en",
     "isUnlocked": false,
     "content1": {
-      "description": "This is how you sign Goodbye",
+      "description": "This is how you sign 'Goodbye'",
       "contentImage": ["dictionary/en/phrases/goodbye.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/goodbye.mp4"],
+      "contentOption": ["Goodbye", "See", "to", "you", "Thank", "Hello", "How", "later", "Excuse", "Nice", "Goodnight", "are", "Good"],
+      "correctAnswer": ["Goodbye"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Goodbye'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/goodbye.mp4",
+        "dictionary/en/phrases/have_a_nice_day.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/goodbye.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Goodbye'?",
+      "contentImage": ["dictionary/en/phrases/goodbye.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/goodbye.mp4"],
+      "contentOption": ["Fish", "Goodbye", "Window", "Hello", "Cup", "Phone", "Sun", "Moon", "Chair"],
+      "correctAnswer": ["Goodbye"]
     }
   },
   {
@@ -65,10 +202,37 @@
     "locale": "en",
     "isUnlocked": false,
     "content1": {
-      "description": "This is how you sign Have a nice day",
+      "description": "This is how you sign 'Have a nice day'",
       "contentImage": ["dictionary/en/phrases/have_a_nice_day.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/have_a_nice_day.mp4"],
+      "contentOption": ["Good", "you", "later", "Hello", "nice", "Nice", "a", "Thank", "day", "to", "are", "Excuse", "What's", "Have"],
+      "correctAnswer": ["Have", "a", "nice", "day"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Have a nice day'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/have_a_nice_day.mp4",
+        "dictionary/en/phrases/thank_you.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/have_a_nice_day.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Have a nice day'?",
+      "contentImage": ["dictionary/en/phrases/have_a_nice_day.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/have_a_nice_day.mp4"],
+      "contentOption": ["Book", "Have a nice day", "Pen", "Sun", "How are you", "Chair", "Dog", "Cat", "Table"],
+      "correctAnswer": ["Have a nice day"]
     }
   },
   {
@@ -77,11 +241,39 @@
     "locale": "en",
     "isUnlocked": false,
     "content1": {
-      "description": "This is how you sign Hello",
+      "description": "This is how you sign 'Hello'",
       "contentImage": ["dictionary/en/phrases/hello.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/hello.mp4"],
+      "contentOption": ["Nice", "later",  "are", "to", "How", "you", "Goodnight", "Thank", "See", "Hello", "Excuse", "What's"],
+      "correctAnswer": ["Hello"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Hello'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/hello.mp4",
+        "dictionary/en/phrases/youre_welcome.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/hello.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Hello'?",
+      "contentImage": ["dictionary/en/phrases/hello.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/hello.mp4"],
+      "contentOption": ["Book", "Chair", "Hello", "Window", "Dog", "Cat", "Sun", "Moon", "Phone"],
+      "correctAnswer": ["Hello"]
     }
+    
   },
   {
     "name": "How are you",
@@ -93,7 +285,35 @@
       "contentImage": ["dictionary/en/phrases/how_are_you.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/how_are_you.mp4"],
+      "contentOption": [ "are", "How", "See", "later", "to", "Hello", "Thank", "Good", "Nice", "you", "Excuse", "What's"],
+      "correctAnswer": ["How", "are", "you"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'How are you'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/how_are_you.mp4",
+        "dictionary/en/phrases/youre_welcome.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/how_are_you.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'How are you'?",
+      "contentImage": ["dictionary/en/phrases/how_are_you.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/how_are_you.mp4"],
+      "contentOption": ["Chair", "Book", "How are you", "Window", "Dog", "Cat", "Hello", "It's me", "Phone"],
+      "correctAnswer": ["How are you"]
     }
+    
   },
   {
     "name": "Nice to meet you",
@@ -105,6 +325,33 @@
       "contentImage": ["dictionary/en/phrases/nice_to_meet_you.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/nice_to_meet_you.mp4"],
+      "contentOption": ["you", "later", "See", "Nice", "to", "are", "Hello", "Thank", "Excuse", "How", "you", "meet", "What's"],
+      "correctAnswer": ["Nice", "to", "meet", "you"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Nice to meet you'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/nice_to_meet_you.mp4",
+        "dictionary/en/phrases/thank_you.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/nice_to_meet_you.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Nice to meet you'?",
+      "contentImage": ["dictionary/en/phrases/nice_to_meet_you.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/nice_to_meet_you.mp4"],
+      "contentOption": ["Nice to meet you", "Chair", "Happy birthday", "Dog", "Cat", "Sun", "Moon", "Phone", "Book"],
+      "correctAnswer": ["Nice to meet you"]
     }
   },
   {
@@ -117,6 +364,33 @@
       "contentImage": ["dictionary/en/phrases/see_you_later.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/see_you_later.mp4"],
+      "contentOption": [ "How", "See", "later", "are", "you", "Good", "Nice", "Thank", "Hello", "to", "Excuse", "I", "What's"],
+      "correctAnswer": ["See", "you", "later"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'See you later'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/see_you_later.mp4",
+        "dictionary/en/phrases/whats_up.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/see_you_later.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'See you later'?",
+      "contentImage": ["dictionary/en/phrases/see_you_later.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/see_you_later.mp4"],
+      "contentOption": ["Chair", "See you later", "Window", "Dog", "Cat", "what's", "Moon", "Phone", "Book"],
+      "correctAnswer": ["See you later"]
     }
   },
   {
@@ -129,6 +403,33 @@
       "contentImage": ["dictionary/en/phrases/sorry.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/sorry.mp4"],
+      "contentOption": ["Nice", "Thank", "Good", "Sorry", "later", "Hello", "to", "How", "are", "late", "Excuse", "See", "you", "hi"],
+      "correctAnswer": ["Sorry"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Sorry'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/sorry.mp4",
+        "dictionary/en/phrases/how_are_you.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/sorry.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Sorry'?",
+      "contentImage": ["dictionary/en/phrases/sorry.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/sorry.mp4"],
+      "contentOption": ["Sorry", "Chair", "Window", "Dog", "Cat", "Sun", "Moon", "Phone", "Book"],
+      "correctAnswer": ["Sorry"]
     }
   },
   {
@@ -141,6 +442,33 @@
       "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+      "contentOption": ["Nice", "later", "Thank", "Good", "are", "Hello", "to", "You're", "How", "Excuse", "See", "so", "you", "much"],
+      "correctAnswer": ["Thank", "you"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'Thank you'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/thank_you.mp4",
+        "dictionary/en/phrases/goodbye.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/thank_you.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'Thank you'?",
+      "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/thank_you.mp4"],
+      "contentOption": ["Chair", "Thank you", "Window", "Dog", "Cat", "Sun", "You're Welcome", "Phone", "Book"],
+      "correctAnswer": ["Thank you"]
     }
   },
   {
@@ -153,6 +481,33 @@
       "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+      "contentOption": ["Nice", "later", "I'm", "are", "to", "How", "you", "Thank", "Hello", "See", "up", "fine", "What's"],
+      "correctAnswer": ["What's", "up"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'What's up'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/whats_up.mp4",
+        "dictionary/en/phrases/excuse_me.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/whats_up.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'What's up'?",
+      "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/whats_up.mp4"],
+      "contentOption": ["Chair", "What's up", "Hey!", "Dog", "Cat", "Sun", "Moon", "Phone", "Book"],
+      "correctAnswer": ["What's up"]
     }
   },
   {
@@ -165,6 +520,33 @@
       "contentImage": ["dictionary/en/phrases/youre_welcome.mp4"],
       "contentOption": null,
       "correctAnswer": null
+    },
+    "content2": {
+      "description": "Create a sentence by selecting the word options below",
+      "contentImage": ["dictionary/en/phrases/youre_welcome.mp4"],
+      "contentOption": ["Goodbye", "are", "How", "See", "to", "later", "Hello", "Thank", "Good", "Nice", "you", "Excuse", "Welcome", "You're"],
+      "correctAnswer": ["You're", "Welcome"]
+    },
+    "content3": {
+      "description": "Which video represents the sign for 'You're Welcome'?",
+      "contentImage": null,
+      "contentOption": [
+        "dictionary/en/phrases/youre_welcome.mp4",
+        "dictionary/en/phrases/thank_you.mp4"
+      ],
+      "correctAnswer": ["dictionary/en/phrases/youre_welcome.mp4"]
+    },
+    "content4": {
+      "description": "Is this the sign for 'You're Welcome'?",
+      "contentImage": ["dictionary/en/phrases/youre_welcome.mp4"],
+      "contentOption": ["Yes", "No"],
+      "correctAnswer": ["Yes"]
+    },
+    "content5": {
+      "description": "What is being signed here?",
+      "contentImage": ["dictionary/en/phrases/youre_welcome.mp4"],
+      "contentOption": ["You're Welcome", "Chair", "Window", "Dog", "Cat", "Sun", "Moon", "Phone", "Book"],
+      "correctAnswer": ["You're Welcome"]
     }
   }
 ]
