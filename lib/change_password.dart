@@ -234,13 +234,6 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
             ),
           ),
-          IconButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            icon: Icon(Icons.close),
-            color: Colors.white,
-          ),
         ],
       ),
       backgroundColor: Color(0xFF36454F), 

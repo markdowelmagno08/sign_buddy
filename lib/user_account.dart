@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/change_password.dart';
 import 'package:sign_buddy/front_page.dart';
+import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -623,7 +624,11 @@ Future<void> _saveChanges() async {
                                         size: 25,
                                       ),
                                       onPressed: () {
-                                       Navigator.pop(context);
+                                       Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(builder: (BuildContext context) => HomePage()), 
+                                          (route) => false,
+                                        );
                                       },
                                     ),
                                   ),
@@ -1159,13 +1164,6 @@ Future<void> _saveChanges() async {
                 ),
               ),
             ),
-          ),
-          IconButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            icon: Icon(Icons.close),
-            color: Colors.white,
           ),
         ],
       ),

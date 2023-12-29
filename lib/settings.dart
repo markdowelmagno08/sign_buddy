@@ -123,7 +123,7 @@ class _MySettingsState extends State<MySettings> {
                             clearCache();
                             Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(builder: (BuildContext context) => HomePage()), // Replace 'HomePage()' with your actual homepage widget
+                              MaterialPageRoute(builder: (BuildContext context) => HomePage()), 
                               (route) => false,
                             );
                             showCustomSnackBar(
@@ -287,13 +287,6 @@ class _MySettingsState extends State<MySettings> {
                 ),
               ),
             ),
-          ),
-          IconButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            },
-            icon: Icon(Icons.close),
-            color: Colors.white,
           ),
         ],
       ),
