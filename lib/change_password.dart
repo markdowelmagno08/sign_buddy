@@ -56,11 +56,9 @@ class _ChangePasswordState extends State<ChangePassword> {
         await user.updatePassword(newPassword);
 
         // Password change successful, show success message or navigate back
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Password changed successfully!'),
-            duration: Duration(seconds: 2),
-          ),
+        showCustomSnackBar(
+          context,
+          "Password changed successfully",
         );
         Navigator.pop(context);
       }
@@ -68,11 +66,9 @@ class _ChangePasswordState extends State<ChangePassword> {
       // Handle errors, e.g., show an error message to the user
       print("Error changing password: $e");
       // Show error message in a snackbar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to change password: $e'),
-          duration: Duration(seconds: 2),
-        ),
+      showCustomSnackBar(
+        context,
+        "Failed to change password $e",
       );
     }
   }
@@ -187,7 +183,8 @@ class _ChangePasswordState extends State<ChangePassword> {
           // Check if the new password is the same as the old password
           if (currentPasswordController.text == newPasswordController.text) {
             Navigator.of(context).pop(); // Close loading dialog
-            _showSnackbar(
+           showCustomSnackBar(
+            context,
               isEnglish
                   ? 'New password cannot be the same as the old password.'
                   : 'Ang bagong password ay hindi maaaring katulad ng lumang password.',
@@ -200,13 +197,17 @@ class _ChangePasswordState extends State<ChangePassword> {
 
           // Password change successful, show success message or navigate back
           Navigator.of(context).pop(); // Close loading dialog
-          _showSnackbar('Password changed successfully!');
+          showCustomSnackBar(
+            context,
+            isEnglish ? "Password changed successfully" : "Matagumpay na nabago ang password"
+          );
           Navigator.of(context).pop();
         }
       } catch (e) {
         // If reauthentication fails, show an error message and return
         Navigator.of(context).pop(); // Close loading dialog
-        _showSnackbar(
+          showCustomSnackBar(
+          context,
           isEnglish
               ? 'Password change failed. Please check your current password.'
               : 'Reauthentication error. Pakiverify ang iyong kasalukuyang password.',
@@ -215,13 +216,39 @@ class _ChangePasswordState extends State<ChangePassword> {
     }
   }
 
-  void _showSnackbar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        duration: Duration(seconds: 2),
+
+
+  void showCustomSnackBar(BuildContext context, String message) {
+    final snackBar = SnackBar(
+      content: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'FiraSans',
+                ),
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            icon: Icon(Icons.close),
+            color: Colors.white,
+          ),
+        ],
       ),
+      backgroundColor: Color(0xFF36454F), 
+      duration: Duration(seconds: 3), 
+      behavior: SnackBarBehavior.floating,
     );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/about_app.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/feedback.dart';
@@ -99,7 +100,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
   void initState() {
     getLanguageFromFirestore().then((_) {
       setState(() {
-        
+        isLoading = false;
       });
     });
     super.initState();
@@ -107,7 +108,11 @@ class _LessonsScreenState extends State<LessonsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading
+      ? Center(
+          child: CircularProgressIndicator(),
+        )
+      : Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -552,7 +557,7 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
+            icon: Icon(Icons.my_library_books),
             label: 'Lessons',
           ),
           BottomNavigationBarItem(

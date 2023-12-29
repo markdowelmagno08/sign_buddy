@@ -458,6 +458,10 @@ Future<void> _saveChanges() async {
 
 
   Navigator.of(context).pop(); // Close the edit profile page
+  showCustomSnackBar(
+        context,
+    isEnglish? "Profile changed successfully" : "Matagumpay na nabago ang profile",
+  );
 }
 
 
@@ -1021,7 +1025,7 @@ Future<void> _saveChanges() async {
               style: TextStyle(fontFamily: 'FiraSans', color: Colors.black, fontSize: 15),
               children: [
                 TextSpan(
-                  text: isEnglish ? 'Are you sure you want to delete your account?\n\n' : 'Sigurado ka bang nais mong burahin ang iyong account?',
+                  text: isEnglish ? 'Are you sure you want to delete your account?\n\n' : 'Sigurado ka bang nais mong burahin ang iyong account?\n\n',
                 ),
                 TextSpan(
                   text: isEnglish ? 'This action cannot be undone': 'Hindi maaaring bawiin ang hakbang na ito',
@@ -1121,6 +1125,11 @@ Future<void> _saveChanges() async {
             builder: (BuildContext context) => const FrontPage()),
         (route) => false);
 
+        showCustomSnackBar(
+          context,
+          "Account deleted successfully",
+      );
+
       } else {
           // Handle the case where user ID is null
           print("User ID is null or empty.");
@@ -1131,7 +1140,41 @@ Future<void> _saveChanges() async {
           print("Error deleting progress: $e");
           Navigator.pop(context); // Close the loading dialog
         }
-    
+
+  }
+
+  
+    void showCustomSnackBar(BuildContext context, String message) {
+    final snackBar = SnackBar(
+      content: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'FiraSans',
+                ),
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            icon: Icon(Icons.close),
+            color: Colors.white,
+          ),
+        ],
+      ),
+      backgroundColor: Color(0xFF36454F), 
+      duration: Duration(seconds: 3), 
+      behavior: SnackBarBehavior.floating,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
 
