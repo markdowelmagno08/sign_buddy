@@ -6,8 +6,8 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/front_page.dart';
+import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/sharedwidget/loading.dart';
-import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
 class MySettings extends StatefulWidget {
   const MySettings({Key? key}) : super(key: key);
@@ -107,19 +107,35 @@ class _MySettingsState extends State<MySettings> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildListTile(
+                          icon: FontAwesomeIcons.language,
+                          text: 'Language',
+                          onPressed: () {
+                            _showLanguageSelectionDialog();
+                          },
+                          iconTextSpacing: 15.0,
+                          subtitle: isEnglish ? 'English' : 'Filipino',
+                        ),
+                        _buildDivider(),
+                        _buildListTile(
                           icon: FontAwesomeIcons.broom,
                           text: 'Clear cache',
                           onPressed: () {
                             clearCache();
-                            Navigator.of(context).pop();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Cache cleared successfully'),
-                              ),
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (BuildContext context) => HomePage()), // Replace 'HomePage()' with your actual homepage widget
+                              (route) => false,
+                            );
+                            showCustomSnackBar(
+                              context,
+                              "Cache cleared successfully",
                             );
                           },
                           iconTextSpacing: 15.0,
                         ),
+                        
+                        
+                        
                         _buildDivider(),
                         //hide the delete button for authenticated users
                         if (Auth().isUserAnonymous())
@@ -144,9 +160,158 @@ class _MySettingsState extends State<MySettings> {
     );
   }
 
-  
+   Future<void> _showLanguageSelectionDialog() async {
+      bool? selectedLanguage = await showDialog<bool>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Select Language',
+            style: TextStyle(
+              fontFamily: 'FiraSans',
+              fontWeight: FontWeight.bold,
+            )),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: _buildCircularImage('assets/america.png'),
+                  title: Text('English', 
+                  style: TextStyle(
+                    fontFamily: 'FiraSans',
+                  )),
+                  onTap: () {
+                    Navigator.pop(context, true);
+                  },
+                ),
+                ListTile(
+                  leading: _buildCircularImage('assets/ph.png'),
+                  title: Text('Filipino',
+                  style: TextStyle(
+                    fontFamily: 'FiraSans',
+                  )),
+                  onTap: () {
+                    Navigator.pop(context, false);
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      );
 
-  Widget _buildListTile({required IconData icon, required String text, required VoidCallback onPressed, double iconTextSpacing = 0}) {
+      if (selectedLanguage != null) {
+      setState(() {
+        isEnglish = selectedLanguage;
+      });
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isEnglish', isEnglish);
+
+      // Update the selected language in Firestore
+      await updateLanguageInFirestore();
+
+      // Navigate back to the homepage
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()), // Replace 'HomePage()' with your actual homepage widget
+        (route) => false,
+      );
+
+      // Show a Snackbar indicating the successful language change
+      showCustomSnackBar(
+        context,
+        isEnglish ? "Language changed successfully" : "Matagumpay na naipalit ang wika"
+      );
+    }
+  }
+
+  Widget _buildCircularImage(String imagePath) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: const Color.fromARGB(255, 87, 87, 87),
+          width: 1.0,
+        ),
+      ),
+      child: ClipOval(
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Future<void> updateLanguageInFirestore() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // prevent user from dismissing the dialog
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+            ],
+          ),
+        );
+      },
+    );
+    try {
+      String language = isEnglish ? 'English' : 'Filipino';
+      String? userId = Auth().getCurrentUserId();
+
+      if (userId != null) {
+        await FirebaseFirestore.instance.collection('userData').doc(userId).update({'language': language});
+      }
+    } catch (e) {
+      print('Error updating language in Firestore: $e');
+    }
+  }
+
+  void showCustomSnackBar(BuildContext context, String message) {
+    final snackBar = SnackBar(
+      content: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'FiraSans',
+                ),
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            icon: Icon(Icons.close),
+            color: Colors.white,
+          ),
+        ],
+      ),
+      backgroundColor: Color(0xFF36454F), 
+      duration: Duration(seconds: 3), 
+      behavior: SnackBarBehavior.floating,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  Widget _buildListTile({
+    required IconData icon,
+    required String text,
+    required VoidCallback onPressed,
+    double iconTextSpacing = 0,
+    String? subtitle, // New parameter for subtitle (current language)
+  }) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       title: Row(
@@ -155,21 +320,36 @@ class _MySettingsState extends State<MySettings> {
             icon,
             color: Colors.deepPurpleAccent,
           ),
-          SizedBox(width: iconTextSpacing), // Adjust the spacing between icon and text
+          SizedBox(width: iconTextSpacing),
           Text(
             text,
             style: TextStyle(
               color: Color.fromARGB(255, 71, 63, 63),
               fontSize: 16,
               fontFamily: 'FiraSans',
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
       ),
+      subtitle: subtitle != null
+          ? Padding(
+            padding: const EdgeInsets.only(left: 45.0),
+            child: Text(
+                subtitle,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontFamily: 'FiraSans',
+                ),
+              ),
+          )
+          : null,
       onTap: onPressed,
     );
   }
+
+
 
   Widget _buildDivider() {
     return Divider(
