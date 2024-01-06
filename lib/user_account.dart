@@ -120,373 +120,10 @@ class _UserAccountPageState extends State<UserAccountPage> {
       });
     }
   }
-  
-
-  Future<void> _editProfileForm() async {
-  // Create copies of original values
-  String originalFirstName = editFirstName.text;
-  String originalLastName = editLastName.text;
-  String originalEmail = editEmail.text;
-  String originalClassification = classification;
-  String originalClassificationInput = editClassification.text;
-
-
-  // Get the user ID
-    String? userId = Auth().getCurrentUserId();
-
-    // Use the user ID to get a randomly selected profile image
-    String? selectedProfileImage = getProfileImageForUser(userId);
-
-  await Navigator.of(context).push(
-    MaterialPageRoute<void>(
-      builder: (BuildContext context) {
-        return Scaffold(
-          body: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/bg-signbuddy.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            children: [
-                              AppBar(
-                                title: Text(
-                                  'Edit Profile',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontFamily: 'FiraSans',
-                                  ),
-                                ),
-                                backgroundColor: const Color(0xFF5A96E3).withOpacity(0.8),
-                                shape: ContinuousRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(50),
-                                    bottomRight: Radius.circular(50),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: Colors.black,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  child: CircleAvatar(
-                                    radius: 45,
-                                    backgroundColor: Colors.grey,
-                                    // Use the randomly selected profile image
-                                    backgroundImage: selectedProfileImage != null
-                                        ? AssetImage(selectedProfileImage)
-                                        : AssetImage('assets/user_man.png'), // Provide a default image if needed
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              _buildCard(
-                                children: [
-                                  TextFormField(
-                                    key: Key('firstNameField'),
-                                    controller: editFirstName,
-                                    decoration: InputDecoration(
-                                      hintText:  isEnglish ? 'Enter your first name' : 'Ilagay ng pangalan',
-                                      suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.deepPurpleAccent,
-                                        ),
-                                      ),
-                                    ),
-                                    inputFormatters: [
-                                      CustomInputFormatter(maxLength: 15),
-                                    ],
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong pangalan";
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  SizedBox(height: 16),
-                                  TextFormField(
-                                    key: Key('lastNameField'),
-                                    controller: editLastName,
-                                    decoration: InputDecoration(
-                                      hintText:  isEnglish ? 'Enter your last name' : 'Ilagay ang apelyido',
-                                      suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.deepPurpleAccent,
-                                        ),
-                                      ),
-                                    ),
-                                    inputFormatters: [
-                                      CustomInputFormatter(maxLength: 15),
-                                    ],
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return isEnglish ? "Please enter your last name" : "Pakilagay ang iyong apelyido";
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  SizedBox(height: 16),
-                                  TextFormField(
-                                    controller: editEmail,
-                                    key: Key('emailField'),
-                                    decoration: InputDecoration(
-                                      hintText:  isEnglish ? 'Enter your email' : 'Ilagay ang iyong email',
-                                      suffixIcon: Icon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.deepPurpleAccent,
-                                        ),
-                                      ),
-                                    ),
-                                    inputFormatters: [
-                                      EmailInputFormatter(maxLength: 30),
-                                    ],
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return isEnglish ? "Please enter your email" : "Pakilagay ang iyong email";
-                                      } else if (!RegExp(
-                                          r'^[a-zA-Z]+[\w-]*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
-                                          .hasMatch(value)) {
-                                        return isEnglish ? "Please enter a valid email" : "Pakilagay ng wastong email";
-                                      } else if (RegExp(r'^[0-9]+$').hasMatch(value.split('@')[0])) {
-                                        return isEnglish
-                                            ? "Email cannot consist of numbers only"
-                                            : "Ang email ay hindi maaaring binubuo ng mga numero lamang";
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  SizedBox(height: 16),
-                                    GestureDetector(
-                                      onTap: () {
-                                        _showClassificationDialog();
-                                      },
-                                      child: AbsorbPointer(
-                                        child: TextFormField(
-                                          key: Key('classificationField'),
-                                          controller: editClassification,
-                                          decoration: InputDecoration(
-                                            hintText: isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
-                                            suffixIcon: Icon(Icons.radio_button_checked, color: Colors.deepPurpleAccent),
-                                            border: OutlineInputBorder(),
-                                            focusedBorder: const OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Colors.deepPurpleAccent,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        Container(
-                          width: double.infinity,
-
-                          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _showConfirmationDialog();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF5BD8FF),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              padding: EdgeInsets.all(16.0),
-                            ),
-                            child: Text(isEnglish ? 'Save Changes' : 'I-save ang mga pagbabago', style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    ),
-  );
-  // If the user did not save changes, restore the original values
-  if (!_changesSaved) {
-    if (mounted) {
-      setState(() {
-        editFirstName.text = originalFirstName;
-        editLastName.text = originalLastName;
-        editEmail.text = originalEmail;
-        classification = originalClassification;
-        editClassification.text = originalClassificationInput;
-
-      });
-    }
-  }
-}
-
-void _showClassificationDialog() {
-  String? originalClassification = classification;
-  String? selectedValue = classification;
-
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return StatefulBuilder(
-        builder: (context, setState) {
-          return SimpleDialog(
-            title: Text(isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
-            style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'FiraSans'
-            )),
-            children: [
-              ...classificationOptions.map((String value) {
-                return RadioListTile<String>(
-                  title: Text(value),
-                  value: value,
-                  groupValue: selectedValue,
-                  onChanged: (String? newValue) {
-                    if (mounted) {
-                      setState(() {
-                        selectedValue = newValue;
-                        classification = newValue ?? "";
-                      });
-                    }
-                  },
-                );
-              }).toList(),
-              Padding(
-                padding: const EdgeInsets.only(right: 15, top: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        // Reset the classification to the original value
-                        if (mounted) {
-                          setState(() {
-                            classification = originalClassification;
-                          });
-                        }
-                      },
-                      child: Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: Colors.black45,
-                          fontFamily: 'FiraSans'
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),    
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        editClassification.text = classification;
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green, 
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                      ),
-                      child: Text(
-                        'Okay',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
-        },
-      );
-    },
-  );
-}
-
-// Modify _saveChanges method to handle classification restoration
-Future<void> _saveChanges() async {
-  // Perform necessary logic to save changes to the Firestore database
-  String id = Auth().getCurrentUserId()!;
-  await FirebaseFirestore.instance.collection('userData').doc(id).update({
-    'email': editEmail.text,
-    'firstName': editFirstName.text,
-    'lastName': editLastName.text,
-    'classification': classification,
-  });
-
-  // Update local state immediately
-  if (mounted) {
-    setState(() {
-      email = editEmail.text;
-      firstName = editFirstName.text;
-      lastName = editLastName.text;
-      _changesSaved = true;
-    });
-  }
-
-
-  Navigator.of(context).pop(); // Close the edit profile page
-  showCustomSnackBar(
-        context,
-    isEnglish? "Profile changed successfully" : "Matagumpay na nabago ang profile",
-  );
-}
-
-
-
-
-  @override
-  void dispose() {
-    // Dispose the text editing controllers when the State is disposed
-    editFirstName.dispose();
-    editEmail.dispose();
-    editLastName.dispose();
-    
-
-    super.dispose();
-  }
-
-  
 
   @override
     Widget build(BuildContext context) {
 
-     
-
-      
       if (Auth().isUserAnonymous()) {
         // If the user is anonymous, display this ui
         return Scaffold(
@@ -746,7 +383,7 @@ Future<void> _saveChanges() async {
                                         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                                       ),
                                       child: Text(
-                                         isEnglish ? 'Sign out' : 'Mag-sign out',
+                                         isEnglish ? 'Sign Out' : 'Mag-sign out',
                                         style: TextStyle(fontSize: 16, color: Colors.black),
                                       ),
                                     ),
@@ -754,6 +391,78 @@ Future<void> _saveChanges() async {
                                 ],
                               ),
                             ),
+                          ],
+                        ),
+                        // Privacy
+                        SizedBox(height: 50),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 16, left: 16),
+                              child: Text(
+                                'Progress',
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'FiraSans',
+                                  color: Color.fromARGB(255, 71, 63, 63),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: 16),
+                              child: Padding(
+                                padding: const EdgeInsets.all(30.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _buildProgressListTile(
+                                      label: isEnglish ? 'Alphabet' : 'Alpabeto',
+                                      iconPath: 'assets/lesson-icon/img1.png',
+                                      lessonType: 'letters',
+                                    ),
+                                    _buildDividerForProgress(),
+                                     _buildProgressListTile(
+                                      label: isEnglish ? 'Numbers' : 'Mga Numero',
+                                      iconPath: 'assets/lesson-icon/img2.png',
+                                      lessonType: 'numbers',
+                                    ),
+                                    _buildDividerForProgress(),
+                                    _buildProgressListTile(
+                                        label: isEnglish ? 'Animals' : 'Mga Hayop',
+                                        iconPath: 'assets/lesson-icon/img6.png',
+                                        lessonType: 'animals',
+                                      ),
+                                    _buildDividerForProgress(),
+                                    _buildProgressListTile(
+                                        label: isEnglish ? 'Colors' : 'Mga Kulay',
+                                        iconPath: 'assets/lesson-icon/img4.png',
+                                        lessonType: 'color',
+                                      ),
+                                    _buildDividerForProgress(),
+                                    _buildProgressListTile(
+                                      label: isEnglish ? 'Family' : 'Pamilya',
+                                      iconPath: 'assets/lesson-icon/img3.png',
+                                      lessonType: 'family',
+                                    ),
+                                    _buildDividerForProgress(),
+                                   _buildProgressListTile(
+                                      label: isEnglish ? 'Greetings' : 'Pagbati',
+                                      iconPath: 'assets/lesson-icon/img10.png',
+                                      lessonType: 'greetings',
+                                    ),        
+                                   
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 30),
                           ],
                         ),
 
@@ -817,6 +526,499 @@ Future<void> _saveChanges() async {
               ),
             );
           }
+  
+
+  Future<void> _editProfileForm() async {
+    // Create copies of original values
+    String originalFirstName = editFirstName.text;
+    String originalLastName = editLastName.text;
+    String originalEmail = editEmail.text;
+    String originalClassification = classification;
+    String originalClassificationInput = editClassification.text;
+
+
+    // Get the user ID
+      String? userId = Auth().getCurrentUserId();
+
+      // Use the user ID to get a randomly selected profile image
+      String? selectedProfileImage = getProfileImageForUser(userId);
+
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          return Scaffold(
+            body: Stack(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/bg-signbuddy.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              children: [
+                                AppBar(
+                                  title: Text(
+                                    'Edit Profile',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'FiraSans',
+                                    ),
+                                  ),
+                                  backgroundColor: const Color(0xFF5A96E3).withOpacity(0.8),
+                                  shape: ContinuousRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(50),
+                                      bottomRight: Radius.circular(50),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 45,
+                                      backgroundColor: Colors.grey,
+                                      // Use the randomly selected profile image
+                                      backgroundImage: selectedProfileImage != null
+                                          ? AssetImage(selectedProfileImage)
+                                          : AssetImage('assets/user_man.png'), // Provide a default image if needed
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                _buildCard(
+                                  children: [
+                                    TextFormField(
+                                      key: Key('firstNameField'),
+                                      controller: editFirstName,
+                                      decoration: InputDecoration(
+                                        hintText:  isEnglish ? 'Enter your first name' : 'Ilagay ng pangalan',
+                                        suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
+                                        border: OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                        ),
+                                      ),
+                                      inputFormatters: [
+                                        CustomInputFormatter(maxLength: 15),
+                                      ],
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return isEnglish ? "Please enter your first name" : "Pakilagay ang iyong pangalan";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(height: 16),
+                                    TextFormField(
+                                      key: Key('lastNameField'),
+                                      controller: editLastName,
+                                      decoration: InputDecoration(
+                                        hintText:  isEnglish ? 'Enter your last name' : 'Ilagay ang apelyido',
+                                        suffixIcon: Icon(FontAwesomeIcons.solidUser, color: Colors.deepPurpleAccent),
+                                        border: OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                        ),
+                                      ),
+                                      inputFormatters: [
+                                        CustomInputFormatter(maxLength: 15),
+                                      ],
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return isEnglish ? "Please enter your last name" : "Pakilagay ang iyong apelyido";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(height: 16),
+                                    TextFormField(
+                                      controller: editEmail,
+                                      key: Key('emailField'),
+                                      decoration: InputDecoration(
+                                        hintText:  isEnglish ? 'Enter your email' : 'Ilagay ang iyong email',
+                                        suffixIcon: Icon(FontAwesomeIcons.solidEnvelope, color: Colors.deepPurpleAccent),
+                                        border: OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                        ),
+                                      ),
+                                      inputFormatters: [
+                                        EmailInputFormatter(maxLength: 30),
+                                      ],
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return isEnglish ? "Please enter your email" : "Pakilagay ang iyong email";
+                                        } else if (!RegExp(
+                                            r'^[a-zA-Z]+[\w-]*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
+                                            .hasMatch(value)) {
+                                          return isEnglish ? "Please enter a valid email" : "Pakilagay ng wastong email";
+                                        } else if (RegExp(r'^[0-9]+$').hasMatch(value.split('@')[0])) {
+                                          return isEnglish
+                                              ? "Email cannot consist of numbers only"
+                                              : "Ang email ay hindi maaaring binubuo ng mga numero lamang";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    SizedBox(height: 16),
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showClassificationDialog();
+                                        },
+                                        child: AbsorbPointer(
+                                          child: TextFormField(
+                                            key: Key('classificationField'),
+                                            controller: editClassification,
+                                            decoration: InputDecoration(
+                                              hintText: isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
+                                              suffixIcon: Icon(Icons.radio_button_checked, color: Colors.deepPurpleAccent),
+                                              border: OutlineInputBorder(),
+                                              focusedBorder: const OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Colors.deepPurpleAccent,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          Container(
+                            width: double.infinity,
+
+                            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _showConfirmationDialog();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF5BD8FF),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: EdgeInsets.all(16.0),
+                              ),
+                              child: Text(isEnglish ? 'Save Changes' : 'I-save ang mga pagbabago', style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+    // If the user did not save changes, restore the original values
+    if (!_changesSaved) {
+      if (mounted) {
+        setState(() {
+          editFirstName.text = originalFirstName;
+          editLastName.text = originalLastName;
+          editEmail.text = originalEmail;
+          classification = originalClassification;
+          editClassification.text = originalClassificationInput;
+
+        });
+      }
+    }
+  }
+
+
+Future<int> getProgressValue(bool isEnglish, String lessonType) async {
+    String userId = Auth().getCurrentUserId()!;
+    String languageCode = isEnglish ? 'en' : 'ph';
+
+    try {
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection('userData')
+              .doc(userId)
+              .collection(lessonType)
+              .doc(languageCode)
+              .collection('lessons')
+              .get();
+
+      int totalProgress = 0;
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc
+          in querySnapshot.docs) {
+        int progressValue = doc['progress'] ?? 0;
+        totalProgress += progressValue;
+      }
+
+      return totalProgress;
+    } catch (e) {
+      print('Error getting progress value: $e');
+      return 0; // Default value in case of an error
+    }
+  }
+
+   Future<int> getTotalProgressValue(bool isEnglish, String lessonType) async {
+    String userId = Auth().getCurrentUserId()!;
+    String languageCode = isEnglish ? 'en' : 'ph';
+
+    try {
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection('userData')
+              .doc(userId)
+              .collection(lessonType)
+              .doc(languageCode)
+              .collection('lessons')
+              .get();
+
+      int numberOfDocuments = querySnapshot.size;
+      int totalProgressValue = numberOfDocuments * 100;
+
+      return totalProgressValue;
+    } catch (e) {
+      print('Error getting total progress value: $e');
+      return 0; // Default value in case of an error
+    }
+  }
+
+Widget _buildProgressListTile({
+  required String label,
+  required String iconPath,
+  required String lessonType,
+}) {
+  return ListTile(
+    contentPadding: EdgeInsets.zero,
+    leading: Padding(
+      padding: EdgeInsets.only(right: 8.0), 
+      child: Image.asset(
+        iconPath,
+        width: 40, 
+        height: 40, 
+      ),
+    ),
+    title: buildProgressIndicator(lessonType, label),
+  );
+}
+
+Widget buildProgressIndicator(String lessonType, String label) {
+  return FutureBuilder<int>(
+    future: getProgressValue(isEnglish, lessonType),
+    builder: (context, progressSnapshot) {
+      return FutureBuilder<int>(
+        future: getTotalProgressValue(isEnglish, lessonType),
+        builder: (context, totalProgressSnapshot) {
+          if (progressSnapshot.connectionState == ConnectionState.waiting ||
+              totalProgressSnapshot.connectionState == ConnectionState.waiting) {
+            return LinearProgressIndicator(); // Show a loading indicator while fetching data
+          } else if (progressSnapshot.hasError || totalProgressSnapshot.hasError) {
+            return Text('Error fetching progress data');
+          } else {
+            int progress = progressSnapshot.data ?? 0;
+            int totalProgress = totalProgressSnapshot.data ?? 0;
+            int percentage = totalProgress > 0 ? (progress / totalProgress * 100).toInt() : 0;
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        label,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'FiraSans'),
+                      ),
+                    ),
+                    Text(
+                      '$percentage%', // Display formatted percentage as a whole number
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'FiraSans', fontStyle: FontStyle.italic),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0), // Set border radius here
+                    color: Colors.grey[300], // Change the background color
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0), // ClipRRect with same border radius
+                    child: LinearProgressIndicator(
+                      value: totalProgress > 0 ? progress / totalProgress : 0.0,
+                      minHeight: 15,
+                      backgroundColor: Colors.transparent, // Make the background color transparent
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green), // Change the color of the completed part
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      );
+    },
+  );
+}
+
+void _showClassificationDialog() {
+  String? originalClassification = classification;
+  String? selectedValue = classification;
+
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return StatefulBuilder(
+        builder: (context, setState) {
+          return SimpleDialog(
+            title: Text(isEnglish ? 'Select classification' : 'Pumili ng klasipikasyon',
+            style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'FiraSans'
+            )),
+            children: [
+              ...classificationOptions.map((String value) {
+                return RadioListTile<String>(
+                  title: Text(value),
+                  value: value,
+                  groupValue: selectedValue,
+                  onChanged: (String? newValue) {
+                    if (mounted) {
+                      setState(() {
+                        selectedValue = newValue;
+                        classification = newValue ?? "";
+                      });
+                    }
+                  },
+                );
+              }).toList(),
+              Padding(
+                padding: const EdgeInsets.only(right: 15, top: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        // Reset the classification to the original value
+                        if (mounted) {
+                          setState(() {
+                            classification = originalClassification;
+                          });
+                        }
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontFamily: 'FiraSans'
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),    
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        editClassification.text = classification;
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green, 
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      ),
+                      child: Text(
+                        'Okay',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    },
+  );
+}
+
+// Modify _saveChanges method to handle classification restoration
+Future<void> _saveChanges() async {
+  // Perform necessary logic to save changes to the Firestore database
+  String id = Auth().getCurrentUserId()!;
+  await FirebaseFirestore.instance.collection('userData').doc(id).update({
+    'email': editEmail.text,
+    'firstName': editFirstName.text,
+    'lastName': editLastName.text,
+    'classification': classification,
+  });
+
+  // Update local state immediately
+  if (mounted) {
+    setState(() {
+      email = editEmail.text;
+      firstName = editFirstName.text;
+      lastName = editLastName.text;
+      _changesSaved = true;
+    });
+  }
+
+
+  Navigator.of(context).pop(); // Close the edit profile page
+  showCustomSnackBar(
+        context,
+    isEnglish? "Profile changed successfully" : "Matagumpay na nabago ang profile",
+  );
+}
+
+
+
+
+  @override
+  void dispose() {
+    // Dispose the text editing controllers when the State is disposed
+    editFirstName.dispose();
+    editEmail.dispose();
+    editLastName.dispose();
+    
+
+    super.dispose();
+  }
+
+  
 
  Widget _buildListTile({required IconData icon, required String text, required VoidCallback onPressed, double iconTextSpacing = 0}) {
   return ListTile(
@@ -842,7 +1044,7 @@ Future<void> _saveChanges() async {
     onTap: onPressed,
   );
 }
-
+  // for privacy and user data card
   Widget _buildDivider() {
     return Divider(
       color: Colors.deepPurpleAccent,
@@ -850,6 +1052,15 @@ Future<void> _saveChanges() async {
       thickness: 1,
     );
   }
+  // for Progress
+  Widget _buildDividerForProgress() {
+    return Divider(
+      color: Colors.deepPurpleAccent,
+      height: 20,
+      thickness: 1,
+    );
+  }
+
 
   //randomly gives the user an profile image
   String? getProfileImageForUser(String? userId) {
