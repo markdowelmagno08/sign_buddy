@@ -201,6 +201,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
 
     // Use the user ID to get a randomly selected profile image
     String? selectedProfileImage = getProfileImageForUser(userId);
+    String fullName = '$firstName $lastName';
       
     
 
@@ -228,7 +229,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                         
                         // Profile Section
                         Container(
-                          height: 330,
+                          height: 360,
                           decoration: BoxDecoration(
                             color: const Color(0xFF5A96E3).withOpacity(0.8),
                             borderRadius: BorderRadius.only(
@@ -289,14 +290,19 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                   ),
                                 ),
                                 SizedBox(height: 8),
-                                Text(
-                                  '$firstName $lastName',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                Center(
+                                    child: Text(
+                                      (firstName.length > 9 || lastName.length > 9)
+                                          ? '$firstName\n$lastName'
+                                          : fullName,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center, // To align the text in the center horizontally
+                                    ),
                                   ),
-                                ),
                                 SizedBox(height: 20),
                                 ElevatedButton(
                                   onPressed: _editProfileForm,
@@ -393,7 +399,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                             ),
                           ],
                         ),
-                        // Privacy
+                        // Progress Sectiion
                         SizedBox(height: 50),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -462,7 +468,6 @@ class _UserAccountPageState extends State<UserAccountPage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 30),
                           ],
                         ),
 
