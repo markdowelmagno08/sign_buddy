@@ -609,33 +609,36 @@ class _HomePageState extends State<HomePage> {
           firstName.isEmpty ||
           lastName == null ||
           lastName.isEmpty) {
-        return Column(
-          children: [
-            SizedBox(height: 30),
-             Text(
-              isEnglish ? 'Make a profile!' : 'Simulan ang\nprofile!',
-              style: TextStyle(
-                  color: Colors.white, fontSize: 15, fontFamily: 'FiraSans', fontWeight: FontWeight.bold ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [// Add some spacing between the buttons
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigate to sign up page
-                    Navigator.pushReplacement(
-                        context, SlidePageRoute(page: const SignupPage()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurpleAccent,
+        return Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+               Text(
+                isEnglish ? 'Make a profile!' : 'Simulan ang\nprofile!',
+                style: TextStyle(
+                    color: Colors.white, fontSize: 15, fontFamily: 'FiraSans', fontWeight: FontWeight.bold ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [// Add some spacing between the buttons
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to sign up page
+                      Navigator.pushReplacement(
+                          context, SlidePageRoute(page: const SignupPage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurpleAccent,
+                    ),
+                    child: const Text('Sign Up'),
                   ),
-                  child: const Text('Sign Up'),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         );
       }
 
