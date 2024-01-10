@@ -12,8 +12,7 @@ class FrontPage extends StatelessWidget {
     return await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Are you sure?'),
-        content: Text('Do you want to close the app?'),
+        content: Text('Do you want to exit the app?'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/about_app.dart';
 import 'package:sign_buddy/auth.dart';
@@ -12,6 +13,7 @@ import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/settings.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/user_account.dart';
+
 
 
 class LessonsScreen extends StatefulWidget {
@@ -296,6 +298,48 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+Future<bool> _onWillPop(BuildContext context) async {
+  bool exitConfirmation = await showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      content: Text('Do you want to exit the app?', style: TextStyle(fontFamily: 'FiraSans')),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: Text(
+            'No',
+            style: TextStyle(color: Colors.black),
+          ),
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop(true);
+            // Close the app when the user confirms exit
+            SystemNavigator.pop();
+          },
+          child: Text(
+            'Yes',
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  return exitConfirmation ?? false;
+}
+
+
 
 
     @override
@@ -309,10 +353,7 @@ class _HomePageState extends State<HomePage> {
 
 
     return WillPopScope(
-      onWillPop: () async {
-        // Return false to indicate that you don't want to pop the route
-        return false;
-      },
+    onWillPop: () => _onWillPop(context),
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
