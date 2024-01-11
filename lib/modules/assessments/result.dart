@@ -4,6 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/sign_up.dart';
+import 'package:intl/intl.dart';
+
+
 
 class AssessmentResult extends StatefulWidget {
   final int score;
@@ -73,24 +76,41 @@ class _AssessmentResultState extends State<AssessmentResult> {
       return "";
     }
   }
+    Future<void> _storeAssessmentResult() async {
+      try {
+        // Get the current user
+        User? currentUser = FirebaseAuth.instance.currentUser;
+        if (currentUser != null) {
+          String languageLevel = getLanguageLevel(); // Get the modified level string
 
-  Future<void> _storeAssessmentResult() async {
-    try {
-      // Get the current user
-      User? currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
-        String languageLevel = getLanguageLevel(); // Get the modified level string
+          // Get the current date as a string (e.g., January 11, 2024)
+          String formattedDate =
+              "${DateFormat.MMMM().format(DateTime.now().toLocal())} ${DateTime.now().toLocal().day}, ${DateTime.now().toLocal().year}";
 
-        // Store the assessment result in Firestore under the user's UID
-        await FirebaseFirestore.instance.collection('userData').doc(currentUser.uid).set({
-          'assessmentResult': widget.score,
-          'knowLevel': languageLevel, // Store the modified level string separately
-        }, SetOptions(merge: true));
+          // Get the user count for the current date from Firestore
+          DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+              .collection('userCount')
+              .doc(formattedDate) 
+              .get();
+
+          int userCount = (documentSnapshot.exists) ? documentSnapshot['count'] + 1 : 1;
+
+          // Update the user count for the current date in Firestore
+          await FirebaseFirestore.instance.collection('userCount').doc(formattedDate).set({
+            'count': userCount,
+          });
+
+          // Store the assessment result in Firestore under the user's UID
+          await FirebaseFirestore.instance.collection('userData').doc(currentUser.uid).set({
+            'assessmentResult': widget.score,
+            'knowLevel': languageLevel, // Store the modified level string separately
+            'date': formattedDate, // Add timestamp field with the current date
+          }, SetOptions(merge: true));
+        }
+      } catch (e) {
+        print(e.toString());
       }
-    } catch (e) {
-      print(e.toString());
     }
-  }
 
   @override
   Widget build(BuildContext context) {
