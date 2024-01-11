@@ -506,7 +506,7 @@ Future<bool> _onWillPop(BuildContext context) async {
                 if (Auth().isUserAnonymous()) 
                 buildListTileWithBorderAndIcon(
                   icon: Icons.exit_to_app,
-                  title: 'Sign out',
+                  title: 'Sign Out',
                   onTap: () async {
                       bool confirmLogout = await showDialog(
                         context: context,
