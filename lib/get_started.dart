@@ -28,8 +28,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
 
   List<String> assessments = [
     'Share any specific requirements or preferences you have, so we can personalize your app experience',
-    'Select your preferred language for learning sign language.',
-    'Indicate your sign language proficiency level for personalized lessons.',
+    'Select your preferred language for learning sign language',
+    'Enhance your learning experience with various modes and features that you will surely enjoy',
   ];
 
   List<String> images = [
