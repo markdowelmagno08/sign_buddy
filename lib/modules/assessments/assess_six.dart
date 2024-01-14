@@ -187,60 +187,60 @@ class _AssessmentSixState extends State<AssessmentSix> {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 70),
-              Text(
-                isEnglish
-                ? "Tap the image to select the answer."
-                : "Pindutin ang larawan para pumili ng sagot",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 70),
+                Text(
+                  isEnglish
+                      ? "Tap the image to select the answer."
+                      : "Pindutin ang larawan para pumili ng sagot",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              Text(
-                isEnglish
-                ? "Assessment 6: ${question}"
-                : "Pagsusuri 6: Ano sa palagay mo ang kahulugan ng senyas na ito?",
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              // Display Video
-              GestureDetector(
-                onTap: () {
-                  if (!answerChecked) {
-                    setState(() {
-                      selectedAnswerIndex = -1;
-                    });
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
+                const SizedBox(height: 50),
+                Text(
+                  isEnglish
+                      ? "Assessment 6: ${question}"
+                      : "Pagsusuri 6: Ano sa palagay mo ang kahulugan ng senyas na ito?",
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                // Display Video
+                GestureDetector(
+                  onTap: () {
+                    if (!answerChecked) {
+                      setState(() {
+                        selectedAnswerIndex = -1;
+                      });
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1,
+                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Image.asset(
-                    imageUrl,
-                    fit: BoxFit.cover,
+                    child: Image.asset(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Display Image Choices in a 1x2 grid
-              Expanded(
-                flex: 2, // Give the grid 2/3 of the available space
-                child: GridView.builder(
+                const SizedBox(height: 10),
+                // Display Image Choices in a 1x2 grid
+                GridView.builder(
+                  shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -252,7 +252,7 @@ class _AssessmentSixState extends State<AssessmentSix> {
                     bool isCorrectAnswer =
                         (answerChecked && correctAnswerIndex == index);
                     bool isSelectedAnswer = (selectedAnswerIndex == index);
-    
+        
                     return GestureDetector(
                       onTap: () {
                         if (!answerChecked) {
@@ -305,45 +305,44 @@ class _AssessmentSixState extends State<AssessmentSix> {
                     );
                   },
                 ),
+              ],
+            ),
+          ),
+        ),
+      bottomNavigationBar: answerChecked
+              ? null
+              : Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ElevatedButton(
+            onPressed: selectedAnswerIndex != -1
+                ? () {
+                    checkAnswer();
+                    if (selectedAnswerIndex == correctAnswerIndex) {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Correct' : "Tama",
+                        FontAwesomeIcons.solidCircleCheck,
+                      );
+                    } else {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Incorrect' : "Mali",
+                        FontAwesomeIcons.solidCircleXmark,
+                      );
+                    }
+                  }
+                : null,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              backgroundColor: const Color(0xFF5BD8FF),
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontFamily: 'FiraSans',
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 20),
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedAnswerIndex != -1
-                      ? () {
-                          checkAnswer();
-                          if (selectedAnswerIndex == correctAnswerIndex) {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Correct'
-                              : "Tama",
-                              FontAwesomeIcons.solidCircleCheck,
-                            );
-                          } else {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Incorrect'
-                              : "Mali",
-                              FontAwesomeIcons.solidCircleXmark,
-                            );
-                          }
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    foregroundColor: const Color(0xFF5A5A5A),
-                  ),
-                  child: Text(isEnglish ? 'Check' : "Tignan"),
-                ),
-            ],
+              foregroundColor: const Color(0xFF5A5A5A),
+            ),
+            child: Text(isEnglish ? 'Check' : "Tignan"),
           ),
         ),
       ),

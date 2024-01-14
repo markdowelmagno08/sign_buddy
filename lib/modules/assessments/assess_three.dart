@@ -177,17 +177,18 @@ class _AssessmentThreeState extends State<AssessmentThree> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
-    String question = currentQuestion['question'];
-    List<String> options = currentQuestion['options'];
+Widget build(BuildContext context) {
+  Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
+  String question = currentQuestion['question'];
+  List<String> options = currentQuestion['options'];
 
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Scaffold(
-        body: Padding(
+  return WillPopScope(
+    onWillPop: () async {
+      return false;
+    },
+    child: Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -195,8 +196,8 @@ class _AssessmentThreeState extends State<AssessmentThree> {
               const SizedBox(height: 70),
               Text(
                 isEnglish
-                ? "Tap the video to select the answer."
-                : "Pindutin ang bidyo para pumili ng sagot",
+                    ? "Tap the video to select the answer."
+                    : "Pindutin ang bidyo para pumili ng sagot",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -205,96 +206,95 @@ class _AssessmentThreeState extends State<AssessmentThree> {
               const SizedBox(height: 50),
               Text(
                 isEnglish
-                ? "Assessment 3: ${question}"
-                : "Pagsusuri 3: Ano ang tamang senyas para sa 'Ate'?",
+                    ? "Assessment 3: ${question}"
+                    : "Pagsusuri 3: Ano ang tamang senyas para sa 'Ate'?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
               // Display Video
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: List.generate(options.length, (index) {
-                    bool isCorrectAnswer =
-                        (answerChecked && correctAnswerIndex == index);
-                    bool isSelectedAnswer = (selectedAnswerIndex == index);
-    
-                    return GestureDetector(
-                      onTap: () {
-                        if (!answerChecked) {
-                          setState(() {
-                            selectedAnswerIndex = index;
-                          });
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 10),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                          color: isCorrectAnswer
-                              ? Colors.green.withOpacity(0.3)
-                              : isSelectedAnswer
-                                  ? Colors.grey.withOpacity(0.3)
-                                  : Colors
-                                      .white, // Set the default color here (e.g., Colors.white)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: List.generate(options.length, (index) {
+                  bool isCorrectAnswer =
+                      (answerChecked && correctAnswerIndex == index);
+                  bool isSelectedAnswer = (selectedAnswerIndex == index);
+      
+                  return GestureDetector(
+                    onTap: () {
+                      if (!answerChecked) {
+                        setState(() {
+                          selectedAnswerIndex = index;
+                        });
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 1,
                         ),
-                        child: ClipRRect(
-                          // ClipRRect to ensure the GIF stays within the container
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(options[index]),
-                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        color: isCorrectAnswer
+                            ? Colors.green.withOpacity(0.3)
+                            : isSelectedAnswer
+                                ? Colors.grey.withOpacity(0.3)
+                                : Colors
+                                    .white, // Set the default color here (e.g., Colors.white)
                       ),
-                    );
-                  }),
-                ),
+                      child: ClipRRect(
+                        // ClipRRect to ensure the GIF stays within the container
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(options[index]),
+                      ),
+                    ),
+                  );
+                }),
               ),
               const SizedBox(height: 20),
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedAnswerIndex != -1
-                      ? () {
-                          checkAnswer();
-                          if (selectedAnswerIndex == correctAnswerIndex) {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Correct'
-                              : "Tama",
-                              FontAwesomeIcons.solidCircleCheck,
-                            );
-                          } else {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Incorrect'
-                              : "Mali",
-                              FontAwesomeIcons.solidCircleXmark,
-                            );
-                          }
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    foregroundColor: const Color(0xFF5A5A5A),
-                  ),
-                  child: Text(isEnglish ? 'Check' : "Tignan"),
-                ),
             ],
           ),
         ),
       ),
-    );
-  }
+      bottomNavigationBar: answerChecked
+            ? null
+            :Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ElevatedButton(
+          onPressed: selectedAnswerIndex != -1
+              ? () {
+                  checkAnswer();
+                  if (selectedAnswerIndex == correctAnswerIndex) {
+                    showResultSnackbar(
+                      context,
+                      isEnglish ? 'Correct' : "Tama",
+                      FontAwesomeIcons.solidCircleCheck,
+                    );
+                  } else {
+                    showResultSnackbar(
+                      context,
+                      isEnglish ? 'Incorrect' : "Mali",
+                      FontAwesomeIcons.solidCircleXmark,
+                    );
+                  }
+                }
+              : null,
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(16),
+            backgroundColor: const Color(0xFF5BD8FF),
+            textStyle: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'FiraSans',
+              fontWeight: FontWeight.bold,
+            ),
+            foregroundColor: const Color(0xFF5A5A5A),
+          ),
+          child: Text(isEnglish ? 'Check' : "Tignan"),
+        ),
+      ),
+    ),
+  );
+}
 }

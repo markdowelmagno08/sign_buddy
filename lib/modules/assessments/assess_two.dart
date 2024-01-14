@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/assessments/assess_three.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
-
 import 'package:sign_buddy/modules/assessments/shuffle_options.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class AssessmentTwo extends StatefulWidget {
   final int score;
@@ -24,7 +21,6 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   int selectedAnswerIndex = -1;
   int correctAnswerIndex = -1;
   bool isEnglish = true;
-  
 
   final List<Map<String, dynamic>> assessmentQuestions = [
     {
@@ -33,47 +29,53 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
         'en': 'assets/dictionary/family/husband.gif',
         'ph': 'assets/dictionary/family/asawang_lalaki.gif',
       },
-      'options': ['Husband', 'Thank You', 'Hello', 'Chicken', 'Sister', 'Tree'],
+      'options': [
+        'Husband',
+        'Thank You',
+        'Hello',
+        'Chicken',
+        'Sister',
+        'Tree'
+      ],
       'correctAnswerIndex': 0,
     },
     // Add more questions as needed
   ];
-   // Define translations for the answer options
-    Map<String, String> translations = {
-      'Husband': 'Asawa(Lalaki)',
-      'Thank You': 'Salamat',
-      'Hello': 'Kumusta',
-      'Chicken': 'Manok',
-      'Sister': 'Ate',
-      'Tree': 'Puno',
-    };
 
-   @override
+  // Define translations for the answer options
+  Map<String, String> translations = {
+    'Husband': 'Asawa(Lalaki)',
+    'Thank You': 'Salamat',
+    'Hello': 'Kumusta',
+    'Chicken': 'Manok',
+    'Sister': 'Ate',
+    'Tree': 'Puno',
+  };
+
+  @override
   void initState() {
     super.initState();
     getLanguage();
     shuffleOptions(assessmentQuestions);
-     // Shuffle options when the widget is first initialized
   }
 
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
 
-    if(mounted) {
+    if (mounted) {
       setState(() {
         this.isEnglish = isEnglish;
       });
     }
   }
 
-  // Function to get translated option based on the language flag
   String getTranslatedOption(String option) {
     return isEnglish ? option : (translations[option] ?? option);
   }
 
   void checkAnswer() {
-    if(mounted) {
+    if (mounted) {
       setState(() {
         if (selectedAnswerIndex != -1) {
           answerChecked = true;
@@ -88,7 +90,7 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
   }
 
   void nextQuestion() {
-    if(mounted) {
+    if (mounted) {
       setState(() {
         currentIndex++;
         answerChecked = false;
@@ -116,9 +118,8 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
     }
   }
 
-  
-
-  void showResultSnackbar(BuildContext context, String message, IconData icon) {
+  void showResultSnackbar(
+      BuildContext context, String message, IconData icon) {
     Color backgroundColor;
     Color fontColor;
     TextStyle textStyle;
@@ -145,40 +146,40 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
 
     ScaffoldMessenger.of(context)
         .showSnackBar(
-          SnackBar(
-            content: SizedBox(
-              height: 60,
-              child: Row(
-                children: [
-                  Icon(
-                    icon,
-                    color: fontColor,
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    message,
-                    style: textStyle,
-                  ),
-                ],
+      SnackBar(
+        content: SizedBox(
+          height: 60,
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                color: fontColor,
               ),
-            ),
-            backgroundColor: backgroundColor,
-            duration: const Duration(days: 365),
-            dismissDirection: DismissDirection.none,
-            action: SnackBarAction(
-              label: isEnglish ? 'Next' : 'Susunod',
-              textColor: Colors.grey.shade700,
-              backgroundColor: Colors.blue.shade200,
-              onPressed: () {
-                if (currentIndex < assessmentQuestions.length - 1) {
-                  nextQuestion();
-                } else {
-                  navigateToNextAssessment(context);
-                }
-              },
-            ),
+              const SizedBox(width: 10),
+              Text(
+                message,
+                style: textStyle,
+              ),
+            ],
           ),
-        )
+        ),
+        backgroundColor: backgroundColor,
+        duration: const Duration(days: 365),
+        dismissDirection: DismissDirection.none,
+        action: SnackBarAction(
+          label: isEnglish ? 'Next' : 'Susunod',
+          textColor: Colors.grey.shade700,
+          backgroundColor: Colors.blue.shade200,
+          onPressed: () {
+            if (currentIndex < assessmentQuestions.length - 1) {
+              nextQuestion();
+            } else {
+              navigateToNextAssessment(context);
+            }
+          },
+        ),
+      ),
+    )
         .closed
         .then((reason) {
       setState(() {
@@ -193,66 +194,68 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
     String question = currentQuestion['question'];
     String imageUrlKey = isEnglish ? 'en' : 'ph';
     String imageUrl = currentQuestion['imageUrl'][imageUrlKey];
-    List<String> options = (currentQuestion['options'] as List).cast<String>();
+    List<String> options =
+    (currentQuestion['options'] as List).cast<String>();
 
     return WillPopScope(
       onWillPop: () async {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 70),
-              Text(
-                isEnglish
-                ? "Select the word that matches the sign"
-                : "Pumili ng salitang tumutugma sa senyas",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 70),
+                Text(
+                  isEnglish
+                      ? "Select the word that matches the sign"
+                      : "Pumili ng salitang tumutugma sa senyas",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              Text(
-                isEnglish
-                ? "Assessment 2: ${question}"
-                : "Pagsusuri 2: Anong senyas ang ginagamit dito?",
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 50),
-              // Display Video
-              GestureDetector(
-                onTap: () {
-                  if (!answerChecked) {
-                    setState(() {
-                      selectedAnswerIndex = -1;
-                    });
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
+                const SizedBox(height: 50),
+                Text(
+                  isEnglish
+                      ? "Assessment 2: ${question}"
+                      : "Pagsusuri 2: Anong senyas ang ginagamit dito?",
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 50),
+                // Display Video
+                GestureDetector(
+                  onTap: () {
+                    if (!answerChecked) {
+                      setState(() {
+                        selectedAnswerIndex = -1;
+                      });
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1,
+                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Image.asset(
-                    imageUrl,
-                    fit: BoxFit.cover,
+                    child: Image.asset(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              // Display Word Choices in a 2x3 grid
-              Expanded(
-                flex: 2, // Give the grid 2/3 of the available space
-                child: GridView.builder(
+                // Display Word Choices in a 2x3 grid
+                GridView.builder(
+                  shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 10,
@@ -262,11 +265,8 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                   itemCount: options.length,
                   itemBuilder: (context, index) {
                     bool isCorrectAnswer =
-                        (answerChecked && correctAnswerIndex == index);
+                    (answerChecked && correctAnswerIndex == index);
                     bool isSelectedAnswer = (selectedAnswerIndex == index);
-
-                   
-    
                     return GestureDetector(
                       onTap: () {
                         if (!answerChecked) {
@@ -288,12 +288,12 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                             borderRadius: BorderRadius.circular(12),
                             color: isCorrectAnswer
                                 ? Colors.green.withOpacity(
-                                    0.3) // Correct answer turns green
+                                0.3) // Correct answer turns green
                                 : isSelectedAnswer
-                                    ? Colors.grey.withOpacity(
-                                        0.3) // Selected answer has a grey tint
-                                    : Colors
-                                        .transparent, // Default background color
+                                ? Colors.grey.withOpacity(
+                                0.3) // Selected answer has a grey tint
+                                : Colors
+                                .transparent, // Default background color
                           ),
                           child: Center(
                             child: Text(
@@ -307,45 +307,44 @@ class _AssessmentTwoState extends State<AssessmentTwo> {
                     );
                   },
                 ),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: answerChecked
+            ? null
+            : Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ElevatedButton(
+            onPressed: selectedAnswerIndex != -1
+                ? () {
+              checkAnswer();
+              if (selectedAnswerIndex == correctAnswerIndex) {
+                showResultSnackbar(
+                  context,
+                  isEnglish ? 'Correct' : 'Tama',
+                  FontAwesomeIcons.solidCircleCheck,
+                );
+              } else {
+                showResultSnackbar(
+                  context,
+                  isEnglish ? 'Incorrect' : 'Mali',
+                  FontAwesomeIcons.solidCircleXmark,
+                );
+              }
+            }
+                : null,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              backgroundColor: const Color(0xFF5BD8FF),
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontFamily: 'FiraSans',
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 20),
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedAnswerIndex != -1
-                      ? () {
-                          checkAnswer();
-                          if (selectedAnswerIndex == correctAnswerIndex) {
-                            showResultSnackbar(
-                              context,
-                             isEnglish
-                            ?'Correct'
-                            : "Tama",
-                              FontAwesomeIcons.solidCircleCheck,
-                            );
-                          } else {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Incorrect'
-                              : "Mali",
-                              FontAwesomeIcons.solidCircleXmark,
-                            );
-                          }
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    foregroundColor: const Color(0xFF5A5A5A),
-                  ),
-                  child: Text(isEnglish ? 'Check' : "Tignan"),
-                ),
-            ],
+              foregroundColor: const Color(0xFF5A5A5A),
+            ),
+            child: Text(isEnglish ? 'Check' : 'Tignan'),
           ),
         ),
       ),

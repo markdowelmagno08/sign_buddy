@@ -398,167 +398,168 @@ Future<bool> _onWillPop(BuildContext context) async {
                 fit: BoxFit.cover, // You can adjust the fit as needed
               ),
             ),
-            child: Column(
-              children: [
-                DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF5A96E3),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      // CircleAvatar with the user image
-                       Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2.0,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  DrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF5A96E3),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // CircleAvatar with the user image
+                         Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2.0,
+                              ),
                             ),
-                          ),
-                          child: CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Colors.grey,
-                            // Use the randomly selected profile image
-                            backgroundImage: selectedProfileImage != null
-                                ? AssetImage(selectedProfileImage)
-                                : AssetImage('assets/user_man.png'), // Provide a default image if needed
-                          ),
-                        )
-                      ),
-
-                      // User data in the center
-                      buildUserData(),
-
-                      // IconButton on the top right
-                      // Align(
-                      //   alignment: Alignment.topRight,
-                      //   child: IconButton(
-                      //     icon: const Icon(Icons.close),
-                      //     color: Colors.white,
-                      //     onPressed: () {
-                      //       setState(() {
-                      //         _scaffoldKey.currentState?.openEndDrawer();
-                      //       });
-                      //     },
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 10),
-                // ListTile with border and ">" icon
-                buildListTileWithBorderAndIcon(
-                  icon: Icons.person,
-                  title: 'Profile',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      SlidePageRoute(
-                        page: UserAccountPage()
-                      ),
-                    );
-                    
-                  },
-                ),
-               
-                buildListTileWithBorderAndIcon(
-                  icon: Icons.info,
-                  title: 'About',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      SlidePageRoute(
-                        page: AboutApp()
-                      ),
-                    );
-                    
-                  },
-                ),
-                buildListTileWithBorderAndIcon(
-                  icon: Icons.settings,
-                  title: 'Settings',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      SlidePageRoute(
-                        page: MySettings()
-                      ),
-                    );
-                  },
-                ),
-                buildListTileWithBorderAndIcon(
-                  icon: Icons.feedback,
-                  title: 'Feedback',
-                  onTap: () {
-                   Navigator.push(
-                      context,
-                      SlidePageRoute(
-                        page: FeedbackApp(),
-                      ),
-                    );
-                  },
-                ),
-
-                //hide the logout button for authenticated users
-                if (Auth().isUserAnonymous()) 
-                buildListTileWithBorderAndIcon(
-                  icon: Icons.exit_to_app,
-                  title: 'Sign Out',
-                  onTap: () async {
-                      bool confirmLogout = await showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Text(isEnglish ? 'Are you sure you want to sign out?' : 'Sigurado ka bang nais mong mag-sign out?',
-                            style: TextStyle(
-                              fontFamily: 'FiraSans',
-                              fontWeight: FontWeight.w300,
-                            )),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, false),
-                              child: Text(isEnglish ? 'CANCEL' : 'KANSEL',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                )),
+                            child: CircleAvatar(
+                              radius: 40,
+                              backgroundColor: Colors.grey,
+                              // Use the randomly selected profile image
+                              backgroundImage: selectedProfileImage != null
+                                  ? AssetImage(selectedProfileImage)
+                                  : AssetImage('assets/user_man.png'), // Provide a default image if needed
                             ),
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, true),
-                              child: const Text('SIGN OUT',
-                                style: TextStyle(
-                                  color: Colors.red,
-                                )),
-                            ),
-                          ],
+                          )
                         ),
-                      );
-
-                      if (confirmLogout == true) {
-                        
-                         await Auth().signOut();
-                         
-                        
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, '/', (route) => false);
-                      }
-                    }
-                  
-                ),
-                // Footer with version number
-                Spacer(), // Ensures the footer is centered vertically
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10), // Adjust the bottom padding
-                  child: Text(
-                    'Version 1.0.0',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
+            
+                        // User data in the center
+                        buildUserData(),
+            
+                        // IconButton on the top right
+                        // Align(
+                        //   alignment: Alignment.topRight,
+                        //   child: IconButton(
+                        //     icon: const Icon(Icons.close),
+                        //     color: Colors.white,
+                        //     onPressed: () {
+                        //       setState(() {
+                        //         _scaffoldKey.currentState?.openEndDrawer();
+                        //       });
+                        //     },
+                        //   ),
+                        // ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 10),
+                  // ListTile with border and ">" icon
+                  buildListTileWithBorderAndIcon(
+                    icon: Icons.person,
+                    title: 'Profile',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        SlidePageRoute(
+                          page: UserAccountPage()
+                        ),
+                      );
+                      
+                    },
+                  ),
+                 
+                  buildListTileWithBorderAndIcon(
+                    icon: Icons.info,
+                    title: 'About',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        SlidePageRoute(
+                          page: AboutApp()
+                        ),
+                      );
+                      
+                    },
+                  ),
+                  buildListTileWithBorderAndIcon(
+                    icon: Icons.settings,
+                    title: 'Settings',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        SlidePageRoute(
+                          page: MySettings()
+                        ),
+                      );
+                    },
+                  ),
+                  buildListTileWithBorderAndIcon(
+                    icon: Icons.feedback,
+                    title: 'Feedback',
+                    onTap: () {
+                     Navigator.push(
+                        context,
+                        SlidePageRoute(
+                          page: FeedbackApp(),
+                        ),
+                      );
+                    },
+                  ),
+            
+                  //hide the logout button for authenticated users
+                  if (Auth().isUserAnonymous()) 
+                  buildListTileWithBorderAndIcon(
+                    icon: Icons.exit_to_app,
+                    title: 'Sign Out',
+                    onTap: () async {
+                        bool confirmLogout = await showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content: Text(isEnglish ? 'Are you sure you want to sign out?' : 'Sigurado ka bang nais mong mag-sign out?',
+                              style: TextStyle(
+                                fontFamily: 'FiraSans',
+                                fontWeight: FontWeight.w300,
+                              )),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: Text(isEnglish ? 'CANCEL' : 'KANSEL',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  )),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text('SIGN OUT',
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  )),
+                              ),
+                            ],
+                          ),
+                        );
+            
+                        if (confirmLogout == true) {
+                          
+                           await Auth().signOut();
+                           
+                          
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/', (route) => false);
+                        }
+                      }
+                    
+                  ),
+                  // Footer with version number
+                  Padding(
+                    padding: const EdgeInsets.only(top: 160), // Adjust the bottom padding
+                    child: Text(
+                      'Version 1.0.0',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -801,4 +802,3 @@ Widget buildListTileWithBorderAndIcon({
     ),
   );
 }
-

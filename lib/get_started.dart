@@ -100,82 +100,86 @@ class _GetStartedPageState extends State<GetStartedPage> {
               physics: NeverScrollableScrollPhysics(),
               itemCount: assessments.length,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 50),
-                        if (_currentPage < 3)
-                          CustomBackButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context, SlidePageRoute(page: FrontPage()));
-                            },
-                          ),
-                        const SizedBox(height: 100),
-                        const Center(
-                          child: Text(
-                            'Sign language is beautiful and expressive.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 50),
+                          if (_currentPage < 3)
+                            CustomBackButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context, SlidePageRoute(page: FrontPage()));
+                              },
                             ),
-                          ),
-                        ),
-                        const SizedBox(height: 25),
-                        Center(
-                          child: Image.asset(
-                            images[index],
-                            height: 120,
-                            width: 120,
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Center(
-                          child: Text(
-                            assessments[index],
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        const SizedBox(height: 100),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            if (_currentPage == 0) const Spacer(),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: ElevatedButton(
-                                onPressed: showReminderModal,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFF5BD8FF),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20.0, vertical: 16.0),
-                                  textStyle: const TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                ),
-                                child: Text(
-                                  _currentPage == assessments.length - 1
-                                      ? 'Get Started'
-                                      : 'Next',
-                                  style: const TextStyle(
-                                    fontFamily: 'FiraSans',
-                                    color: Color(0xFF5A5A5A),
-                                  ),
-                                ),
+                          const SizedBox(height: 100),
+                          const Center(
+                            child: Text(
+                              'Sign language is beautiful and expressive.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
                               ),
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          const SizedBox(height: 25),
+                          Center(
+                            child: Image.asset(
+                              images[index],
+                              height: 120,
+                              width: 120,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Center(
+                            child: Text(
+                              assessments[index],
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 100),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              if (_currentPage == 0) const Spacer(),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20.0),
+                                child: ElevatedButton(
+                                  onPressed: showReminderModal,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xFF5BD8FF),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0, vertical: 16.0),
+                                    textStyle: const TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    _currentPage == assessments.length - 1
+                                        ? 'Get Started'
+                                        : 'Next',
+                                    style: const TextStyle(
+                                      fontFamily: 'FiraSans',
+                                      color: Color(0xFF5A5A5A),
+                                    ),
+                                  ),
+                                  
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -241,36 +245,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   ),
                 ),
               ),
-            if (loading) LoadingDialog(),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget LoadingDialog() {
-    return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 20),
-              Text(
-                'Loading...',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

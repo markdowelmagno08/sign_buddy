@@ -112,6 +112,13 @@ class _AssessmentEightState extends State<AssessmentEight> {
     }
   }
 
+  bool isCorrectMatching(String selectedVideo, String selectedWord) {
+  return ((selectedVideo == 'assets/dictionary/family/cat.gif' && selectedWord == 'Cat') ||
+      (selectedVideo == 'assets/dictionary/family/pusa.gif' && selectedWord == 'Pusa') ||
+      (selectedVideo == 'assets/dictionary/family/nephew.gif' && selectedWord == 'Nephew') ||
+      (selectedVideo == 'assets/dictionary/family/pamangkin_na_lalake.gif' && selectedWord == 'Pamangkin na Lalaki'));
+}
+
   void nextQuestion() {
     if(mounted) {
       setState(() {
@@ -208,19 +215,20 @@ class _AssessmentEightState extends State<AssessmentEight> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
-    String question = currentQuestion['question'];
-    List<Map<String, dynamic>> matches =
-        List<Map<String, dynamic>>.from(currentQuestion['matches']);
-    String languageKey = isEnglish ? 'en' : 'ph';
+Widget build(BuildContext context) {
+  Map<String, dynamic> currentQuestion = assessmentQuestions[currentIndex];
+  String question = currentQuestion['question'];
+  List<Map<String, dynamic>> matches =
+      List<Map<String, dynamic>>.from(currentQuestion['matches']);
+  String languageKey = isEnglish ? 'en' : 'ph';
 
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Scaffold(
-        body: Padding(
+  return WillPopScope(
+    onWillPop: () async {
+      return false;
+    },
+    child: Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -237,12 +245,16 @@ class _AssessmentEightState extends State<AssessmentEight> {
               ),
               const SizedBox(height: 50),
               Text(
-                isEnglish ? "Assessment 8: ${question}" : "Pagsusuri 8: Anong senyas ang ginagamit dito?",
+                isEnglish
+                    ? "Assessment 8: ${question}"
+                    : "Pagsusuri 8: Anong senyas ang ginagamit dito?",
                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
               Text(
-                isEnglish ? "*Double tap the video for a closer look" : "*I-double tap ang video para mas malapit na tingnan",
+                isEnglish
+                    ? "*Double tap the video for a closer look"
+                    : "*I-double tap ang video para mas malapit na tingnan",
                 style: const TextStyle(
                   fontSize: 12,
                   fontStyle: FontStyle.italic,
@@ -250,164 +262,177 @@ class _AssessmentEightState extends State<AssessmentEight> {
                 ),
               ),
               // Display the sign language videos and word choices side by side
-              Expanded(
-                child: Row(
-                  children: [
-                    // Display the sign language videos on the left side
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: matches.map((match) {
-                          int matchIndex = matches.indexOf(match);
-                          bool isSelected = selectedVideoIndex == matchIndex;
-
-                          return GestureDetector(
-                            onTap: () {
-                              if (!answerChecked) {
-                                setState(() {
-                                  selectedVideoIndex = matchIndex;
-                                });
-                              }
-                            },
-                             onDoubleTap: () {
-                              if (!answerChecked) {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    contentPadding: EdgeInsets.all(5), // Remove padding around the content
-                                    content: Container(
-                                      child: Image.asset(
-                                         match['videos'][languageKey],
-                                        fit: BoxFit.contain, // Adjust the fit as needed.
-                                      ),
+              Row(
+                children: [
+                  // Display the sign language videos on the left side
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: matches.map((match) {
+                        int matchIndex = matches.indexOf(match);
+                        bool isSelected = selectedVideoIndex == matchIndex;
+          
+                        return GestureDetector(
+                          onTap: () {
+                            if (!answerChecked) {
+                              setState(() {
+                                selectedVideoIndex = matchIndex;
+                              });
+                            }
+                          },
+                          onDoubleTap: () {
+                            if (!answerChecked) {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  contentPadding: EdgeInsets.all(
+                                      5), // Remove padding around the content
+                                  content: Container(
+                                    child: Image.asset(
+                                      match['videos'][languageKey],
+                                      fit: BoxFit
+                                          .contain, // Adjust the fit as needed.
                                     ),
                                   ),
-                                );
-                              }
-                            },
-
-                            // Display the video based on the language setting
-                            child: Container(
-                              padding: const EdgeInsets.all(10),
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: isSelected ? Colors.deepPurpleAccent : Colors.grey,
-                                  width: 1,
                                 ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Image.asset(
-                                match['videos'][languageKey],
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    // Display the word choices on the right side
-                    Expanded(
-                      child: Column(
-                        children: matches.map((match) {
-                          int matchIndex = matches.indexOf(match);
-                          bool isSelected = selectedWordIndex == matchIndex;
-
-                          return GestureDetector(
-                            onTap: () {
-                              if (!answerChecked) {
-                                setState(() {
-                                  selectedWordIndex = matchIndex;
-                                });
-                              }
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(10),
-                              margin: const EdgeInsets.symmetric(vertical: 36),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: isSelected ? Colors.deepPurpleAccent : Colors.grey,
-                                  width: 1,
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  match['words'][languageKey],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: isSelected ? Colors.deepPurpleAccent : Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedVideoIndex != -1 && selectedWordIndex != -1
-                      ? () {
-                          setState(() {
-                            String selectedVideo = assessmentQuestions[currentIndex]['matches'][selectedVideoIndex]['videos'][languageKey];
-                            String selectedWord = assessmentQuestions[currentIndex]['matches'][selectedWordIndex]['words'][languageKey];
-
-                          //checks if the selected video or word is match correspondly, it also gets the language using the isEnglish variable
-                            if ( 
-                              ((selectedVideo ==
-                                        'assets/dictionary/family/cat.gif' &&
-                                    selectedWord == 'Cat') || (selectedVideo ==
-                                        'assets/dictionary/family/pusa.gif' &&
-                                    selectedWord == 'Pusa')) ||
-                                
-                                ((selectedVideo ==
-                                        'assets/dictionary/family/nephew.gif' &&
-                                    selectedWord == 'Nephew') || (selectedVideo ==
-                                        'assets/dictionary/family/pamangkin_na_lalake.gif' &&
-                                    selectedWord == 'Pamangkin na Lalaki')  )) {
-                              showResultSnackbar(
-                                context,
-                                isEnglish ? 'Correct' : "Tama",
-                                FontAwesomeIcons.solidCircleCheck,
-                              );
-                              score++;
-                            } else {
-                              showResultSnackbar(
-                                context,
-                                isEnglish ? 'Incorrect' : "Mali",
-                                FontAwesomeIcons.solidCircleXmark,
                               );
                             }
-                          });
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
+                          },
+          
+                          // Display the video based on the language setting
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: isSelected
+                                    ? Colors.deepPurpleAccent
+                                    : Colors.grey,
+                                width: 1,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Image.asset(
+                              match['videos'][languageKey],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }).toList(),
                     ),
-                    foregroundColor: const Color(0xFF5A5A5A),
                   ),
-                  child: Text(isEnglish ? 'Check' : "Tignan"),
-                ),
+                  const SizedBox(width: 20),
+                  // Display the word choices on the right side
+                  Expanded(
+                    child: Column(
+                      children: matches.map((match) {
+                        int matchIndex = matches.indexOf(match);
+                        bool isSelected = selectedWordIndex == matchIndex;
+                            
+                        return GestureDetector(
+                          onTap: () {
+                            if (!answerChecked) {
+                              setState(() {
+                                selectedWordIndex = matchIndex;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            margin: const EdgeInsets.symmetric(vertical: 36),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: isSelected
+                                    ? Colors.deepPurpleAccent
+                                    : Colors.grey,
+                                width: 1,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Center(
+                              child: Text(
+                                match['words'][languageKey],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: isSelected
+                                      ? Colors.deepPurpleAccent
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
-    );
-  }
+      
+      bottomNavigationBar:   answerChecked
+                ? null
+                : Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ElevatedButton(
+          onPressed: selectedVideoIndex != -1 && selectedWordIndex != -1
+              ? () {
+                checkAnswer();
+                    String selectedVideo =
+                        assessmentQuestions[currentIndex]['matches']
+                            [selectedVideoIndex]['videos'][languageKey];
+                    String selectedWord =
+                        assessmentQuestions[currentIndex]['matches']
+                            [selectedWordIndex]['words'][languageKey];
+      
+                    // checks if the selected video or word is matched correspondingly, it also gets the language using the isEnglish variable
+                    if ((selectedVideo ==
+                                'assets/dictionary/family/cat.gif' &&
+                            selectedWord == 'Cat') ||
+                        (selectedVideo ==
+                                'assets/dictionary/family/pusa.gif' &&
+                            selectedWord == 'Pusa') ||
+                        (selectedVideo ==
+                                'assets/dictionary/family/nephew.gif' &&
+                            selectedWord == 'Nephew') ||
+                        (selectedVideo ==
+                                'assets/dictionary/family/pamangkin_na_lalake.gif' &&
+                            selectedWord == 'Pamangkin na Lalaki')) {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Correct' : "Tama",
+                        FontAwesomeIcons.solidCircleCheck,
+                      );
+                      score++;
+                    } else {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Incorrect' : "Mali",
+                        FontAwesomeIcons.solidCircleXmark,
+                      );
+                    }
+                }
+              : null,
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(16),
+            backgroundColor: const Color(0xFF5BD8FF),
+            textStyle: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'FiraSans',
+              fontWeight: FontWeight.bold,
+            ),
+            foregroundColor: const Color(0xFF5A5A5A),
+          ),
+          child: Text(isEnglish ? 'Check' : "Tignan"),
+        ),
+      ),
+    ),
+  );
+}
+
 }

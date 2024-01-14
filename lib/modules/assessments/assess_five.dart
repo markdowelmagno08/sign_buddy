@@ -181,64 +181,64 @@ class _AssessmentFiveState extends State<AssessmentFive> {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 70),
-              Text(
-                isEnglish
-                ? "Select the letter that matches the sign"
-                : "Pumili ng titik na tumutugma sa senyas",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 70),
+                Text(
+                  isEnglish
+                      ? "Select the letter that matches the sign"
+                      : "Pumili ng titik na tumutugma sa senyas",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              Text(
-                isEnglish
-                ? "Assessment 5: ${question}"
-                : "Pagsusuri 5: Anong senyas ito?",
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 50),
-              // Display Video
-              GestureDetector(
-                onTap: () {
-                  // Show the image in a dialog when tapped
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      content: Image.asset(
-                        imageUrl,
-                        fit: BoxFit.cover,
+                const SizedBox(height: 50),
+                Text(
+                  isEnglish
+                      ? "Assessment 5: ${question}"
+                      : "Pagsusuri 5: Anong senyas ito?",
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 50),
+                // Display Video
+                GestureDetector(
+                  onTap: () {
+                    // Show the image in a dialog when tapped
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        content: Image.asset(
+                          imageUrl,
+                          fit: BoxFit.cover,
+                        ),
                       ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(0.0),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Border color
+                        width: 2, // Border width
+                      ),
+                      color: Colors.white, // Color inside the border
+                      borderRadius: BorderRadius.circular(5), // Border radius
                     ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(0.0),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey, // Border color
-                      width: 2, // Border width
+                    child: Image.asset(
+                      imageUrl,
                     ),
-                    color: Colors.white, // Color inside the border
-                    borderRadius: BorderRadius.circular(5), // Border radius
-                  ),
-                  child: Image.asset(
-                    imageUrl,
                   ),
                 ),
-              ),
-              // Display Word Choices in a 2x3 grid
-              Expanded(
-                flex: 2, // Give the grid 2/3 of the available space
-                child: GridView.builder(
+                // Display Word Choices in a 2x3 grid
+                GridView.builder(
+                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 10,
@@ -250,7 +250,7 @@ class _AssessmentFiveState extends State<AssessmentFive> {
                     bool isCorrectAnswer =
                         (answerChecked && correctAnswerIndex == index);
                     bool isSelectedAnswer = (selectedAnswerIndex == index);
-    
+        
                     return GestureDetector(
                       onTap: () {
                         if (!answerChecked) {
@@ -291,48 +291,48 @@ class _AssessmentFiveState extends State<AssessmentFive> {
                     );
                   },
                 ),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: answerChecked
+            ? null
+            :Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ElevatedButton(
+            onPressed: selectedAnswerIndex != -1
+                ? () {
+                    checkAnswer();
+                    if (selectedAnswerIndex == correctAnswerIndex) {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Correct' : "Tama",
+                        FontAwesomeIcons.solidCircleCheck,
+                      );
+                    } else {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Incorrect' : "Mali",
+                        FontAwesomeIcons.solidCircleXmark,
+                      );
+                    }
+                  }
+                : null,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              backgroundColor: const Color(0xFF5BD8FF),
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontFamily: 'FiraSans',
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 20),
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedAnswerIndex != -1
-                      ? () {
-                          checkAnswer();
-                          if (selectedAnswerIndex == correctAnswerIndex) {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Correct'
-                              : "Tama",
-                              FontAwesomeIcons.solidCircleCheck,
-                            );
-                          } else {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Incorrect'
-                              : "Mali",
-                              FontAwesomeIcons.solidCircleXmark,
-                            );
-                          }
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    foregroundColor: const Color(0xFF5A5A5A),
-                  ),
-                  child:Text(isEnglish ? 'Check' : "Tignan"),
-                ),
-            ],
+              foregroundColor: const Color(0xFF5A5A5A),
+            ),
+            child: Text(isEnglish ? 'Check' : "Tignan"),
           ),
         ),
       ),
     );
   }
+
 }

@@ -207,7 +207,6 @@ class _AssessmentOneState extends State<AssessmentOne> {
                 child: GridView.count(
                   crossAxisCount: 2,
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
                   crossAxisSpacing: 16,
                   children: List.generate(options.length, (index) {
                     bool isCorrectAnswer =

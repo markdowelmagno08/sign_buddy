@@ -119,83 +119,86 @@ class _AssessmentResultState extends State<AssessmentResult> {
         return false;
       },
       child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 70),
-                  Image.asset(
-                    'assets/congrats-img.png',
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(height: 20),
-                   Text(
-                    isEnglish ? 'Assessment Completed!' : "Natapos na ang Pagsusuri!",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    isEnglish ? 'Your score: ${widget.score}/${widget.totalQuestions}' : 'Puntos: ${widget.score}/${widget.totalQuestions}',
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text(
-                      getLanguageKnowledge(), // Display the original string
-                      style: const TextStyle(fontSize: 15),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    const SizedBox(height: 170),
+                    Image.asset(
+                      'assets/congrats-img.png',
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.contain,
+                      alignment: Alignment.center,
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  getCongratulatoryMessage(),
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green),
-                ),
-              ),
-              const SizedBox(height: 60),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 30),
-                  child: SizedBox(
-                    width: 140,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        await _storeAssessmentResult();
-                        Navigator.pushReplacement(
-                          context,
-                          SlidePageRoute(page: const SignupPage()),
-                        );
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color(0xFF5BD8FF),
-                        ),
-                      ),
+                    const SizedBox(height: 20),
+                     Text(
+                      isEnglish ? 'Assessment Completed!' : "Natapos na ang Pagsusuri!",
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      isEnglish ? 'Your score: ${widget.score}/${widget.totalQuestions}' : 'Puntos: ${widget.score}/${widget.totalQuestions}',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        isEnglish ? 'Continue' : "Magpatuloy",
-                        style: TextStyle(
-                          color: Colors.grey[700],
+                        getLanguageKnowledge(), // Display the original string
+                        style: const TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    getCongratulatoryMessage(),
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
+                ),
+                const SizedBox(height: 60),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 30),
+                    child: SizedBox(
+                      width: 140,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await _storeAssessmentResult();
+                          Navigator.pushReplacement(
+                            context,
+                            SlidePageRoute(page: const SignupPage()),
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0xFF5BD8FF),
+                          ),
+                        ),
+                        child: Text(
+                          isEnglish ? 'Continue' : "Magpatuloy",
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height:10),
+              ],
+            ),
           ),
         ),
       ),

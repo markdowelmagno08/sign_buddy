@@ -213,120 +213,119 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 70),
-              Text(
-                isEnglish
-                ? "Create a sentence by selecting the word options below"
-                : "Lumikha ng pangungusap sa pamamagitan ng pagpili ng mga opsyon",
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 30),
-              Text(
-                isEnglish
-                ? "Assessment 7: ${question}"
-                : "Pagsusuri 7: Anong pangungusap ang binubuo ng senyas na ito?",
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 1,
-                  ),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Image.asset(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Center(
-                child: Text(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 70),
+                Text(
                   isEnglish
-                  ? "Your Answer:"
-                  : 'Sagot mo',
+                      ? "Create a sentence by selecting the word options below"
+                      : "Lumikha ng pangungusap sa pamamagitan ng pagpili ng mga opsyon",
                   style: TextStyle(
-                    color: Colors.black,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
                   ),
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  Center(
-                    child: Wrap(
-                      spacing: 2,
-                      children: List.generate(selectedWords.length, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 3),
-                          child: Text(
-                            selectedWords[index],
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        );
-                      }),
+                const SizedBox(height: 30),
+                Text(
+                  isEnglish
+                      ? "Assessment 7: ${question}"
+                      : "Pagsusuri 7: Anong pangungusap ang binubuo ng senyas na ito?",
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Image.asset(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    isEnglish
+                        ? "Your Answer:"
+                        : 'Sagot mo',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
-                  if (answerChecked)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 30),
-                         Center(
-                          child: Text(
-                            isEnglish
-                            ? 'Correct Answer:'
-                            : 'Tamang sagot:',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    Center(
+                      child: Wrap(
+                        spacing: 2,
+                        children: List.generate(selectedWords.length, (index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              selectedWords[index],
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                    if (answerChecked)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 30),
+                          Center(
+                            child: Text(
+                              isEnglish
+                                  ? 'Correct Answer:'
+                                  : 'Tamang sagot:',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Center(
-                          child: Column(
-                            children: [
-                              Text(
-                                isEnglish
-                                ? correctAnswer['en'].join(' ')
-                                : correctAnswer['ph'].join(' '),
-                                style: const TextStyle(
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.w400,
+                          const SizedBox(height: 10),
+                          Center(
+                            child: Column(
+                              children: [
+                                Text(
+                                  isEnglish
+                                      ? correctAnswer['en'].join(' ')
+                                      : correctAnswer['ph'].join(' '),
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                              
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              if (!answerChecked)
-                Expanded(
-                  child: Padding(
+                        ],
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                if (!answerChecked)
+                  Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Wrap(
                       spacing: 8,
@@ -349,7 +348,8 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                               options[index],
                               style: TextStyle(
                                 color: answerChecked &&
-                                        correctAnswer[isEnglish ? 'en' : 'ph'].contains(options[index])
+                                        correctAnswer[isEnglish ? 'en' : 'ph']
+                                            .contains(options[index])
                                     ? Colors.green
                                     : Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -365,7 +365,8 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                               borderRadius: BorderRadius.circular(10),
                               side: BorderSide(
                                 color: answerChecked &&
-                                        correctAnswer[isEnglish ? 'en' : 'ph'].contains(options[index])
+                                        correctAnswer[isEnglish ? 'en' : 'ph']
+                                            .contains(options[index])
                                     ? Colors.green
                                     : Colors.grey,
                                 width: 1,
@@ -376,46 +377,46 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
                       ),
                     ),
                   ),
-                ),
-              const SizedBox(height: 20),
-              if (!answerChecked)
-                ElevatedButton(
-                  onPressed: selectedWords.isNotEmpty
-                      ? () {
-                          checkAnswer();
-                          if (selectedWords.join(' ') ==
-                              correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Correct'
-                              : "Tama",
-                              FontAwesomeIcons.solidCircleCheck,
-                            );
-                          } else {
-                            showResultSnackbar(
-                              context,
-                              isEnglish
-                              ?'Incorrect'
-                              : "Mali",
-                              FontAwesomeIcons.solidCircleXmark,
-                            );
-                          }
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    backgroundColor: const Color(0xFF5BD8FF),
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'FiraSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    foregroundColor: const Color(0xFF5A5A5A),
-                  ),
-                  child: Text(isEnglish ? 'Check' : "Tignan"),
-                ),
-            ],
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: answerChecked
+                ? null
+                : Padding(
+                  
+          padding: const EdgeInsets.all(20.0),
+          child: ElevatedButton(
+            onPressed: selectedWords.isNotEmpty
+                ? () {
+                    checkAnswer();
+                    if (selectedWords.join(' ') ==
+                        correctAnswer[isEnglish ? 'en' : 'ph'].join(' ')) {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Correct' : "Tama",
+                        FontAwesomeIcons.solidCircleCheck,
+                      );
+                    } else {
+                      showResultSnackbar(
+                        context,
+                        isEnglish ? 'Incorrect' : "Mali",
+                        FontAwesomeIcons.solidCircleXmark,
+                      );
+                    }
+                  }
+                : null,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16),
+              backgroundColor: const Color(0xFF5BD8FF),
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontFamily: 'FiraSans',
+                fontWeight: FontWeight.bold,
+              ),
+              foregroundColor: const Color(0xFF5A5A5A),
+            ),
+            child: Text(isEnglish ? 'Check' : "Tignan"),
           ),
         ),
       ),
