@@ -43,7 +43,7 @@ class _AssessmentSevenState extends State<AssessmentSeven> {
     'Mayroon',
     'ang',
     'oo',
-    '!',
+    'kumusta',
   ];
 
   final List<Map<String, dynamic>> assessmentQuestions = [
