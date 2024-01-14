@@ -224,7 +224,7 @@ class _ClassifyState extends State<Classify> {
                             right: orientation == Orientation.portrait ? 30 : 15,
                           ),
                           child: SizedBox(
-                            width: 120,
+                            width: 135,
                             height: 40,
                             child: ElevatedButton(
                               onPressed: selectedClassify != null
