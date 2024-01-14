@@ -390,7 +390,6 @@ Widget build(BuildContext context) {
                         assessmentQuestions[currentIndex]['matches']
                             [selectedWordIndex]['words'][languageKey];
       
-                    // checks if the selected video or word is matched correspondingly, it also gets the language using the isEnglish variable
                     if ((selectedVideo ==
                                 'assets/dictionary/family/cat.gif' &&
                             selectedWord == 'Cat') ||
@@ -408,7 +407,6 @@ Widget build(BuildContext context) {
                         isEnglish ? 'Correct' : "Tama",
                         FontAwesomeIcons.solidCircleCheck,
                       );
-                      score++;
                     } else {
                       showResultSnackbar(
                         context,

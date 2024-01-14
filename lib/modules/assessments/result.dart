@@ -38,7 +38,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;
-
+    
     setState(() {
       this.isEnglish = isEnglish;
     });
@@ -86,6 +86,9 @@ class _AssessmentResultState extends State<AssessmentResult> {
           // Get the current date as a string (e.g., January 11, 2024)
           String formattedDate =
               "${DateFormat.MMMM().format(DateTime.now().toLocal())} ${DateTime.now().toLocal().day}, ${DateTime.now().toLocal().year}";
+          
+          DateTime timestamp = DateTime.now();
+ 
 
           // Get the user count for the current date from Firestore
           DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
@@ -104,7 +107,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
           await FirebaseFirestore.instance.collection('userData').doc(currentUser.uid).set({
             'assessmentResult': widget.score,
             'knowLevel': languageLevel, // Store the modified level string separately
-            'date': formattedDate, // Add timestamp field with the current date
+            'accountCreated': timestamp, // Add timestamp field with the current date
           }, SetOptions(merge: true));
         }
       } catch (e) {
@@ -126,7 +129,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
               children: [
                 Column(
                   children: [
-                    const SizedBox(height: 170),
+                    const SizedBox(height: 100),
                     Image.asset(
                       'assets/congrats-img.png',
                       width: 200,
@@ -157,12 +160,15 @@ class _AssessmentResultState extends State<AssessmentResult> {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    getCongratulatoryMessage(),
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      getCongratulatoryMessage(),
+                      style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 60),
