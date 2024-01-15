@@ -119,7 +119,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'assets/bg-signbuddy.png'), // Replace with your background image path
+                'assets/bg-signbuddy.png'), 
             fit: BoxFit.cover,
           ),
         ),
@@ -395,7 +395,7 @@ Future<bool> _onWillPop(BuildContext context) async {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/bg-signbuddy.png'),
-                fit: BoxFit.cover, // You can adjust the fit as needed
+                fit: BoxFit.cover, 
               ),
             ),
             child: SingleChildScrollView(
