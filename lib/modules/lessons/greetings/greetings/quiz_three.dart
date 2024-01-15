@@ -35,6 +35,7 @@ class _GreetingsQuizTwoState extends State<GreetingsQuizThree> {
   bool isLoading = true;
   bool isEnglish = true;
   int progress = 0;
+  bool isSlowMotion = false;
 
 
   @override
@@ -324,7 +325,40 @@ class _GreetingsQuizTwoState extends State<GreetingsQuizThree> {
               ),
             ),
           ),
-          
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (isSlowMotion) {
+                      _videoController!.setPlaybackSpeed(1.0);
+                      _videoController!.play();
+                    } else {
+                      _videoController!.setPlaybackSpeed(0.5);
+                      _videoController!.play();
+                    }
+                    if(mounted) {
+                      setState(() {
+                        isSlowMotion = !isSlowMotion;
+                      });
+                    }
+                  },
+                  child: ImageIcon(
+                    AssetImage(
+                      isSlowMotion
+                          ? 'assets/rabbit.png'
+                          : 'assets/turtle.png',
+                    ),
+                    size: 40, // Adjust the size as needed
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       );
     } else {

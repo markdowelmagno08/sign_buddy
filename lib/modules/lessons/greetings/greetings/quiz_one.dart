@@ -34,8 +34,9 @@ class _GreetingsQuizOneState extends State<GreetingsQuizOne> {
   String selectedOption = '';
   bool answerChecked = false;
   bool progressAdded = false; // Track whether progress has been added
-   List<String> userSelectedWords = [];
-   bool isAnswerCorrect = false;
+  List<String> userSelectedWords = [];
+  bool isAnswerCorrect = false;
+  bool isSlowMotion = false;
   
   bool isLoading = true;
   bool isEnglish = true;
@@ -268,7 +269,6 @@ class _GreetingsQuizOneState extends State<GreetingsQuizOne> {
             SizedBox(height: 20),
             if (contentVideo.isNotEmpty)
             buildVideoDisplay(),
-            SizedBox(height: 20),
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -404,7 +404,42 @@ class _GreetingsQuizOneState extends State<GreetingsQuizOne> {
                 child: CachedVideoPlayer(_videoController!),
               ),
             ),
-          ),    
+            
+          ), 
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (isSlowMotion) {
+                      _videoController!.setPlaybackSpeed(1.0);
+                      _videoController!.play();
+                    } else {
+                      _videoController!.setPlaybackSpeed(0.5);
+                      _videoController!.play();
+                    }
+                    if(mounted) {
+                      setState(() {
+                        isSlowMotion = !isSlowMotion;
+                      });
+                    }
+                  },
+                  child: ImageIcon(
+                    AssetImage(
+                      isSlowMotion
+                          ? 'assets/rabbit.png'
+                          : 'assets/turtle.png',
+                    ),
+                    size: 40, // Adjust the size as needed
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),   
         ],
       );
       

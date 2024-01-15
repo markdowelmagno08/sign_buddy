@@ -331,7 +331,7 @@ class _GreetingsQuizFourState extends State<GreetingsQuizFour> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 70),
+            const SizedBox(height: 20),
             Text(
               contentDescription,
               style: TextStyle(fontSize: 18),
@@ -443,7 +443,41 @@ class _GreetingsQuizFourState extends State<GreetingsQuizFour> {
                 child: CachedVideoPlayer(_videoController!),
               ),
             ),
-          ),    
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (isSlowMotion) {
+                      _videoController!.setPlaybackSpeed(1.0);
+                      _videoController!.play();
+                    } else {
+                      _videoController!.setPlaybackSpeed(0.5);
+                      _videoController!.play();
+                    }
+                    if(mounted) {
+                      setState(() {
+                        isSlowMotion = !isSlowMotion;
+                      });
+                    }
+                  },
+                  child: ImageIcon(
+                    AssetImage(
+                      isSlowMotion
+                          ? 'assets/rabbit.png'
+                          : 'assets/turtle.png',
+                    ),
+                    size: 40, // Adjust the size as needed
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),       
         ],
       );
       

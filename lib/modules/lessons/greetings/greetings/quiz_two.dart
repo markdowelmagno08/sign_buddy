@@ -211,6 +211,7 @@ Widget _buildVideoOption(CachedVideoPlayerController controller, String option) 
             ],
           );
         }),
+        
       );
     } else {
       return Center(
