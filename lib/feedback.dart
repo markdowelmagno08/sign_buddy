@@ -54,7 +54,7 @@ class _FeedbackAppState extends State<FeedbackApp> {
             children: [
               // Background Image
               Image.asset(
-                'assets/bg-signbuddy.png',
+                'assets/bg-signbuddy2.png',
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
@@ -120,7 +120,7 @@ class _FeedbackAppState extends State<FeedbackApp> {
          Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/bg-signbuddy.png'),
+                image: AssetImage('assets/bg-signbuddy2.png'),
                 fit: BoxFit.cover,
               ),
             ),

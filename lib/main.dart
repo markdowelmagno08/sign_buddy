@@ -174,9 +174,9 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/app_icon.png', 
-                        width: 120, 
-                        height: 120, 
+                        'assets/app_icon2.png', 
+                        width: 300, 
+                        height: 300, 
                       ),
                       SizedBox(height: 16),
                       

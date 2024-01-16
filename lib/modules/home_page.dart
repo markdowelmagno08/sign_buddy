@@ -119,7 +119,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'assets/bg-signbuddy.png'), 
+                'assets/bg-signbuddy1.png'), 
             fit: BoxFit.cover,
           ),
         ),
@@ -361,9 +361,9 @@ Future<bool> _onWillPop(BuildContext context) async {
           title: Row(
             children: [
               Image.asset(
-                'assets/app_icon.png',
-                width: 30, 
-                height: 30, 
+                'assets/app_icon1.png',
+                width: 40, 
+                height: 40, 
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5.0),
@@ -394,7 +394,7 @@ Future<bool> _onWillPop(BuildContext context) async {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/bg-signbuddy.png'),
+                image: AssetImage('assets/bg-signbuddy1.png'),
                 fit: BoxFit.cover, 
               ),
             ),
@@ -402,8 +402,10 @@ Future<bool> _onWillPop(BuildContext context) async {
               child: Column(
                 children: [
                   DrawerHeader(
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF5A96E3),
+                    decoration: BoxDecoration(
+                      // color: Color.fromARGB(255, 71, 187, 202),
+                      // color: Color(0xFF5A96E3),
+                      color: Color.fromARGB(255, 45, 154, 197),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -428,24 +430,9 @@ Future<bool> _onWillPop(BuildContext context) async {
                                   : AssetImage('assets/user_man.png'), // Provide a default image if needed
                             ),
                           )
-                        ),
-            
+                        ),  
                         // User data in the center
                         buildUserData(),
-            
-                        // IconButton on the top right
-                        // Align(
-                        //   alignment: Alignment.topRight,
-                        //   child: IconButton(
-                        //     icon: const Icon(Icons.close),
-                        //     color: Colors.white,
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         _scaffoldKey.currentState?.openEndDrawer();
-                        //       });
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -564,66 +551,77 @@ Future<bool> _onWillPop(BuildContext context) async {
           ),
         ),
         body: _screens[_currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF5BD8FF),
-        unselectedItemColor: Colors.grey[800],
-        selectedItemColor: Colors.black,
-        showUnselectedLabels: true,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          if (index != _currentIndex) {
-            // Check if the selected item is not the current screen
-            if (index == 1) {
-              // Navigate to AlphabetScreen
-              Navigator.pushNamed(context, '/alphabet');
-            } else if (index == 2) {
-              // Navigate to FindSign
-              Navigator.pushNamed(context, '/findSign');
+        bottomNavigationBar: Container(height: 70, // Adjust the height as needed
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 0, 188, 245),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 10,
+              ),
+            ],
+          ),
+          child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Color.fromARGB(255, 0, 188, 245),
+          unselectedItemColor: Colors.grey[800],
+          selectedItemColor: Colors.black,
+          showUnselectedLabels: true,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            if (index != _currentIndex) {
+              // Check if the selected item is not the current screen
+              if (index == 1) {
+                // Navigate to AlphabetScreen
+                Navigator.pushNamed(context, '/alphabet');
+              } else if (index == 2) {
+                // Navigate to FindSign
+                Navigator.pushNamed(context, '/findSign');
+              }
+              else if (index == 3) {
+                // Navigate to FindSign
+                Navigator.pushNamed(context, '/fingerSpell');
+              }
+              else if (index == 4) {
+                // Navigate to FindSign
+                Navigator.pushNamed(context, '/createSign');
+              }
+                else {
+                // Change the current screen if it's not Alphabet or Find Sign
+                setState(() {
+                  _currentIndex = index;
+                });
+              }
             }
-            else if (index == 3) {
-              // Navigate to FindSign
-              Navigator.pushNamed(context, '/fingerSpell');
-            }
-            else if (index == 4) {
-              // Navigate to FindSign
-              Navigator.pushNamed(context, '/createSign');
-            }
-              else {
-              // Change the current screen if it's not Alphabet or Find Sign
-              setState(() {
-                _currentIndex = index;
-              });
-            }
-          }
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.my_library_books),
-            label: 'Lessons',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_fields),
-            label: 'Alphabet',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Find Sign',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.spellcheck),
-            label: 'Finger Spell',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.create),
-            label: 'Word Fusion',
-          ),
-          
-          
-        ],
-        selectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
-        unselectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
-      ),
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.my_library_books),
+              label: 'Lessons',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.text_fields),
+              label: 'Alphabet',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Find Sign',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.spellcheck),
+              label: 'Finger Spell',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.create),
+              label: 'Word Fusion',
+            ),
+            
+            
+          ],
+          selectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
+          unselectedLabelStyle: TextStyle(fontSize: 11), // Adjust the fontSize as needed
+              ),
+        ),
       ),
     );
   }

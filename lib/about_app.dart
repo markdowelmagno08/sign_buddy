@@ -39,7 +39,7 @@ class _AboutAppState extends State<AboutApp> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/bg-signbuddy.png'),
+                image: AssetImage('assets/bg-signbuddy2.png'),
                 fit: BoxFit.cover,
               ),
             ),

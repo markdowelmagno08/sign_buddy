@@ -98,8 +98,8 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/bg-signbuddy.png',
-                ), // Replace with your background image path
+                  'assets/bg-signbuddy2.png',
+                ), 
                 fit: BoxFit.cover,
               ),
             ),

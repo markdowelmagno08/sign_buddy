@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
-        android:label="Sign Buddy"
+        android:label="SignBuddy"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         android:largeHeap="true">

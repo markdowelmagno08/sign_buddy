@@ -135,7 +135,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
             children: [
               // Background Image
               Image.asset(
-                'assets/bg-signbuddy.png',
+                'assets/bg-signbuddy2.png',
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
@@ -215,7 +215,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                 children: [
                   // Background Image
                   Image.asset(
-                    'assets/bg-signbuddy.png',
+                    'assets/bg-signbuddy2.png',
                     fit: BoxFit.cover,
                     height: double.infinity,
                     width: double.infinity,
@@ -557,7 +557,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
                 Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/bg-signbuddy.png'),
+                      image: AssetImage('assets/bg-signbuddy2.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -1514,13 +1514,11 @@ class EmailInputFormatter extends TextInputFormatter {
         selection: TextSelection.collapsed(offset: maxLength),
       );
     }
-
-    // If the input matches the allowed pattern, allow the new value
     if (regExp.hasMatch(newValue.text)) {
       return newValue;
     }
+    
 
-    // If the input doesn't match the pattern, revert to the old value
     return oldValue;
   }
   

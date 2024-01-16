@@ -34,7 +34,7 @@ class _ChooseLanguagesState extends State<ChooseLanguages> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/bg-signbuddy.png'),
+                image: AssetImage('assets/bg-signbuddy2.png'),
                 fit: BoxFit.cover,
               ),
             ),
