@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
@@ -26,6 +27,21 @@ class Auth {
       // Handle sign-in errors
       print('Failed to sign in anonymously: $e');
     }
+  }
+
+  Future<Map<String, dynamic>?> getUserProfile() async {
+    final userId = getCurrentUserId();
+    if (userId != null) {
+      try {
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection('userData').doc(userId).get();
+        return userDoc.data() as Map<String, dynamic>?;
+      } catch (e) {
+        print('Error fetching user profile: $e');
+        return null;
+      }
+    }
+    return null;
   }
 
   Future<void> createUserWithEmailAndPassword({

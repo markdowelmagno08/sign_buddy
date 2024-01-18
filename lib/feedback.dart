@@ -102,7 +102,7 @@ class _FeedbackAppState extends State<FeedbackApp> {
                         ),
                       ),
                       child: Text(
-                        'Sign Up',
+                        isEnglish ? 'Sign Up' : 'Mag-sign Up',
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
@@ -242,40 +242,51 @@ class _FeedbackAppState extends State<FeedbackApp> {
 
 
 
-      Future<void> sendFeedbackToFirestore() async {
+Future<void> sendFeedbackToFirestore() async {
+  // Retrieve the current user from FirebaseAuth
+  User? user = FirebaseAuth.instance.currentUser;
 
-        // Retrieve the current user from FirebaseAuth
-        User? user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    String feedbackText = _feedbackController.text.trim();
+    String userId = user.uid;
+    String email = user.email!;
+    String firstName = "";
+    String lastName = "";
 
-        if (user != null) {
-          String feedbackText = _feedbackController.text.trim();
-          String userId = user.uid;
-          String email = user.email!;
-          Timestamp timestamp = Timestamp.now();
+    // Fetch user profile data
+    Map<String, dynamic>? userProfile = await Auth().getUserProfile();
+    if (userProfile != null) {
+      firstName = userProfile['firstName'] ?? "";
+      lastName = userProfile['lastName'] ?? "";
+    }
 
-          // Create a feedback document in Firestore
-          await FirebaseFirestore.instance.collection('feedback').add({
-            'feedback': feedbackText,
-            'timestamp': timestamp,
-            'userId': userId,
-            'email': email,
-          });
+    Timestamp timestamp = Timestamp.now();
 
-           // Reset the TextEditingController
-          _feedbackController.clear();
+    // Create a feedback document in Firestore
+    await FirebaseFirestore.instance.collection('feedback').add({
+      'feedback': feedbackText,
+      'timestamp': timestamp,
+      'userId': userId,
+      'email': email,
+      'firstName': firstName,
+      'lastName': lastName,
+    });
 
-          Navigator.pushReplacement(
-            context, SlidePageRoute(page: const ThankYouScreen()));
-        } else {
-          // Handle the case where the user is not signed in
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('User not signed in. Please sign in and try again.'),
-              duration: Duration(seconds: 2),
-            ),
-          );
-        }
-      }
+    // Reset the TextEditingController
+    _feedbackController.clear();
+
+    Navigator.pushReplacement(
+      context, SlidePageRoute(page: const ThankYouScreen()));
+  } else {
+    // Handle the case where the user is not signed in
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('User not signed in. Please sign in and try again.'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+}
 
       
 }
