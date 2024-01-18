@@ -673,7 +673,7 @@ Future<bool> _onWillPop(BuildContext context) async {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurpleAccent,
                     ),
-                    child: const Text('Sign Up'),
+                    child: Text(isEnglish ? "Sign up" : "Mag-sign up",),
                   ),
                 ],
               ),

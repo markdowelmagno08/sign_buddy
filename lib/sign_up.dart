@@ -136,6 +136,7 @@ class _SignupPageState extends State<SignupPage> {
       children: [
         Text(
           isEnglish ? "Sign up" : "Mag-sign up",
+          
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 10),
@@ -346,7 +347,7 @@ class _SignupPageState extends State<SignupPage> {
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
           child:  Text(
-            "Sign up",
+            isEnglish ? "Sign up" : "Mag-sign up",
             style: TextStyle(
               fontSize: 20,
               color: Color(0xFF5A5A5A),

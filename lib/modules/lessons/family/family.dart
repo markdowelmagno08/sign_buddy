@@ -201,7 +201,7 @@ class _FamilyState extends State<Family> {
                         ),
                       ),
                       child: Text(
-                        'Sign Up',
+                        isEnglish ? "Sign up" : "Mag-sign up",
                         style: TextStyle(fontSize: 16),
                       ),
                     ),

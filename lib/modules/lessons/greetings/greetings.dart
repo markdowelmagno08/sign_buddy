@@ -201,7 +201,7 @@ class _GreetingsState extends State<Greetings> {
                         ),
                       ),
                       child: Text(
-                        'Sign Up',
+                        isEnglish ? "Sign up" : "Mag-sign up",
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
