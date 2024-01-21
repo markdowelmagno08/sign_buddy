@@ -7,6 +7,7 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/lessons/color/color_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+import 'package:sign_buddy/analytics.dart';
 
 
 
@@ -26,6 +27,7 @@ class _ColorLessonState extends State<ColorLesson> {
   List unlockedColorLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+  final AnalyticsService analyticsService = AnalyticsService();
  
  @override
   void initState() {
@@ -129,6 +131,7 @@ class _ColorLessonState extends State<ColorLesson> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                 Navigator.of(context).pop();
               },
             ),
@@ -170,6 +173,7 @@ class _ColorLessonState extends State<ColorLesson> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                             Navigator.pop(context);
                           },
                         ),
@@ -261,11 +265,13 @@ class _ColorLessonState extends State<ColorLesson> {
                                   ),
                                 ),
                                 if (isUnlocked) CircularProgressBar(progress: progress),
-                                if (!isUnlocked) Icon(Icons.lock, size: 35, color: const Color(0xFF5A96E3))
+                                if (!isUnlocked) Icon(Icons.lock, size: 35, color: const Color(0xFF5A96E3)) 
+                                
                               ],
                             ),
                             onTap: () async {
                               if (isUnlocked) {
+                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                                 Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(

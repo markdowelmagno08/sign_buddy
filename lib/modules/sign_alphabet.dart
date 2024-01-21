@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_buddy/analytics.dart';
+
 
 class AlphabetScreen extends StatefulWidget {
   const AlphabetScreen({super.key});
@@ -8,8 +9,6 @@ class AlphabetScreen extends StatefulWidget {
   @override
   _AlphabetScreenState createState() => _AlphabetScreenState();
 }
-
-
 
 class _AlphabetScreenState extends State<AlphabetScreen> {
   final letterImages = {
@@ -41,42 +40,42 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
     'Z': 'alphabet/z',
   };
   final letters = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
   String selectedLetter = '';
   bool isEnglish = true;
 
+  final AnalyticsService analyticsService = AnalyticsService();
+
   @override
   void initState() {
-    
     getLanguage();
     super.initState();
-
   }
 
   Future<void> getLanguage() async {
@@ -87,7 +86,6 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       this.isEnglish = isEnglish;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +97,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
               image: DecorationImage(
                 image: AssetImage(
                   'assets/bg-signbuddy2.png',
-                ), 
+                ),
                 fit: BoxFit.cover,
               ),
             ),
@@ -132,7 +130,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black, // Set the text color of the title
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -184,6 +182,9 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
+                          // Increment user interactions when a letter is pressed
+                          analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "signAlphaInteract");
+
                           setState(() {
                             if (isSelected) {
                               selectedLetter = '';
@@ -217,5 +218,4 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       ),
     );
   }
-
 }

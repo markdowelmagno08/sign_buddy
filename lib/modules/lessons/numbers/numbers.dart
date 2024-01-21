@@ -8,6 +8,7 @@ import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+import 'package:sign_buddy/analytics.dart';
 
 
 class Number extends StatefulWidget {
@@ -26,6 +27,7 @@ class _NumberState extends State<Number> {
   List unlockedNumberLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+  final AnalyticsService analyticsService = AnalyticsService();
 
  
  
@@ -134,6 +136,7 @@ class _NumberState extends State<Number> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                 Navigator.of(context).pop();
               },
             ),
@@ -175,6 +178,7 @@ class _NumberState extends State<Number> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                             Navigator.pop(context);
                           },
                         ),
@@ -271,6 +275,7 @@ class _NumberState extends State<Number> {
                               ],
                             ),
                             onTap: () async {
+                              analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                               if (isUnlocked) {
                                 Navigator.pushReplacement(
                                   context,

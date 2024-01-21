@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:cached_video_player/cached_video_player.dart'; // Import CachedVideoPlayer
+import 'package:sign_buddy/analytics.dart';
 
 class FindSign extends StatefulWidget {
 
@@ -53,6 +54,8 @@ class _FindSignState extends State<FindSign> {
 
   CachedVideoPlayerController? _videoController;
   late FirestoreCollections firestoreCollections;
+  
+  final AnalyticsService analyticsService = AnalyticsService();
 
   @override
   void initState() {
@@ -263,7 +266,10 @@ Widget build(BuildContext context) {
                 children: [
                   TextField(
                     controller: searchController,
-                    onChanged: search,
+                    onChanged: (text) {
+                        analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
+                        search(text);
+                      },
                     decoration: InputDecoration(
                       hintText: isEnglish
                           ? 'Search something....'
@@ -278,8 +284,13 @@ Widget build(BuildContext context) {
                                 Icons.clear,
                                 color: Colors.redAccent,
                               ),
-                              onPressed: clearSearch,
+                              onPressed: () {
+                                clearSearch();
+                                analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
+                                
+                              },
                             )
+
                           : null,
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -303,6 +314,7 @@ Widget build(BuildContext context) {
                             onTap: () {
                               selectSuggestedResult(result);
                               FocusScope.of(context).unfocus();
+                              analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 60),
@@ -380,8 +392,10 @@ Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         if (_videoController != null) {
+          analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
           _videoController!.seekTo(Duration.zero);
           _videoController!.play();
+          
         }
       },
       child: Column(
@@ -417,12 +431,16 @@ Widget build(BuildContext context) {
                     onTap: () {
                       if (isSlowMotion) {
                         // If slow-motion is enabled, reset to normal speed
+                        analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
                         _videoController!.setPlaybackSpeed(1.0);
                         _videoController!.play();
+                        
                       } else {
                         // If not in slow-motion, enable slow-motion
+                        analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "findInteract");
                         _videoController!.setPlaybackSpeed(0.5);
-                        _videoController!.play(); // Play automatically when enabling slow-motion
+                        _videoController!.play();
+                        
                       }
                       setState(() {
                         // Toggle the slow-motion state

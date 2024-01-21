@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // Import services.dart
+import 'package:shared_preferences/shared_preferences.dart'; 
+import 'package:sign_buddy/analytics.dart';
 
 class FingerSpelling extends StatefulWidget {
   const FingerSpelling({Key? key}) : super(key: key);
@@ -44,6 +45,8 @@ class _FingerSpellingState extends State<FingerSpelling> {
   bool showLetters = false;
   bool hasSignImages = false; // Track if there are sign images
   bool isEnglish = true;
+  final AnalyticsService analyticsService = AnalyticsService();
+  ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -138,10 +141,25 @@ class _FingerSpellingState extends State<FingerSpelling> {
     translateTextToASL();
   }
 
- @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: NotificationListener<ScrollNotification>(
+      onNotification: (ScrollNotification scrollNotification) {
+        // Check if the user is scrolling
+        if (scrollNotification is ScrollUpdateNotification) {
+          // Increment interactions when scrolling occurs
+          analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "spellInteract");
+        }
+        return false; 
+      },
+      child: Stack(
         children: [
           Container(
             decoration: const BoxDecoration(
@@ -153,7 +171,6 @@ class _FingerSpellingState extends State<FingerSpelling> {
           ),
           Column(
             children: [
-              // SizedBox(height: MediaQuery.of(context).padding.top),
               AppBar(
                 backgroundColor: const Color(0xFF5A96E3),
                 title: Text(
@@ -181,6 +198,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                       TextField(
                         onChanged: (text) {
                           setState(() {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "spellInteract");
                             inputText = text;
                             if (text.isNotEmpty) {
                               hasSignImages = false;
@@ -209,7 +227,10 @@ class _FingerSpellingState extends State<FingerSpelling> {
                         maxLength: 50,
                       ),
                       ElevatedButton(
-                        onPressed: translateTextToASL,
+                        onPressed: () {
+                          translateTextToASL();
+                          analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "spellInteract");
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF5BD8FF),
                         ),
@@ -222,7 +243,13 @@ class _FingerSpellingState extends State<FingerSpelling> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: hasSignImages ? toggleLetterVisibility : null,
+                          onPressed: hasSignImages ? () {
+                            // Toggle letter visibility
+                            toggleLetterVisibility();
+
+                            // Increment interactions based on language and field
+                            analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "spellInteract");
+                          } : null,
                           child: Text(
                             hasSignImages ? (showLetters ? 'Hide letters' : 'Show letters') : '',
                             style: TextStyle(color: Color(0xFF5A5A5A), fontFamily: 'FiraSans', fontSize: 12),
@@ -231,6 +258,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                       ),
                       Expanded(
                         child: ListView(
+                          controller: _scrollController,
                           scrollDirection: Axis.horizontal,
                           children: [
                             SingleChildScrollView(
@@ -264,6 +292,8 @@ class _FingerSpellingState extends State<FingerSpelling> {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

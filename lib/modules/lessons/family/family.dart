@@ -8,7 +8,7 @@ import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/sign_up.dart';
-
+import 'package:sign_buddy/analytics.dart';
 
 
 class Family extends StatefulWidget {
@@ -27,6 +27,7 @@ class _FamilyState extends State<Family> {
   List unlockedFamilyLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+  final AnalyticsService analyticsService = AnalyticsService();
  
  @override
   void initState() {
@@ -130,6 +131,7 @@ class _FamilyState extends State<Family> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                 Navigator.of(context).pop();
               },
             ),
@@ -166,6 +168,7 @@ class _FamilyState extends State<Family> {
                   alignment: Alignment.topLeft,
                   child: CustomBackButton(
                     onPressed: () {
+                      analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                       Navigator.pop(context);
                     },
                   ),
@@ -190,6 +193,7 @@ class _FamilyState extends State<Family> {
                     ElevatedButton(
                       onPressed: () {
                         // Navigate to the sign-up page
+                        analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                         Navigator.pushReplacement(context, SlidePageRoute(page: const SignupPage()));
                       },
                       style: ElevatedButton.styleFrom(
@@ -243,6 +247,7 @@ class _FamilyState extends State<Family> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                             Navigator.pop(context);
                           },
                         ),
@@ -340,6 +345,7 @@ class _FamilyState extends State<Family> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
+                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                                 Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(

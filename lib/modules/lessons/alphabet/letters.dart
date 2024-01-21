@@ -8,6 +8,7 @@ import 'package:sign_buddy/modules/home_page.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+import 'package:sign_buddy/analytics.dart';
 
 
 
@@ -27,6 +28,7 @@ class _LettersState extends State<Letters> {
   List unlockedLetterLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+  final AnalyticsService analyticsService = AnalyticsService();
  
  @override
   void initState() {
@@ -130,7 +132,9 @@ class _LettersState extends State<Letters> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                 Navigator.of(context).pop();
+                
               },
             ),
           ],
@@ -171,6 +175,7 @@ class _LettersState extends State<Letters> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                             Navigator.pop(context);
                           },
                         ),
@@ -207,7 +212,7 @@ class _LettersState extends State<Letters> {
                 } else {
                   final lessonName = letterLessonNames[index];
                   final isUnlocked = unlockedLetterLessons[index];
-                  final progress = letterLessonProgress[index] / 100; // Normalize progress to a value between 0 and 1
+                  final progress = letterLessonProgress[index] / 100; 
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Card(
@@ -267,6 +272,7 @@ class _LettersState extends State<Letters> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
+                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                                 Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(

@@ -13,6 +13,7 @@ import 'package:sign_buddy/modules/sign_alphabet.dart';
 import 'package:sign_buddy/settings.dart';
 import 'package:sign_buddy/sign_up.dart';
 import 'package:sign_buddy/user_account.dart';
+import 'package:sign_buddy/analytics.dart';
 
 
 
@@ -27,6 +28,8 @@ class LessonsScreen extends StatefulWidget {
 
 class _LessonsScreenState extends State<LessonsScreen> {
   int? selectedLessonIndex;
+
+  final AnalyticsService analyticsService = AnalyticsService();
 
   final List<Map<String, dynamic>> lessons = [
     {
@@ -163,6 +166,9 @@ class _LessonsScreenState extends State<LessonsScreen> {
                     child: InkWell(
                       onTap: () {
                         _navigateToStartLesson(context, lessonName);
+                        analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
+                        
+                        
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

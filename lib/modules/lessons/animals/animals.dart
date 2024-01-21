@@ -7,6 +7,7 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals/lessons_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
+import 'package:sign_buddy/analytics.dart';
 
 
 
@@ -26,6 +27,7 @@ class _AnimalsState extends State<Animals> {
   List unlockedAnimalsLessons = [];
   bool isEnglish = true;
   bool isLoading = true;
+  final AnalyticsService analyticsService = AnalyticsService();
  
  @override
   void initState() {
@@ -129,6 +131,7 @@ class _AnimalsState extends State<Animals> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                 Navigator.of(context).pop();
               },
             ),
@@ -170,6 +173,7 @@ class _AnimalsState extends State<Animals> {
                         alignment: Alignment.topLeft,
                         child: CustomBackButton(
                           onPressed: () {
+                            analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                             Navigator.pop(context);
                           },
                         ),
@@ -266,6 +270,7 @@ class _AnimalsState extends State<Animals> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
+                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                                 Navigator.pushReplacement(
                                   context,
                                   SlidePageRoute(

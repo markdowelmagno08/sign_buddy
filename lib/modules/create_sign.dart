@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:cached_video_player/cached_video_player.dart';
+import 'package:sign_buddy/analytics.dart';
 
 class CreateSignPage extends StatefulWidget {
   const CreateSignPage({Key? key}) : super(key: key);
@@ -46,6 +47,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
   String? errorMessage;
 
   late FirestoreCollections firestoreCollections;
+   final AnalyticsService analyticsService = AnalyticsService();
   
 
 
@@ -199,6 +201,7 @@ Widget _buildVideoCarousel() {
             onIndexChanged: (int index) {
               if (searchResults.isNotEmpty && videoControllers[index].value.isInitialized) {
                 setState(() {
+                  analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "createInteract");
                   selectedVideoWord = searchResults[index]['word'];
                   videoControllers[index].seekTo(Duration.zero);
                   videoControllers[index].play();
@@ -209,8 +212,10 @@ Widget _buildVideoCarousel() {
               if (videoControllers[index].value.isInitialized) {
                 return GestureDetector(
                   onTap: () {
+                    analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "createInteract");
                     videoControllers[index].seekTo(Duration.zero);
                     videoControllers[index].play();
+                    
                   },
                   child: ClipRRect(
                     child: Container(
@@ -323,7 +328,12 @@ Widget build(BuildContext context) {
                   children: [
                     TextField(
                       controller: searchController,
-                      onTap: clearSearch,
+                      onTap: () {
+                        analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "createInteract");
+                        clearSearch();
+                      },
+
+
                       decoration: InputDecoration(
                         hintText: isEnglish ? 'Search for words or phrases' : 'Hanapin ang mga salita o parirala.',
                         prefixIcon: const Icon(
@@ -344,6 +354,7 @@ Widget build(BuildContext context) {
                         onPressed: () {
                           searchAndDisplayVideo(searchController.text);
                           FocusScope.of(context).unfocus();
+                          analyticsService.incrementInteractions(isEnglish ? "en" : "ph", "createInteract");
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF5BD8FF),
