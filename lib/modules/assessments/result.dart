@@ -45,7 +45,7 @@ class _AssessmentResultState extends State<AssessmentResult> {
   }
   String getLanguageKnowledge() {
     int score = widget.score;
-    if (score >= 1 && score <= 3) {
+    if (score >= 0 && score <= 3) {
       return isEnglish ? "I’m new to English Sign Language" : "Bagohan sa Filipino Sign Language";
     } else if (score >= 4 && score <= 5) {
       return isEnglish ? "I know some sign language words and phrases": "May kaalaman sa pagsenyas ng salita at parirala";
