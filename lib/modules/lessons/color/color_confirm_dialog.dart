@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:sign_buddy/modules/lessons/color/color.dart';
+
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 
-class ExitConfirmationDialog {
+class ColorExitConfirmationDialog {
   static void show(BuildContext context, bool isEnglish) {
     showDialog(
       context: context,
@@ -39,12 +40,11 @@ class ExitConfirmationDialog {
             style: TextStyle(fontFamily: 'FiraSans'),
           ),
           actions: <Widget>[
-            
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
+                Navigator.pushReplacement(context, SlidePageRoute(page: ColorLesson()));
               },
               child: Text(
                 isEnglish ? "End" : "Tapusin",

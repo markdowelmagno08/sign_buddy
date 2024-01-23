@@ -5,7 +5,7 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_three.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -323,14 +323,17 @@ class _QuizTwoState extends State<QuizTwo> {
                         context: context,
                         builder: (context) => AlertDialog(
                           contentPadding: EdgeInsets.all(
-                              5), 
-                          content: ClipRRect(
-                          child: CachedNetworkImage(
-                          imageUrl: contentImage[0],
-                          placeholder: (context, url) => CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(Icons.error),
-                        ),
-                        ),
+                              10), 
+                          content: Container(
+                            color: Colors.white,
+                            child: ClipRRect(
+                            child: CachedNetworkImage(
+                            imageUrl: contentImage[0],
+                            placeholder: (context, url) => CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
+                                                  ),
+                                                  ),
+                          ),
                       ),
                     );
                   },

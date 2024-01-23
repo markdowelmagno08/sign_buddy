@@ -8,7 +8,8 @@ import 'package:sign_buddy/modules/firestore_data/lesson_greetings.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings/lessons_one.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings/quiz_three.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/greetings/greetings_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
@@ -237,7 +238,7 @@ Widget _buildVideoOption(CachedVideoPlayerController controller, String option) 
 
    // function that calls the confirmation dialog
      void _showExitConfirmationDialog() {
-     ExitConfirmationDialog.show(context, isEnglish);
+     GreetingsExitConfirmationDialog.show(context, isEnglish);
    }
 
 

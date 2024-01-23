@@ -6,7 +6,7 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:cached_video_player/cached_video_player.dart';

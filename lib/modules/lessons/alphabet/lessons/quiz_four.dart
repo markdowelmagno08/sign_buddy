@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

@@ -6,9 +6,10 @@ import 'package:sign_buddy/auth.dart';
 import 'package:sign_buddy/firebase_storage.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_color.dart';
 import 'package:sign_buddy/modules/lessons/color/color.dart';
+import 'package:sign_buddy/modules/lessons/color/color_confirm_dialog.dart';
 import 'package:sign_buddy/modules/lessons/color/color_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/color/color_lessons/lesson_result.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
 
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -352,7 +353,7 @@ class _ColorQuizFourState extends State<ColorQuizFour> {
 
    // function that calls the confirmation dialog
      void _showExitConfirmationDialog() {
-     ExitConfirmationDialog.show(context, isEnglish);
+     ColorExitConfirmationDialog.show(context, isEnglish);
    }
 
 

@@ -7,7 +7,8 @@ import 'package:sign_buddy/modules/firestore_data/lesson_greetings.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings/lessons_one.dart';
 import 'package:sign_buddy/modules/lessons/greetings/greetings/quiz_two.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/greetings/greetings_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:cached_video_player/cached_video_player.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
@@ -243,7 +244,7 @@ class _GreetingsQuizOneState extends State<GreetingsQuizOne> {
 
     // function that calls the confirmation dialog
       void _showExitConfirmationDialog() {
-      ExitConfirmationDialog.show(context, isEnglish);
+      GreetingsExitConfirmationDialog.show(context, isEnglish);
     }
   
   @override

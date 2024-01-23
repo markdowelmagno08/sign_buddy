@@ -4,9 +4,10 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/firestore_data/lesson_family.dart';
 import 'package:sign_buddy/modules/lessons/family/family.dart';
+import 'package:sign_buddy/modules/lessons/family/family_confirm_dialog.dart';
 import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/family/family_lessons/quiz_four.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
 
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -309,7 +310,7 @@ class _FamilyQuizFourState extends State<FamilyQuizThree> {
 
    // function that calls the confirmation dialog
      void _showExitConfirmationDialog() {
-     ExitConfirmationDialog.show(context, isEnglish);
+     FamilyExitConfirmationDialog.show(context, isEnglish);
    }
 
   

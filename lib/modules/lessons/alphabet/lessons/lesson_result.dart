@@ -35,9 +35,6 @@ class _ResultState extends State<Result> {
 
 
 
-
-
-
   Future<void> getPrefValues() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true; // Default to English.

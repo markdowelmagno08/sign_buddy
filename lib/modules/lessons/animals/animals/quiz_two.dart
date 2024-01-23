@@ -8,7 +8,8 @@ import 'package:sign_buddy/modules/firestore_data/lesson_animals.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals/lessons_one.dart';
 import 'package:sign_buddy/modules/lessons/animals/animals/quiz_three.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/animals/animals_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
@@ -348,7 +349,7 @@ class _AnimalsQuizTwoState extends State<AnimalsQuizTwo> {
 
    // function that calls the confirmation dialog
      void _showExitConfirmationDialog() {
-     ExitConfirmationDialog.show(context, isEnglish);
+     AnimalExitConfirmationDialog.show(context, isEnglish);
    }
 
 

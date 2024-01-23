@@ -6,7 +6,8 @@ import 'package:sign_buddy/modules/firestore_data/lesson_numbers.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_two.dart';
 import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
-import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/alphabet/letters_confirm_dialog.dart';
+import 'package:sign_buddy/modules/lessons/numbers/numbers_confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -275,7 +276,7 @@ class _NumberQuizOne extends State<NumberQuizOne> {
 
   // function that calls the confirmation dialog
   void _showExitConfirmationDialog() {
-    ExitConfirmationDialog.show(context, isEnglish);
+    NumberExitConfirmationDialog.show(context, isEnglish);
   }
 
  
