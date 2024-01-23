@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_result.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -304,34 +305,39 @@ class _QuizFourState extends State<QuizFour> {
     }
   }
 
+        Future<bool> _onWillPop() async {
+      _showExitConfirmationDialog();
+        return false;
+      }
+
+      // function that calls the confirmation dialog
+      void _showExitConfirmationDialog() {
+        ExitConfirmationDialog.show(context, isEnglish);
+      }
+
+
   
 
   @override
   Widget build(BuildContext context) {
      return WillPopScope(
-      onWillPop: () async {
-        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-        return true;
-      },
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-            title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-            shape: ContinuousRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(60),
-                bottomRight: Radius.circular(60),
-              ),
-            ),
-            iconTheme: IconThemeData(color: Colors.black), 
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
-              },
+          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(60),
+              bottomRight: Radius.circular(60),
             ),
           ),
+          iconTheme: IconThemeData(color: Colors.black), 
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: _onWillPop
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

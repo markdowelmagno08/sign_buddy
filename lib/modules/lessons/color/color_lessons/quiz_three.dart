@@ -8,6 +8,7 @@ import 'package:sign_buddy/modules/firestore_data/lesson_color.dart';
 import 'package:sign_buddy/modules/lessons/color/color.dart';
 import 'package:sign_buddy/modules/lessons/color/color_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/color/color_lessons/quiz_four.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
@@ -227,16 +228,22 @@ Widget _buildVideoOption(CachedVideoPlayerController controller, String option) 
     }
     super.dispose();
   }
+     Future<bool> _onWillPop() async {
+     _showExitConfirmationDialog();
+     return false;
+   }
+
+   // function that calls the confirmation dialog
+     void _showExitConfirmationDialog() {
+     ExitConfirmationDialog.show(context, isEnglish);
+   }
 
 
   @override
   Widget build(BuildContext context) {
 
     return WillPopScope(
-        onWillPop: () async {
-          ScaffoldMessenger.of(context).removeCurrentSnackBar();
-          return true;
-        },
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
             backgroundColor: const Color.fromARGB(255, 209, 209, 209),
@@ -250,10 +257,7 @@ Widget _buildVideoOption(CachedVideoPlayerController controller, String option) 
             iconTheme: IconThemeData(color: Colors.black), 
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                Navigator.pushReplacement(context, SlidePageRoute(page: ColorLesson()));
-              },
+              onPressed: _onWillPop,
             ),
           ),
         body: Padding(

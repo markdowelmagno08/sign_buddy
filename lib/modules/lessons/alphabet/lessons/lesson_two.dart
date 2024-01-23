@@ -6,6 +6,7 @@ import 'package:sign_buddy/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:cached_video_player/cached_video_player.dart';
@@ -165,6 +166,15 @@ class _LessonTwoState extends State<LessonTwo> {
     super.dispose();
   }
 
+    Future<bool> _onWillPop() async {
+    _showExitConfirmationDialog();
+      return false;
+    }
+
+    void _showExitConfirmationDialog() {
+      ExitConfirmationDialog.show(context, isEnglish);
+    }
+
   Widget buildVideoDisplay() {
     if (_videoController != null && _videoController!.value.isInitialized) {
       return Column(
@@ -237,97 +247,97 @@ class _LessonTwoState extends State<LessonTwo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text(isEnglish ?'Alphabet Lesson' : 'Aralin sa Alpabeto', style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(60),
-              bottomRight: Radius.circular(60),
-            ),
-          ),
-          iconTheme: IconThemeData(color: Colors.black), 
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
-            },
-          ),
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 70),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                contentDescription,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+            backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+            title: Text(isEnglish ?'Alphabet Lesson' : 'Aralin sa Alpabeto', style: TextStyle(color: Colors.black, fontSize: 16)),
+            shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60),
               ),
             ),
-            SizedBox(height: 30),
-            if (contentVideo.isNotEmpty) buildVideoDisplay(),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: ElevatedButton(
-                  onPressed: isLoading || contentVideo.isEmpty
-                      ? null  // Disable the button if assets are still loading
-                      : () async {
-                          if (progress >= 31) {
-                            _nextPage();
-                          } else {
-                            LetterLessonFireStore(userId: uid)
-                                .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
-                            print("Progress 2 updated successfully!");
-                            _nextPage();
-                          }
-                        },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return Colors.grey.shade400; // Color when disabled
-                        }
-                        return Color(0xFF5BD8FF); // Color when enabled
-                      },
-                    ),
+            iconTheme: IconThemeData(color: Colors.black), 
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: _onWillPop,
+            ),
+          ),
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 70),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  contentDescription,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 18,
                   ),
+                ),
+              ),
+              SizedBox(height: 30),
+              if (contentVideo.isNotEmpty) buildVideoDisplay(),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomRight,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.arrowRight,
-                          size: 18,
-                          color: Colors.grey.shade700,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          isEnglish ? 'Next' : 'Susunod',
-                          style: TextStyle(
-                            fontSize: 18,
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: ElevatedButton(
+                    onPressed: isLoading || contentVideo.isEmpty
+                        ? null  // Disable the button if assets are still loading
+                        : () async {
+                            if (progress >= 31) {
+                              _nextPage();
+                            } else {
+                              LetterLessonFireStore(userId: uid)
+                                  .incrementProgressValue(widget.lessonName, isEnglish ? "en" : "ph", 16);
+                              print("Progress 2 updated successfully!");
+                              _nextPage();
+                            }
+                          },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return Colors.grey.shade400; // Color when disabled
+                          }
+                          return Color(0xFF5BD8FF); // Color when enabled
+                        },
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.arrowRight,
+                            size: 18,
                             color: Colors.grey.shade700,
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 8),
+                          Text(
+                            isEnglish ? 'Next' : 'Susunod',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey.shade700,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

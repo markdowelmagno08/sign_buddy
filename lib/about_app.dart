@@ -71,7 +71,7 @@ class _AboutAppState extends State<AboutApp> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/app_icon.png', 
+                        'assets/app_icon1.png', 
                         height: 70, 
                       ),
                       SizedBox(width: 10),

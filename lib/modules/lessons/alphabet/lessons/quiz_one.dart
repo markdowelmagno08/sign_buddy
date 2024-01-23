@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/lessons/quiz_two.dart';
 import 'package:sign_buddy/modules/lessons/alphabet/letters.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -268,15 +269,21 @@ class _QuizOneState extends State<QuizOne> {
     });
   }
 
- 
+   Future<bool> _onWillPop() async {
+    _showExitConfirmationDialog();
+    return false;
+  }
+
+  void _showExitConfirmationDialog() {
+    ExitConfirmationDialog.show(context, isEnglish);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-        return true;
-      },
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 209, 209, 209),
@@ -290,10 +297,7 @@ class _QuizOneState extends State<QuizOne> {
           iconTheme: IconThemeData(color: Colors.black), // Set the icon color
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));// This will pop the current screen
-            },
+            onPressed: _onWillPop,
           ),
         ),
         body: Padding(

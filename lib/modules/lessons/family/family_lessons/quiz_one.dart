@@ -7,6 +7,7 @@ import 'package:sign_buddy/modules/firestore_data/lesson_family.dart';
 import 'package:sign_buddy/modules/lessons/family/family.dart';
 import 'package:sign_buddy/modules/lessons/family/family_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/family/family_lessons/quiz_two.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
@@ -348,15 +349,22 @@ class _FamilyQuizOneState extends State<FamilyQuizOne> {
     }
   }
 
+     Future<bool> _onWillPop() async {
+      _showExitConfirmationDialog();
+      return false;
+    }
+
+    // function that calls the confirmation dialog
+      void _showExitConfirmationDialog() {
+      ExitConfirmationDialog.show(context, isEnglish);
+    }
+
  
 
   @override
     Widget build(BuildContext context) {
       return WillPopScope(
-        onWillPop: () async {
-          ScaffoldMessenger.of(context).removeCurrentSnackBar();
-          return true;
-        },
+      onWillPop: _onWillPop,
         child: isLoading
             ? Center(
               child: CircularProgressIndicator(),
@@ -374,10 +382,7 @@ class _FamilyQuizOneState extends State<FamilyQuizOne> {
             iconTheme: IconThemeData(color: Colors.black), // Set the icon color
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                Navigator.pushReplacement(context, SlidePageRoute(page: Family()));// This will pop the current screen
-              },
+              onPressed: _onWillPop,
             ),
           ),
           body: Padding(

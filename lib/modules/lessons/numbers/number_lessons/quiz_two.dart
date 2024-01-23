@@ -7,6 +7,7 @@ import 'package:sign_buddy/modules/firestore_data/lesson_numbers.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/lessons/numbers/number_lessons/quiz_three.dart';
 import 'package:sign_buddy/modules/lessons/numbers/numbers.dart';
+import 'package:sign_buddy/modules/sharedwidget/confirm_dialog.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/sharedwidget/shuffle_options.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
@@ -273,6 +274,16 @@ class _NumberQuizTwoState extends State<NumberQuizTwo> {
       });
     }
   }
+  
+    Future<bool> _onWillPop() async {
+  _showExitConfirmationDialog();
+    return false;
+  }
+
+  // function that calls the confirmation dialog
+  void _showExitConfirmationDialog() {
+    ExitConfirmationDialog.show(context, isEnglish);
+  }
 
   
 
@@ -280,10 +291,7 @@ class _NumberQuizTwoState extends State<NumberQuizTwo> {
   Widget build(BuildContext context) {
 
      return WillPopScope(
-      onWillPop: () async {
-        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-        return true;
-      },
+      onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 209, 209, 209),
@@ -297,10 +305,7 @@ class _NumberQuizTwoState extends State<NumberQuizTwo> {
           iconTheme: IconThemeData(color: Colors.black), // Set the icon color
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
-            },
+            onPressed: _onWillPop,
           ),
         ),
         body: Padding(
