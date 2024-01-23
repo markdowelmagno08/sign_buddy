@@ -690,15 +690,23 @@ Future<bool> _onWillPop(BuildContext context) async {
 
       // Capitalize the first letter
       String capitalizeFirstLetter(String name) {
+        if (name.isEmpty) {
+          return '';
+        }
         return name[0].toUpperCase() + name.substring(1);
       }
 
       String formattedName(String firstName, String lastName) {
+        if (firstName.isEmpty && lastName.isEmpty) {
+          return ''; // Return an empty string if both names are empty
+        }
+
         List<String> firstNameWords = firstName.split(' ');
-          if (firstNameWords.length > 1) {
-                  // If the first name has more than one word, put the second word on a new line
-            return '${capitalizeFirstLetter(firstNameWords[0])}\n${capitalizeFirstLetter(firstNameWords[1])}\n$lastName';
-          } else if (firstName.length > 10 || lastName.length > 10) {
+
+        if (firstNameWords.length > 1) {
+          // If the first name has more than one word, put the second word on a new line
+          return '${capitalizeFirstLetter(firstNameWords[0])}\n${capitalizeFirstLetter(firstNameWords[1])}\n$lastName';
+        } else if (firstName.length > 10 || lastName.length > 10) {
           // If either the first name or last name is longer than 10 characters, split them and put the remaining characters on a new line
           String firstLine = (firstName.length > 10) ? capitalizeFirstLetter(firstName.substring(0, 10)) : capitalizeFirstLetter(firstName);
           String secondLine = (firstName.length > 10) ? capitalizeFirstLetter(firstName.substring(10)) : '';
@@ -706,24 +714,23 @@ Future<bool> _onWillPop(BuildContext context) async {
           String fourthLine = (lastName.length > 10) ? capitalizeFirstLetter(lastName.substring(10)) : '';
 
           return '$firstLine\n$secondLine\n$thirdLine\n$fourthLine';
-
-            } else if (firstName.length > 9 || lastName.length > 9) {
-              // If the first name has one word and is longer than 5 characters or the last name is longer than 5 characters, put them on a new line
-              return '$firstName\n$lastName';
-            } else {
-              // Otherwise, concatenate the first and last names with a space
-              return '$firstName $lastName';
-            }
+        } else if (firstName.length > 9 || lastName.length > 9) {
+          // If the first name has one word and is longer than 9 characters or the last name is longer than 9 characters, put them on a new line
+          return '$firstName\n$lastName';
+        } else {
+          // Otherwise, concatenate the first and last names with a space
+          return '$firstName $lastName';
+        }
       }
 
-    // Determine font size based on name length
-    double determineFontSize(String firstName, String lastName) {
-      if (firstName.length > 9 || lastName.length > 9) {
-        return 16; // Font size reduced if either name is longer than 9 characters
-      } else {
-        return 18; // Default font size
+      // Determine font size based on name length
+      double determineFontSize(String firstName, String lastName) {
+        if (firstName.length > 9 || lastName.length > 9) {
+          return 16; // Font size reduced if either name is longer than 9 characters
+        } else {
+          return 18; // Default font size
+        }
       }
-    }
 
     return Padding(
       padding: const EdgeInsets.only(left: 15),
