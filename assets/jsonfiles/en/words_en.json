@@ -175,6 +175,12 @@
     "category": "Shapes",
     "mp4": "dictionary/en/shapes/triangle.mp4"
   },
+  { 
+    "type": "word",
+    "content": "Zigzag",
+    "category": "Colors",
+    "mp4": "dictionary/en/shapes/zigzag.mp4"
+  },
 
 
   { 
@@ -260,6 +266,12 @@
     "content": "Uncle",
     "category": "Family",
     "mp4": "dictionary/en/family/uncle.mp4"
+  },
+  { 
+    "type": "word",
+    "content": "Queen",
+    "category": "Colors",
+    "mp4": "dictionary/en/family/queen.mp4"
   },
 
 
@@ -410,6 +422,24 @@
     "content": "Jungle",
     "category": "Nature",
     "mp4": "dictionary/en/nature/jungle.mp4"
+  },
+  { 
+    "type": "word",
+    "content": "Vase",
+    "category": "Colors",
+    "mp4": "dictionary/en/nature/vase.mp4"
+  },
+  { 
+      "type": "word",
+      "content": "Xylophone",
+      "category": "Colors",
+      "mp4": "dictionary/en/nature/xylophone.mp4"
+  },
+  { 
+      "type": "word",
+      "content": "Island",
+      "category": "Colors",
+      "mp4": "dictionary/en/nature/island.mp4"
   },
   {
     "type": "word",

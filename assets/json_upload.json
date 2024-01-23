@@ -1,0 +1,281 @@
+
+[
+    {
+        "name": "I",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'I'",
+          "contentImage": ["alphabet/i.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign Island",
+          "contentImage": ["dictionary/en/nature/island.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'I'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/j.png",
+            "alphabet/a.png",
+            "alphabet/i.png",
+            "alphabet/w.png"
+          ],
+          "correctAnswer": ["alphabet/i.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/i.png"],
+          "contentOption":  ["J", "K", "I", "Q", "R", "Y"],
+          "correctAnswer": ["I"]
+        },
+        "content5": {
+          "description": "Is this letter I?",
+          "contentImage": ["alphabet/i.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/nature/island.mp4"],
+          "contentOption": [
+            "Sister",
+            "J", "K", "Y", "Q", "R",
+            "Yellow",
+            "Flower",
+            "Island"
+          ],
+          "correctAnswer": ["Island"]
+        }
+      },
+      {
+        "name": "Q",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'Q'",
+          "contentImage": ["alphabet/q.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 'Queen'",
+          "contentImage": ["dictionary/en/family/queen.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'Q'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/q.png",
+            "alphabet/f.png",
+            "alphabet/l.png",
+            "alphabet/h.png"
+          ],
+          "correctAnswer": ["alphabet/q.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/q.png"],
+          "contentOption": ["F", "Q", "Y", "B", "U", "I"],
+          "correctAnswer": ["Q"]
+        },
+        "content5": {
+          "description": "Is this letter Q?",
+          "contentImage": ["alphabet/q.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/phrases/queen.mp4"],
+          "contentOption": [
+            "Queen",
+            "O",
+            "P",
+            "Q",
+            "G",
+            "L",
+            "Crocodile",
+            "Queue",
+            "Friday"
+          ],
+          "correctAnswer": ["Queen"]
+        }
+      },
+      {
+        "name": "V",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'V'",
+          "contentImage": ["alphabet/v.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 'Vase'",
+          "contentImage": ["dictionary/en/nature/vase.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'V'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/v.png",
+            "alphabet/f.png",
+            "alphabet/l.png",
+            "alphabet/h.png"
+          ],
+          "correctAnswer": ["alphabet/v.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/v.png"],
+          "contentOption": ["F", "V", "Y", "B", "U", "I"],
+          "correctAnswer": ["V"]
+        },
+        "content5": {
+          "description": "Is this letter V?",
+          "contentImage": ["alphabet/v.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/nature/vase.mp4"],
+          "contentOption": [
+            "Vase",
+            "O",
+            "P",
+            "Q",
+            "G",
+            "L",
+            "Crocodile",
+            "Queue",
+            "Violin"
+          ],
+          "correctAnswer": ["Queen"]
+        }
+      },
+      {
+        "name": "X",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'X'",
+          "contentImage": ["alphabet/x.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 'Xylophone'",
+          "contentImage": ["dictionary/en/nature/xylophone.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'X'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/q.png",
+            "alphabet/x.png",
+            "alphabet/c.png",
+            "alphabet/d.png"
+          ],
+          "correctAnswer": ["alphabet/x.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/x.png"],
+          "contentOption": ["Q", "C", "D", "E", "B", "X"],
+          "correctAnswer": ["X"]
+        },
+        "content5": {
+          "description": "Is this letter X?",
+          "contentImage": ["alphabet/x.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/nature/xylophone.mp4"],
+          "contentOption": [
+            "Ketchup",
+            "Taco",
+            "Kite",
+            "Q",
+            "C",
+            "Xylophone",
+            "Land",
+            "B",
+            "X-ray"
+          ],
+          "correctAnswer": ["Xylophone"]
+        }
+      },
+      {
+        "name": "Z",
+        "progress": 0,
+        "locale": "en",
+        "isUnlocked": false,
+        "content1": {
+          "description": "This is the sign for letter 'Z'",
+          "contentImage": ["alphabet/z.png"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content2": {
+          "description": "This is how you sign 'Zigzag'",
+          "contentImage": ["dictionary/en/shapes/zigzag.mp4"],
+          "contentOption": null,
+          "correctAnswer": null
+        },
+        "content3": {
+          "description": "Which one here is the sign for letter 'Z'?",
+          "contentImage": null,
+          "contentOption": [
+            "alphabet/f.png",
+            "alphabet/g.png",
+            "alphabet/j.png",
+            "alphabet/z.png"
+          ],
+          "correctAnswer": ["alphabet/z.png"]
+        },
+        "content4": {
+          "description": "What sign is this?",
+          "contentImage": ["alphabet/z.png"],
+          "contentOption": ["R", "F", "G", "J", "M", "Q"],
+          "correctAnswer": ["Z"]
+        },
+        "content5": {
+          "description": "Is this letter R?",
+          "contentImage": ["alphabet/z.png"],
+          "contentOption": ["Yes", "No"],
+          "correctAnswer": ["Yes"]
+        },
+        "content6": {
+          "description": "What is being signed here",
+          "contentImage": ["dictionary/en/shapes/zigzag.mp4"],
+          "contentOption": [
+            "Zigzag",
+            "F", "G", "J", "M", "Q",
+            "Jacket",
+            "Green",
+            "Hi"
+          ],
+          "correctAnswer": ["Zigzag"]
+        }
+      }
+    
+]
