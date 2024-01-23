@@ -341,7 +341,7 @@ class _ThankYouScreenState extends State<ThankYouScreen> {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  'Lubos kaming nagpapasalamat sa iyong feedback',
+                  isEnglish ? 'We sincerely appreciate your feedback' : 'Lubos kaming nagpapasalamat sa iyong feedback',
                   style: TextStyle(fontFamily: 'FiraSans',fontSize: 17),
                   textAlign: TextAlign.center,
                 ),
