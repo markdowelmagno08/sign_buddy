@@ -277,108 +277,114 @@ class _QuizThreeState extends State<QuizThree> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(60),
-              bottomRight: Radius.circular(60),
+     return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+            title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+            shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60),
+              ),
+            ),
+            iconTheme: IconThemeData(color: Colors.black), 
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
+              },
             ),
           ),
-          iconTheme: IconThemeData(color: Colors.black), 
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
-            },
-          ),
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 100),
-            Text(
-              contentDescription,
-              style: TextStyle(fontSize: 18),
-            ),
-            if (contentImage.isNotEmpty)
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey, // Border color
-                  width: 2, // Border width
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Text(
+                contentDescription,
+                style: TextStyle(fontSize: 18),
+              ),
+              if (contentImage.isNotEmpty)
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey, // Border color
+                    width: 2, // Border width
+                  ),
+                  color: Colors.white, // Color inside the border
+                  // Border radius
                 ),
-                color: Colors.white, // Color inside the border
-                // Border radius
+                child: CachedNetworkImage(
+                  imageUrl: contentImage[0],
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
-              child: CachedNetworkImage(
-                imageUrl: contentImage[0],
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
-            ),
-            SizedBox(height: 20),
-            isLoading
-              ? CircularProgressIndicator() // Display loading indicator
-              : _buildYesNoOption(),
-            SizedBox(height: 20), // Add spacing for the "Check" button
-            Expanded(
-              child: Builder(
-                builder: (context) {
-                  return Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Visibility(
-                        visible: !answerChecked,
-                        child: ElevatedButton(
-                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              selectedOption.isNotEmpty
-                                  ? Color(0xFF5BD8FF)
-                                  : Colors.grey,
+              SizedBox(height: 20),
+              isLoading
+                ? CircularProgressIndicator() // Display loading indicator
+                : _buildYesNoOption(),
+              SizedBox(height: 20), // Add spacing for the "Check" button
+              Expanded(
+                child: Builder(
+                  builder: (context) {
+                    return Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Visibility(
+                          visible: !answerChecked,
+                          child: ElevatedButton(
+                            onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                selectedOption.isNotEmpty
+                                    ? Color(0xFF5BD8FF)
+                                    : Colors.grey,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.check,
-                                  size: 18,
-                                  color: selectedOption.isNotEmpty
-                                      ? Colors.grey.shade700
-                                      : Colors.white,
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                   isEnglish ? 'Check' : 'Tsek',
-                                  style: TextStyle(
-                                    fontSize: 18,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.check,
+                                    size: 18,
                                     color: selectedOption.isNotEmpty
                                         ? Colors.grey.shade700
                                         : Colors.white,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(width: 8),
+                                  Text(
+                                     isEnglish ? 'Check' : 'Tsek',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: selectedOption.isNotEmpty
+                                          ? Colors.grey.shade700
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

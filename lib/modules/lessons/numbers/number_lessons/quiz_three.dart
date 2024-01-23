@@ -293,169 +293,175 @@ class _NumberQuizThreeState extends State<NumberQuizThree> {
 
  @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-        title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(60),
-            bottomRight: Radius.circular(60),
+   return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        return true;
+      },
+    child: Scaffold(
+      appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(60),
+              bottomRight: Radius.circular(60),
+            ),
+          ),
+          iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
+            },
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            ScaffoldMessenger.of(context).removeCurrentSnackBar();
-            Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
-          },
-        ),
-      ),
-    body: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 100),
-            Text(
-              contentDescription,
-              style: TextStyle(fontSize: 18),
-            ),
-            if (contentImage.isNotEmpty)
-              Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        imageUrl: contentImage[0],
-                        placeholder: (context, url) => CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                  ),
-                  
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: answerChecked
-                      ? [
-                          Center(
-                            child: Text(
-                              'Your answer',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Center(
-                            child: Text(
-                              _textController.text,
-                              style: TextStyle(
-                                color: answerChecked
-                                    ? (isAnswerCorrect ? Colors.green : Colors.red)
-                                    : Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ]
-                      : [
-                          Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 30),
-                          child: TextField(
-                            onChanged: (value) {
-                              setState(() {
-                                _textController.text = value;
-                              });
-                            },
-                            controller: _textController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            maxLength: 3, 
-                            decoration: InputDecoration(
-                              labelText: 'Enter a number',
-                              labelStyle: TextStyle(
-                                color: _textController.text.isNotEmpty
-                                    ? Colors.deepPurpleAccent // Set color when the TextField has text
-                                    : Colors.grey, // Set color when the TextField is empty
-                              ),
-                              border: OutlineInputBorder(),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.deepPurpleAccent,
-                                ),
-                              ),
-                            ),
-                          ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Text(
+                contentDescription,
+                style: TextStyle(fontSize: 18),
+              ),
+              if (contentImage.isNotEmpty)
+                Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 2.0,
                         ),
-                        ],
-                  ),
-                  Builder(
-                    builder: (context) {
-                      return Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 150),
-                          child: Visibility(
-                            visible: !answerChecked,
-                            child: ElevatedButton(
-                              onPressed: _textController.text.isNotEmpty ? _checkAnswer : null,
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                  _textController.text.isNotEmpty
-                                      ? Color(0xFF5BD8FF)
-                                      : Colors.grey,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: contentImage[0],
+                          placeholder: (context, url) => CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
+                      ),
+                    ),
+                    
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: answerChecked
+                        ? [
+                            Center(
+                              child: Text(
+                                'Your answer',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    FaIcon(
-                                      FontAwesomeIcons.check,
-                                      size: 18,
-                                      color: _textController.text.isNotEmpty
-                                          ? Colors.grey.shade700
-                                          : Colors.white,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      isEnglish ? 'Check' : 'Tsek',
-                                      style: TextStyle(
-                                        fontSize: 18,
+                            ),
+                            SizedBox(height: 20),
+                            Center(
+                              child: Text(
+                                _textController.text,
+                                style: TextStyle(
+                                  color: answerChecked
+                                      ? (isAnswerCorrect ? Colors.green : Colors.red)
+                                      : Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ]
+                        : [
+                            Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 30),
+                            child: TextField(
+                              onChanged: (value) {
+                                setState(() {
+                                  _textController.text = value;
+                                });
+                              },
+                              controller: _textController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              maxLength: 3, 
+                              decoration: InputDecoration(
+                                labelText: 'Enter a number',
+                                labelStyle: TextStyle(
+                                  color: _textController.text.isNotEmpty
+                                      ? Colors.deepPurpleAccent // Set color when the TextField has text
+                                      : Colors.grey, // Set color when the TextField is empty
+                                ),
+                                border: OutlineInputBorder(),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.deepPurpleAccent,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          ],
+                    ),
+                    Builder(
+                      builder: (context) {
+                        return Align(
+                          alignment: Alignment.bottomRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 150),
+                            child: Visibility(
+                              visible: !answerChecked,
+                              child: ElevatedButton(
+                                onPressed: _textController.text.isNotEmpty ? _checkAnswer : null,
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    _textController.text.isNotEmpty
+                                        ? Color(0xFF5BD8FF)
+                                        : Colors.grey,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.check,
+                                        size: 18,
                                         color: _textController.text.isNotEmpty
                                             ? Colors.grey.shade700
                                             : Colors.white,
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(width: 8),
+                                      Text(
+                                        isEnglish ? 'Check' : 'Tsek',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: _textController.text.isNotEmpty
+                                              ? Colors.grey.shade700
+                                              : Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  ),       
-                ],
-              ),
-          ],
+                        );
+                      },
+                    ),       
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     ),

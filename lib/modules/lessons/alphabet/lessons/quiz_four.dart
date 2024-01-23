@@ -308,111 +308,117 @@ class _QuizFourState extends State<QuizFour> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(60),
-              bottomRight: Radius.circular(60),
+     return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+            title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+            shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60),
+              ),
+            ),
+            iconTheme: IconThemeData(color: Colors.black), 
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
+              },
             ),
           ),
-          iconTheme: IconThemeData(color: Colors.black), 
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: Letters()));
-            },
-          ),
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 70),
-            Text(
-              contentDescription,
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            if (contentVideo.isNotEmpty)
-              buildVideoDisplay(),
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 70),
+              Text(
+                contentDescription,
+                style: TextStyle(fontSize: 18),
+              ),
               SizedBox(height: 20),
-            Expanded(
-              child: isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(), // Display option loading indicator
-                    )
-                  : GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        mainAxisExtent: 50
-                      ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: contentOption.length,
-                      itemBuilder: (context, index) {
-                        return _buildWordOption(
-                          contentOption[index],
-                        );
-                      },
-                    ),
-            ),
-            SizedBox(height: 20), // Add spacing for the "Check" button
-            Builder(
-              builder: (context) {
-                return Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Visibility(
-                      visible: !answerChecked,
-                      child: ElevatedButton(
-                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            selectedOption.isNotEmpty
-                                ? Color(0xFF5BD8FF)
-                                : Colors.grey,
-                          ),
+              if (contentVideo.isNotEmpty)
+                buildVideoDisplay(),
+                SizedBox(height: 20),
+              Expanded(
+                child: isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(), // Display option loading indicator
+                      )
+                    : GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          mainAxisExtent: 50
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.check,
-                                size: 18,
-                                color: selectedOption.isNotEmpty
-                                    ? Colors.grey.shade700
-                                    : Colors.white,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                isEnglish ? 'Check' : 'Tsek',
-                                style: TextStyle(
-                                  fontSize: 18,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: contentOption.length,
+                        itemBuilder: (context, index) {
+                          return _buildWordOption(
+                            contentOption[index],
+                          );
+                        },
+                      ),
+              ),
+              SizedBox(height: 20), // Add spacing for the "Check" button
+              Builder(
+                builder: (context) {
+                  return Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Visibility(
+                        visible: !answerChecked,
+                        child: ElevatedButton(
+                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              selectedOption.isNotEmpty
+                                  ? Color(0xFF5BD8FF)
+                                  : Colors.grey,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.check,
+                                  size: 18,
                                   color: selectedOption.isNotEmpty
                                       ? Colors.grey.shade700
                                       : Colors.white,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 8),
+                                Text(
+                                  isEnglish ? 'Check' : 'Tsek',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: selectedOption.isNotEmpty
+                                        ? Colors.grey.shade700
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

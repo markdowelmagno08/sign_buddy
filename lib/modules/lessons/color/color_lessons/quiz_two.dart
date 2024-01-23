@@ -352,101 +352,107 @@ class _ColorQuizTwoState extends State<ColorQuizTwo> {
 
   @override
     Widget build(BuildContext context) {
-      return isLoading
-          ? Center(
-            child: CircularProgressIndicator(),
-          )
-          :Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(60),
-              bottomRight: Radius.circular(60),
+      return WillPopScope(
+        onWillPop: () async {
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+          return true;
+        },
+        child: isLoading
+            ? Center(
+              child: CircularProgressIndicator(),
+            )
+            :Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+            title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+            shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60),
+                bottomRight: Radius.circular(60),
+              ),
+            ),
+            iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                Navigator.pushReplacement(context, SlidePageRoute(page: ColorLesson()));// This will pop the current screen
+              },
             ),
           ),
-          iconTheme: IconThemeData(color: Colors.black), // Set the icon color
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              ScaffoldMessenger.of(context).removeCurrentSnackBar();
-              Navigator.pushReplacement(context, SlidePageRoute(page: ColorLesson()));// This will pop the current screen
-            },
-          ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50),
-              Text(
-                contentDescription,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 15),
-              if (contentVideo.isNotEmpty) buildVideoDisplay(),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  physics: NeverScrollableScrollPhysics(),
-                  children: List.generate(contentOption.length, (index) {
-                    return _buildImageOption(contentOption[index]);
-                  }),
+          body: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+                Text(
+                  contentDescription,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Builder(
-                builder: (context) {
-                  return Align(
-                    alignment: Alignment.bottomRight,
-                    child: Visibility(
-                      visible: !answerChecked,
-                      child: ElevatedButton(
-                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            selectedOption.isNotEmpty
-                                ? Color(0xFF5BD8FF)
-                                : Colors.grey,
+                SizedBox(height: 15),
+                if (contentVideo.isNotEmpty) buildVideoDisplay(),
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    physics: NeverScrollableScrollPhysics(),
+                    children: List.generate(contentOption.length, (index) {
+                      return _buildImageOption(contentOption[index]);
+                    }),
+                  ),
+                ),
+                Builder(
+                  builder: (context) {
+                    return Align(
+                      alignment: Alignment.bottomRight,
+                      child: Visibility(
+                        visible: !answerChecked,
+                        child: ElevatedButton(
+                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              selectedOption.isNotEmpty
+                                  ? Color(0xFF5BD8FF)
+                                  : Colors.grey,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.check,
-                                size: 18,
-                                color: selectedOption.isNotEmpty
-                                    ? Colors.grey.shade700
-                                    : Colors.white,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                isEnglish ? 'Check' : 'Tsek',
-                                style: TextStyle(
-                                  fontSize: 18,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.check,
+                                  size: 18,
                                   color: selectedOption.isNotEmpty
                                       ? Colors.grey.shade700
                                       : Colors.white,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 8),
+                                Text(
+                                  isEnglish ? 'Check' : 'Tsek',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: selectedOption.isNotEmpty
+                                        ? Colors.grey.shade700
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-              SizedBox(height: 20),
-            ],
+                    );
+                  },
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       );

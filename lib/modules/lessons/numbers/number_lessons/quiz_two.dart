@@ -279,142 +279,148 @@ class _NumberQuizTwoState extends State<NumberQuizTwo> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 209, 209, 209),
-        title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(60),
-            bottomRight: Radius.circular(60),
+     return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 209, 209, 209),
+          title: Text(isEnglish ? 'Lesson Quiz' : 'Pagsusulit sa Aralin', style: TextStyle(color: Colors.black, fontSize: 16)),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(60),
+              bottomRight: Radius.circular(60),
+            ),
+          ),
+          iconTheme: IconThemeData(color: Colors.black), // Set the icon color
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
+            },
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.black), // Set the icon color
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            ScaffoldMessenger.of(context).removeCurrentSnackBar();
-            Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
-          },
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 100),
-            Text(
-              contentDescription,
-              style: TextStyle(fontSize: 18),
-            ),
-            if (contentImage.isNotEmpty) // Check if there's an image to display
-              GestureDetector(
-                onTap: ()  {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        contentPadding: EdgeInsets.all(
-                            5), 
-                        content: ClipRRect(
-                        child: CachedNetworkImage(
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Text(
+                contentDescription,
+                style: TextStyle(fontSize: 18),
+              ),
+              if (contentImage.isNotEmpty) // Check if there's an image to display
+                GestureDetector(
+                  onTap: ()  {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          contentPadding: EdgeInsets.all(
+                              5), 
+                          content: ClipRRect(
+                          child: CachedNetworkImage(
+                          imageUrl: contentImage[0],
+                          placeholder: (context, url) => CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(0.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Border color
+                        width: 2, // Border width
+                      ),
+                      color: Colors.white, // Color inside the border
+                      // Border radius
+                    ),
+                    child: CachedNetworkImage(
                         imageUrl: contentImage[0],
                         placeholder: (context, url) => CircularProgressIndicator(),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
-                      ),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(0.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey, // Border color
-                      width: 2, // Border width
-                    ),
-                    color: Colors.white, // Color inside the border
-                    // Border radius
                   ),
-                  child: CachedNetworkImage(
-                      imageUrl: contentImage[0],
-                      placeholder: (context, url) => CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
                 ),
-              ),
-            Expanded(
-              child: isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(), // Display option loading indicator
-                    )
-                  : GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        mainAxisExtent: 60
-                      ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: contentOption.length,
-                      itemBuilder: (context, index) {
-                        return _buildNumberOption(
-                          contentOption[index]
-                        );
-                      },
-                    ),
-            ),
-            Builder(
-              builder: (context) {
-                return Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Visibility(
-                      visible: !answerChecked,
-                      child: ElevatedButton(
-                        onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            selectedOption.isNotEmpty
-                                ? Color(0xFF5BD8FF)
-                                : Colors.grey,
-                          ),
+              Expanded(
+                child: isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(), // Display option loading indicator
+                      )
+                    : GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          mainAxisExtent: 60
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.check,
-                                size: 18,
-                                color: selectedOption.isNotEmpty
-                                    ? Colors.grey.shade700
-                                    : Colors.white,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                isEnglish ? 'Check' : 'Tsek',
-                                style: TextStyle(
-                                  fontSize: 18,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: contentOption.length,
+                        itemBuilder: (context, index) {
+                          return _buildNumberOption(
+                            contentOption[index]
+                          );
+                        },
+                      ),
+              ),
+              Builder(
+                builder: (context) {
+                  return Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Visibility(
+                        visible: !answerChecked,
+                        child: ElevatedButton(
+                          onPressed: selectedOption.isNotEmpty ? _checkAnswer : null,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              selectedOption.isNotEmpty
+                                  ? Color(0xFF5BD8FF)
+                                  : Colors.grey,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.check,
+                                  size: 18,
                                   color: selectedOption.isNotEmpty
                                       ? Colors.grey.shade700
                                       : Colors.white,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 8),
+                                Text(
+                                  isEnglish ? 'Check' : 'Tsek',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: selectedOption.isNotEmpty
+                                        ? Colors.grey.shade700
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
