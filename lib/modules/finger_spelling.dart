@@ -79,33 +79,51 @@ class _FingerSpellingState extends State<FingerSpelling> {
             wordSign.add(SizedBox(width: 10)); // Add space between sign images
           }
           wordSign.add(
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    child: Image.asset(
-                      aslSigns[letter]!,
-                      height: 100,
-                      width: 100,
-                    ),
-                  ),
-                  if (showLetters)
-                    Text(
-                      letter,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: ()  {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      contentPadding: EdgeInsets.all(
+                          5), // Remove padding around the content
+                      content: ClipRRect(
+                      child: Image.asset(
+                        aslSigns[letter]!,
+                        height: 250,
+                        width: 250,
                       ),
                     ),
-                ],
+                  ),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      child: Image.asset(
+                        aslSigns[letter]!,
+                        height: 110,
+                        width: 110,
+                      ),
+                    ),
+                    if (showLetters)
+                      Text(
+                        letter,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           );

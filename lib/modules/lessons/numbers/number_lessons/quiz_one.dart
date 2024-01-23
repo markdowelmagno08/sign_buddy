@@ -286,7 +286,7 @@ class _NumberQuizOne extends State<NumberQuizOne> {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             ScaffoldMessenger.of(context).removeCurrentSnackBar();
-            Navigator.pushReplacement(context, SlidePageRoute(page: Number()));// This will pop the current screen
+            Navigator.pushReplacement(context, SlidePageRoute(page: NumberLessonOne(lessonName: widget.lessonName)));
           },
         ),
       ),
