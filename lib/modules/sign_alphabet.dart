@@ -138,21 +138,37 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                 child: Container(
                   alignment: Alignment.center,
                   child: selectedLetter.isNotEmpty
-                      ? Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1.0,
+                      ? GestureDetector(
+                        onTap: ()  {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              contentPadding: EdgeInsets.all(
+                                  5), 
+                              content: Image.asset(
+                                    'assets/${letterImages[selectedLetter]}.png',
+                                    width: 250,
+                                    height: 250,
+                                  ),
+                                ),
+                              );
+                            },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
                             ),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
+                            child: Image.asset(
+                              'assets/${letterImages[selectedLetter]}.png',
+                              width: 200,
+                              height: 200,
+                            ),
                           ),
-                          child: Image.asset(
-                            'assets/${letterImages[selectedLetter]}.png',
-                            width: 200,
-                            height: 200,
-                          ),
-                        )
+                      )
                       : Text(
                           isEnglish
                               ? 'Tap a letter to see the sign language image'

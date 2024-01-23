@@ -308,23 +308,41 @@ class _QuizTwoState extends State<QuizTwo> {
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 20),
-            if (contentImage.isNotEmpty) // Check if there's an image to display
-              Container(
-                padding: const EdgeInsets.all(0.0),
-                margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey, // Border color
-                    width: 2, // Border width
+              if (contentImage.isNotEmpty) // Check if there's an image to display
+                GestureDetector(
+                  onTap: ()  {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        contentPadding: EdgeInsets.all(
+                            5), 
+                        content: ClipRRect(
+                        child: CachedNetworkImage(
+                        imageUrl: contentImage[0],
+                        placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(0.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey, // Border color
+                      width: 2, // Border width
+                    ),
+                    color: Colors.white, // Color inside the border
+                    // Border radius
                   ),
-                  color: Colors.white, // Color inside the border
-                  // Border radius
+                  child: CachedNetworkImage(
+                      imageUrl: contentImage[0],
+                      placeholder: (context, url) => CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
                 ),
-                child: CachedNetworkImage(
-                    imageUrl: contentImage[0],
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                  ),
               ),
             Expanded(
               child: isLoading
