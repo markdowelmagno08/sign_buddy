@@ -81,6 +81,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
           wordSign.add(
             GestureDetector(
               onTap: ()  {
+                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "spellInteract");
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
