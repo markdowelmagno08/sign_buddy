@@ -314,20 +314,41 @@ class _QuizThreeState extends State<QuizThree> {
                 style: TextStyle(fontSize: 18),
               ),
               if (contentImage.isNotEmpty)
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey, // Border color
-                    width: 2, // Border width
+              GestureDetector(
+                onTap: ()  {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          contentPadding: EdgeInsets.all(
+                              10), 
+                          content: Container(
+                            color: Colors.white,
+                            child: ClipRRect(
+                            child: CachedNetworkImage(
+                            imageUrl: contentImage[0],
+                            placeholder: (context, url) => CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
+                                                  ),
+                                                  ),
+                          ),
+                      ),
+                    );
+                  },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey, // Border color
+                      width: 2, // Border width
+                    ),
+                    color: Colors.white, // Color inside the border
+                    // Border radius
                   ),
-                  color: Colors.white, // Color inside the border
-                  // Border radius
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: contentImage[0],
-                  placeholder: (context, url) => CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  child: CachedNetworkImage(
+                    imageUrl: contentImage[0],
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
