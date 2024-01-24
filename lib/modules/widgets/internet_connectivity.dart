@@ -31,11 +31,11 @@ class InternetConnectivityService {
           title: Column(
             children: [
               Icon(
-                Icons.signal_wifi_off, // You can use any icon you prefer
-                color: Colors.redAccent, // Customize the icon color
-                size: 60, // Customize the icon size
+                Icons.signal_wifi_off, 
+                color: Colors.redAccent, 
+                size: 60, 
               ),
-              SizedBox(height: 20), // Add spacing between the icon and text
+              SizedBox(height: 20), 
             ],
           ),
           content: Column(
