@@ -544,7 +544,7 @@ Future<bool> _onWillPop(BuildContext context) async {
                   Padding(
                     padding: const EdgeInsets.only(top: 160), // Adjust the bottom padding
                     child: Text(
-                      'Version 1.0.0',
+                      'Version 0.4.2',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
