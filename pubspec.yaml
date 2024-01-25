@@ -36,15 +36,18 @@ dependencies:
   shared_preferences: ^2.2.0
   path_provider: ^2.0.15
   connectivity_plus: ^5.0.2
-  cloud_firestore: ^4.8.1
+  cloud_firestore: ^4.14.0
   firebase_auth: ^4.6.3
-  firebase_core: ^2.15.1
+  firebase_core: ^2.15.1 
   firebase_storage: ^11.2.7
-  cached_video_player: ^2.0.4
   card_swiper: ^3.0.1
   cached_network_image: ^3.3.0
   flutter_cache_manager: ^3.3.1
   intl: ^0.19.0
+  cached_video_player:
+    git:
+      url: https://github.com/vikram25897/flutter_cached_video_player
+      ref: feature/gradle_version_bump
 
 
   
