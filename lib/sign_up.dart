@@ -102,25 +102,37 @@ class _SignupPageState extends State<SignupPage> {
                         const SizedBox(height: 40),
                         _inputField(),
                         const SizedBox(height: 20),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: TextButton(
-                            onPressed: () {
-                              // Handle "Skip" button action here
-                              // For example, navigate to the home page directly
-                              Navigator.pushReplacement(
-                                context,
-                                SlidePageRoute(page: const HomePage()),
-                              );
-                            },
-                            child:  Text(
-                              isEnglish ? "Skip for now" : "Laktawan sa ngayon",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                _showPasswordRequirementsModal();
+                              },
+                              icon: Icon(
+                                Icons.help_outline, 
+                                color: Colors.blue, 
+                                size: 30, 
+                              ),
+                              tooltip: isEnglish ? "Password Requirements" : "Mga Kinakailangang Password",
+                            ),
+                            Spacer(),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  SlidePageRoute(page: const HomePage()),
+                                );
+                              },
+                              child:  Text(
+                                isEnglish ? "Skip for now" : "Laktawan sa ngayon",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
+                            
+                          ],
                         ),
                       ],
                     ),
@@ -501,6 +513,100 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
+void _showPasswordRequirementsModal() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          isEnglish ? "Password Requirements" : "Mga Kinakailangan sa Password",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'FiraSans', // Use FiraSans font
+          ),
+        ),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildListText(
+              isEnglish
+                  ? 'Password must be at least 8 characters long'
+                  : 'Ang password ay dapat na hindi bababa sa 8 na karakter ang haba',
+            ),
+            _buildListText(
+              isEnglish
+                  ? 'Password must contain at least one uppercase letter'
+                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang malaking titik',
+            ),
+            _buildListText(
+              isEnglish
+                  ? 'Password must contain at least one digit'
+                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang numero',
+            ),
+            _buildListText(
+              isEnglish
+                  ? 'Password must contain at least one special character'
+                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang espesyal na karakter',
+            ),
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: ElevatedButton(
+               style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF5BD8FF),
+              ),
+              child: Text(
+                'Ok',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'FiraSans',
+                   color: Color(0xFF5A5A5A), // Replace with your font family name
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Widget _buildListText(String text) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 4.0),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '• ',
+          style: TextStyle(
+            fontSize: 26,
+            fontFamily: 'FiraSans', // Use FiraSans font
+          ),
+        ),
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'FiraSans', // Use FiraSans font
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+
+
+
 }
 
 Future<bool> _checkIfEmailExists(String email) async {
@@ -517,6 +623,8 @@ Future<bool> _checkIfEmailExists(String email) async {
     return false;
   }
 }
+
+
 
 
 
