@@ -9,6 +9,7 @@ import 'package:sign_buddy/modules/lessons/alphabet/lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/analytics.dart';
+import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
 
 
 
@@ -270,21 +271,30 @@ class _LettersState extends State<Letters> {
                                 if (!isUnlocked) Icon(Icons.lock, size: 35, color: const Color(0xFF5A96E3))
                               ],
                             ),
-                            onTap: () async {
-                              if (isUnlocked) {
-                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
-                                Navigator.pushReplacement(
-                                  context,
-                                  SlidePageRoute(
-                                    page: LessonOne(
-                                      lessonName: lessonName,
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                showLockedLessonDialog(); // Show the locked lesson dialog
-                              }
-                            },
+                              onTap: () async {
+                                if (isUnlocked) {
+                                  // Check for internet connectivity before navigating to the lesson
+                                  await InternetConnectivityService.checkInternetOrShowDialog(
+                                    context: context,
+                                    onLogin: () {
+                                      analyticsService.incrementInteractions(
+                                        isEnglish ? "en" : "ph",
+                                        "lessonInteract",
+                                      );
+                                      Navigator.pushReplacement(
+                                        context,
+                                        SlidePageRoute(
+                                          page: LessonOne(
+                                            lessonName: lessonName,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  showLockedLessonDialog(); // Show the locked lesson dialog
+                                }
+                              },
                           ),
                         ],
                       ),

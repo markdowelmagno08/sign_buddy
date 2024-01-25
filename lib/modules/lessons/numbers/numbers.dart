@@ -9,6 +9,7 @@ import 'package:sign_buddy/modules/lessons/numbers/number_lessons/lesson_one.dar
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/analytics.dart';
+import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
 
 
 class Number extends StatefulWidget {
@@ -275,16 +276,26 @@ class _NumberState extends State<Number> {
                               ],
                             ),
                             onTap: () async {
-                              analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
                               if (isUnlocked) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  SlidePageRoute(
-                                    page: NumberLessonOne(
-                                      lessonName: lessonName,
-                                    ),
-                                  ),
-                                );
+                                // Check for internet connectivity before navigating to the lesson
+                                  await InternetConnectivityService.checkInternetOrShowDialog(
+                                    context: context,
+                                    onLogin: () {
+                                      analyticsService.incrementInteractions(
+                                        isEnglish ? "en" : "ph",
+                                        "lessonInteract",
+                                      );
+                                      Navigator.pushReplacement(
+                                        context,
+                                        SlidePageRoute(
+                                          page: NumberLessonOne(
+                                            lessonName: lessonName,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+
                               } else {
                                 showLockedLessonDialog(); // Show the locked lesson dialog
                               }

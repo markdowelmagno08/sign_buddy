@@ -8,6 +8,7 @@ import 'package:sign_buddy/modules/lessons/color/color_lessons/lesson_one.dart';
 import 'package:sign_buddy/modules/sharedwidget/page_transition.dart';
 import 'package:sign_buddy/modules/widgets/back_button.dart';
 import 'package:sign_buddy/analytics.dart';
+import 'package:sign_buddy/modules/widgets/internet_connectivity.dart';
 
 
 
@@ -271,15 +272,25 @@ class _ColorLessonState extends State<ColorLesson> {
                             ),
                             onTap: () async {
                               if (isUnlocked) {
-                                analyticsService.incrementInteractions( isEnglish ? "en" : "ph", "lessonInteract");
-                                Navigator.pushReplacement(
-                                  context,
-                                  SlidePageRoute(
-                                    page: ColorLessonOne(
-                                      lessonName: lessonName,
-                                    ),
-                                  ),
-                                );
+                                // Check for internet connectivity before navigating to the lesson
+                                  await InternetConnectivityService.checkInternetOrShowDialog(
+                                    context: context,
+                                    onLogin: () {
+                                      analyticsService.incrementInteractions(
+                                        isEnglish ? "en" : "ph",
+                                        "lessonInteract",
+                                      );
+                                      Navigator.pushReplacement(
+                                        context,
+                                        SlidePageRoute(
+                                          page: ColorLessonOne(
+                                            lessonName: lessonName,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+
                               } else {
                                 showLockedLessonDialog(); // Show the locked lesson dialog
                               }
