@@ -54,8 +54,6 @@ class _CreateSignPageState extends State<CreateSignPage> {
 
   @override
   void initState() {
-    
-    disposeVideoControllers();
     getLanguage();
     super.initState();
   }
