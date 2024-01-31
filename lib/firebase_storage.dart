@@ -1,5 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 
+
+// class that gets thee assets path in firebase and download the URL 
 class AssetFirebaseStorage {
   final storage = FirebaseStorage.instance;
 

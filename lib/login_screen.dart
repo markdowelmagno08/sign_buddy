@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
           },
 
             inputFormatters: [
-            EmailInputFormatter(), // Use the custom email input formatter here
+            EmailInputFormatter(), 
           ],
           onSaved: (value) => _email.text = value!.trim(),
         ),
@@ -218,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      setState(() => loading = true); // Show the loading screen
+      setState(() => loading = true); 
 
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(

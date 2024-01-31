@@ -86,6 +86,9 @@ class _CreateSignPageState extends State<CreateSignPage> {
 
   
 
+
+  //function that maps the user search and match the search with assets 
+  // combines the data base on user input
   List<Map<String, dynamic>> combineData(
       QuerySnapshot wordData, QuerySnapshot phraseData) {
     final List<Map<String, dynamic>> combinedData = [];
@@ -139,6 +142,7 @@ class _CreateSignPageState extends State<CreateSignPage> {
     return controller;
   }
 
+  // splits the user search in sequence 
   Future<void> searchAndDisplayVideo(String searchText) async {
     if (mounted) {
       setState(() {

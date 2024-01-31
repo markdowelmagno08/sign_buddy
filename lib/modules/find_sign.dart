@@ -117,6 +117,9 @@ class _FindSignState extends State<FindSign> {
     return combinedData;
   }
 
+
+  // function that hanlde the search functionality of find sign,
+  // display the suggested result base on the existing firebase assets
   void search(String query) {
     if (query.isEmpty) {
       if (mounted) {
@@ -194,6 +197,8 @@ class _FindSignState extends State<FindSign> {
     }
   }
 
+
+  //function that fetch the URL from firebase storage
   Future<void> fetchAssetUrls(String? mp4Path) async {
 
     mp4Url = await assetFirebaseStorage.getAsset(mp4Path);
@@ -413,7 +418,7 @@ Widget build(BuildContext context) {
                 width: width,
                 child: AspectRatio(
                   aspectRatio: _videoController!.value.aspectRatio,
-                  child: CachedVideoPlayer(_videoController!), // Use CachedVideoPlayer here
+                  child: CachedVideoPlayer(_videoController!),
                 ),
               )
               : Container(

@@ -60,7 +60,6 @@
         email: emailController.text,
       );
 
-      // Close loading dialog
       Navigator.of(context).pop();
 
       // Navigate to the ResetSuccessScreen
@@ -69,7 +68,7 @@
         SlidePageRoute(page: ResetSuccessScreen(email: emailController.text)),
       );
     } catch (e) {
-      // Close loading dialog
+
       Navigator.of(context).pop();
 
       _showResetErrorDialog(e.toString());
@@ -139,8 +138,8 @@
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/forgot-password-img.png', // Replace with the path to your image
-                        height: 120, // Adjust the height as needed
+                        'assets/forgot-password-img.png', 
+                        height: 120, 
                       ),
                       SizedBox(height: 30),
                       Text(
@@ -280,8 +279,8 @@
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                  'assets/email-img.png', // Replace with the path to your image
-                height: 120, // Adjust the height as needed
+                  'assets/email-img.png', 
+                height: 120, 
               ),
               SizedBox(height: 20),
               Text(
@@ -291,7 +290,7 @@
               SizedBox(height: 16),
               Center(
                 child: RichText(
-                  textAlign: TextAlign.center, // Set the text alignment to center
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(fontFamily: 'FiraSans', fontSize: 16, color: Colors.black),
                     children: [

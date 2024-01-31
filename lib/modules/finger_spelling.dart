@@ -65,7 +65,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
   }
 
   void translateTextToASL() {
-    FocusScope.of(context).unfocus(); // Close the keyboard
+    FocusScope.of(context).unfocus(); 
     groupASL.clear();
     hasSignImages = false; // Reset the flag
     final words = inputText.split(RegExp(r'\s+'));
@@ -74,9 +74,9 @@ class _FingerSpellingState extends State<FingerSpelling> {
       for (int i = 0; i < word.length; i++) {
         String letter = word[i].toLowerCase();
         if (aslSigns.containsKey(letter)) {
-          hasSignImages = true; // Set the flag if there are sign images
+          hasSignImages = true; 
           if (wordSign.isNotEmpty) {
-            wordSign.add(SizedBox(width: 10)); // Add space between sign images
+            wordSign.add(SizedBox(width: 10)); 
           }
           wordSign.add(
             GestureDetector(
@@ -86,7 +86,7 @@ class _FingerSpellingState extends State<FingerSpelling> {
                     context: context,
                     builder: (context) => AlertDialog(
                       contentPadding: EdgeInsets.all(
-                          5), // Remove padding around the content
+                          5), 
                       content: ClipRRect(
                       child: Image.asset(
                         aslSigns[letter]!,

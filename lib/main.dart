@@ -126,6 +126,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
     _authenticationCheck = _checkAuthentication();
   }
 
+  //Function that checks the user's authentication when the app is closed and open again
   Future<bool> _checkAuthentication() async {
     final user = FirebaseAuth.instance.currentUser;
 

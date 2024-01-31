@@ -78,6 +78,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
     super.initState();
   }
 
+  
   Future<void> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final isEnglish = prefs.getBool('isEnglish') ?? true;

@@ -213,7 +213,7 @@ class _MySettingsState extends State<MySettings> {
       // Navigate back to the homepage
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (BuildContext context) => HomePage()), // Replace 'HomePage()' with your actual homepage widget
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()), 
         (route) => false,
       );
 
@@ -244,6 +244,8 @@ class _MySettingsState extends State<MySettings> {
       ),
     );
   }
+
+  //function that updates the user language
 
   Future<void> updateLanguageInFirestore() async {
     showDialog(
@@ -303,7 +305,7 @@ class _MySettingsState extends State<MySettings> {
     required String text,
     required VoidCallback onPressed,
     double iconTextSpacing = 0,
-    String? subtitle, // New parameter for subtitle (current language)
+    String? subtitle, 
   }) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
@@ -352,6 +354,7 @@ class _MySettingsState extends State<MySettings> {
     );
   }
 
+  //Function that show dialog when account deletion
   Future<void> _showDeleteConfirmationDialog() async {
     return showDialog<void>(
       context: context,
@@ -418,11 +421,11 @@ class _MySettingsState extends State<MySettings> {
     );
   }  
 
-
+  // delete account for anonynous account, the button is available for anonymous users only
   Future<void> _deleteAccount() async {
     showDialog(
         context: context,
-        barrierDismissible: false, // prevent user from dismissing the dialog
+        barrierDismissible: false, 
         builder: (BuildContext context) {
           return AlertDialog(
             content: Column(
@@ -463,7 +466,7 @@ class _MySettingsState extends State<MySettings> {
             await Auth().signOut();
           }
 
-          // Close the loading dialog
+
           if (!context.mounted) return;
           Navigator.pop(context);
 

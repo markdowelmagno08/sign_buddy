@@ -157,8 +157,8 @@ class _FeedbackAppState extends State<FeedbackApp> {
                                   child: Column(
                                     children: [
                                       Image.asset(
-                                        'assets/feedback1.png', // Replace with the path to your image
-                                        height: 120, // Adjust the height as needed
+                                        'assets/feedback1.png', 
+                                        height: 120,
                                       ),
                                       SizedBox(height: 20),
                                       Center(
@@ -242,6 +242,8 @@ class _FeedbackAppState extends State<FeedbackApp> {
 
 
 
+// function that send feedback to firestore
+
 Future<void> sendFeedbackToFirestore() async {
   // Retrieve the current user from FirebaseAuth
   User? user = FirebaseAuth.instance.currentUser;
@@ -292,6 +294,7 @@ Future<void> sendFeedbackToFirestore() async {
 }
 
 
+// thank you screen in class that wil be display after the user submit a feedback
 class ThankYouScreen extends StatefulWidget {
   const ThankYouScreen({Key? key}) : super(key: key);
 
@@ -330,8 +333,8 @@ class _ThankYouScreenState extends State<ThankYouScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                  'assets/sent-img.png', // Replace with the path to your image
-                height: 120, // Adjust the height as needed
+                  'assets/sent-img.png', 
+                height: 120, 
               ),
               SizedBox(height: 20),
               Text(

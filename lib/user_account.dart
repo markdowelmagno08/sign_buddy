@@ -1198,10 +1198,9 @@ Future<void> _saveChanges() async {
               onPressed: () async {
                 
                 await Auth().signOut();
-                 // Update language preference after signing out
+
                 await getLanguage();
-                // Navigate back to the home screen or any other screen
-                 // Navigate back to the home screen or any other screen
+
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute<void>(
@@ -1292,6 +1291,8 @@ Future<void> _saveChanges() async {
     );
   }
 
+  
+  //function that deletes account of registered user..
   Future<void> _deleteAccount() async {
     showDialog(
       context: context,
@@ -1364,35 +1365,36 @@ Future<void> _saveChanges() async {
 
   }
 
-  
+    //snackbar function that display the erros and succession state
     void showCustomSnackBar(BuildContext context, String message) {
-    final snackBar = SnackBar(
-      content: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                message,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'FiraSans',
+      final snackBar = SnackBar(
+        content: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'FiraSans',
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-      backgroundColor: Color(0xFF36454F), 
-      duration: Duration(seconds: 3), 
-      behavior: SnackBarBehavior.floating,
-    );
+          ],
+        ),
+        backgroundColor: Color(0xFF36454F), 
+        duration: Duration(seconds: 3), 
+        behavior: SnackBarBehavior.floating,
+      );
 
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
 
 
+
+  // widget for language display
   Widget _buildLanguageItem(String label, String value, String imagePath) {
     return ListTile(
       leading: Image.asset(
@@ -1411,6 +1413,8 @@ Future<void> _saveChanges() async {
     );
   }
 
+  
+  //widget for User Info
   Widget _buildUserInfoItem(String label, String value, IconData iconData) {
     return ListTile(
       leading: Icon(iconData, color: Colors.deepPurpleAccent),

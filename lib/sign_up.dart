@@ -93,7 +93,7 @@ class _SignupPageState extends State<SignupPage> {
                           alignment: Alignment.topLeft,
                           // child: CustomBackButton(
                           //   onPressed: () {
-                          //      Navigator.push(context, SlidePageRoute(page: const GetStartedPage()));// Handle routing here
+                          //      Navigator.push(context, SlidePageRoute(page: const GetStartedPage()));
                           //   },
                           // ),
                         ),
@@ -371,26 +371,7 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  // Widget _signup(BuildContext context) {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: [
-  //       const Text("Already have an account?"),
-  //       TextButton(
-  //         onPressed: () {
-  //           Navigator.push(context, SlidePageRoute(page: const LoginPage()));
-  //         },
-  //         child: const Text(
-  //           "Log in",
-  //           style: TextStyle(
-  //             color: Color(0xFF5BD8FF),
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
+
 
     void _submitForm() async {
     // Check for internet connectivity
@@ -563,7 +544,7 @@ void _showPasswordRequirementsModal() {
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'FiraSans',
-                   color: Color(0xFF5A5A5A), // Replace with your font family name
+                   color: Color(0xFF5A5A5A), 
                 ),
               ),
               onPressed: () {
@@ -587,15 +568,15 @@ Widget _buildListText(String text) {
           '• ',
           style: TextStyle(
             fontSize: 26,
-            fontFamily: 'FiraSans', // Use FiraSans font
+            fontFamily: 'FiraSans', 
           ),
         ),
-        Expanded(
+        Expanded( 
           child: Text(
             text,
             style: TextStyle(
               fontSize: 15,
-              fontFamily: 'FiraSans', // Use FiraSans font
+              fontFamily: 'FiraSans', 
             ),
           ),
         ),
