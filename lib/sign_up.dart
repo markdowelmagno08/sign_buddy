@@ -272,16 +272,16 @@ class _SignupPageState extends State<SignupPage> {
               return isEnglish ? "Please enter your password" : "Pakilagay ang iyong password";
             } else {
               if (value.length < 8) {
-                return isEnglish ? 'Password must be at least 8 characters long' : 'Dapat ang password ay hindi bababa\nsa walong(8) karakter ang haba';
+                return isEnglish ? 'Password must be at least 8 characters long' : 'Gumamit ng 8 character o higit pa para sa iyong password';
               }
               if (!RegExp(r'[A-Z]').hasMatch(value)) {
-                return isEnglish ? 'Password must contain at least one uppercase letter' : 'Dapat maglagay ng hindi bababa\nsa isang malaking titik sa password';
+                return isEnglish ? 'Password must contain at least one uppercase letter' : 'Dapat maglagay ng kahit\nisang malaking titik sa password';
               }
               if (!RegExp(r'\d').hasMatch(value)) {
-                return isEnglish ? 'Password must contain at least one digit' : 'Dapat maglagay ng hindi bababa\nsa isang numero sa password';
+                return isEnglish ? 'Password must contain at least one digit' : 'Dapat maglagay ng kahit\nisang numero sa password';
               }
-              if (!RegExp(r'[@#$%^&+=]').hasMatch(value)) {
-                return isEnglish ? 'Password must contain at least one special character' : 'Dapat maglagay ng hindi bababa\nsa isang espesyal na karakter sa password';
+              if (!RegExp(r'[!@#$%^&*()_+{}[\]:;<>,.?~\\-]').hasMatch(value)) {
+                  return isEnglish ? 'Password must contain at least one special character' : 'Dapat maglagay ng kahit\nisang espesyal na karakter sa password';
               }
             }
             return null;
@@ -494,116 +494,122 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-void _showPasswordRequirementsModal() {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          isEnglish ? "Password Requirements" : "Mga Kinakailangan sa Password",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'FiraSans', // Use FiraSans font
-          ),
-        ),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildListText(
-              isEnglish
-                  ? 'Password must be at least 8 characters long'
-                  : 'Ang password ay dapat na hindi bababa sa 8 na karakter ang haba',
-            ),
-            _buildListText(
-              isEnglish
-                  ? 'Password must contain at least one uppercase letter'
-                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang malaking titik',
-            ),
-            _buildListText(
-              isEnglish
-                  ? 'Password must contain at least one digit'
-                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang numero',
-            ),
-            _buildListText(
-              isEnglish
-                  ? 'Password must contain at least one special character'
-                  : 'Ang password ay dapat maglaman ng hindi bababa sa isang espesyal na karakter',
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: ElevatedButton(
-               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5BD8FF),
+  void _showPasswordRequirementsModal() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.notifications_active,
+                color: Colors.red,
               ),
-              child: Text(
-                'Ok',
+              SizedBox(width: 8),
+              Text(
+                isEnglish ? "Password Requirements" : "Mga Kinakailangan sa\nPassword",
                 style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'FiraSans', // Use FiraSans font
                   fontSize: 16,
-                  fontFamily: 'FiraSans',
-                   color: Color(0xFF5A5A5A), 
                 ),
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+            ],
+          ),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildListText(
+                isEnglish
+                    ? 'Password must be at least 8 characters long'
+                    : 'Gumamit ng 8 character o higit pa para sa iyong password',
+              ),
+              _buildListText(
+                isEnglish
+                    ? 'Password must contain at least one uppercase letter'
+                    : 'Dapat maglagay ng kahit isang malaking titik sa password',
+              ),
+              _buildListText(
+                isEnglish
+                    ? 'Password must contain at least one digit'
+                    : 'Dapat maglagay ng kahit isang numero sa password',
+              ),
+              _buildListText(
+                isEnglish
+                    ? 'Password must contain at least one special character'
+                    : 'Dapat maglagay ng kahit isang espesyal na karakter sa password',
+              ),
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF5BD8FF),
+                ),
+                child: Text(
+                  'Ok',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'FiraSans',
+                    color: Color(0xFF5A5A5A), 
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
-          ),
-        ],
-      );
-    },
-  );
-}
+          ],
+        );
+      },
+    );
+  }
 
-Widget _buildListText(String text) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4.0),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '• ',
-          style: TextStyle(
-            fontSize: 26,
-            fontFamily: 'FiraSans', 
-          ),
-        ),
-        Expanded( 
-          child: Text(
-            text,
+  Widget _buildListText(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '• ',
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 26,
               fontFamily: 'FiraSans', 
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
-
-
-
-
-}
-
-Future<bool> _checkIfEmailExists(String email) async {
-  try {
-    final QuerySnapshot result = await FirebaseFirestore.instance
-        .collection('userData')
-        .where('email', isEqualTo: email)
-        .limit(1)
-        .get();
-    final List<DocumentSnapshot> documents = result.docs;
-    return documents.isNotEmpty;
-  } catch (e) {
-    print(e.toString());
-    return false;
+          Expanded( 
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'FiraSans', 
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
+
+  Future<bool> _checkIfEmailExists(String email) async {
+    try {
+      final QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('userData')
+          .where('email', isEqualTo: email)
+          .limit(1)
+          .get();
+      final List<DocumentSnapshot> documents = result.docs;
+      return documents.isNotEmpty;
+    } catch (e) {
+      print(e.toString());
+      return false;
+    }
+  }
 
 
 
