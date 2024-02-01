@@ -162,38 +162,75 @@ import 'package:sign_buddy/firestore_user.dart';
       }
 
       Future<void> unlockLesson(String lessonName, String locale) async {
-
         try {
-          final CollectionReference lessonCollection = FirebaseFirestore.instance 
-              .collection('userData')
-              .doc(userId)
-              .collection('greetings')
-              .doc(locale)
-              .collection('lessons');
-              
+          final CollectionReference lessonCollection =
+              FirebaseFirestore.instance.collection('userData').doc(userId).collection('greetings').doc(locale).collection('lessons');
+
+          List<String> customOrderPh = [
+            'Magandang Umaga',
+            'Magandang Hapon',
+            'Magandang Gabi',
+            'Mahal Kita',
+            'Mahalaga ka',
+            'Maraming Salamat',
+            'Happy Birthday',
+            'Ingat ka',
+            'Congrats',
+            'Good luck',
+            'Paalam',
+            'Pasensya Na',
+            'Condolences',
+          ];
+
+          List<String> customOrderEn = [
+            'Hello',
+            'How are you',
+            'What\'s up',
+            'Good to see you',
+            'Have a nice day',
+            'Nice to meet you',
+            'Congratulations',
+            'Thank you',
+            'You\'re Welcome',
+            'See you later',
+            'Excuse Me',
+            'Goodnight',
+            'Sorry',
+            'Goodbye',
+          ];
+
+        // Choose the custom order based on the language/locale
+        List<String> customOrder = locale == 'en' ? customOrderEn : customOrderPh;
+
+        // Find the index of the current lesson in the custom order
+        int currentIndex = customOrder.indexOf(lessonName);
+
+        // Check if the current lesson is not the last in the custom order
+        if (currentIndex != -1 && currentIndex < customOrder.length - 1) {
+          // Get the name of the next lesson in the custom order
+          String nextLessonName = customOrder[currentIndex + 1];
 
 
-          // Find the next lesson
-          QuerySnapshot querySnapshot = await  lessonCollection
-              .where('name', isGreaterThan: lessonName) // Find lessons with names greater than the current lesson
-              .orderBy('name')
-              .limit(1)
-              .get();
+          QuerySnapshot querySnapshot = await lessonCollection.where('name', isEqualTo: nextLessonName).limit(1).get();
 
+          // Check if the next lesson document exists
           if (querySnapshot.docs.isNotEmpty) {
-              // Unlock the next lesson
-              DocumentReference nextLessonRef = querySnapshot.docs.first.reference;
-              await nextLessonRef.update({'isUnlocked': true});
-              print(
-                  'Lesson "$lessonName" and the next lesson unlocked successfully!');
-            } else {
-              print('Next lesson not found for "$lessonName".');
-            }
-          
-        } catch (e) {
-          print('Error updating lesson data: $e');
+            // Get a reference to the next lesson and update its 'isUnlocked' field to true
+            DocumentReference nextLessonRef = querySnapshot.docs.first.reference;
+            await nextLessonRef.update({'isUnlocked': true});
+            print('Lesson "$nextLessonName" unlocked successfully!');
+          } else {
+            print('Next lesson not found for "$lessonName".');
+          }
+        } else {
+
+          print('Next lesson not found or already at the last lesson.');
         }
+      } catch (e) {
+        print('Error updating lesson data: $e');
       }
+    }
+
 
        Future<void> unlockFirstNumbersLesson(String locale) async {
           try {
@@ -223,7 +260,7 @@ import 'package:sign_buddy/firestore_user.dart';
           SharedPreferences prefs = await SharedPreferences.getInstance();
 
           // Check if the user is a new account
-          final isNewAccount = await UserFirestore(userId: userId).getIsNewAccount(); // Implement this function to check if the user is new
+          final isNewAccount = await UserFirestore(userId: userId).getIsNewAccount(); 
 
           if (isNewAccount) {
             for (int i = 1; i <= 6; i++) {

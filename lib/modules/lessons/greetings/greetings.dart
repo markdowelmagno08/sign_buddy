@@ -59,15 +59,47 @@ class _GreetingsState extends State<Greetings> {
   }
 
   Future<void> greetingsLessons() async {
-    
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       final String? userId = Auth().getCurrentUserId();
 
-
       List<String> greetingsNames = [];
       List<bool> unlockedLessons = [];
       List<int> greetingsProgress = [];
+
+      List<String> customOrderPh = [
+        'Magandang Umaga',
+        'Magandang Hapon',
+        'Magandang Gabi',
+        'Mahal Kita',
+        'Mahalaga ka',
+        'Maraming Salamat',
+        'Happy Birthday',
+        'Ingat ka',
+        'Congrats',
+        'Good luck',
+        'Paalam',
+        'Pasensya Na',
+        'Condolences',
+      ];
+
+
+      List<String> customOrderEn = [
+        'Hello',
+        'How are you',
+        'What\'s up',
+        'Good to see you',
+        'Have a nice day',
+        'Nice to meet you',
+        'Congratulations',
+        'Thank you',
+        'You\'re Welcome',
+        'See you later',
+        'Excuse Me',
+        'Goodnight',
+        'Sorry',
+        'Goodbye',
+      ];
 
       QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
           .collection('userData')
@@ -77,13 +109,19 @@ class _GreetingsState extends State<Greetings> {
           .collection('lessons')
           .get();
 
-      for (QueryDocumentSnapshot<Map<String, dynamic>> doc
-          in querySnapshot.docs) {
-        Map<String, dynamic> lessonData = doc.data();
-        greetingsNames.add(lessonData['name'] as String);
-        unlockedLessons.add(lessonData['isUnlocked'] as bool);
-        greetingsProgress.add(lessonData['progress'] as int);
+      List<String> customOrder = isEnglish ? customOrderEn : customOrderPh;
+
+      for (String lessonName in customOrder) {
+        int index = querySnapshot.docs
+            .indexWhere((doc) => doc['name'] == lessonName);
+        if (index != -1) {
+          Map<String, dynamic> lessonData = querySnapshot.docs[index].data();
+          greetingsNames.add(lessonData['name'] as String);
+          unlockedLessons.add(lessonData['isUnlocked'] as bool);
+          greetingsProgress.add(lessonData['progress'] as int);
+        }
       }
+
       if (mounted) {
         setState(() {
           greetingsLessonName = greetingsNames;
@@ -91,13 +129,12 @@ class _GreetingsState extends State<Greetings> {
           greetingsLessonProgress = greetingsProgress;
         });
       }
-
-
-
     } catch (e) {
-        print('Error updating local greetings lessons: $e');
+      print('Error updating local greetings lessons: $e');
     }
   }
+
+
 
   
   
@@ -226,7 +263,7 @@ class _GreetingsState extends State<Greetings> {
             delegate: _SliverAppBarDelegate(
               minHeight: 100,
               maxHeight: 150,
-              bottomPadding: 20.0, // Adjust the top padding here
+              bottomPadding: 20.0, 
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF5A96E3),
